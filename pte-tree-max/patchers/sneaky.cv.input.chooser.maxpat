@@ -3402,7 +3402,7 @@
 										"style" : "",
 										"subpatcher_template" : "",
 										"assistshowspatchername" : 0,
-										"globalpatchername" : "[1][1][1][3][1][1][3][2][1][1][1][1][1][2][2][2][1][1][2][1][1][2][1][1][1][1][1][1][1][2][1][1][1][1][1]",
+										"globalpatchername" : "[1][1][1][3][1][1][3][2][1][1][1][1][1][2][2][2][1][1][2][1][1][2][1][1][1][1][1][1][1][2][1][1][1][1][1][1]",
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -3751,7 +3751,7 @@
 										"description" : "",
 										"digest" : "",
 										"editing_bgcolor" : [ 0.94902, 0.94902, 0.94902, 1.0 ],
-										"globalpatchername" : "[1][1][1][3][1][1][3][2][1][1][1][1][1][2][2][2][1][1][2][1][1][2][1][1][1][1][1][1][1][2][1][1][1][1][1]",
+										"globalpatchername" : "[1][1][1][3][1][1][3][2][1][1][1][1][1][2][2][2][1][1][2][1][1][2][1][1][1][1][1][1][1][2][1][1][1][1][1][1]",
 										"locked_bgcolor" : [ 0.94902, 0.94902, 0.94902, 1.0 ],
 										"tags" : ""
 									}
@@ -4115,6 +4115,18 @@
 				}
 
 			}
+, 			{
+				"box" : 				{
+					"id" : "obj-43",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 713.0, -20.0, 37.0, 22.0 ],
+					"text" : "vol 0."
+				}
+
+			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
@@ -4149,7 +4161,7 @@
 					"destination" : [ "obj-70", 0 ],
 					"source" : [ "obj-106", 0 ],
 					"watchpoint_flags" : 1,
-					"watchpoint_id" : 1
+					"watchpoint_id" : 3
 				}
 
 			}
@@ -4172,7 +4184,7 @@
 					"destination" : [ "obj-106", 1 ],
 					"source" : [ "obj-111", 0 ],
 					"watchpoint_flags" : 1,
-					"watchpoint_id" : 2
+					"watchpoint_id" : 4
 				}
 
 			}
@@ -4385,6 +4397,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
 					"source" : [ "obj-40", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-46", 0 ],
+					"source" : [ "obj-43", 0 ]
 				}
 
 			}
