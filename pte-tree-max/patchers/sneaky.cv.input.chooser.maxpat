@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -570,16 +570,29 @@
 			}
 , 			{
 				"box" : 				{
-					"clipheight" : 56.506365299224854,
+					"clipheight" : 42.12977397441864,
 					"data" : 					{
 						"clips" : [ 							{
+								"absolutepath" : "01-wind-multiang_combined_20240724210310.mp4",
+								"filename" : "01-wind-multiang_combined_20240724210310.mp4",
+								"filekind" : "moviefile",
+								"id" : "u246005615",
+								"loop" : 1,
+								"content_state" : 								{
+									"loop" : 1,
+									"vol" : 0
+								}
+
+							}
+, 							{
 								"absolutepath" : "20240509_102327.mp4",
 								"filename" : "20240509_102327.mp4",
 								"filekind" : "moviefile",
 								"id" : "u972000900",
 								"loop" : 1,
 								"content_state" : 								{
-									"loop" : 1
+									"loop" : 1,
+									"vol" : 0
 								}
 
 							}
@@ -590,7 +603,8 @@
 								"id" : "u414001211",
 								"loop" : 1,
 								"content_state" : 								{
-									"loop" : 1
+									"loop" : 1,
+									"vol" : 0
 								}
 
 							}
@@ -601,7 +615,8 @@
 								"id" : "u997011856",
 								"loop" : 1,
 								"content_state" : 								{
-									"loop" : 1
+									"loop" : 1,
+									"vol" : 0
 								}
 
 							}
@@ -784,7 +799,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}

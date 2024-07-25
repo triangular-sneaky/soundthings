@@ -87,7 +87,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 572.027977824211121, 290.909093856811523, 41.0, 32.0 ]
+					"patching_rect" : [ 565.034970760345459, 323.776227056980133, 41.0, 32.0 ]
 				}
 
 			}
@@ -362,6 +362,14 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-17", 0 ],
+					"order" : 2,
+					"source" : [ "obj-46", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-37", 0 ],
 					"order" : 1,
 					"source" : [ "obj-46", 0 ]
 				}
@@ -383,19 +391,6 @@
 
 			}
  ],
-		"parameters" : 		{
-			"parameterbanks" : 			{
-				"0" : 				{
-					"index" : 0,
-					"name" : "",
-					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
-				}
-
-			}
-,
-			"inherited_shortname" : 1
-		}
-,
 		"dependency_cache" : [  ],
 		"autosave" : 0,
 		"toolbaradditions" : [ "audiosolo" ]
