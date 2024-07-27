@@ -40,6 +40,24 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-35",
+					"maxclass" : "preset",
+					"numinlets" : 1,
+					"numoutlets" : 5,
+					"outlettype" : [ "preset", "int", "preset", "int", "" ],
+					"patching_rect" : [ 443.0, 431.0, 55.0, 19.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 281.0, 177.599248886108398, 55.0, 19.0 ],
+					"preset_data" : [ 						{
+							"number" : 1,
+							"data" : [ 5, "obj-8", "toggle", "int", 1, 5, "obj-14", "toggle", "int", 1, 5, "obj-25", "toggle", "int", 0, 5, "obj-38", "number", "int", 50, 5, "obj-32", "toggle", "int", 0, 5, "obj-36", "number", "int", 320, 5, "obj-37", "number", "int", 240, 5, "obj-46", "jit.playlist", "preset_count", 4, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "absolutepath", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filename", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "id", "u246005615", 7, "obj-46", "jit.playlist", "preset_content", 1, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "absolutepath", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filename", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "id", "u972000900", 7, "obj-46", "jit.playlist", "preset_content", 2, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "absolutepath", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filename", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "id", "u414001211", 7, "obj-46", "jit.playlist", "preset_content", 3, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "absolutepath", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filename", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "id", "u997011856", 7, "obj-46", "jit.playlist", "preset_content", 4, "loop", 1, 4, "obj-46", "jit.playlist", "preset_execute", 5, "obj-54", "toggle", "int", 0, 5, "obj-59", "number", "int", 160, 5, "obj-101", "toggle", "int", 0, 5, "obj-98", "number", "int", 160, 5, "obj-97", "number", "int", 120, 5, "obj-44", "number", "int", 1280, 5, "obj-47", "number", "int", 720, 5, "obj-68", "attrui", "attr", "cantchange", 5, "obj-68", "attrui", "int", 1 ]
+						}
+ ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -54,7 +72,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 1063.0, -9.0, 184.0, 148.0 ],
+					"patching_rect" : [ 1062.0, -4.0, 184.0, 148.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 502.0, -9.0, 184.0, 148.0 ],
 					"viewvisibility" : 1
@@ -1377,7 +1395,7 @@
 					"destination" : [ "obj-70", 0 ],
 					"source" : [ "obj-106", 0 ],
 					"watchpoint_flags" : 1,
-					"watchpoint_id" : 1
+					"watchpoint_id" : 3
 				}
 
 			}
@@ -1393,7 +1411,7 @@
 					"destination" : [ "obj-106", 1 ],
 					"source" : [ "obj-111", 0 ],
 					"watchpoint_flags" : 1,
-					"watchpoint_id" : 2
+					"watchpoint_id" : 7
 				}
 
 			}

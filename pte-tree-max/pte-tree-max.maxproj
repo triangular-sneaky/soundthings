@@ -2,8 +2,8 @@
 	"name" : "pte-tree-max",
 	"version" : 1,
 	"creationdate" : 3801980044,
-	"modificationdate" : 3801980044,
-	"viewrect" : [ 0.0, 0.0, 300.0, 500.0 ],
+	"modificationdate" : 3804732053,
+	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -15,6 +15,18 @@
 				"local" : 1,
 				"toplevel" : 1
 			}
+
+		}
+,
+		"media" : 		{
+
+		}
+,
+		"code" : 		{
+
+		}
+,
+		"externals" : 		{
 
 		}
 

@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 34.0, 1372.0, 832.0 ],
+		"rect" : [ 34.0, 87.0, 1146.0, 779.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -109,7 +109,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -457,12 +457,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-64",
-					"linecount" : 67,
+					"linecount" : 61,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 435.0, 476.0, 63.0, 982.0 ],
+					"patching_rect" : [ 435.0, 476.0, 67.0, 894.0 ],
 					"text" : "format $1 \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\""
 				}
 
@@ -577,6 +577,8 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 50.0, 108.0, 42.0, 23.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 79.0, 2.0, 42.0, 23.0 ],
 					"text" : "close"
 				}
 
@@ -591,6 +593,8 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 104.0, 108.0, 40.0, 23.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 123.0, 2.0, 40.0, 23.0 ],
 					"text" : "open"
 				}
 
