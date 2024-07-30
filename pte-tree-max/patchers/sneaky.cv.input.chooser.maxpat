@@ -72,7 +72,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 1062.0, -4.0, 184.0, 148.0 ],
+					"patching_rect" : [ 1062.0, -4.0, 283.0, 236.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 502.0, -9.0, 184.0, 148.0 ],
 					"viewvisibility" : 1
@@ -1393,9 +1393,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-70", 0 ],
-					"source" : [ "obj-106", 0 ],
-					"watchpoint_flags" : 1,
-					"watchpoint_id" : 3
+					"source" : [ "obj-106", 0 ]
 				}
 
 			}
@@ -1409,9 +1407,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-106", 1 ],
-					"source" : [ "obj-111", 0 ],
-					"watchpoint_flags" : 1,
-					"watchpoint_id" : 7
+					"source" : [ "obj-111", 0 ]
 				}
 
 			}

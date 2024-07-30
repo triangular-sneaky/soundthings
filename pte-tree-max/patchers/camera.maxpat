@@ -115,7 +115,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 79.0, 389.0, 300.0 ],
+						"rect" : [ 34.0, 34.0, 1372.0, 832.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -457,13 +457,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-64",
-					"linecount" : 61,
+					"linecount" : 58,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 435.0, 476.0, 67.0, 894.0 ],
-					"text" : "format $1 \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\""
+					"patching_rect" : [ 471.0, 452.0, 422.0, 851.0 ],
+					"text" : "format $1 \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"YUY2 - 422YpCbCr8_yuvs - 160 x 120\" \"NV12 - 420YpCbCr8BiPlanar - 160 x 120\" \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\" \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\" \"YUY2 - 422YpCbCr8_yuvs - 320 x 176\" \"NV12 - 420YpCbCr8BiPlanar - 320 x 176\" \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\" \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\" \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\" \"YUY2 - 422YpCbCr8_yuvs - 432 x 240\" \"NV12 - 420YpCbCr8BiPlanar - 432 x 240\" \"YUY2 - 422YpCbCr8_yuvs - 544 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 544 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 360\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 752 x 416\" \"YUY2 - 422YpCbCr8_yuvs - 752 x 416\" \"NV12 - 420YpCbCr8BiPlanar - 800 x 448\" \"YUY2 - 422YpCbCr8_yuvs - 800 x 448\" \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\" \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\" \"NV12 - 420YpCbCr8BiPlanar - 864 x 480\" \"YUY2 - 422YpCbCr8_yuvs - 864 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 960 x 544\" \"YUY2 - 422YpCbCr8_yuvs - 960 x 544\" \"NV12 - 420YpCbCr8BiPlanar - 960 x 720\" \"YUY2 - 422YpCbCr8_yuvs - 960 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 1024 x 576\" \"YUY2 - 422YpCbCr8_yuvs - 1024 x 576\" \"NV12 - 420YpCbCr8BiPlanar - 1184 x 656\" \"YUY2 - 422YpCbCr8_yuvs - 1184 x 656\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 960\" \"YUY2 - 422YpCbCr8_yuvs - 1280 x 960\" \"YUY2 - 422YpCbCr8_yuvs - 160 x 120\" \"NV12 - 420YpCbCr8BiPlanar - 160 x 120\" \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\" \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\" \"YUY2 - 422YpCbCr8_yuvs - 320 x 176\" \"NV12 - 420YpCbCr8BiPlanar - 320 x 176\" \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\" \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\" \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\" \"YUY2 - 422YpCbCr8_yuvs - 432 x 240\" \"NV12 - 420YpCbCr8BiPlanar - 432 x 240\" \"YUY2 - 422YpCbCr8_yuvs - 544 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 544 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 360\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 752 x 416\" \"YUY2 - 422YpCbCr8_yuvs - 752 x 416\" \"NV12 - 420YpCbCr8BiPlanar - 800 x 448\" \"YUY2 - 422YpCbCr8_yuvs - 800 x 448\" \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\" \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\" \"NV12 - 420YpCbCr8BiPlanar - 864 x 480\" \"YUY2 - 422YpCbCr8_yuvs - 864 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 960 x 544\" \"YUY2 - 422YpCbCr8_yuvs - 960 x 544\" \"NV12 - 420YpCbCr8BiPlanar - 960 x 720\" \"YUY2 - 422YpCbCr8_yuvs - 960 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 1024 x 576\" \"YUY2 - 422YpCbCr8_yuvs - 1024 x 576\" \"NV12 - 420YpCbCr8BiPlanar - 1184 x 656\" \"YUY2 - 422YpCbCr8_yuvs - 1184 x 656\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 960\" \"YUY2 - 422YpCbCr8_yuvs - 1280 x 960\""
 				}
 
 			}
@@ -476,7 +476,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 495.0, 691.0, 211.5, 22.0 ],
+					"patching_rect" : [ 644.0, 648.0, 211.5, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 83.0, 154.0, 82.0, 22.0 ]
 				}
@@ -499,7 +499,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-69",
-					"items" : "FaceTime HD Camera",
+					"items" : [ "FaceTime HD Camera", ",", "C270 HD WEBCAM" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -641,8 +641,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 84.0, 189.0, 69.5, 23.0 ],
-					"text" : "qmetro 30"
+					"patching_rect" : [ 84.0, 189.0, 74.0, 23.0 ],
+					"text" : "qmetro 100"
 				}
 
 			}
@@ -775,7 +775,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-82", 0 ],
-					"midpoints" : [ 444.5, 506.0, 74.5, 506.0, 74.5, 335.0, 93.5, 335.0 ],
+					"midpoints" : [ 480.5, 506.0, 74.5, 506.0, 74.5, 335.0, 93.5, 335.0 ],
 					"source" : [ "obj-64", 0 ]
 				}
 
