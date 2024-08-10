@@ -46,9 +46,18 @@ class AttentionTrackingAlgoTest {
                 | x
                 """));
         sub.assertValue(ticks ->
-                ticks.length == 2 && Arrays.stream(ticks).allMatch(t -> t.age() == 0 && t.area() == 1 && t.amplitude() > 0)
-        );
-    }
+                {
+                    assertThat(ticks)
+                            .hasSize(2)
+                            .allSatisfy(t -> {
+                                assertThat(t.area()).isEqualTo(1);
+                                assertThat(t.area()).isEqualTo(1);
+                                assertThat(t.amplitude()).isCloseTo(TestMatrix.UNARY_LENGTH, TestMatrix.VERY_CLOSE);
+                                assertThat(t.x()).isEqualTo(1);
+                            }).satisfies(all -> assertThat(Arrays.stream(all).map(x -> x.y())).containsExactly(0,1));
+                    return true;
+                }
+        );    }
     @Test
     void ageing() {
         algo.accept(new TestMatrix("""
@@ -56,17 +65,37 @@ class AttentionTrackingAlgoTest {
             | x
             """));
         sub.assertValue(ticks ->
-                ticks.length == 2 && Arrays.stream(ticks).allMatch(t -> t.age() == 0 && t.area() == 1 && t.amplitude() > 0)
+                {
+                    assertThat(ticks)
+                            .hasSize(2)
+                            .allSatisfy(t -> {
+                                assertThat(t.area()).isEqualTo(1);
+                                assertThat(t.age()).isEqualTo(0);
+                                assertThat(t.amplitude()).isCloseTo(TestMatrix.UNARY_LENGTH, TestMatrix.VERY_CLOSE);
+                                assertThat(t.x()).isEqualTo(1);
+                            }).satisfies(all -> assertThat(Arrays.stream(all).map(x -> x.y())).containsExactly(0,1));
+                    return true;
+                }
         );
         sub.values().clear();
 
         algo.accept(new TestMatrix("""
-                | X
+                | x
                 | x
                 """));
 
         sub.assertValue(ticks ->
-                ticks.length == 2 && Arrays.stream(ticks).allMatch(t -> t.age() == 1 && t.area() == 1 && t.amplitude() > 0)
+                {
+                    assertThat(ticks)
+                            .hasSize(2)
+                            .allSatisfy(t -> {
+                                assertThat(t.area()).isEqualTo(1);
+                                assertThat(t.age()).isEqualTo(1);
+                                assertThat(t.amplitude()).isCloseTo(TestMatrix.UNARY_LENGTH, TestMatrix.VERY_CLOSE);
+                                assertThat(t.x()).isEqualTo(1);
+                            }).satisfies(all -> assertThat(Arrays.stream(all).map(x -> x.y())).containsExactly(0,1));
+                    return true;
+                }
         );
     }
 
@@ -86,31 +115,38 @@ class AttentionTrackingAlgoTest {
             | x  c |
             """));
         // target:
-//        sub.assertValue(ticks -> {
-//            assertThat(ticks).hasSize(2);
-//            assertThat(ticks).allSatisfy(t -> {
-//                assertThat(t.area()).isEqualTo(2);
-//                assertThat(t.amplitude()).isCloseTo(TestMatrix.UNARY_LENGTH, TestMatrix.VERY_CLOSE);
-//            });
-//            return true;
-//        });
-        // intermediate:
         sub.assertValue(ticks -> {
-            assertThat(ticks).hasSize(4);
-            assertThat(Arrays.stream(ticks, 0, 2))
-                    .allSatisfy(x -> {
-                        assertThat(x.area()).isEqualTo(16);
-                        assertThat(x.y()).isEqualTo(0);
-                    })
-                    .satisfies(ticks12 -> assertThat(ticks12.stream().map(Hoggers.AttentionSlot::x)).containsExactly(0, 4));
-            assertThat(Arrays.stream(ticks, 2, 4))
+            assertThat(ticks)
+                    .hasSize(2)
                     .allSatisfy(x -> {
                         assertThat(x.area()).isEqualTo(4);
+                        assertThat(x.amplitude()).isCloseTo(3 * TestMatrix.UNARY_LENGTH, TestMatrix.VERY_CLOSE);
                         assertThat(x.y()).isEqualTo(0);
+                        assertThat(x.age()).isEqualTo(0);
                     })
-                    .satisfies(ticks12 -> assertThat(ticks12.stream().map(Hoggers.AttentionSlot::x)).containsExactly(1, 4));
+                    .satisfies(ts ->
+                            assertThat(Arrays.stream(ts).map(Hoggers.AttentionSlot::y))
+                                    .containsExactly(1,4));
+
             return true;
         });
+        // intermediate:
+//        sub.assertValue(ticks -> {
+//            assertThat(ticks).hasSize(4);
+//            assertThat(Arrays.stream(ticks, 0, 2))
+//                    .allSatisfy(x -> {
+//                        assertThat(x.area()).isEqualTo(16);
+//                        assertThat(x.y()).isEqualTo(0);
+//                    })
+//                    .satisfies(ticks12 -> assertThat(ticks12.stream().map(Hoggers.AttentionSlot::x)).containsExactly(0, 4));
+//            assertThat(Arrays.stream(ticks, 2, 4))
+//                    .allSatisfy(x -> {
+//                        assertThat(x.area()).isEqualTo(4);
+//                        assertThat(x.y()).isEqualTo(0);
+//                    })
+//                    .satisfies(ticks12 -> assertThat(ticks12.stream().map(Hoggers.AttentionSlot::x)).containsExactly(1, 4));
+//            return true;
+//        });
     }
 
 }
