@@ -6,34 +6,57 @@ import attentionHoggers.algo.AttentionTrackingAlgoBase;
 import attentionHoggers.algo.BitmapAttentionTrackingAlgo;
 import com.cycling74.max.*;
 import com.cycling74.jitter.*;
+import org.junit.platform.commons.logging.LoggerFactory;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Supplier;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 
 public class AttentionTracker extends MaxObject{
 
-    private static final Logger log = Logger.getLogger(AttentionTracker.class.getName());
+    private static final Logger log = initFirstLogger();
+
+    private static Logger initFirstLogger() {
+        final File f = new File(AttentionTracker.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+        File logging = new File(f,"logging.properties");
+        post("Logging.properties file: %s, exists=%b".formatted(logging.getAbsolutePath(), logging.exists()));
+        if( logging.exists()){
+            try {
+                post("Reading logging config");
+                LogManager.getLogManager().readConfiguration(new FileInputStream(logging));
+            } catch (IOException e) {
+                post("Failed to log logging config " + e);
+            }
+//            System.setProperty("java.util.logging.config.file", logging.getAbsolutePath());
+        }
+
+        return Logger.getLogger(AttentionTracker.class.getName());
+    }
 
 
     final Map<String, Matrix> matrixCache = new ConcurrentHashMap<>();
     Benchmark slow = new Benchmark("Frame", 200);
 
     AttentionTrackingAlgoBase algo = new BitmapAttentionTrackingAlgo(3, 0.9, 2,
-            0.0, v -> v > 0, new LinearADEnvelope(5, 1.0, 10, 120));
+            0.0, v -> v > 0, new LinearADEnvelope(5, 1.0, 30, 120));
 
     public AttentionTracker() {
 
         algo.ticks().subscribe(slots -> {
-//            post("H: " + String.join(",", Arrays.stream(slots).map(s -> s.toString()).toList()));
+            log.info("TICK: " + String.join(",", Arrays.stream(slots).map(s -> s.toString()).toList()));
             for (var s : slots) {
-                outlet(0, new int[]{s.x(), s.y(), s.x() + s.w(), s.y() + s.h(), s.age()});
+                outlet(0, new double[]{s.x(), s.y(), s.x() + s.w(), s.y() + s.h(), s.age(), s.amplitude(), s.angle()});
             }
         });
         declareIO(1, 1);
