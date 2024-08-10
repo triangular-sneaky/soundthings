@@ -21,18 +21,6 @@ public class AttentionTracker extends MaxObject{
 
     private static final Logger log = Logger.getLogger(AttentionTracker.class.getName());
 
-//        System.setProperty("log4j.configurationFile","./log4j2.xml");
-//        final File f = new File(AttentionTracker.class.getProtectionDomain().getCodeSource().getLocation().getPath());
-//
-//        System.setProperty( "java.class.path", System.getProperty("java.class.path") + ":" + f + "/*");
-//        post("Current classpath: " + System.getProperty("java.class.path"));
-//
-//        post("Current path: " + Paths.get(".").toAbsolutePath().normalize().toString());
-//        var existingLog4j = Files.newDirectoryStream(Paths.get("."), "log4j-core*"));
-
-//        post("LoggerContext.DEFAULT_PACKAGING_DATA: " + LoggerContext.DEFAULT_PACKAGING_DATA);
-//        return (ch.qos.logback.classic.Logger) ch.qos.logback.classic..getLogger(AttentionTracker.class);
-//    }
 
     final Map<String, Matrix> matrixCache = new ConcurrentHashMap<>();
     Benchmark slow = new Benchmark("Frame", 200);
@@ -43,9 +31,12 @@ public class AttentionTracker extends MaxObject{
     public AttentionTracker() {
 
         algo.ticks().subscribe(slots -> {
-            post("H: " + String.join(",", Arrays.stream(slots).map(s -> s.toString()).toList()));
+//            post("H: " + String.join(",", Arrays.stream(slots).map(s -> s.toString()).toList()));
+            for (var s : slots) {
+                outlet(0, new int[]{s.x(), s.y(), s.x() + s.w(), s.y() + s.h(), s.age()});
+            }
         });
-        declareIO(2, 2);
+        declareIO(1, 1);
         setInletAssist(new String[] {"Attention matrix and control messages", "Preview matrix"});
         setOutletAssist(new String[] {"Attention slots", "Preview with slots"});
         log.info("Started up");
@@ -55,7 +46,10 @@ public class AttentionTracker extends MaxObject{
     {
         var jm = matrixCache.computeIfAbsent(s, name -> new JitMatrix(new JitterMatrix(s)));
 
-        switch (getInlet()) {
+
+        int inlet = getInlet();
+//        log.info("Inlet: " + inlet);
+        switch (inlet) {
             case 0 -> processAttentionMatrix(jm);
             case 1 -> processPreviewMatrix(jm);
 
