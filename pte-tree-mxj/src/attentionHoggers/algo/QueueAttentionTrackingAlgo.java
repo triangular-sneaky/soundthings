@@ -1,92 +1,37 @@
+package attentionHoggers.algo;
+
+import attentionHoggers.*;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.subjects.BehaviorSubject;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Consumer;
 
-public class AttentionTrackingAlgo implements Consumer<Matrix> {
+public class QueueAttentionTrackingAlgo extends AttentionTrackingAlgoBase {
 
-    private final int attentionSpan;
-    private final double sizeImportanceCoefficient;
-    private final int downsamplingStep;
-
-    public AttentionTrackingAlgo(
+    public QueueAttentionTrackingAlgo(
             int attentionSpan,
             double sizeImportanceCoefficient) {
         this(attentionSpan, sizeImportanceCoefficient, 2);
     }
 
-    public AttentionTrackingAlgo(
+    public QueueAttentionTrackingAlgo(
             int attentionSpan,
             double sizeImportanceCoefficient,
             int downsamplingStep) {
-        this.attentionSpan = attentionSpan;
-        this.sizeImportanceCoefficient = sizeImportanceCoefficient;
-        this.downsamplingStep = downsamplingStep;
-        processingQueue = new PriorityQueue<>(this.attentionSpan, Comparator.comparingDouble(ProcessingQeueueEntry::effectiveValue));
+        super(attentionSpan, sizeImportanceCoefficient, downsamplingStep);
+        processingQueue = new PriorityQueue<>(this.attentionSpan, Comparator.comparingDouble(AttentionElement::effectiveValue));
         elementsCache = new ConcurrentHashMap<>(this.attentionSpan * 2);
     }
 
     private final BehaviorSubject<Hoggers.AttentionSlot[]> _ticks = BehaviorSubject.create();
 
-    static record Rect(int x, int y, int w, int h) {
-        public int area() {
-            return w*h;
-        }
-    }
 
 
-    class ProcessingQeueueEntry {
-        private final int value;
-        private final double valueCoefficient;
-        private final double angle;
-        private final Rect rect;
-        private final int bornTimestamp;
-
-        ProcessingQeueueEntry(int value, double valueCoefficient, double angle, Rect rect, int bornTimestamp) {
-            this.value = value;
-            this.valueCoefficient = valueCoefficient;
-            this.angle = angle;
-            this.rect = rect;
-            this.bornTimestamp = bornTimestamp;
-        }
-
-        public int age() {
-            return bornTimestamp - timestamp.get();
-        }
-
-        public double effectiveValue() {
-            return value * valueCoefficient * stabilityEnvelope.get(age());
-        }
-
-        public int value() {
-            return value;
-        }
-
-
-        public double angle() {
-            return angle;
-        }
-
-        public Rect rect() {
-            return rect;
-        }
-
-        public int bornTimestamp() {
-            return bornTimestamp;
-        }
-
-    }
-
-    final PriorityQueue<ProcessingQeueueEntry> processingQueue;
+    final PriorityQueue<AttentionElement> processingQueue;
 
     final MemoryBackedMatrix processingMatrix = new MemoryBackedMatrix();
-    final Map<Rect, ProcessingQeueueEntry> elementsCache;
-    final DiscreteEnvelope stabilityEnvelope = new LinearADEnvelope(5.0, 1.0, 60, 120);
-
-    AtomicInteger timestamp = new AtomicInteger(0);
+    final Map<Rect, AttentionElement> elementsCache;
 
     @Override
     public void accept(Matrix matrix) {
@@ -98,10 +43,8 @@ public class AttentionTrackingAlgo implements Consumer<Matrix> {
         handleMatrix(processingMatrix, 1, 1.0);
 
 
-
-
         _ticks.onNext( processingQueue.stream()
-                .map(e -> new Hoggers.AttentionSlot(0, e.age(),  e.rect.x, e.rect.y, e.rect.w, e.rect.h, e.rect.area() , Math.sqrt(e.value), e.angle))
+                .map(AttentionElement::toAttentionSlot)
                 .toArray(Hoggers.AttentionSlot[]::new));
     }
 
@@ -145,14 +88,14 @@ public class AttentionTrackingAlgo implements Consumer<Matrix> {
     private void taste(int y, int x, int h, int w, int[] values, double coefficient) {
         var value = (values[0]* values[0] + values[1]* values[1]);
         boolean queueNotFull = processingQueue.size() < attentionSpan;
-        if (queueNotFull || processingQueue.peek().value < value) {
+        if (queueNotFull || processingQueue.peek().effectiveValue() < value) {
             if (!queueNotFull) {
                 processingQueue.remove();
             }
             Rect rect = new Rect(x, y, w, h);
             var e = elementsCache.compute(rect,
-                    (k, existing) -> new ProcessingQeueueEntry(value, coefficient, Math.atan2(values[1], values[0]), k,
-                            existing != null ? existing.bornTimestamp: timestamp.get()));
+                    (k, existing) -> new AttentionElement(value, coefficient, Math.atan2(values[1], values[0]), k,
+                            existing != null ? existing.bornTimestamp(): timestamp.get()));
             processingQueue.offer(e);
         }
     }

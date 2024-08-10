@@ -1,3 +1,5 @@
+package attentionHoggers;
+
 import java.util.Arrays;
 
 class DownsamplingMatrix implements WriteableMatrix {

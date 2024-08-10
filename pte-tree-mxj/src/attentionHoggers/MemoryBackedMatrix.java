@@ -1,6 +1,8 @@
+package attentionHoggers;
+
 import java.util.Arrays;
 
-class MemoryBackedMatrix implements WriteableMatrix {
+public class MemoryBackedMatrix implements WriteableMatrix {
     int w;
     int h;
     int[] dims = null;

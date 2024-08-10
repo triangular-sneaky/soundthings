@@ -1,3 +1,5 @@
+package attentionHoggers;
+
 public record LinearADEnvelope(double gain, double bias, int attack, int release) implements DiscreteEnvelope {
 
     @Override

@@ -1,3 +1,5 @@
+package attentionHoggers.algo;
+
 import io.reactivex.rxjava3.observers.TestObserver;
 import org.assertj.core.data.Percentage;
 import org.junit.jupiter.api.Test;
@@ -6,16 +8,18 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import attentionHoggers.*;
+import attentionHoggers.algo.*;
 
 class AttentionTrackingAlgoTest {
 
-    AttentionTrackingAlgo algo;
+    QueueAttentionTrackingAlgo algo;
     TestObserver<Hoggers.AttentionSlot[]> sub;
     private int attentionSpan = 4;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-        algo = new AttentionTrackingAlgo(attentionSpan, 0.9);
+        algo = new QueueAttentionTrackingAlgo(attentionSpan, 0.9);
         sub = new TestObserver<>();
         algo.ticks().map(ticks -> Arrays.stream(ticks).filter(t -> t.amplitude() > 0).toArray(Hoggers.AttentionSlot[]::new)).subscribe(sub);
     }
