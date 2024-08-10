@@ -3,18 +3,20 @@ package attentionHoggers.algo;
 import attentionHoggers.Hoggers;
 import attentionHoggers.LinearADEnvelope;
 import attentionHoggers.Matrix;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import attentionHoggers.jit.AttentionTracker;
 
 import java.util.*;
 import java.util.function.DoublePredicate;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
 public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     private final double allowedOverlapFactor;
     private final DoublePredicate valueLpf;
 
-    private static final Logger log = LogManager.getLogger(BitmapAttentionTrackingAlgo.class);
+    private static final Logger log = LogManager.getLogManager().getLogger(BitmapAttentionTrackingAlgo.class.getName());
+
 
     public BitmapAttentionTrackingAlgo(int attentionSpan,
                                        double sizeImportanceCoefficient,
@@ -37,10 +39,10 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     @Override
     public void accept(Matrix matrix) {
         var ts = timestamp.incrementAndGet();
-        log.info(() -> "TS=%d Accepting matrix".formatted(ts));
+//        log.info("TS={} Accepting matrix", (ts));
 
         processingMatrix.copyOrRebuild(matrix, m -> {
-            log.info(() -> "Rebuild to size %d,%d".formatted(m.dims()[0],m.dims()[1]));
+//            log.info("Rebuild to size {},{}", m.dims()[0],m.dims()[1]);
             elements.clear();
             detectedElementsBitmap = new AttentionElement[m.dims()[0]][m.dims()[1]];
         });
@@ -83,7 +85,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
                 return new AttentionElement(elements.size(), amplitude, coefficient, angle, k, timestamp.get());
             }
         });
-        log.debug(() -> "Tasting %s".formatted(thisElement));
+//        log.debug("Tasting {}", thisElement);
 
         int maxI = Math.min(i + sizeI, processingMatrix.dims()[0]);
         int maxJ = Math.min(j + sizeJ, processingMatrix.dims()[1]);
@@ -91,12 +93,12 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
         var kicksEveryoneOut = IntStream.range(i, maxI)
                 .map(ii -> java.util.Arrays.stream(detectedElementsBitmap[ii], j, maxJ)
                         .filter(Objects::nonNull).allMatch(e -> {
-                            log.debug("Matching {} to {}...", thisElement, e);
+//                            log.debug("Matching {} to {}...", thisElement, e);
                             return e.effectiveValue() < thisEffectiveValue;
                         }) ? 0 : -1)
                 .sum() == 0;
         if (kicksEveryoneOut) {
-            log.debug("{} stays", thisElement);
+//            log.debug("{} stays", thisElement);
             IntStream.range(i, maxI)
                     .forEach(ii -> {
                         AttentionElement[] array = detectedElementsBitmap[ii];
@@ -105,13 +107,13 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
                             array[jj] = thisElement;
                             if (obj != null && !obj.isDead()) {
                                 obj.setDead(true);
-                                log.debug("{} killed {}", thisElement, obj);
+//                                log.debug("{} killed {}", thisElement, obj);
                             }
                         }
                     });
         } else {
             thisElement.setDead(true);
-            log.debug("{} overlaps and killed", thisElement);
+//            log.debug("{} overlaps and killed", thisElement);
         }
 
         dumpDetectedElements();
@@ -119,20 +121,20 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     }
 
     private void dumpDetectedElements() {
-        log.debug("detectedElementsBitmap is now:\n{}",
-                 String.join("\n", Arrays.stream(detectedElementsBitmap).map(row -> {
-                     var sb = new StringBuilder(row.length);
-                     sb.append('|');
-                     for (AttentionElement e : row) {
-                         if (e != null && !e.isDead()) {
-
-                             sb.append(e.getCharId());
-                         } else sb.append(' ');
-                     }
-                     sb.append('|');
-                     return sb.toString();
-                 }).toList())
-                );
+//        log.finest("detectedElementsBitmap is now:\n{}",
+//                 String.join("\n", Arrays.stream(detectedElementsBitmap).map(row -> {
+//                     var sb = new StringBuilder(row.length);
+//                     sb.append('|');
+//                     for (AttentionElement e : row) {
+//                         if (e != null && !e.isDead()) {
+//
+//                             sb.append(e.getCharId());
+//                         } else sb.append(' ');
+//                     }
+//                     sb.append('|');
+//                     return sb.toString();
+//                 }).toList())
+//                );
     }
 
 }

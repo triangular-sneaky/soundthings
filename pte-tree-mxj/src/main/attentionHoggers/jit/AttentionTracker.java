@@ -6,8 +6,6 @@ import attentionHoggers.algo.AttentionTrackingAlgoBase;
 import attentionHoggers.algo.BitmapAttentionTrackingAlgo;
 import com.cycling74.max.*;
 import com.cycling74.jitter.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -15,10 +13,27 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Supplier;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
 
 public class AttentionTracker extends MaxObject{
 
-    private static final Logger log = LogManager.getLogger(AttentionTracker.class);
+    private static final Logger log = Logger.getLogger(AttentionTracker.class.getName());
+
+//        System.setProperty("log4j.configurationFile","./log4j2.xml");
+//        final File f = new File(AttentionTracker.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+//
+//        System.setProperty( "java.class.path", System.getProperty("java.class.path") + ":" + f + "/*");
+//        post("Current classpath: " + System.getProperty("java.class.path"));
+//
+//        post("Current path: " + Paths.get(".").toAbsolutePath().normalize().toString());
+//        var existingLog4j = Files.newDirectoryStream(Paths.get("."), "log4j-core*"));
+
+//        post("LoggerContext.DEFAULT_PACKAGING_DATA: " + LoggerContext.DEFAULT_PACKAGING_DATA);
+//        return (ch.qos.logback.classic.Logger) ch.qos.logback.classic..getLogger(AttentionTracker.class);
+//    }
+
     final Map<String, Matrix> matrixCache = new ConcurrentHashMap<>();
     Benchmark slow = new Benchmark("Frame", 200);
 
@@ -26,25 +41,42 @@ public class AttentionTracker extends MaxObject{
             0.0, v -> v > 0, new LinearADEnvelope(5, 1.0, 10, 120));
 
     public AttentionTracker() {
+
         algo.ticks().subscribe(slots -> {
             post("H: " + String.join(",", Arrays.stream(slots).map(s -> s.toString()).toList()));
         });
+        declareIO(2, 2);
+        setInletAssist(new String[] {"Attention matrix and control messages", "Preview matrix"});
+        setOutletAssist(new String[] {"Attention slots", "Preview with slots"});
+        log.info("Started up");
     }
 
     public void jit_matrix(String s)
     {
-
         var jm = matrixCache.computeIfAbsent(s, name -> new JitMatrix(new JitterMatrix(s)));
 
+        switch (getInlet()) {
+            case 0 -> processAttentionMatrix(jm);
+            case 1 -> processPreviewMatrix(jm);
 
+        }
+
+
+
+
+    }
+
+    private void processPreviewMatrix(Matrix jm) {
+        log.warning("processPreviewMatrix");
+        post("processPreviewMatrix");
+    }
+
+    private void processAttentionMatrix(Matrix jm) {
         slow.lapStart();
 
-//        algo.accept(jm);
+        algo.accept(jm);
 
         slow.lapEnd();
-
-
-
     }
 
     static class Benchmark {

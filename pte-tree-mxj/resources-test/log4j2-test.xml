@@ -5,11 +5,11 @@
 <!--            <PatternLayout-->
 <!--                    pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable"/>-->
             <PatternLayout
-                    pattern="%d{ABSOLUTE} %-5level %logger{0} - %msg%n%throwable"/>
+                    pattern="%d{ABSOLUTE} [%t] %-5level %logger{0} - %msg%n%throwable"/>
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="WARN">
+        <Root level="INFO">
             <AppenderRef ref="ConsoleAppender"/>
         </Root>
     </Loggers>

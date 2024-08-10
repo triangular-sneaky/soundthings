@@ -1,18 +1,20 @@
 package attentionHoggers.algo;
 
 import attentionHoggers.*;
+import attentionHoggers.jit.AttentionTracker;
 import io.reactivex.rxjava3.subjects.BehaviorSubject;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 
 public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
 
-    private static final Logger log = LogManager.getLogger(AttentionTrackingAlgoBase.class);
+    private static final java.util.logging.Logger log = LogManager.getLogManager().getLogger(AttentionTrackingAlgoBase.class.getName());
     protected final int attentionSpan;
     protected final double sizeImportanceCoefficient;
     protected final int downsamplingStep;
@@ -37,8 +39,8 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
                 int downsamplingFactor = 1, prevDownsamplingFactor = 1;
                 downsamplingFactor <= maxDownsamplingFactor;
                 prevDownsamplingFactor = downsamplingFactor, downsamplingFactor *= downsamplingStep) {
-            var ds = downsamplingFactor;
-            log.debug(() -> "DOWNSAMPLING: %s".formatted(ds));
+//            if (log.isLoggable(Level.FINE))
+//                log.fine("DOWNSAMPLING: %s".formatted(downsamplingFactor));
             for (int i = 0; i < matrix.dims()[0]; i += prevDownsamplingFactor) {
                 for (int j = 0; j < matrix.dims()[1]; j += prevDownsamplingFactor) {
     //                if (downsamplingFactor == 1) {

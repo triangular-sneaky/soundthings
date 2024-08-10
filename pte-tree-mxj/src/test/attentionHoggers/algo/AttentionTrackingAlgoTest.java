@@ -13,6 +13,8 @@ import attentionHoggers.*;
 
 class AttentionTrackingAlgoTest {
 
+
+
     AttentionTrackingAlgoBase algo;
     TestObserver<Hoggers.AttentionSlot[]> sub;
     private int attentionSpan = 4;
@@ -28,6 +30,7 @@ class AttentionTrackingAlgoTest {
                 v -> v > 0, new LinearADEnvelope(10.0, 1.0, 1, 2));
         sub = new TestObserver<>();
         algo.ticks().map(ticks -> Arrays.stream(ticks).filter(t -> t.amplitude() > 0).toArray(Hoggers.AttentionSlot[]::new)).subscribe(sub);
+//        algo.ticks().map(ticks -> Arrays.stream(ticks).filter(t -> t.amplitude() > 0).toArray(Hoggers.AttentionSlot[]::new)).subscribe(t -> log.debug("Listening to ticks in sub..."));
     }
 
     @org.junit.jupiter.api.AfterEach

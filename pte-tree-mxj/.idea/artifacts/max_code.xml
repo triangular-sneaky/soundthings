@@ -2,7 +2,6 @@
   <artifact build-on-make="true" name="max-code">
     <output-path>$PROJECT_DIR$/../pte-tree-max/code</output-path>
     <root id="root">
-      <element id="library" level="project" name="apache.logging.log4j.core" />
       <element id="library" level="project" name="io.reactivex.rxjava3.rxjava" />
       <element id="module-output" name="pte-tree-mxj" />
     </root>
