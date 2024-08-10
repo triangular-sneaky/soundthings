@@ -37,10 +37,10 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     @Override
     public void accept(Matrix matrix) {
         var ts = timestamp.incrementAndGet();
-        log.info(() -> STR."TS=\{ts} Accepting matrix");
+        log.info(() -> "TS=%d Accepting matrix".formatted(ts));
 
         processingMatrix.copyOrRebuild(matrix, m -> {
-            log.info(() -> STR."Rebuild to size \{m.dims()[0]},\{m.dims()[1]}");
+            log.info(() -> "Rebuild to size %d,%d".formatted(m.dims()[0],m.dims()[1]));
             elements.clear();
             detectedElementsBitmap = new AttentionElement[m.dims()[0]][m.dims()[1]];
         });
@@ -83,7 +83,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
                 return new AttentionElement(elements.size(), amplitude, coefficient, angle, k, timestamp.get());
             }
         });
-        log.debug(() -> STR."Tasting \{thisElement}");
+        log.debug(() -> "Tasting %s".formatted(thisElement));
 
         int maxI = Math.min(i + sizeI, processingMatrix.dims()[0]);
         int maxJ = Math.min(j + sizeJ, processingMatrix.dims()[1]);
@@ -91,12 +91,12 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
         var kicksEveryoneOut = IntStream.range(i, maxI)
                 .map(ii -> java.util.Arrays.stream(detectedElementsBitmap[ii], j, maxJ)
                         .filter(Objects::nonNull).allMatch(e -> {
-                            log.debug(() -> STR."Matching \{thisElement} to \{e}...");
+                            log.debug("Matching {} to {}...", thisElement, e);
                             return e.effectiveValue() < thisEffectiveValue;
                         }) ? 0 : -1)
                 .sum() == 0;
         if (kicksEveryoneOut) {
-            log.debug(() -> STR."\{thisElement} stays");
+            log.debug("{} stays", thisElement);
             IntStream.range(i, maxI)
                     .forEach(ii -> {
                         AttentionElement[] array = detectedElementsBitmap[ii];
@@ -105,13 +105,13 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
                             array[jj] = thisElement;
                             if (obj != null && !obj.isDead()) {
                                 obj.setDead(true);
-                                log.debug(() -> STR."\{thisElement} killed \{obj}");
+                                log.debug("{} killed {}", thisElement, obj);
                             }
                         }
                     });
         } else {
             thisElement.setDead(true);
-            log.debug(() -> STR."\{thisElement} overlaps and killed");
+            log.debug("{} overlaps and killed", thisElement);
         }
 
         dumpDetectedElements();
@@ -119,7 +119,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     }
 
     private void dumpDetectedElements() {
-        log.debug(() -> STR."detectedElementsBitmap is now:\n\{
+        log.debug("detectedElementsBitmap is now:\n{}",
                  String.join("\n", Arrays.stream(detectedElementsBitmap).map(row -> {
                      var sb = new StringBuilder(row.length);
                      sb.append('|');
@@ -132,7 +132,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
                      sb.append('|');
                      return sb.toString();
                  }).toList())
-                }");
+                );
     }
 
 }

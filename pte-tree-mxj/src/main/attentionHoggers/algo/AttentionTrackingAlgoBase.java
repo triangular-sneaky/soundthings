@@ -38,7 +38,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
                 downsamplingFactor <= maxDownsamplingFactor;
                 prevDownsamplingFactor = downsamplingFactor, downsamplingFactor *= downsamplingStep) {
             var ds = downsamplingFactor;
-            log.debug(() -> STR."DOWNSAMPLING: \{ds}");
+            log.debug(() -> "DOWNSAMPLING: %s".formatted(ds));
             for (int i = 0; i < matrix.dims()[0]; i += prevDownsamplingFactor) {
                 for (int j = 0; j < matrix.dims()[1]; j += prevDownsamplingFactor) {
     //                if (downsamplingFactor == 1) {
@@ -57,15 +57,15 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
                             if (sum == null)
                                 sum = el;
                             else {
-                                log.debug(STR."accumulating [\{si},\{sj}]~>[\{i},\{j}]");
+//                                log.debug(STR."accumulating [\{si},\{sj}]~>[\{i},\{j}]");
                                 for (int plane = 0; plane < matrix.planecount(); plane++) {
                                     sum[plane] += el[plane];
                                 }
                             }
                         }
                     }
-                    var _i=i; var _j=j; var _sum = sum;
-                    log.debug(() -> STR."[\{_i},\{_j}]->(\{_sum[0]},\{_sum[1]})");
+//                    var _i=i; var _j=j; var _sum = sum;
+//                    log.debug(() -> STR."[\{_i},\{_j}]->(\{_sum[0]},\{_sum[1]})");
                     matrix.set(i,j, sum);
                     taste(i, j, downsamplingFactor , downsamplingFactor,
                             Objects.requireNonNull(sum),
@@ -169,7 +169,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
 
         @Override
         public String toString() {
-            return STR. "AttentionElement(\{getCharId()})[\{isDead ? "💀" : age()}]@\{rect}{value=\{amplitude}, effective=\{effectiveValue()}, angle=\{angle}}";
+            return "AttentionElement(%s)[%s]@%s{value=%3.3f, effective=%3.3f, angle=%1.3f}".formatted(getCharId(), isDead ? "💀" : age(), rect, amplitude, effectiveValue(), angle);
         }
 
         public int getId() {
