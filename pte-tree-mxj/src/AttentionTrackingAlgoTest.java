@@ -85,12 +85,30 @@ class AttentionTrackingAlgoTest {
             | xx cc|
             | x  c |
             """));
+        // target:
+//        sub.assertValue(ticks -> {
+//            assertThat(ticks).hasSize(2);
+//            assertThat(ticks).allSatisfy(t -> {
+//                assertThat(t.area()).isEqualTo(2);
+//                assertThat(t.amplitude()).isCloseTo(TestMatrix.UNARY_LENGTH, TestMatrix.VERY_CLOSE);
+//            });
+//            return true;
+//        });
+        // intermediate:
         sub.assertValue(ticks -> {
-            assertThat(ticks).hasSize(2);
-            assertThat(ticks).allSatisfy(t -> {
-                assertThat(t.area()).isEqualTo(2);
-                assertThat(t.amplitude()).isCloseTo(TestMatrix.UNARY_LENGTH, TestMatrix.VERY_CLOSE);
-            });
+            assertThat(ticks).hasSize(4);
+            assertThat(Arrays.stream(ticks, 0, 2))
+                    .allSatisfy(x -> {
+                        assertThat(x.area()).isEqualTo(16);
+                        assertThat(x.y()).isEqualTo(0);
+                    })
+                    .satisfies(ticks12 -> assertThat(ticks12.stream().map(Hoggers.AttentionSlot::x)).containsExactly(0, 4));
+            assertThat(Arrays.stream(ticks, 2, 4))
+                    .allSatisfy(x -> {
+                        assertThat(x.area()).isEqualTo(4);
+                        assertThat(x.y()).isEqualTo(0);
+                    })
+                    .satisfies(ticks12 -> assertThat(ticks12.stream().map(Hoggers.AttentionSlot::x)).containsExactly(1, 4));
             return true;
         });
     }
