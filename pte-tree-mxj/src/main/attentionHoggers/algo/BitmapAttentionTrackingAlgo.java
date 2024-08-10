@@ -10,12 +10,13 @@ import java.util.function.DoublePredicate;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     private final double allowedOverlapFactor;
     private final DoublePredicate valueLpf;
 
-    private static final Logger log = LogManager.getLogManager().getLogger(BitmapAttentionTrackingAlgo.class.getName());
+    private static final Logger log = Logger.getLogger(BitmapAttentionTrackingAlgo.class.getName());
 
 
     public BitmapAttentionTrackingAlgo(int attentionSpan,
@@ -39,23 +40,28 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     @Override
     public void accept(Matrix matrix) {
         var ts = timestamp.incrementAndGet();
-//        log.info("TS={} Accepting matrix", (ts));
+        log.fine(() -> "TS=%d Accepting matrix".formatted(ts));
 
         processingMatrix.copyOrRebuild(matrix, m -> {
-//            log.info("Rebuild to size {},{}", m.dims()[0],m.dims()[1]);
+            log.info(() -> "Rebuild to size %d,%d".formatted(m.dims()[0],m.dims()[1]));
             elements.clear();
             detectedElementsBitmap = new AttentionElement[m.dims()[0]][m.dims()[1]];
         });
 
         clearDetectedElementsBitmap(matrix.dims());
 
+        log.finer(() -> "processingMatrix=\n" + stringifyMatrix(processingMatrix));
+
         handleMatrix(processingMatrix);
 
+        List<AttentionElement> survivors = elements.values().stream()
+                .filter(e -> !e.isDead())
+                .sorted(Comparator.comparingDouble(e -> -e.effectiveValue()))
+                .limit(attentionSpan).toList();
+        elements.clear();
+        for (var s: survivors) elements.put(s.rect(), s);
         ticks().onNext(
-                elements.values().stream()
-                        .filter(e -> !e.isDead())
-                        .limit(attentionSpan)
-                        .sorted(Comparator.comparingDouble(e -> -e.effectiveValue()))
+                survivors.stream()
                         .map(AttentionElement::toAttentionSlot)
                         .toArray(Hoggers.AttentionSlot[]::new));
 
@@ -68,6 +74,8 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
             }
         }
     }
+
+    int idgen = 0;
 
     @Override
     protected void taste(int i, int j, int sizeI, int sizeJ, int[] values, double coefficient) {
@@ -82,10 +90,11 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
                 existing.setAngle(angle);
                 return existing;
             } else {
-                return new AttentionElement(elements.size(), amplitude, coefficient, angle, k, timestamp.get());
+                // todo: update instead
+                return new AttentionElement(idgen++, amplitude, coefficient, angle, k, timestamp.get());
             }
         });
-//        log.debug("Tasting {}", thisElement);
+        log.finer(()->"Tasting %s".formatted( thisElement));
 
         int maxI = Math.min(i + sizeI, processingMatrix.dims()[0]);
         int maxJ = Math.min(j + sizeJ, processingMatrix.dims()[1]);
@@ -93,12 +102,12 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
         var kicksEveryoneOut = IntStream.range(i, maxI)
                 .map(ii -> java.util.Arrays.stream(detectedElementsBitmap[ii], j, maxJ)
                         .filter(Objects::nonNull).allMatch(e -> {
-//                            log.debug("Matching {} to {}...", thisElement, e);
+                            log.finest(() -> "Matching %s to %s...".formatted( thisElement, e));
                             return e.effectiveValue() < thisEffectiveValue;
                         }) ? 0 : -1)
                 .sum() == 0;
         if (kicksEveryoneOut) {
-//            log.debug("{} stays", thisElement);
+            log.finer(()->"%s stays".formatted( thisElement));
             IntStream.range(i, maxI)
                     .forEach(ii -> {
                         AttentionElement[] array = detectedElementsBitmap[ii];
@@ -107,13 +116,13 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
                             array[jj] = thisElement;
                             if (obj != null && !obj.isDead()) {
                                 obj.setDead(true);
-//                                log.debug("{} killed {}", thisElement, obj);
+                                log.finest(() -> "%s killed %s".formatted(thisElement, obj));
                             }
                         }
                     });
         } else {
             thisElement.setDead(true);
-//            log.debug("{} overlaps and killed", thisElement);
+            log.finest(() ->"%s overlaps and killed".formatted(thisElement));
         }
 
         dumpDetectedElements();
@@ -121,20 +130,36 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     }
 
     private void dumpDetectedElements() {
-//        log.finest("detectedElementsBitmap is now:\n{}",
-//                 String.join("\n", Arrays.stream(detectedElementsBitmap).map(row -> {
-//                     var sb = new StringBuilder(row.length);
-//                     sb.append('|');
-//                     for (AttentionElement e : row) {
-//                         if (e != null && !e.isDead()) {
-//
-//                             sb.append(e.getCharId());
-//                         } else sb.append(' ');
-//                     }
-//                     sb.append('|');
-//                     return sb.toString();
-//                 }).toList())
-//                );
+        log.finest(() -> "detectedElementsBitmap is now:\n%s".formatted(
+                 String.join("\n", Arrays.stream(detectedElementsBitmap).map(row -> {
+                     var sb = new StringBuilder(row.length);
+                     sb.append('|');
+                     for (AttentionElement e : row) {
+                         if (e != null && !e.isDead()) {
+
+                             sb.append("[%3d = %7.2f]".formatted(e.getId(), e.amplitude()));
+                         } else sb.append("              ");
+                     }
+                     sb.append('|');
+                     return sb.toString();
+                 }).toList())
+                ));
+    }
+
+    private String stringifyMatrix(Matrix m) {
+        var sb = new StringBuilder();
+        for (int i = 0; i < m.dims()[0]; i++) {
+            sb.append("|");
+            for (int j = 0; j < m.dims()[1]; j++) {
+                sb.append("[");
+                for (var c : m.get(i,j)) {
+                    sb.append("%6d".formatted(c));
+                }
+                sb.append("]");
+            }
+            sb.append("|\n");
+        }
+        return sb.toString();
     }
 
 }

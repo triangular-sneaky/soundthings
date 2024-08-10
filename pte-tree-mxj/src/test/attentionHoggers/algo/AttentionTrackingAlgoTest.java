@@ -266,6 +266,11 @@ class AttentionTrackingAlgoTest {
         assertThat(AttentionTrackingAlgoBase.getMaxDownsamplingFactor(2, 4)).isBetween(4,7);
         assertThat(AttentionTrackingAlgoBase.getMaxDownsamplingFactor(2, 5)).isBetween(8,15);
     }
+
+    @Test
+    void researchFormats() {
+        assertThat("%7.2f".formatted(1.1)).isEqualTo("   1.10");
+    }
 }
 
 class TestMatrix implements Matrix {

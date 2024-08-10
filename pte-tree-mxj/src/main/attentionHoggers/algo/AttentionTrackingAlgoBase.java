@@ -11,10 +11,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
 
-    private static final java.util.logging.Logger log = LogManager.getLogManager().getLogger(AttentionTrackingAlgoBase.class.getName());
+    private static final java.util.logging.Logger log = Logger.getLogger(AttentionTrackingAlgoBase.class.getName());
     protected final int attentionSpan;
     protected final double sizeImportanceCoefficient;
     protected final int downsamplingStep;
@@ -39,8 +40,9 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
                 int downsamplingFactor = 1, prevDownsamplingFactor = 1;
                 downsamplingFactor <= maxDownsamplingFactor;
                 prevDownsamplingFactor = downsamplingFactor, downsamplingFactor *= downsamplingStep) {
-//            if (log.isLoggable(Level.FINE))
-//                log.fine("DOWNSAMPLING: %s".formatted(downsamplingFactor));
+
+            int ds = downsamplingFactor;
+            log.fine(() -> "DOWNSAMPLING: %s".formatted(ds));
             for (int i = 0; i < matrix.dims()[0]; i += prevDownsamplingFactor) {
                 for (int j = 0; j < matrix.dims()[1]; j += prevDownsamplingFactor) {
     //                if (downsamplingFactor == 1) {
@@ -66,8 +68,8 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
                             }
                         }
                     }
-//                    var _i=i; var _j=j; var _sum = sum;
-//                    log.debug(() -> STR."[\{_i},\{_j}]->(\{_sum[0]},\{_sum[1]})");
+                    var _i=i; var _j=j; var _sum = sum;
+                    log.finer(() -> "[%d,%d]->(%d,%d)".formatted(_i, _j, _sum[0], _sum[1]));
                     matrix.set(i,j, sum);
                     taste(i, j, downsamplingFactor , downsamplingFactor,
                             Objects.requireNonNull(sum),
@@ -103,7 +105,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
             return w * h;
         }
         public static Rect fromIJ(int i, int j, int sizeI, int sizeJ) {
-            return new Rect(j,i,sizeJ,sizeI);
+            return new Rect(i, j,sizeI,sizeJ);
         }
     }
 
@@ -158,7 +160,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
         }
 
         public Hoggers.AttentionSlot toAttentionSlot() {
-            return new Hoggers.AttentionSlot(0, this.age(), this.rect.x, this.rect.y, this.rect.w, this.rect.h, this.rect.area(), this.amplitude, this.angle);
+            return new Hoggers.AttentionSlot(id, this.age(), this.rect.x, this.rect.y, this.rect.w, this.rect.h, this.rect.area(), this.amplitude, this.angle);
         }
 
         public boolean isDead() {

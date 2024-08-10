@@ -6,19 +6,16 @@ import attentionHoggers.algo.AttentionTrackingAlgoBase;
 import attentionHoggers.algo.BitmapAttentionTrackingAlgo;
 import com.cycling74.max.*;
 import com.cycling74.jitter.*;
-import org.junit.platform.commons.logging.LoggerFactory;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Arrays;
+import java.nio.file.Files;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Supplier;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Handler;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -28,13 +25,16 @@ public class AttentionTracker extends MaxObject{
     private static final Logger log = initFirstLogger();
 
     private static Logger initFirstLogger() {
-        final File f = new File(AttentionTracker.class.getProtectionDomain().getCodeSource().getLocation().getPath());
-        File logging = new File(f,"logging.properties");
+        final File currentDir = new File(AttentionTracker.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+        File logging = new File(currentDir,"logging.properties");
         post("Logging.properties file: %s, exists=%b".formatted(logging.getAbsolutePath(), logging.exists()));
         if( logging.exists()){
             try {
                 post("Reading logging config");
-                LogManager.getLogManager().readConfiguration(new FileInputStream(logging));
+                var s = Files.readString(logging.toPath());
+                s = s.replace("{DIR}", currentDir.getAbsolutePath());
+                post("Logging config: " + s);
+                LogManager.getLogManager().readConfiguration(new ByteArrayInputStream(s.getBytes()));
             } catch (IOException e) {
                 post("Failed to log logging config " + e);
             }
@@ -46,18 +46,25 @@ public class AttentionTracker extends MaxObject{
 
 
     final Map<String, Matrix> matrixCache = new ConcurrentHashMap<>();
-    Benchmark slow = new Benchmark("Frame", 200);
+    Benchmark frameInBm = new Benchmark("Frame-in", 200);
+    Benchmark frameOutBm = new Benchmark("Frame-out", 200);
 
-    AttentionTrackingAlgoBase algo = new BitmapAttentionTrackingAlgo(3, 0.9, 2,
-            0.0, v -> v > 0, new LinearADEnvelope(5, 1.0, 30, 120));
+    AttentionTrackingAlgoBase algo = new BitmapAttentionTrackingAlgo(
+            6,
+            0.5,
+            2,
+            0.0, v -> v > 0,
+            new LinearADEnvelope(10.0, 1.0, 1, 30*4));
 
     public AttentionTracker() {
 
         algo.ticks().subscribe(slots -> {
-            log.info("TICK: " + String.join(",", Arrays.stream(slots).map(s -> s.toString()).toList()));
+            frameOutBm.lapStart();
+//            log.info("TICK: " + String.join(",", Arrays.stream(slots).map(s -> s.toString()).toList()));
             for (var s : slots) {
                 outlet(0, new double[]{s.x(), s.y(), s.x() + s.w(), s.y() + s.h(), s.age(), s.amplitude(), s.angle()});
             }
+            frameOutBm.lapEnd();
         });
         declareIO(1, 1);
         setInletAssist(new String[] {"Attention matrix and control messages", "Preview matrix"});
@@ -89,11 +96,11 @@ public class AttentionTracker extends MaxObject{
     }
 
     private void processAttentionMatrix(Matrix jm) {
-        slow.lapStart();
+        frameInBm.lapStart();
 
         algo.accept(jm);
 
-        slow.lapEnd();
+        frameInBm.lapEnd();
     }
 
     static class Benchmark {
