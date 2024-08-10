@@ -5,6 +5,7 @@
     <output-test url="file://$MODULE_DIR$/out/test/pte-tree-mxj" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -37,5 +38,6 @@
     </orderEntry>
     <orderEntry type="library" name="io.reactivex.rxjava3.rxjava" level="project" />
     <orderEntry type="library" name="assertj.core" level="project" />
+    <orderEntry type="library" name="apache.logging.log4j.core" level="project" />
   </component>
 </module>

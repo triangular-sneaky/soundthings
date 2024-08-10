@@ -1,6 +1,7 @@
 package attentionHoggers;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class MemoryBackedMatrix implements WriteableMatrix {
     int w;
@@ -13,16 +14,20 @@ public class MemoryBackedMatrix implements WriteableMatrix {
     public MemoryBackedMatrix() {
     }
 
-    public void copyFrom(Matrix source) {
+    public void copyOrRebuild(Matrix source, java.util.function.Consumer<MemoryBackedMatrix> ifRebuilt) {
+        var rebuilt = false;
         if (matrix == null || dims == null || source.planecount() != planecount || !Arrays.equals(source.dims(), dims)) {
             dims = source.dims();
             planecount = source.planecount();
             matrix = new int[dims[0]][dims[1]][];
+            rebuilt = true;
         }
         for (int i = 0; i < dims[0]; i++)
             for (int j = 0; j < dims[1]; j++) {
                 matrix[i][j] = source.get(i, j);
             }
+
+        if (rebuilt) ifRebuilt.accept(this);
     }
 
 
