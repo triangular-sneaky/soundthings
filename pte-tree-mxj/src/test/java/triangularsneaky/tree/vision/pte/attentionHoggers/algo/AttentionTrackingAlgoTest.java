@@ -51,7 +51,7 @@ class AttentionTrackingAlgoTest {
                 m.get( 1,1), new int[]{-2, -2},
                 m.get( 2,1), new int[]{0, 0}
 
-        ).forEach((k, v) -> assertThat(k).containsExactlyInAnyOrder(Arrays.stream(v).map(TestMatrix::scaledX).toArray()));
+        ).forEach((k, v) -> assertThat(k).containsExactlyInAnyOrder(Arrays.stream(v).mapToDouble(TestMatrix::scaledX).toArray()));
     }
 
     @Test

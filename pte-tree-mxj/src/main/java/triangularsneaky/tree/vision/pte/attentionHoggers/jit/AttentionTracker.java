@@ -43,12 +43,12 @@ public class AttentionTracker extends MaxObject{
     public AttentionTracker() {
 
         algo.ticks().subscribe(slots -> {
-            frameOutBm.lapStart();
+            frameOutBm.lap(() -> {
 //            log.info("TICK: " + String.join(",", Arrays.stream(slots).map(s -> s.toString()).toList()));
-            for (var s : slots) {
-                outlet(0, new double[]{s.x(), s.y(), s.x() + s.w(), s.y() + s.h(), s.age(), s.amplitude(), s.angle()});
-            }
-            frameOutBm.lapEnd();
+                for (var s : slots) {
+                    outlet(0, new double[]{s.x(), s.y(), s.x() + s.w(), s.y() + s.h(), s.age(), s.amplitude(), s.angle()});
+                }
+            });
         });
         declareIO(1, 1);
         setInletAssist(new String[] {"Attention matrix and control messages", "Preview matrix"});
@@ -93,9 +93,9 @@ public class AttentionTracker extends MaxObject{
 
 
     private void processAttentionMatrix(Matrix jm) {
-        frameInBm.lapStart();
-        algo.accept(jm);
-        frameInBm.lapEnd();
+        frameInBm.lap(()-> {
+            algo.accept(jm);
+        });
     }
 
 }

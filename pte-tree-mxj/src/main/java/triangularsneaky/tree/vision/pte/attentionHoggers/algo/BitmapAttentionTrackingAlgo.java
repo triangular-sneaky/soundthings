@@ -76,7 +76,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     int idgen = 0;
 
     @Override
-    protected void taste(int i, int j, int sizeI, int sizeJ, int[] values, double coefficient) {
+    protected void taste(int i, int j, int sizeI, int sizeJ, double[] values, double coefficient) {
 
         var amplitude = Math.sqrt(values[0]* values[0] + values[1]* values[1]);
         if (!valueLpf.test(amplitude)) return;

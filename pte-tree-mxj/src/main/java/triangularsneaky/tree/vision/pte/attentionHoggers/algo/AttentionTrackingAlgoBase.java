@@ -51,7 +51,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
     //                }
 
 
-                    int[] sum = null;
+                    double[] sum = null;
 
                     int downsamplingTargetI = Math.min(i + downsamplingFactor, matrix.dims()[0]);
                     int downsamplingTargetJ = Math.min(j + downsamplingFactor, matrix.dims()[1]);
@@ -96,7 +96,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
 //        return Math.ceilDiv(maxDim, downsamplingStep) * downsamplingStep;
     }
 
-    protected abstract void taste(int i, int j, int sizeI, int sizeJ, int[] values, double coefficient);
+    protected abstract void taste(int i, int j, int sizeI, int sizeJ, double[] values, double coefficient);
 
     public BehaviorSubject<Hoggers.AttentionSlot[]> ticks() { return _ticks;}
 

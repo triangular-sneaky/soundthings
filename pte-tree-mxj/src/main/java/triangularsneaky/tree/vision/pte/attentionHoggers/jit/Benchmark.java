@@ -21,6 +21,15 @@ class Benchmark {
         this.reportingRate = reportingRate;
     }
 
+    public void lap(Runnable block) {
+        try {
+            lapStart();
+            block.run();
+        } finally {
+            lapEnd();
+        }
+    }
+
     public void lapStart() {
         if (iterStart != 0) throw new IllegalStateException("can't call lapStart twice");
         iterStart = System.nanoTime();
