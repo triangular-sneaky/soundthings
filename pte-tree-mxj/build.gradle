@@ -1,0 +1,69 @@
+plugins {
+    id 'java'
+}
+
+group = 'triangularsneaky.tree.vision.pte'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.assertj:assertj-core:3.26.3'
+    testImplementation 'io.reactivex.rxjava3:rxjava:3.0.12'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.12'
+    implementation files('/Applications/Max.app/Contents/Resources/C74/packages/max-mxj/java-classes/lib/jitter.jar')
+    implementation files('/Applications/Max.app/Contents/Resources/C74/packages/max-mxj/java-classes/lib/max.jar')
+}
+
+
+CopySpec maxCodeCompileOutputSpec = copySpec {
+    from 'build/'
+    include 'classes/java/main/', 'resources/main/'
+}
+
+CopySpec maxCodeJarsSpec = copySpec {
+    from configurations.runtimeClasspath
+    exclude "max.jar", "jitter.jar"
+}
+
+var maxCodeDir = new File("$projectDir/../pte-tree-max/code/")
+var maxOtherDir = new File("$projectDir/../pte-tree-max/other/")
+
+tasks.register('deployToMax', Copy) {
+    dependsOn(classes)
+//    dependsOn(copyT)
+
+    doFirst {
+        print("Deploying to max")
+        file(maxCodeDir).deleteDir()
+        file(maxOtherDir).deleteDir()
+        file(maxCodeDir).mkdirs()
+    }
+
+    //layout.projectDirectory.dir("/../../pte-tree-max/code/")
+    into maxCodeDir
+    with maxCodeCompileOutputSpec
+
+    into maxCodeDir
+    with maxCodeJarsSpec
+
+}
+
+testClasses {
+    finalizedBy deployToMax
+}
+
+
+clean.doLast {
+    // clean-up directory when necessary
+    file(maxCodeDir).deleteDir()
+    file(maxOtherDir).deleteDir()
+}
+
+test {
+    useJUnitPlatform()
+}
