@@ -1,8 +1,9 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.algo;
 
-import triangularsneaky.tree.vision.pte.attentionHoggers.Hoggers;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
+import triangularsneaky.tree.vision.pte.attentionHoggers.Rect;
+import triangularsneaky.tree.vision.pte.attentionHoggers.SlotsStorage;
 import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.util.*;
@@ -12,7 +13,7 @@ import java.util.stream.IntStream;
 
 public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     private final double allowedOverlapFactor;
-    private final DoublePredicate valueLpf;
+    private DoublePredicate valueLpf;
 
     private static final Logger log = LogManager.getLogger(BitmapAttentionTrackingAlgo.class);
 
@@ -34,6 +35,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     final Map<Rect, AttentionElement> elements = new HashMap<>(attentionSpan * 2);
 //    record DetectedElement(Rect rect, int size) {}
     AttentionElement[][] detectedElementsBitmap = null;
+    public SlotsStorage slotsStorage = new SlotsStorage(timestamp);
 
     @Override
     public void accept(Matrix matrix) {
@@ -58,11 +60,16 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
                 .limit(attentionSpan).toList();
         elements.clear();
         for (var s: survivors) elements.put(s.rect(), s);
-        ticks().onNext(
-                survivors.stream()
-                        .map(AttentionElement::toAttentionSlot)
-                        .toArray(Hoggers.AttentionSlot[]::new));
 
+        ticks().onNext(slotsStorage.mapElementsToSlots(survivors));
+    }
+
+    public DoublePredicate getValueLpf() {
+        return valueLpf;
+    }
+
+    public void setValueLpf(DoublePredicate valueLpf) {
+        this.valueLpf = valueLpf;
     }
 
     private void clearDetectedElementsBitmap(int[] dims) {
@@ -159,5 +166,6 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
         }
         return sb.toString();
     }
+
 
 }

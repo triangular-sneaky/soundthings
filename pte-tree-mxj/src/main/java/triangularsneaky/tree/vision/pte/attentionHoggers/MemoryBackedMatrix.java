@@ -1,6 +1,7 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers;
 
 import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
+import triangularsneaky.tree.vision.pte.attentionHoggers.util.NumGuard;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -48,7 +49,8 @@ public class MemoryBackedMatrix implements WriteableMatrix {
 
     @Override
     public double[] get(int i, int j) {
-        return matrix[i][j];
+        return NumGuard.guard(matrix[i][j],
+                s -> log.warning("get(%d,%d) is %s".formatted(i,j,s)));
     }
 
     @Override
@@ -58,6 +60,7 @@ public class MemoryBackedMatrix implements WriteableMatrix {
 
     @Override
     public void set(int x, int y, double[] values) {
+        NumGuard.guard(values, s -> log.warning("set(%d,%d) is %s".formatted(x,y,s)));
         this.matrix[x][y] = values;
     }
 

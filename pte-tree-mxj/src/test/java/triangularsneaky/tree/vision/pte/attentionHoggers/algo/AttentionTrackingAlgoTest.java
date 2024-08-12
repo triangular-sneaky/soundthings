@@ -28,7 +28,7 @@ class AttentionTrackingAlgoTest {
                 attentionSpan, 0.9, 2, 0.0,
                 v -> v > 0, new LinearAmpAndADEnvelope(10.0, 1.0, 1, 2));
         sub = new TestObserver<>();
-        algo.ticks().map(ticks -> Arrays.stream(ticks).filter(t -> t.amplitude() > 0).toArray(Hoggers.AttentionSlot[]::new)).subscribe(sub);
+        algo.ticks().map(ticks -> ticks.filter(t -> t.amplitude() > 0).toArray(Hoggers.AttentionSlot[]::new)).subscribe(sub);
 //        algo.ticks().map(ticks -> Arrays.stream(ticks).filter(t -> t.amplitude() > 0).toArray(Hoggers.AttentionSlot[]::new)).subscribe(t -> log.debug("Listening to ticks in sub..."));
     }
 

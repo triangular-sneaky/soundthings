@@ -2,11 +2,15 @@ package triangularsneaky.tree.vision.pte.attentionHoggers.jit;
 
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
 import com.cycling74.jitter.JitterMatrix;
+import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 public final class JitMatrix implements Matrix {
+
+    private static final Logger log = LogManager.getLogger(JitMatrix.class);
     private final JitterMatrix matrix;
 //    private final boolean sourceMatrixIs32bit;
     private final int planecount;
@@ -30,7 +34,15 @@ public final class JitMatrix implements Matrix {
     public void copyCellTo(int i, int j, double[] destination) {
         var cell = matrix.getcell2dDouble(i, j);
         for (int k = 0; k < planecount; k++) {
-            destination[k] = (double)cell[k];
+
+            double v = cell[k];
+            if (Double.isInfinite(v)) {
+                log.warning("[%d,%d][%d] is infinite".formatted(i,j,k));
+            }
+            if (Double.isNaN(v)) {
+                log.warning("[%d,%d][%d] is NaN".formatted(i,j,k));
+            }
+            destination[k] = v;
         }
     }
 

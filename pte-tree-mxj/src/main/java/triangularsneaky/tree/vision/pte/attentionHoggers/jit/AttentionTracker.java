@@ -33,11 +33,12 @@ public class AttentionTracker extends MaxObject{
     Benchmark frameInBm = new Benchmark("Frame-in", 200, MaxObject::post);
     Benchmark frameOutBm = new Benchmark("Frame-out", 200, MaxObject::post);
 
-    AttentionTrackingAlgoBase algo = new BitmapAttentionTrackingAlgo(
+    BitmapAttentionTrackingAlgo algo = new BitmapAttentionTrackingAlgo(
             6,
             0.5,
             2,
-            0.0, v -> v > 0,
+            0.0,
+            v -> v > 0,
             new LinearAmpAndADEnvelope(10.0, 1.0, 1, 30*4));
 
     public AttentionTracker() {
@@ -45,15 +46,47 @@ public class AttentionTracker extends MaxObject{
         algo.ticks().subscribe(slots -> {
             frameOutBm.lap(() -> {
 //            log.info("TICK: " + String.join(",", Arrays.stream(slots).map(s -> s.toString()).toList()));
-                for (var s : slots) {
-                    outlet(0, new double[]{s.x(), s.y(), s.x() + s.w(), s.y() + s.h(), s.age(), s.amplitude(), s.angle()});
-                }
+                slots.forEach(s -> {
+
+//                    outlet(0, new double[]{s.x(), s.y(), s.x() + s.w(), s.y() + s.h(), s.age(), s.amplitude(), s.angle()});
+
+
+                    outlet(0,
+                            new Atom[]{
+                                    Atom.newAtom(s.slot()),                 // $1
+                                    Atom.newAtom(s.age()),                  // $2
+
+                                    Atom.newAtom(s.x()),                    // $3 = l
+                                    Atom.newAtom(s.y()),                    // $4 = t
+                                    Atom.newAtom(s.x() + s.w()),      // $5 = r
+                                    Atom.newAtom(s.y() + s.h()),      // $6 = b
+
+                                    Atom.newAtom(s.area()),                 // $7
+
+                                    Atom.newAtom(s.amplitude()),            // $8
+                                    Atom.newAtom(s.angle())                 // $9
+                    });
+                });
             });
         });
         declareIO(1, 1);
-        setInletAssist(new String[] {"Attention matrix and control messages", "Preview matrix"});
-        setOutletAssist(new String[] {"Attention slots", "Preview with slots"});
+//        createInfoOutlet(false);
+        setInletAssist(new String[] {"Attention matrix and control messages", "Aux"});
+        setOutletAssist(new String[] {"Attention slots", "Aux"});
         log.info("Started up");
+        outletBang(getInfoIdx());
+
+    }
+
+
+
+
+    @Override
+    protected void loadbang() {
+        super.loadbang();
+        log.info("loadbang. info outlet is %d, banging".formatted(getInfoIdx()));
+        outletBang(getInfoIdx());
+
     }
 
     @SuppressWarnings("unused")
@@ -62,6 +95,8 @@ public class AttentionTracker extends MaxObject{
         var jm = matrixCache.computeIfAbsent(s, name -> new JitMatrix(new JitterMatrix(s)));
 
         processAttentionMatrix(jm);
+
+
     }
 
     @SuppressWarnings("unused")
@@ -71,7 +106,7 @@ public class AttentionTracker extends MaxObject{
     }
 
     @SuppressWarnings("unused")
-    public void sizeImportanceCoefficient(int sizeImportanceCoefficient) {
+    public void sizeImportanceCoefficient(double sizeImportanceCoefficient) {
         log.info("sizeImportanceCoefficient=" + sizeImportanceCoefficient);
         algo.setSizeImportanceCoefficient(sizeImportanceCoefficient);
     }
@@ -84,8 +119,20 @@ public class AttentionTracker extends MaxObject{
 
     @SuppressWarnings("unused")
     public void stability(double gain, double bias, int attack, int release) {
-        log.info("stability=[gain=%d bias=%d attack=%d release=%d]".formatted(gain, bias, attack, release));
+        log.info("stability=[gain=%f bias=%f attack=%d decay=%d]".formatted(gain, bias, attack, release));
         algo.setStabilityAmpAndEnvelope(new LinearAmpAndADEnvelope(gain, bias, attack, release));
+    }
+
+    @SuppressWarnings("unused")
+    public void aplitudePower(double power) {
+        log.info("aplitudePower=" + power);
+        algo.setAmplitudePower(power);
+    }
+
+    @SuppressWarnings("unused")
+    public void lpf(double cutoff) {
+        log.info("lpf=" + cutoff);
+        algo.setValueLpf(v -> v > cutoff);
     }
 
 

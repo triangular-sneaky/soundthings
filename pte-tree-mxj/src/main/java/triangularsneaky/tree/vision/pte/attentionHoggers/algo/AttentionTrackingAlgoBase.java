@@ -1,29 +1,30 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.algo;
 
-import triangularsneaky.tree.vision.pte.attentionHoggers.*;
-import io.reactivex.rxjava3.subjects.BehaviorSubject;
-import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
-
-
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
+
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
+import triangularsneaky.tree.vision.pte.attentionHoggers.*;
+import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
 
-    private static final java.util.logging.Logger log = LogManager.getLogger(AttentionTrackingAlgoBase.class);
+    private static final Logger log = LogManager.getLogger(AttentionTrackingAlgoBase.class);
 
     protected int attentionSpan;
     protected double sizeImportanceCoefficient;
     protected int downsamplingStep;
     DiscreteAmpAndEnvelope stabilityAmpAndEnvelope;
 
-    protected final BehaviorSubject<Hoggers.AttentionSlot[]> _ticks = BehaviorSubject.create();
+    protected final BehaviorSubject<Stream<Hoggers.AttentionSlot>> _ticks = BehaviorSubject.create();
     final MemoryBackedMatrix processingMatrix = new MemoryBackedMatrix();
     AtomicInteger timestamp = new AtomicInteger(0);
-
+    private double amplitudePower = 1;
 
     public AttentionTrackingAlgoBase(int attentionSpan, double sizeImportanceCoefficient, int downsamplingStep, LinearAmpAndADEnvelope stabilityEnvelope) {
         this.attentionSpan = attentionSpan;
@@ -32,12 +33,11 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
         this.stabilityAmpAndEnvelope = stabilityEnvelope;
     }
 
-    protected void handleMatrix(WriteableMatrix matrix ) {
+    protected void handleMatrix(WriteableMatrix matrix) {
 
         double sizeCoefficient = 1.0;
         var maxDownsamplingFactor = getMaxDownsamplingFactor(matrix);
-        for (
-                int downsamplingFactor = 1, prevDownsamplingFactor = 1;
+        for (int downsamplingFactor = 1, prevDownsamplingFactor = 1;
                 downsamplingFactor <= maxDownsamplingFactor;
                 prevDownsamplingFactor = downsamplingFactor, downsamplingFactor *= downsamplingStep) {
 
@@ -45,11 +45,10 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
             log.fine(() -> "DOWNSAMPLING: %s".formatted(ds));
             for (int i = 0; i < matrix.dims()[0]; i += prevDownsamplingFactor) {
                 for (int j = 0; j < matrix.dims()[1]; j += prevDownsamplingFactor) {
-    //                if (downsamplingFactor == 1) {
-    //                    int[] values = matrix.get(i, j);
-    //                    taste(i, j, downsamplingFactor, downsamplingFactor, values, coefficient);
-    //                }
-
+                    //                if (downsamplingFactor == 1) {
+                    //                    int[] values = matrix.get(i, j);
+                    //                    taste(i, j, downsamplingFactor, downsamplingFactor, values, coefficient);
+                    //                }
 
                     double[] sum = null;
 
@@ -58,22 +57,33 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
                     for (int si = i; si < downsamplingTargetI; si += prevDownsamplingFactor) {
                         for (int sj = j; sj < downsamplingTargetJ; sj += prevDownsamplingFactor) {
                             var el = matrix.get(si, sj);
-                            if (sum == null)
+                            if (sum == null) {
                                 sum = el;
-                            else {
-//                                log.debug(STR."accumulating [\{si},\{sj}]~>[\{i},\{j}]");
+                            } else {
                                 for (int plane = 0; plane < matrix.planecount(); plane++) {
-                                    sum[plane] += el[plane];
+                                    double v = el[plane];
+                                    sum[plane] += v;
+                                    //                                        NumGuard.guardThrow(Math.pow(v, amplitudePower),
+                                    //                                        ()->"%f^%f".formatted(v, amplitudePower));
+                                    //                                NumGuard.guard(sum[plane],
+                                    //                                        s -> log.warning("sum[plane] is %s".formatted(s)));
                                 }
                             }
                         }
                     }
-                    var _i=i; var _j=j; var _sum = sum;
+                    var _i = i;
+                    var _j = j;
+                    var _sum = sum;
+//                    for (int plane = 0; plane < matrix.planecount(); plane++) {
+//                        sum[plane] = sum[plane];
+                    ////                                Math.pow(sum[plane], 1/amplitudePower);
+////                        NumGuard.guardThrow(sum[plane]);
+//                    }
                     log.finer(() -> "[%d,%d]->(%d,%d)".formatted(_i, _j, _sum[0], _sum[1]));
-                    matrix.set(i,j, sum);
-                    taste(i, j, downsamplingFactor , downsamplingFactor,
+                    matrix.set(i, j, sum);
+                    taste(i, j, downsamplingFactor, downsamplingFactor,
                             Objects.requireNonNull(sum),
-                            sizeCoefficient );
+                            sizeCoefficient);
 
                 }
             }
@@ -92,24 +102,26 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
     }
 
     public static int getMaxDownsamplingFactor(int downsamplingStep, int maxDim) {
-        return (int) Math.pow(downsamplingStep, Math.ceil(Math.log(maxDim)/Math.log(2)));
+        return (int) Math.pow(downsamplingStep, Math.ceil(Math.log(maxDim) / Math.log(2)));
 //        return Math.ceilDiv(maxDim, downsamplingStep) * downsamplingStep;
     }
 
     protected abstract void taste(int i, int j, int sizeI, int sizeJ, double[] values, double coefficient);
 
-    public BehaviorSubject<Hoggers.AttentionSlot[]> ticks() { return _ticks;}
-
-    record Rect(int x, int y, int w, int h) {
-        public int area() {
-            return w * h;
-        }
-        public static Rect fromIJ(int i, int j, int sizeI, int sizeJ) {
-            return new Rect(i, j,sizeI,sizeJ);
-        }
+    public BehaviorSubject<Stream<Hoggers.AttentionSlot>> ticks() {
+        return _ticks;
     }
 
-    class AttentionElement {
+    public void setAmplitudePower(double amplitudePower) {
+        this.amplitudePower = amplitudePower;
+    }
+
+    public double getAmplitudePower() {
+        return amplitudePower;
+    }
+
+    public class AttentionElement implements triangularsneaky.tree.vision.pte.attentionHoggers.AttentionElement {
+
         private final int id;
         private double amplitude;
         private final double valueCoefficient;
@@ -118,7 +130,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
         private final int bornTimestamp;
         private boolean isDead = false;
 
-        AttentionElement(int id, double amplitude, double valueCoefficient, double angle, Rect rect, int bornTimestamp) {
+        public AttentionElement(int id, double amplitude, double valueCoefficient, double angle, Rect rect, int bornTimestamp) {
             this.id = id;
             this.amplitude = amplitude;
             this.valueCoefficient = valueCoefficient;
@@ -127,14 +139,17 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
             this.bornTimestamp = bornTimestamp;
         }
 
+        @Override
         public int age() {
             return timestamp.get() - bornTimestamp;
         }
 
+        @Override
         public double effectiveValue() {
             return amplitude * valueCoefficient * stabilityAmpAndEnvelope.get(age());
         }
 
+        @Override
         public double amplitude() {
             return amplitude;
         }
@@ -147,20 +162,19 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
             this.angle = angle;
         }
 
+        @Override
         public double angle() {
             return angle;
         }
 
+        @Override
         public Rect rect() {
             return rect;
         }
 
+        @Override
         public int bornTimestamp() {
             return bornTimestamp;
-        }
-
-        public Hoggers.AttentionSlot toAttentionSlot() {
-            return new Hoggers.AttentionSlot(id, this.age(), this.rect.x, this.rect.y, this.rect.w, this.rect.h, this.rect.area(), this.amplitude, this.angle);
         }
 
         public boolean isDead() {
@@ -176,6 +190,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
             return "AttentionElement(%s)[%s]@%s{value=%3.3f, effective=%3.3f, angle=%1.3f}".formatted(getCharId(), isDead ? "💀" : age(), rect, amplitude, effectiveValue(), angle);
         }
 
+        @Override
         public int getId() {
             return id;
         }
@@ -184,7 +199,6 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
             return (char) (getId() + 'a');
         }
     }
-
 
     public int getAttentionSpan() {
         return attentionSpan;
