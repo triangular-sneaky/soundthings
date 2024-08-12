@@ -3,6 +3,7 @@ package triangularsneaky.tree.vision.pte.attentionHoggers.algo;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Hoggers;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
+import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.util.*;
 import java.util.function.DoublePredicate;
@@ -13,7 +14,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     private final double allowedOverlapFactor;
     private final DoublePredicate valueLpf;
 
-    private static final Logger log = Logger.getLogger(BitmapAttentionTrackingAlgo.class.getName());
+    private static final Logger log = LogManager.getLogger(BitmapAttentionTrackingAlgo.class);
 
 
     public BitmapAttentionTrackingAlgo(int attentionSpan,

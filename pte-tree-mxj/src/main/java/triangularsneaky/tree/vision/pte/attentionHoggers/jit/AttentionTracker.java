@@ -6,6 +6,7 @@ import triangularsneaky.tree.vision.pte.attentionHoggers.algo.AttentionTrackingA
 import triangularsneaky.tree.vision.pte.attentionHoggers.algo.BitmapAttentionTrackingAlgo;
 import com.cycling74.max.*;
 import com.cycling74.jitter.*;
+import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -13,7 +14,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 
@@ -22,23 +22,11 @@ public class AttentionTracker extends MaxObject{
     private static final Logger log = initFirstLogger();
 
     private static Logger initFirstLogger() {
-        final File currentDir = new File(AttentionTracker.class.getProtectionDomain().getCodeSource().getLocation().getPath());
-        File logging = new File(currentDir,"logging.properties");
-        post("Logging.properties file: %s, exists=%b".formatted(logging.getAbsolutePath(), logging.exists()));
-        if( logging.exists()){
-            try {
-                post("Reading logging config");
-                var s = Files.readString(logging.toPath());
-                s = s.replace("{DIR}", currentDir.getAbsolutePath());
-                post("Logging config: " + s);
-                LogManager.getLogManager().readConfiguration(new ByteArrayInputStream(s.getBytes()));
-            } catch (IOException e) {
-                post("Failed to log logging config " + e);
-            }
-        }
-
-        return Logger.getLogger(AttentionTracker.class.getName());
+        LogManager.initLogging(MaxObject::post);
+        return LogManager.getLogger(AttentionTracker.class);
     }
+
+
 
 
     final Map<String, Matrix> matrixCache = new ConcurrentHashMap<>();

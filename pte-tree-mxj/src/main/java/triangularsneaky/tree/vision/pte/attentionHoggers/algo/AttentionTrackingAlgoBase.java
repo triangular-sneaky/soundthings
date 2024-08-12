@@ -2,6 +2,7 @@ package triangularsneaky.tree.vision.pte.attentionHoggers.algo;
 
 import triangularsneaky.tree.vision.pte.attentionHoggers.*;
 import io.reactivex.rxjava3.subjects.BehaviorSubject;
+import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 
 import java.util.Arrays;
@@ -12,7 +13,7 @@ import java.util.logging.Logger;
 
 public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
 
-    private static final java.util.logging.Logger log = Logger.getLogger(AttentionTrackingAlgoBase.class.getName());
+    private static final java.util.logging.Logger log = LogManager.getLogger(AttentionTrackingAlgoBase.class);
 
     protected int attentionSpan;
     protected double sizeImportanceCoefficient;
