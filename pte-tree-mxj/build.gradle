@@ -21,9 +21,8 @@ dependencies {
 
 
 CopySpec maxCodeCompileOutputSpec = copySpec {
-    from 'build/libs/'
-//    include 'classes/java/main/', 'resources/main/'
-    include '*.jar'
+    from 'build/'
+    include 'classes/java/main/', 'resources/main/'
 }
 
 CopySpec maxCodeJarsSpec = copySpec {
@@ -35,7 +34,8 @@ var maxCodeDir = new File("$projectDir/../pte-tree-max/code/")
 var maxOtherDir = new File("$projectDir/../pte-tree-max/other/")
 
 tasks.register('deployToMax', Copy) {
-    dependsOn(jar)
+    dependsOn(classes)
+//    dependsOn(copyT)
 
     doFirst {
         print("Deploying to max")
