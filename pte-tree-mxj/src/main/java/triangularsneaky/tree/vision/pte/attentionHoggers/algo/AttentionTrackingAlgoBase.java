@@ -1,7 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.algo;
 
 import triangularsneaky.tree.vision.pte.attentionHoggers.*;
-import triangularsneaky.tree.vision.pte.attentionHoggers.jit.AttentionTracker;
 import io.reactivex.rxjava3.subjects.BehaviorSubject;
 
 
@@ -9,27 +8,27 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
 
     private static final java.util.logging.Logger log = Logger.getLogger(AttentionTrackingAlgoBase.class.getName());
-    protected final int attentionSpan;
-    protected final double sizeImportanceCoefficient;
-    protected final int downsamplingStep;
+
+    protected int attentionSpan;
+    protected double sizeImportanceCoefficient;
+    protected int downsamplingStep;
+    DiscreteAmpAndEnvelope stabilityAmpAndEnvelope;
+
     protected final BehaviorSubject<Hoggers.AttentionSlot[]> _ticks = BehaviorSubject.create();
-    final DiscreteEnvelope stabilityEnvelope;
     final MemoryBackedMatrix processingMatrix = new MemoryBackedMatrix();
     AtomicInteger timestamp = new AtomicInteger(0);
 
 
-    public AttentionTrackingAlgoBase(int attentionSpan, double sizeImportanceCoefficient, int downsamplingStep, LinearADEnvelope stabilityEnvelope) {
+    public AttentionTrackingAlgoBase(int attentionSpan, double sizeImportanceCoefficient, int downsamplingStep, LinearAmpAndADEnvelope stabilityEnvelope) {
         this.attentionSpan = attentionSpan;
         this.sizeImportanceCoefficient = sizeImportanceCoefficient;
         this.downsamplingStep = downsamplingStep;
-        this.stabilityEnvelope = stabilityEnvelope;
+        this.stabilityAmpAndEnvelope = stabilityEnvelope;
     }
 
     protected void handleMatrix(WriteableMatrix matrix ) {
@@ -132,7 +131,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
         }
 
         public double effectiveValue() {
-            return amplitude * valueCoefficient * stabilityEnvelope.get(age());
+            return amplitude * valueCoefficient * stabilityAmpAndEnvelope.get(age());
         }
 
         public double amplitude() {
@@ -186,5 +185,35 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
     }
 
 
+    public int getAttentionSpan() {
+        return attentionSpan;
+    }
 
+    public void setAttentionSpan(int attentionSpan) {
+        this.attentionSpan = attentionSpan;
+    }
+
+    public double getSizeImportanceCoefficient() {
+        return sizeImportanceCoefficient;
+    }
+
+    public void setSizeImportanceCoefficient(double sizeImportanceCoefficient) {
+        this.sizeImportanceCoefficient = sizeImportanceCoefficient;
+    }
+
+    public int getDownsamplingStep() {
+        return downsamplingStep;
+    }
+
+    public void setDownsamplingStep(int downsamplingStep) {
+        this.downsamplingStep = downsamplingStep;
+    }
+
+    public DiscreteAmpAndEnvelope getStabilityAmpAndEnvelope() {
+        return stabilityAmpAndEnvelope;
+    }
+
+    public void setStabilityAmpAndEnvelope(DiscreteAmpAndEnvelope stabilityAmpAndEnvelope) {
+        this.stabilityAmpAndEnvelope = stabilityAmpAndEnvelope;
+    }
 }

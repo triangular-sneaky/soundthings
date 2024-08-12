@@ -1,6 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.jit;
 
-import triangularsneaky.tree.vision.pte.attentionHoggers.LinearADEnvelope;
+import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
 import triangularsneaky.tree.vision.pte.attentionHoggers.algo.AttentionTrackingAlgoBase;
 import triangularsneaky.tree.vision.pte.attentionHoggers.algo.BitmapAttentionTrackingAlgo;
@@ -13,9 +13,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Supplier;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -38,7 +35,6 @@ public class AttentionTracker extends MaxObject{
             } catch (IOException e) {
                 post("Failed to log logging config " + e);
             }
-//            System.setProperty("java.util.logging.config.file", logging.getAbsolutePath());
         }
 
         return Logger.getLogger(AttentionTracker.class.getName());
@@ -46,15 +42,15 @@ public class AttentionTracker extends MaxObject{
 
 
     final Map<String, Matrix> matrixCache = new ConcurrentHashMap<>();
-    Benchmark frameInBm = new Benchmark("Frame-in", 200);
-    Benchmark frameOutBm = new Benchmark("Frame-out", 200);
+    Benchmark frameInBm = new Benchmark("Frame-in", 200, MaxObject::post);
+    Benchmark frameOutBm = new Benchmark("Frame-out", 200, MaxObject::post);
 
     AttentionTrackingAlgoBase algo = new BitmapAttentionTrackingAlgo(
             6,
             0.5,
             2,
             0.0, v -> v > 0,
-            new LinearADEnvelope(10.0, 1.0, 1, 30*4));
+            new LinearAmpAndADEnvelope(10.0, 1.0, 1, 30*4));
 
     public AttentionTracker() {
 
@@ -72,70 +68,47 @@ public class AttentionTracker extends MaxObject{
         log.info("Started up");
     }
 
+    @SuppressWarnings("unused")
     public void jit_matrix(String s)
     {
         var jm = matrixCache.computeIfAbsent(s, name -> new JitMatrix(new JitterMatrix(s)));
 
-
-        int inlet = getInlet();
-//        log.info("Inlet: " + inlet);
-        switch (inlet) {
-            case 0 -> processAttentionMatrix(jm);
-            case 1 -> processPreviewMatrix(jm);
-
-        }
-
-
-
-
+        processAttentionMatrix(jm);
     }
 
-    private void processPreviewMatrix(Matrix jm) {
-        log.warning("processPreviewMatrix");
-        post("processPreviewMatrix");
+    @SuppressWarnings("unused")
+    public void attentionSpan(int attentionSpan) {
+        log.info("attentionSpan=" + attentionSpan);
+        algo.setAttentionSpan(attentionSpan);
     }
+
+    @SuppressWarnings("unused")
+    public void sizeImportanceCoefficient(int sizeImportanceCoefficient) {
+        log.info("sizeImportanceCoefficient=" + sizeImportanceCoefficient);
+        algo.setSizeImportanceCoefficient(sizeImportanceCoefficient);
+    }
+
+    @SuppressWarnings("unused")
+    public void downsamplingStep(int downsamplingStep) {
+        log.info("downsamplingStep=" + downsamplingStep);
+        algo.setDownsamplingStep(downsamplingStep);
+    }
+
+    @SuppressWarnings("unused")
+    public void stability(double gain, double bias, int attack, int release) {
+        log.info("stability=[gain=%d bias=%d attack=%d release=%d]".formatted(gain, bias, attack, release));
+        algo.setStabilityAmpAndEnvelope(new LinearAmpAndADEnvelope(gain, bias, attack, release));
+    }
+
+
+
+
 
     private void processAttentionMatrix(Matrix jm) {
         frameInBm.lapStart();
-
         algo.accept(jm);
-
         frameInBm.lapEnd();
     }
 
-    static class Benchmark {
-        private final AtomicInteger counter = new AtomicInteger(0);
-        private final AtomicLong stopwatch = new AtomicLong(0);
-        private final String name;
-        private int reportingRate = 200;
-        private long iterStart = 0;
-
-        public Benchmark(String name, int reportingRate) {
-            this.name = name;
-            this.reportingRate = reportingRate;
-        }
-
-        public void lapStart() {
-            if (iterStart != 0) throw new IllegalStateException("can't call lapStart twice");
-            iterStart = System.nanoTime();
-        }
-
-        public void lapEnd() {
-            lapEnd(null);
-        }
-
-        public void lapEnd(Supplier<String> callback) {
-            if (iterStart == 0) throw new IllegalStateException("must call lapStart before lapEnd");
-            var elapsed = stopwatch.addAndGet(System.nanoTime() - iterStart);
-            int counter = this.counter.incrementAndGet();
-            if (counter % reportingRate == 0) {
-                var s = callback != null ? callback.get() : "";
-                post(String.format("%s: [%d]Average time per iter: %f ms. %s", name, counter, elapsed * 1.0 / counter / 1000000, s));
-            }
-            iterStart = 0;
-
-        }
-
-    }
 }
 

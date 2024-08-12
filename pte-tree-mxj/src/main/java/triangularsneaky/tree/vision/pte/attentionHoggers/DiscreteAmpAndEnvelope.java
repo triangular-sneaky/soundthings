@@ -1,6 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers;
 
-public interface DiscreteEnvelope {
+public interface DiscreteAmpAndEnvelope {
     double get(int t);
 }
 

@@ -3,7 +3,7 @@ package triangularsneaky.tree.vision.pte.attentionHoggers.algo;
 import io.reactivex.rxjava3.observers.TestObserver;
 import org.junit.jupiter.api.Test;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Hoggers;
-import triangularsneaky.tree.vision.pte.attentionHoggers.LinearADEnvelope;
+import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.TestMatrix;
 
 import java.util.Arrays;
@@ -26,7 +26,7 @@ class AttentionTrackingAlgoTest {
     void setUp() {
         algo = new BitmapAttentionTrackingAlgo(
                 attentionSpan, 0.9, 2, 0.0,
-                v -> v > 0, new LinearADEnvelope(10.0, 1.0, 1, 2));
+                v -> v > 0, new LinearAmpAndADEnvelope(10.0, 1.0, 1, 2));
         sub = new TestObserver<>();
         algo.ticks().map(ticks -> Arrays.stream(ticks).filter(t -> t.amplitude() > 0).toArray(Hoggers.AttentionSlot[]::new)).subscribe(sub);
 //        algo.ticks().map(ticks -> Arrays.stream(ticks).filter(t -> t.amplitude() > 0).toArray(Hoggers.AttentionSlot[]::new)).subscribe(t -> log.debug("Listening to ticks in sub..."));
@@ -42,14 +42,14 @@ class AttentionTrackingAlgoTest {
                 | xc|
                 |CX |
                 """);
-        assertThat(m.dims()).isEqualTo(new int[]{2, 3});
+        assertThat(m.dims()).isEqualTo(new int[]{3, 2});
         Map.of(
-                m.get(0, 0), new int[]{0, 0},
-                m.get(0, 1), new int[]{-1, -1},
-                m.get(0, 2), new int[]{1, 1},
-                m.get(1, 0), new int[]{2, 2},
-                m.get(1, 1), new int[]{-2, -2},
-                m.get(1, 2), new int[]{0, 0}
+                m.get( 0,0), new int[]{0, 0},
+                m.get( 1,0), new int[]{-1, -1},
+                m.get( 2,0), new int[]{1, 1},
+                m.get( 0,1), new int[]{2, 2},
+                m.get( 1,1), new int[]{-2, -2},
+                m.get( 2,1), new int[]{0, 0}
 
         ).forEach((k, v) -> assertThat(k).containsExactlyInAnyOrder(Arrays.stream(v).map(TestMatrix::scaledX).toArray()));
     }

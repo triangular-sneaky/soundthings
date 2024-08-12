@@ -29,17 +29,17 @@ public class TestMatrix implements Matrix {
             default -> throw new IllegalArgumentException("Char " + c + " unrecognized");
         }).mapToObj(val -> new int[]{val, val}).toList()).toList();
         _dims = new int[2];
-        _dims[0] = _items.size();
+        _dims[1] = _items.size();
         List<Integer> lengths = _items.stream().map(List::size).distinct().toList();
         if (lengths.size() > 1) {
             throw new IllegalArgumentException("All lines must be same length");
         }
-        _dims[1] = lengths.getFirst();
+        _dims[0] = lengths.getFirst();
     }
 
     @Override
     public int[] get(int i, int j) {
-        return _items.get(i).get(j);
+        return _items.get(j).get(i);
     }
 
     @Override

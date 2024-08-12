@@ -1,16 +1,13 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.algo;
 
 import triangularsneaky.tree.vision.pte.attentionHoggers.Hoggers;
-import triangularsneaky.tree.vision.pte.attentionHoggers.LinearADEnvelope;
+import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
-import triangularsneaky.tree.vision.pte.attentionHoggers.jit.AttentionTracker;
 
 import java.util.*;
 import java.util.function.DoublePredicate;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     private final double allowedOverlapFactor;
@@ -23,7 +20,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
                                        double sizeImportanceCoefficient,
                                        int downsamplingStep,
                                        double allowedOverlapFactor,
-                                       DoublePredicate valueLpf, LinearADEnvelope stabilityEnvelope) {
+                                       DoublePredicate valueLpf, LinearAmpAndADEnvelope stabilityEnvelope) {
         super(attentionSpan, sizeImportanceCoefficient, downsamplingStep, stabilityEnvelope);
         this.allowedOverlapFactor = allowedOverlapFactor;
         this.valueLpf = valueLpf;

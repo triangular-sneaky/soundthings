@@ -11,7 +11,7 @@ class EnvelopesTest {
 
     @Test
     void linearADEnvelopeTest() {
-        var e = new LinearADEnvelope(6, 1.1, 3, 5);
+        var e = new LinearAmpAndADEnvelope(6, 1.1, 3, 5);
         assertThat(e.get(0)).isCloseTo(1.1, veryClose);
 
         assertThat(e.get(1)).isCloseTo(1.1 + 6 / 3.0, veryClose);

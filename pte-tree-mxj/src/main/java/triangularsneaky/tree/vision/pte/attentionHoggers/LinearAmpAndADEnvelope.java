@@ -1,6 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers;
 
-public record LinearADEnvelope(double gain, double bias, int attack, int release) implements DiscreteEnvelope {
+public record LinearAmpAndADEnvelope(double gain, double bias, int attack, int release) implements DiscreteAmpAndEnvelope {
 
     @Override
     public double get(int t) {
