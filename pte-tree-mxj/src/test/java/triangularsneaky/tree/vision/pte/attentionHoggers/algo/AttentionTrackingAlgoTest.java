@@ -266,6 +266,11 @@ class AttentionTrackingAlgoTest {
     }
 
     @Test
+    void embarassingMath() {
+        assertThat(Math.pow(-1,1.1)).isLessThan(0);
+    }
+
+    @Test
     void researchFormats() {
         assertThat("%7.2f".formatted(1.1)).isEqualTo("   1.10");
     }

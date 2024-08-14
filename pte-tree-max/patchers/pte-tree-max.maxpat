@@ -815,6 +815,17 @@
 										"visible" : 1,
 										"boxes" : [ 											{
 												"box" : 												{
+													"id" : "obj-15",
+													"maxclass" : "spectroscope~",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 114.54545795917511, 892.121238708496094, 300.0, 100.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
 													"id" : "obj-33",
 													"maxclass" : "message",
 													"numinlets" : 2,
@@ -1409,11 +1420,11 @@
 																			"parameter_enum" : [ "0", "1" ],
 																			"parameter_initial" : [ 6 ],
 																			"parameter_initial_enable" : 1,
-																			"parameter_longname" : "attentionSpan",
+																			"parameter_longname" : "voices",
 																			"parameter_mmax" : 32.0,
 																			"parameter_mmin" : 1.0,
 																			"parameter_modmode" : 4,
-																			"parameter_shortname" : "attn spn",
+																			"parameter_shortname" : "voices",
 																			"parameter_type" : 1,
 																			"parameter_unitstyle" : 0
 																		}
@@ -2039,7 +2050,7 @@
 																	"numoutlets" : 1,
 																	"outlettype" : [ "" ],
 																	"patching_rect" : [ 129.359213411808014, 417.17474091053009, 50.0, 62.0 ],
-																	"text" : "jit_matrix u980005201"
+																	"text" : "jit_matrix u349002476"
 																}
 
 															}
@@ -2783,8 +2794,8 @@
 													"id" : "obj-32",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 2,
-													"outlettype" : [ "", "" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 355.747120499610901, 901.149410247802734, 522.0, 26.0 ],
 													"text" : "mxj triangularsneaky.tree.vision.pte.attentionHoggers.jit.AttentionTracker"
 												}
@@ -3249,7 +3260,7 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-8", 1 ],
+													"destination" : [ "obj-15", 0 ],
 													"order" : 1,
 													"source" : [ "obj-4", 0 ]
 												}
@@ -3257,8 +3268,16 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-8", 0 ],
+													"destination" : [ "obj-8", 1 ],
 													"order" : 0,
+													"source" : [ "obj-4", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-8", 0 ],
+													"order" : 2,
 													"source" : [ "obj-4", 0 ]
 												}
 
@@ -4110,7 +4129,7 @@
 													"patching_rect" : [ 230.147655038833591, 425.0, 122.058821201324463, 27.205881834030151 ],
 													"presentation" : 1,
 													"presentation_rect" : [ 78.058823823928833, 51.999999523162842, 152.0, 27.0 ],
-													"text" : "rad 0.043538 0.302611"
+													"text" : "rad 0.177334 -0.836508"
 												}
 
 											}
@@ -4185,7 +4204,7 @@
 													"patching_rect" : [ 213.970585107803345, 323.493035078048706, 160.0, 23.499999761581421 ],
 													"presentation" : 1,
 													"presentation_rect" : [ 78.0, 25.0, 152.0, 25.0 ],
-													"text" : "car 0.04156 0.012975"
+													"text" : "car 0.118824 -0.131636"
 												}
 
 											}
@@ -8989,7 +9008,7 @@
 			"obj-140::obj-90::obj-4.6::obj-11::obj-86" : [ "Amt[6]", "Amt", 0 ],
 			"obj-140::obj-90::obj-4.6::obj-11::obj-91" : [ "Offset[6]", "Offset", 0 ],
 			"obj-140::obj-90::obj-90::obj-1" : [ "lpf", "lpf", 0 ],
-			"obj-140::obj-90::obj-90::obj-10" : [ "attentionSpan", "attn spn", 0 ],
+			"obj-140::obj-90::obj-90::obj-10" : [ "voices", "voices", 0 ],
 			"obj-140::obj-90::obj-90::obj-15" : [ "sizeImportance", "size", 0 ],
 			"obj-140::obj-90::obj-90::obj-39" : [ "attack", "attack", 0 ],
 			"obj-140::obj-90::obj-90::obj-51" : [ "gain", "gain", 0 ],
@@ -9354,10 +9373,6 @@
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "mxj.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "pastebang.maxpat",
