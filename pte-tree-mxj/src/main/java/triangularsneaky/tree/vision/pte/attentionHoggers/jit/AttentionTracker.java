@@ -2,16 +2,11 @@ package triangularsneaky.tree.vision.pte.attentionHoggers.jit;
 
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
-import triangularsneaky.tree.vision.pte.attentionHoggers.algo.AttentionTrackingAlgoBase;
 import triangularsneaky.tree.vision.pte.attentionHoggers.algo.BitmapAttentionTrackingAlgo;
 import com.cycling74.max.*;
 import com.cycling74.jitter.*;
 import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
@@ -53,7 +48,7 @@ public class AttentionTracker extends MaxObject{
 
                     outlet(0,
                             new Atom[]{
-                                    Atom.newAtom(s.slot()),                 // $1
+                                    Atom.newAtom(s.slot() % algo.voicesCount()),                 // $1
                                     Atom.newAtom(s.age()),                  // $2
 
                                     Atom.newAtom(s.x()),                    // $3 = l
@@ -100,9 +95,9 @@ public class AttentionTracker extends MaxObject{
     }
 
     @SuppressWarnings("unused")
-    public void attentionSpan(int attentionSpan) {
-        log.info("attentionSpan=" + attentionSpan);
-        algo.setAttentionSpan(attentionSpan);
+    public void voices(int voicesCount) {
+        log.info("voicesCount=" + voicesCount);
+        algo.setVoicesCount(voicesCount);
     }
 
     @SuppressWarnings("unused")

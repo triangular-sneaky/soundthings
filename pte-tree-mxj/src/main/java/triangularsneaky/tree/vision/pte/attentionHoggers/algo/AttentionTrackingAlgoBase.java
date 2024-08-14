@@ -1,7 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.algo;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
@@ -16,7 +15,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
 
     private static final Logger log = LogManager.getLogger(AttentionTrackingAlgoBase.class);
 
-    protected int attentionSpan;
+    protected int voicesCount;
     protected double sizeImportanceCoefficient;
     protected int downsamplingStep;
     DiscreteAmpAndEnvelope stabilityAmpAndEnvelope;
@@ -26,8 +25,8 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
     AtomicInteger timestamp = new AtomicInteger(0);
     private double amplitudePower = 1;
 
-    public AttentionTrackingAlgoBase(int attentionSpan, double sizeImportanceCoefficient, int downsamplingStep, LinearAmpAndADEnvelope stabilityEnvelope) {
-        this.attentionSpan = attentionSpan;
+    public AttentionTrackingAlgoBase(int voicesCount, double sizeImportanceCoefficient, int downsamplingStep, LinearAmpAndADEnvelope stabilityEnvelope) {
+        this.voicesCount = voicesCount;
         this.sizeImportanceCoefficient = sizeImportanceCoefficient;
         this.downsamplingStep = downsamplingStep;
         this.stabilityAmpAndEnvelope = stabilityEnvelope;
@@ -120,6 +119,10 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
         return amplitudePower;
     }
 
+    public int voicesCount() {
+        return voicesCount;
+    }
+
     public class AttentionElement implements triangularsneaky.tree.vision.pte.attentionHoggers.AttentionElement {
 
         private final int id;
@@ -200,12 +203,12 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
         }
     }
 
-    public int getAttentionSpan() {
-        return attentionSpan;
+    public int getVoicesCount() {
+        return voicesCount;
     }
 
-    public void setAttentionSpan(int attentionSpan) {
-        this.attentionSpan = attentionSpan;
+    public void setVoicesCount(int voicesCount) {
+        this.voicesCount = voicesCount;
     }
 
     public double getSizeImportanceCoefficient() {

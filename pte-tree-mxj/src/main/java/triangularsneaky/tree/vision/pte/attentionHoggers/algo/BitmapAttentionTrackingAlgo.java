@@ -32,7 +32,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     }
 
 
-    final Map<Rect, AttentionElement> elements = new HashMap<>(attentionSpan * 2);
+    final Map<Rect, AttentionElement> elements = new HashMap<>(voicesCount * 2);
 //    record DetectedElement(Rect rect, int size) {}
     AttentionElement[][] detectedElementsBitmap = null;
     public SlotsStorage slotsStorage = new SlotsStorage(timestamp);
@@ -57,7 +57,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
         List<AttentionElement> survivors = elements.values().stream()
                 .filter(e -> !e.isDead())
                 .sorted(Comparator.comparingDouble(e -> -e.effectiveValue()))
-                .limit(attentionSpan).toList();
+                .limit(voicesCount).toList();
         elements.clear();
         for (var s: survivors) elements.put(s.rect(), s);
 
