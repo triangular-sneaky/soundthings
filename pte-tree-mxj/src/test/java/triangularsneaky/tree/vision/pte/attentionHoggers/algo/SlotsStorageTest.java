@@ -18,11 +18,13 @@ public class SlotsStorageTest {
 
     SlotsStorage storage;
     AtomicInteger timestamp = new AtomicInteger();
+    int maxSlotsCount = 0;
 
 
     @BeforeEach
     void setup() {
         storage = new SlotsStorage(timestamp);
+        maxSlotsCount = 0;
     }
 
     @Test
@@ -37,9 +39,20 @@ public class SlotsStorageTest {
         step("1,2,3", "1,2,3");
         step("1,2,3,4", "1,2,3,4");
         step("2,3,4", "2,3,4");
-        step("1,2,3,4", "2,3,4,1");
+        step("1,2,3,4", "1,2,3,4"); // 1 gets into a slot vacated by 1
         step("5,6,7,8", "5,6,7,8");
         step("5,7,8,1", "5,1,7,8");
+    }
+
+    @Test
+    void removesFirstThenAdds() {
+        step("1,2,3", "1,2,3");
+        step("1,3", "1,3");
+        step("1,3,4", "1,4,3");
+
+        step("1,3", "1,3");
+        step("1,3,6,7", "1,6,3,7");
+
     }
 
 
@@ -68,10 +81,13 @@ public class SlotsStorageTest {
                         }).toList()).toList();
 
         assertThat(result).hasSize(expectedSlots.length);
+        maxSlotsCount = Math.max(maxSlotsCount, expectedSlots.length);
         for (int i = 0; i < expectedSlots.length; i++) {
             assertThat(result.get(i).x())
-                    .withFailMessage("Item %d".formatted(i))
+                    .as("Item %d".formatted(i))
                     .isEqualTo(expectedSlots[i]);
+            assertThat(result.get(i).slot()).as("slot() for item %d", i).isLessThan(maxSlotsCount);
+
         }
     }
 }
