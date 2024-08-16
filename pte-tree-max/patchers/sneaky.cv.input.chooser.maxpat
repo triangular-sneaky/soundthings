@@ -40,6 +40,30 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-47",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 118.0, 611.953125, 29.0, 22.0 ],
+					"text" : "thru"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"comment" : "",
+					"id" : "obj-44",
+					"index" : 3,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 760.5, 1716.5, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-192",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -83,15 +107,17 @@
 , 			{
 				"box" : 				{
 					"attr" : "tol",
+					"attr_display" : 1,
 					"id" : "obj-190",
 					"maxclass" : "attrui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
+					"orientation" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 774.628340482711792, 1290.914318740367889, 128.0, 22.0 ],
+					"patching_rect" : [ 774.628340482711792, 1290.914318740367889, 64.0, 44.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 339.229188084602356, 362.0, 128.0, 22.0 ]
+					"presentation_rect" : [ 363.627625584602356, 360.25601863861084, 79.0, 44.0 ]
 				}
 
 			}
@@ -127,15 +153,17 @@
 , 			{
 				"box" : 				{
 					"attr" : "tol",
+					"attr_display" : 1,
 					"id" : "obj-187",
 					"maxclass" : "attrui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
+					"orientation" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 906.0, 1290.91226863861084, 128.0, 22.0 ],
+					"patching_rect" : [ 906.0, 1290.91226863861084, 64.0, 44.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 471.229188084602356, 362.0, 128.0, 22.0 ]
+					"presentation_rect" : [ 497.141348287463188, 360.25601863861084, 78.087839797139168, 44.0 ]
 				}
 
 			}
@@ -171,15 +199,17 @@
 , 			{
 				"box" : 				{
 					"attr" : "tol",
+					"attr_display" : 1,
 					"id" : "obj-180",
 					"maxclass" : "attrui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
+					"orientation" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1037.371659517288208, 1290.91226863861084, 128.0, 22.0 ],
+					"patching_rect" : [ 1037.371659517288208, 1290.91226863861084, 64.0, 44.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 599.229188084602356, 362.0, 128.0, 22.0 ]
+					"presentation_rect" : [ 620.979188084602356, 360.25601863861084, 84.5, 44.0 ]
 				}
 
 			}
@@ -192,7 +222,7 @@
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 600.78125, 1620.3125, 80.0, 60.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 623.229188084602356, 386.0, 80.0, 60.0 ],
+					"presentation_rect" : [ 623.229188084602356, 406.25601863861084, 80.0, 60.0 ],
 					"sync" : 1
 				}
 
@@ -206,7 +236,7 @@
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 518.75, 1620.3125, 80.0, 60.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 495.229188084602356, 386.0, 80.0, 60.0 ],
+					"presentation_rect" : [ 495.229188084602356, 406.25601863861084, 80.0, 60.0 ],
 					"sync" : 1
 				}
 
@@ -249,26 +279,12 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-172",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 118.09375, 685.9375, 29.0, 22.0 ],
-					"text" : "thru"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-168",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 139.0, 653.90625, 146.0, 20.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 32.664123773574829, 250.000001788139343, 119.0, 20.0 ],
 					"text" : "Enable chromakey"
 				}
 
@@ -294,8 +310,6 @@
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 1,
 					"patching_rect" : [ 50.71875, 627.34375, 24.0, 24.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 1.664123773574829, 248.000001788139343, 24.0, 24.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_enum" : [ "off", "on" ],
@@ -333,7 +347,7 @@
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 436.71875, 1620.3125, 80.0, 60.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 351.229188084602356, 386.0, 80.0, 60.0 ],
+					"presentation_rect" : [ 363.127625584602356, 406.25601863861084, 80.0, 60.0 ],
 					"sync" : 1
 				}
 
@@ -347,7 +361,7 @@
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 236.842103004455566, 1620.175423145294189, 198.245612144470215, 149.999998569488525 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 346.774196028709412, 457.258067786693573, 198.245612144470215, 149.999998569488525 ],
+					"presentation_rect" : [ 347.0, 479.0, 198.245612144470215, 149.999998569488525 ],
 					"sync" : 1
 				}
 
@@ -418,7 +432,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "jit_matrix" ],
 					"patching_rect" : [ 107.894735813140869, 1371.929811477661133, 85.0, 22.0 ],
 					"text" : "thru input feed"
 				}
@@ -534,18 +548,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-119",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1295.0, 1005.0, 53.0, 22.0 ],
-					"text" : "prepend"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-115",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -558,18 +560,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-114",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1265.0, 1085.0, 61.0, 22.0 ],
-					"text" : "routepass"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-110",
 					"linecount" : 7,
 					"maxclass" : "message",
@@ -577,7 +567,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1400.0, 1340.0, 50.0, 102.0 ],
-					"presentation_linecount" : 7,
 					"text" : "0 0.741176 0.709804 0.756863 1."
 				}
 
@@ -591,33 +580,33 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1344.0, 1364.0, 50.0, 89.0 ],
-					"text" : "0.211765 0.270588 0.247059 1."
+					"text" : "0.180392 0.262745 0.215686 1."
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-107",
-					"linecount" : 4,
+					"linecount" : 6,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1275.0, 1364.0, 50.0, 62.0 ],
-					"text" : "0.309804 0.4 0.321569 1."
+					"patching_rect" : [ 1275.0, 1364.0, 50.0, 89.0 ],
+					"text" : "0.298039 0.364706 0.317647 1."
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-104",
-					"linecount" : 5,
+					"linecount" : 6,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1184.0, 1364.0, 50.0, 76.0 ],
-					"text" : "0.4 0.556863 0.309804 1."
+					"patching_rect" : [ 1184.0, 1364.0, 50.0, 89.0 ],
+					"text" : "0.376471 0.501961 0.341176 1."
 				}
 
 			}
@@ -682,7 +671,7 @@
 					"patching_rect" : [ 1037.145097017288208, 1232.824513000000024, 128.0, 32.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 599.229188084602356, 302.0, 128.0, 32.0 ],
-					"saturation" : 0.12156862745098
+					"saturation" : 0.184313725490196
 				}
 
 			}
@@ -697,7 +686,7 @@
 					"patching_rect" : [ 906.0, 1232.824513000000024, 128.0, 32.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 471.229188084602356, 302.0, 128.0, 32.0 ],
-					"saturation" : 0.125490196078431
+					"saturation" : 0.098039215686275
 				}
 
 			}
@@ -845,7 +834,7 @@
 					"patching_rect" : [ 776.0, 1232.824513000000024, 128.0, 32.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 339.229188084602356, 302.0, 128.0, 32.0 ],
-					"saturation" : 0.282352941176471
+					"saturation" : 0.188235294117647
 				}
 
 			}
@@ -896,7 +885,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 606.557308435440063, 907.269999999999982, 50.0, 62.0 ],
-					"text" : "jit_matrix u699005126"
+					"text" : "jit_matrix u022005226"
 				}
 
 			}
@@ -936,7 +925,11 @@
 					"presentation_rect" : [ 281.0, 177.599248886108398, 55.0, 19.0 ],
 					"preset_data" : [ 						{
 							"number" : 1,
-							"data" : [ 5, "obj-8", "toggle", "int", 1, 5, "obj-14", "toggle", "int", 1, 5, "obj-25", "toggle", "int", 0, 5, "obj-38", "number", "int", 50, 5, "obj-32", "toggle", "int", 0, 5, "obj-36", "number", "int", 320, 5, "obj-37", "number", "int", 240, 5, "obj-46", "jit.playlist", "preset_count", 4, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "absolutepath", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filename", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "id", "u246005615", 7, "obj-46", "jit.playlist", "preset_content", 1, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "absolutepath", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filename", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "id", "u972000900", 7, "obj-46", "jit.playlist", "preset_content", 2, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "absolutepath", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filename", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "id", "u414001211", 7, "obj-46", "jit.playlist", "preset_content", 3, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "absolutepath", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filename", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "id", "u997011856", 7, "obj-46", "jit.playlist", "preset_content", 4, "loop", 1, 4, "obj-46", "jit.playlist", "preset_execute", 5, "obj-54", "toggle", "int", 0, 5, "<invalid>", "number", "int", 160, 5, "<invalid>", "toggle", "int", 0, 5, "<invalid>", "number", "int", 160, 5, "<invalid>", "number", "int", 120, 5, "<invalid>", "number", "int", 1280, 5, "<invalid>", "number", "int", 720, 5, "<invalid>", "attrui", "attr", "cantchange", 5, "<invalid>", "attrui", "int", 1 ]
+							"data" : [ 5, "obj-4", "attrui", "attr", "size", 6, "obj-4", "attrui", "list", 641, 466, 5, "obj-8", "toggle", "int", 1, 5, "obj-14", "toggle", "int", 1, 5, "obj-25", "toggle", "int", 0, 5, "obj-38", "number", "int", 50, 5, "obj-32", "toggle", "int", 0, 5, "obj-36", "number", "int", 320, 5, "obj-37", "number", "int", 240, 5, "obj-46", "jit.playlist", "preset_count", 4, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "absolutepath", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filename", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "id", "u246005615", 7, "obj-46", "jit.playlist", "preset_content", 1, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "absolutepath", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filename", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "id", "u972000900", 7, "obj-46", "jit.playlist", "preset_content", 2, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "absolutepath", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filename", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "id", "u414001211", 7, "obj-46", "jit.playlist", "preset_content", 3, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "absolutepath", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filename", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "id", "u997011856", 7, "obj-46", "jit.playlist", "preset_content", 4, "loop", 1, 4, "obj-46", "jit.playlist", "preset_execute", 5, "obj-54", "toggle", "int", 0, 11, "obj-117", "swatch", "list", 0.358823529411765, 0.641176470588235, 0.641176470588235, 1.0, 0.5, 0.282352941176471, 0.5, 11, "obj-74", "swatch", "list", 0.437254901960785, 0.562745098039215, 0.562745098039215, 1.0, 0.5, 0.125490196078431, 0.5, 11, "obj-77", "swatch", "list", 0.43921568627451, 0.56078431372549, 0.56078431372549, 1.0, 0.5, 0.12156862745098, 0.5, 5, "obj-81", "tab", "int", -1, 5, "obj-170", "toggle", "int", 1, 5, "obj-180", "attrui", "attr", "tol", 5, "obj-180", "attrui", "float", 0.2, 5, "obj-179", "slider", "float", 0.0, 5, "obj-187", "attrui", "attr", "tol", 5, "obj-187", "attrui", "float", 0.2, 5, "obj-186", "slider", "float", 0.0, 5, "obj-190", "attrui", "attr", "tol", 5, "obj-190", "attrui", "float", 0.230514599942061, 5, "obj-189", "slider", "float", 0.230514600872993 ]
+						}
+, 						{
+							"number" : 2,
+							"data" : [ 5, "obj-8", "toggle", "int", 1, 5, "obj-14", "toggle", "int", 1, 5, "obj-25", "toggle", "int", 0, 5, "obj-38", "number", "int", 50, 5, "obj-32", "toggle", "int", 0, 5, "obj-36", "number", "int", 640, 5, "obj-37", "number", "int", 480, 5, "obj-46", "jit.playlist", "preset_count", 4, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "absolutepath", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filename", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "id", "u246005615", 7, "obj-46", "jit.playlist", "preset_content", 1, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "absolutepath", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filename", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "id", "u972000900", 7, "obj-46", "jit.playlist", "preset_content", 2, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "absolutepath", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filename", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "id", "u414001211", 7, "obj-46", "jit.playlist", "preset_content", 3, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "absolutepath", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filename", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "id", "u997011856", 7, "obj-46", "jit.playlist", "preset_content", 4, "loop", 1, 4, "obj-46", "jit.playlist", "preset_execute", 5, "obj-54", "toggle", "int", 0, 11, "obj-117", "swatch", "list", 0.376470588235294, 0.501960784313725, 0.341176470588235, 1.0, 0.294117647058824, 0.188235294117647, 0.423529411764706, 11, "obj-74", "swatch", "list", 0.437254901960785, 0.562745098039215, 0.562745098039215, 1.0, 0.5, 0.125490196078431, 0.5, 11, "obj-77", "swatch", "list", 0.43921568627451, 0.56078431372549, 0.56078431372549, 1.0, 0.5, 0.12156862745098, 0.5, 5, "obj-81", "tab", "int", 0, 5, "obj-170", "toggle", "int", 1, 5, "obj-180", "attrui", "attr", "tol", 5, "obj-180", "attrui", "float", 0.0, 5, "obj-179", "slider", "float", 0.0, 5, "obj-187", "attrui", "attr", "tol", 5, "obj-187", "attrui", "float", 0.0, 5, "obj-186", "slider", "float", 0.0, 5, "obj-190", "attrui", "attr", "tol", 5, "obj-190", "attrui", "float", 0.127733116764299, 5, "obj-189", "slider", "float", 0.127733111381531 ]
 						}
  ]
 				}
@@ -960,7 +953,7 @@
 					"outlettype" : [ "jit_matrix" ],
 					"patching_rect" : [ 1062.0, -4.0, 283.0, 236.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 502.0, -9.0, 184.0, 231.099248886108398 ],
+					"presentation_rect" : [ 502.0, -9.0, 172.0, 231.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1875,19 +1868,6 @@
 			}
 , 			{
 				"box" : 				{
-					"attr" : "size",
-					"id" : "obj-79",
-					"maxclass" : "attrui",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 830.769239187240601, 896.50350558757782, 193.006994962692261, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-123",
 					"maxclass" : "button",
 					"numinlets" : 1,
@@ -1907,9 +1887,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 830.769239187240601, 934.536030113697052, 320.103074848651886, 232.989677667617798 ],
+					"patching_rect" : [ 830.769239187240601, 934.536030113697052, 323.869871377944946, 232.989677667617798 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 7.229188084602356, 278.0, 320.103074848651886, 232.989677667617798 ],
+					"presentation_rect" : [ 7.229188084602356, 278.0, 323.869871377944946, 232.989677667617798 ],
 					"shared" : 0,
 					"sync" : 0
 				}
@@ -2192,7 +2172,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-154", 0 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-152", 0 ]
 				}
 
@@ -2200,7 +2180,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-174", 0 ],
-					"order" : 1,
+					"order" : 2,
+					"source" : [ "obj-152", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-44", 0 ],
+					"order" : 0,
 					"source" : [ "obj-152", 0 ]
 				}
 
@@ -2242,23 +2230,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-172", 0 ],
-					"source" : [ "obj-171", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-7", 1 ],
 					"source" : [ "obj-171", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-148", 0 ],
-					"midpoints" : [ 127.59375, 738.0, 21.0, 738.0, 21.0, 1356.0, 117.394735813140869, 1356.0 ],
-					"source" : [ "obj-172", 0 ]
 				}
 
 			}
@@ -2522,16 +2495,16 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-171", 1 ],
-					"order" : 1,
+					"destination" : [ "obj-22", 0 ],
+					"order" : 0,
 					"source" : [ "obj-4", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-22", 0 ],
-					"order" : 0,
+					"destination" : [ "obj-47", 0 ],
+					"order" : 1,
 					"source" : [ "obj-4", 0 ]
 				}
 
@@ -2573,9 +2546,18 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-148", 0 ],
+					"midpoints" : [ 127.5, 738.0, 21.0, 738.0, 21.0, 1356.0, 117.394735813140869, 1356.0 ],
+					"order" : 1,
+					"source" : [ "obj-47", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-171", 1 ],
-					"order" : 3,
-					"source" : [ "obj-5", 0 ]
+					"order" : 0,
+					"source" : [ "obj-47", 0 ]
 				}
 
 			}
@@ -2591,6 +2573,14 @@
 				"patchline" : 				{
 					"destination" : [ "obj-45", 0 ],
 					"order" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-47", 0 ],
+					"order" : 3,
 					"source" : [ "obj-5", 0 ]
 				}
 
@@ -2790,13 +2780,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-80", 0 ],
 					"source" : [ "obj-78", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-56", 0 ],
-					"source" : [ "obj-79", 0 ]
 				}
 
 			}
