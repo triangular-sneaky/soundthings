@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
@@ -40,8 +41,9 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
                 downsamplingFactor <= maxDownsamplingFactor;
                 prevDownsamplingFactor = downsamplingFactor, downsamplingFactor *= downsamplingStep) {
 
-            int ds = downsamplingFactor;
-            log.fine(() -> "DOWNSAMPLING: %s".formatted(ds));
+            if (log.isLoggable(Level.FINE))
+                log.fine("[%s] DOWNSAMPLING: %d (prev=%d max=%d step=%d)"
+                        .formatted(Thread.currentThread().getName(), downsamplingFactor, prevDownsamplingFactor, maxDownsamplingFactor, downsamplingStep));
             for (int i = 0; i < matrix.dims()[0]; i += prevDownsamplingFactor) {
                 for (int j = 0; j < matrix.dims()[1]; j += prevDownsamplingFactor) {
                     //                if (downsamplingFactor == 1) {
@@ -78,7 +80,7 @@ public abstract class AttentionTrackingAlgoBase implements Consumer<Matrix> {
                     ////                                Math.pow(sum[plane], 1/amplitudePower);
 ////                        NumGuard.guardThrow(sum[plane]);
 //                    }
-                    log.finer(() -> "[%d,%d]->(%d,%d)".formatted(_i, _j, _sum[0], _sum[1]));
+                    log.finer(() -> "[%d,%d]->(%f,%f)".formatted(_i, _j, _sum[0], _sum[1]));
                     matrix.set(i, j, sum);
                     taste(i, j, downsamplingFactor, downsamplingFactor,
                             Objects.requireNonNull(sum),

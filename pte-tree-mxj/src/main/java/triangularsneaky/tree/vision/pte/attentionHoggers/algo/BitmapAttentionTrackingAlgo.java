@@ -49,6 +49,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
         });
 
         clearDetectedElementsBitmap(matrix.dims());
+        for (var e: elements.values()) e.setAmplitude(0.0); // do not carry over amplitude!
 
         log.finer(() -> "processingMatrix=\n" + stringifyMatrix(processingMatrix));
 
@@ -142,7 +143,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
                      for (AttentionElement e : row) {
                          if (e != null && !e.isDead()) {
 
-                             sb.append("[%3d = %7.2f]".formatted(e.getId(), e.amplitude()));
+                             sb.append("[%4d = %5.2f]".formatted(e.getId(), e.amplitude()));
                          } else sb.append("              ");
                      }
                      sb.append('|');
@@ -158,7 +159,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
             for (int j = 0; j < m.dims()[1]; j++) {
                 sb.append("[");
                 for (var c : m.get(i,j)) {
-                    sb.append("%6d".formatted(c));
+                    sb.append("%6.2f".formatted(c));
                 }
                 sb.append("]");
             }

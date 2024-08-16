@@ -9,6 +9,8 @@ import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -39,6 +41,8 @@ public class AttentionTracker extends MaxObject{
     public AttentionTracker() {
 
         algo.ticks().subscribe(slots -> {
+            log.fine("[%s] slots tick".formatted(Thread.currentThread().getName()));
+
             frameOutBm.lap(() -> {
 //            log.info("TICK: " + String.join(",", Arrays.stream(slots).map(s -> s.toString()).toList()));
                 slots.forEach(s -> {
@@ -92,10 +96,23 @@ public class AttentionTracker extends MaxObject{
     @SuppressWarnings("unused")
     public void jit_matrix(String s)
     {
-        var jm = matrixCache.computeIfAbsent(s, name -> new JitMatrix(new JitterMatrix(s)));
+        var shouldLowerLoggingLevelInTheEnd = verboseLoggingCounter.decrementAndGet() == 0;
 
-        processAttentionMatrix(jm);
+        try {
+            log.fine("[%s] Frame start".formatted(Thread.currentThread().getName()));
+            var jm = matrixCache.computeIfAbsent(s, name -> new JitMatrix(new JitterMatrix(s)));
 
+            processAttentionMatrix(jm);
+        } catch (Throwable e) {
+//            log.severe("Exception in jit_matrix: %s at %s".formatted(e.toString()));
+            log.log(Level.SEVERE, e, () -> "Exception in jit_matrix");
+        } finally {
+            log.fine("[%s] Frame finish".formatted(Thread.currentThread().getName()));
+
+            if (shouldLowerLoggingLevelInTheEnd) {
+                setLoggingLevel(Level.INFO);
+            }
+        }
 
     }
 
@@ -135,8 +152,28 @@ public class AttentionTracker extends MaxObject{
         algo.setValueLpf(v -> v > cutoff);
     }
 
+    AtomicInteger verboseLoggingCounter = new AtomicInteger(-1);
 
+    @SuppressWarnings("unused")
+    public void verboseFrames(int framesCount) {
+        log.info("verboseFrames: Enabling verbose logging for %d frames".formatted( framesCount));
+        verboseLoggingCounter.set(framesCount);
+        setLoggingLevel(Level.FINEST);
+    }
 
+    public void setVerboseLogging(boolean verbose) {
+        var level = verbose ? Level.FINEST : Level.INFO;
+        log.info("setVerboseLogging: verbose logging %s".formatted( verbose ? "ON" : "OFF"));
+        setLoggingLevel(level);
+    }
+
+    public void setLoggingLevel(Level level) {
+        log.info("Setting level to %s".formatted( level));
+        log.getParent().setLevel(level);
+//        Arrays.stream(log.getParent().getHandlers()).filter(h -> h.getClass().getName().contains("FileHandler")).forEach(h -> {
+//            h.setLevel(level);
+//        });
+    }
 
 
     private void processAttentionMatrix(Matrix jm) {

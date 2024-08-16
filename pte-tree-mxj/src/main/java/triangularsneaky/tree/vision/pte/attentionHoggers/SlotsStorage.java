@@ -5,6 +5,7 @@ import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
@@ -32,25 +33,37 @@ public class SlotsStorage {
 
     public Stream<Hoggers.AttentionSlot> mapElementsToSlots(List<? extends AttentionElement> survivors) {
         // update existing and create new slots
+        log.fine("mapElementsToSlots: update existing and create new slots");
         for (var e : survivors) {
             var slot = idToSlots.computeIfAbsent(e.getId(), id -> {
                 Hoggers.AttentionSlot s = new Hoggers.AttentionSlot(e.getId(), e.rect().x(), e.rect().y(), e.rect().w(), e.rect().h(), e.rect().area(), e.bornTimestamp());
+                log.finer(() -> "mapElementsToSlots: creating new slot for id %d -> %s".formatted(id, s));
                 unpinnedSlots.add(s);
                 return s;
             });
+            log.finer(() -> "mapElementsToSlots: touching slot %s".formatted(slot));
             slot.update(timestamp.get(), e.amplitude(), e.angle());
         }
 
         // kill dead slots and replace them with new slots
+        log.fine("mapElementsToSlots: kill dead slots and replace them with new slots");
         for (int i = 0; i < slots.size(); i++) {
             Hoggers.AttentionSlot s = slots.get(i);
             if (s != null && s.getLastTimestamp() != timestamp.get()) {
+                if (log.isLoggable(Level.FINER))
+                    log.finer("mapElementsToSlots: stale slot found slots[%d] %s".formatted(i, s));
+
                 idToSlots.remove(s.getId());
                 s = null;
             }
             if (s == null) {
+                if (log.isLoggable(Level.FINER))
+                    log.finer("mapElementsToSlots: slots[%d] is empty".formatted(i));
+
                 if (!unpinnedSlots.isEmpty()) {
                     Hoggers.AttentionSlot e = unpinnedSlots.removeFirst();
+                    if (log.isLoggable(Level.FINER))
+                        log.finer("mapElementsToSlots: pinning %s to slots[%d]".formatted( e, i));
                     e.pin(i);
                     slots.set(i, e);
                 } else {
@@ -61,6 +74,7 @@ public class SlotsStorage {
 
 
         // push remaining new slots to the end
+        log.fine("mapElementsToSlots: push remaining new slots to the end");
         if (!unpinnedSlots.isEmpty()) {
             log.warning("Adding extra slots: %d (%s). Did voicesCount change? \nidToSlots: %s, \nexisting slots: %s"
                     .formatted(
