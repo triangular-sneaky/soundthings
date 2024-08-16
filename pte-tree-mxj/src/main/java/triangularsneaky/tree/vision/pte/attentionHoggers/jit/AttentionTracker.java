@@ -45,10 +45,13 @@ public class AttentionTracker extends MaxObject{
 
 //                    outlet(0, new double[]{s.x(), s.y(), s.x() + s.w(), s.y() + s.h(), s.age(), s.amplitude(), s.angle()});
 
+                    if (s.slot() >= algo.voicesCount()) {
+                        log.severe("Slot outside of voices count! This is an error: %s".formatted(s));
+                    }
 
                     outlet(0,
                             new Atom[]{
-                                    Atom.newAtom(s.slot() % algo.voicesCount()),                 // $1
+                                    Atom.newAtom(s.slot()),                 // $1
                                     Atom.newAtom(s.age()),                  // $2
 
                                     Atom.newAtom(s.x()),                    // $3 = l

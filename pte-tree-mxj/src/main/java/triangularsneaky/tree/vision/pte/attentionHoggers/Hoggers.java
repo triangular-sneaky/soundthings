@@ -46,7 +46,7 @@ public class Hoggers {
 
         @Override
         public String toString() {
-            return "(%d)[%d,%d->%d =%3.3f @ %1.2f]".formatted(slot, x, y, w, amplitude, angle);
+            return "(%d)%d[%d,%d->%d] ..%d =%3.3f @ %1.2f".formatted(slot, id, age(), x, y, w, amplitude, angle);
         }
 
         public int slot() {
