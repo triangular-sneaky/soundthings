@@ -1,5 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.jit;
 
+import io.reactivex.rxjava3.disposables.Disposable;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
 import triangularsneaky.tree.vision.pte.attentionHoggers.algo.BitmapAttentionTrackingAlgo;
@@ -30,17 +31,32 @@ public class AttentionTracker extends MaxObject{
     Benchmark frameInBm = new Benchmark("Frame-in", 200, MaxObject::post);
     Benchmark frameOutBm = new Benchmark("Frame-out", 200, MaxObject::post);
 
-    BitmapAttentionTrackingAlgo algo = new BitmapAttentionTrackingAlgo(
-            6,
-            0.5,
-            2,
-            0.0,
-            v -> v > 0,
-            new LinearAmpAndADEnvelope(10.0, 1.0, 1, 30*4));
+    BitmapAttentionTrackingAlgo algo;
+    Disposable subscription = null;
 
     public AttentionTracker() {
 
-        algo.ticks().subscribe(slots -> {
+        createAlgo();
+
+        declareIO(1, 1);
+//        createInfoOutlet(false);
+        setInletAssist(new String[] {"Attention matrix and control messages", "Aux"});
+        setOutletAssist(new String[] {"Attention slots", "Aux"});
+        log.info("Started up");
+        outletBang(getInfoIdx());
+
+    }
+
+    private void createAlgo() {
+        algo = new BitmapAttentionTrackingAlgo(
+                6,
+                0.5,
+                2,
+                0.0,
+                v -> v > 0,
+                new LinearAmpAndADEnvelope(10.0, 1.0, 1, 30*4));
+        if (subscription != null) subscription.dispose();
+        subscription = algo.ticks().subscribe(slots -> {
             log.fine("[%s] slots tick".formatted(Thread.currentThread().getName()));
 
             frameOutBm.lap(() -> {
@@ -69,20 +85,11 @@ public class AttentionTracker extends MaxObject{
                                     Atom.newAtom(s.angle()),                // $9
 
                                     Atom.newAtom(s.getId())                 // $10
-                    });
+                            });
                 });
             });
         });
-        declareIO(1, 1);
-//        createInfoOutlet(false);
-        setInletAssist(new String[] {"Attention matrix and control messages", "Aux"});
-        setOutletAssist(new String[] {"Attention slots", "Aux"});
-        log.info("Started up");
-        outletBang(getInfoIdx());
-
     }
-
-
 
 
     @Override
@@ -161,6 +168,7 @@ public class AttentionTracker extends MaxObject{
         setLoggingLevel(Level.FINEST);
     }
 
+    @SuppressWarnings("unused")
     public void setVerboseLogging(boolean verbose) {
         var level = verbose ? Level.FINEST : Level.INFO;
         log.info("setVerboseLogging: verbose logging %s".formatted( verbose ? "ON" : "OFF"));
@@ -170,11 +178,20 @@ public class AttentionTracker extends MaxObject{
     public void setLoggingLevel(Level level) {
         log.info("Setting level to %s".formatted( level));
         log.getParent().setLevel(level);
-//        Arrays.stream(log.getParent().getHandlers()).filter(h -> h.getClass().getName().contains("FileHandler")).forEach(h -> {
-//            h.setLevel(level);
-//        });
     }
 
+    @SuppressWarnings("unused")
+    public void clear() {
+        log.info("Clearing stuck slots");
+        algo.clearSlots();
+    }
+
+    @SuppressWarnings("unused")
+    public void reset() {
+        log.info("Resetting the algo");
+        createAlgo();
+
+    }
 
     private void processAttentionMatrix(Matrix jm) {
         frameInBm.lap(()-> {

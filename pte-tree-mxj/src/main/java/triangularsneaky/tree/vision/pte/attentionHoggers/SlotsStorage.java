@@ -94,4 +94,9 @@ public class SlotsStorage {
 
         return slots.stream().filter(Objects::nonNull);
     }
+
+    public void clear() {
+        slots.clear();
+        idToSlots.clear();
+    }
 }

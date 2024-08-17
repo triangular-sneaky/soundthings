@@ -169,4 +169,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     }
 
 
+    public void clearSlots() {
+        slotsStorage.clear();
+    }
 }
