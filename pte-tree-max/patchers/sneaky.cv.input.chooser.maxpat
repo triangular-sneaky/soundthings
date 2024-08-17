@@ -267,18 +267,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-173",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 118.09375, 751.171875, 29.0, 22.0 ],
-					"text" : "thru"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-168",
 					"maxclass" : "comment",
@@ -286,55 +274,6 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 139.0, 653.90625, 146.0, 20.0 ],
 					"text" : "Enable chromakey"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-169",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"patching_rect" : [ 50.71875, 653.90625, 29.5, 22.0 ],
-					"text" : "+ 1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-170",
-					"maxclass" : "toggle",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"parameter_enable" : 1,
-					"patching_rect" : [ 50.71875, 627.34375, 24.0, 24.0 ],
-					"saved_attribute_attributes" : 					{
-						"valueof" : 						{
-							"parameter_enum" : [ "off", "on" ],
-							"parameter_longname" : "toggle[4]",
-							"parameter_mmax" : 1,
-							"parameter_modmode" : 0,
-							"parameter_shortname" : "toggle[2]",
-							"parameter_type" : 2
-						}
-
-					}
-,
-					"varname" : "toggle[4]"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-171",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 85.09375, 653.90625, 52.0, 22.0 ],
-					"text" : "gate 2 1"
 				}
 
 			}
@@ -671,7 +610,7 @@
 					"patching_rect" : [ 1037.145097017288208, 1232.824513000000024, 128.0, 32.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 599.229188084602356, 302.0, 128.0, 32.0 ],
-					"saturation" : 0.184313725490196
+					"saturation" : 0.12156862745098
 				}
 
 			}
@@ -686,7 +625,7 @@
 					"patching_rect" : [ 906.0, 1232.824513000000024, 128.0, 32.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 471.229188084602356, 302.0, 128.0, 32.0 ],
-					"saturation" : 0.098039215686275
+					"saturation" : 0.125490196078431
 				}
 
 			}
@@ -885,7 +824,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 606.557308435440063, 907.269999999999982, 50.0, 62.0 ],
-					"text" : "jit_matrix u022005226"
+					"text" : "jit_matrix u888005120"
 				}
 
 			}
@@ -925,11 +864,11 @@
 					"presentation_rect" : [ 281.0, 177.599248886108398, 55.0, 19.0 ],
 					"preset_data" : [ 						{
 							"number" : 1,
-							"data" : [ 5, "obj-4", "attrui", "attr", "size", 6, "obj-4", "attrui", "list", 641, 466, 5, "obj-8", "toggle", "int", 1, 5, "obj-14", "toggle", "int", 1, 5, "obj-25", "toggle", "int", 0, 5, "obj-38", "number", "int", 50, 5, "obj-32", "toggle", "int", 0, 5, "obj-36", "number", "int", 320, 5, "obj-37", "number", "int", 240, 5, "obj-46", "jit.playlist", "preset_count", 4, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "absolutepath", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filename", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "id", "u246005615", 7, "obj-46", "jit.playlist", "preset_content", 1, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "absolutepath", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filename", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "id", "u972000900", 7, "obj-46", "jit.playlist", "preset_content", 2, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "absolutepath", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filename", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "id", "u414001211", 7, "obj-46", "jit.playlist", "preset_content", 3, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "absolutepath", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filename", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "id", "u997011856", 7, "obj-46", "jit.playlist", "preset_content", 4, "loop", 1, 4, "obj-46", "jit.playlist", "preset_execute", 5, "obj-54", "toggle", "int", 0, 11, "obj-117", "swatch", "list", 0.358823529411765, 0.641176470588235, 0.641176470588235, 1.0, 0.5, 0.282352941176471, 0.5, 11, "obj-74", "swatch", "list", 0.437254901960785, 0.562745098039215, 0.562745098039215, 1.0, 0.5, 0.125490196078431, 0.5, 11, "obj-77", "swatch", "list", 0.43921568627451, 0.56078431372549, 0.56078431372549, 1.0, 0.5, 0.12156862745098, 0.5, 5, "obj-81", "tab", "int", -1, 5, "obj-170", "toggle", "int", 1, 5, "obj-180", "attrui", "attr", "tol", 5, "obj-180", "attrui", "float", 0.2, 5, "obj-179", "slider", "float", 0.0, 5, "obj-187", "attrui", "attr", "tol", 5, "obj-187", "attrui", "float", 0.2, 5, "obj-186", "slider", "float", 0.0, 5, "obj-190", "attrui", "attr", "tol", 5, "obj-190", "attrui", "float", 0.230514599942061, 5, "obj-189", "slider", "float", 0.230514600872993 ]
+							"data" : [ 5, "obj-4", "attrui", "attr", "size", 6, "obj-4", "attrui", "list", 641, 466, 5, "obj-8", "toggle", "int", 1, 5, "obj-14", "toggle", "int", 1, 5, "obj-25", "toggle", "int", 0, 5, "obj-38", "number", "int", 50, 5, "obj-32", "toggle", "int", 0, 5, "obj-36", "number", "int", 320, 5, "obj-37", "number", "int", 240, 5, "obj-46", "jit.playlist", "preset_count", 4, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "absolutepath", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filename", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "id", "u246005615", 7, "obj-46", "jit.playlist", "preset_content", 1, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "absolutepath", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filename", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "id", "u972000900", 7, "obj-46", "jit.playlist", "preset_content", 2, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "absolutepath", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filename", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "id", "u414001211", 7, "obj-46", "jit.playlist", "preset_content", 3, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "absolutepath", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filename", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "id", "u997011856", 7, "obj-46", "jit.playlist", "preset_content", 4, "loop", 1, 4, "obj-46", "jit.playlist", "preset_execute", 5, "obj-54", "toggle", "int", 0, 11, "obj-117", "swatch", "list", 0.358823529411765, 0.641176470588235, 0.641176470588235, 1.0, 0.5, 0.282352941176471, 0.5, 11, "obj-74", "swatch", "list", 0.437254901960785, 0.562745098039215, 0.562745098039215, 1.0, 0.5, 0.125490196078431, 0.5, 11, "obj-77", "swatch", "list", 0.43921568627451, 0.56078431372549, 0.56078431372549, 1.0, 0.5, 0.12156862745098, 0.5, 5, "obj-81", "tab", "int", -1, 5, "<invalid>", "toggle", "int", 1, 5, "obj-180", "attrui", "attr", "tol", 5, "obj-180", "attrui", "float", 0.2, 5, "obj-179", "slider", "float", 0.0, 5, "obj-187", "attrui", "attr", "tol", 5, "obj-187", "attrui", "float", 0.2, 5, "obj-186", "slider", "float", 0.0, 5, "obj-190", "attrui", "attr", "tol", 5, "obj-190", "attrui", "float", 0.230514599942061, 5, "obj-189", "slider", "float", 0.230514600872993 ]
 						}
 , 						{
 							"number" : 2,
-							"data" : [ 5, "obj-8", "toggle", "int", 1, 5, "obj-14", "toggle", "int", 1, 5, "obj-25", "toggle", "int", 0, 5, "obj-38", "number", "int", 50, 5, "obj-32", "toggle", "int", 0, 5, "obj-36", "number", "int", 640, 5, "obj-37", "number", "int", 480, 5, "obj-46", "jit.playlist", "preset_count", 4, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "absolutepath", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filename", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "id", "u246005615", 7, "obj-46", "jit.playlist", "preset_content", 1, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "absolutepath", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filename", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "id", "u972000900", 7, "obj-46", "jit.playlist", "preset_content", 2, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "absolutepath", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filename", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "id", "u414001211", 7, "obj-46", "jit.playlist", "preset_content", 3, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "absolutepath", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filename", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "id", "u997011856", 7, "obj-46", "jit.playlist", "preset_content", 4, "loop", 1, 4, "obj-46", "jit.playlist", "preset_execute", 5, "obj-54", "toggle", "int", 0, 11, "obj-117", "swatch", "list", 0.376470588235294, 0.501960784313725, 0.341176470588235, 1.0, 0.294117647058824, 0.188235294117647, 0.423529411764706, 11, "obj-74", "swatch", "list", 0.437254901960785, 0.562745098039215, 0.562745098039215, 1.0, 0.5, 0.125490196078431, 0.5, 11, "obj-77", "swatch", "list", 0.43921568627451, 0.56078431372549, 0.56078431372549, 1.0, 0.5, 0.12156862745098, 0.5, 5, "obj-81", "tab", "int", 0, 5, "obj-170", "toggle", "int", 1, 5, "obj-180", "attrui", "attr", "tol", 5, "obj-180", "attrui", "float", 0.0, 5, "obj-179", "slider", "float", 0.0, 5, "obj-187", "attrui", "attr", "tol", 5, "obj-187", "attrui", "float", 0.0, 5, "obj-186", "slider", "float", 0.0, 5, "obj-190", "attrui", "attr", "tol", 5, "obj-190", "attrui", "float", 0.127733116764299, 5, "obj-189", "slider", "float", 0.127733111381531 ]
+							"data" : [ 5, "obj-8", "toggle", "int", 1, 5, "obj-14", "toggle", "int", 1, 5, "obj-25", "toggle", "int", 0, 5, "obj-38", "number", "int", 50, 5, "obj-32", "toggle", "int", 0, 5, "obj-36", "number", "int", 640, 5, "obj-37", "number", "int", 480, 5, "obj-46", "jit.playlist", "preset_count", 4, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "absolutepath", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filename", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "id", "u246005615", 7, "obj-46", "jit.playlist", "preset_content", 1, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "absolutepath", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filename", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "id", "u972000900", 7, "obj-46", "jit.playlist", "preset_content", 2, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "absolutepath", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filename", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "id", "u414001211", 7, "obj-46", "jit.playlist", "preset_content", 3, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "absolutepath", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filename", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "id", "u997011856", 7, "obj-46", "jit.playlist", "preset_content", 4, "loop", 1, 4, "obj-46", "jit.playlist", "preset_execute", 5, "obj-54", "toggle", "int", 0, 11, "obj-117", "swatch", "list", 0.376470588235294, 0.501960784313725, 0.341176470588235, 1.0, 0.294117647058824, 0.188235294117647, 0.423529411764706, 11, "obj-74", "swatch", "list", 0.437254901960785, 0.562745098039215, 0.562745098039215, 1.0, 0.5, 0.125490196078431, 0.5, 11, "obj-77", "swatch", "list", 0.43921568627451, 0.56078431372549, 0.56078431372549, 1.0, 0.5, 0.12156862745098, 0.5, 5, "obj-81", "tab", "int", 0, 5, "<invalid>", "toggle", "int", 1, 5, "obj-180", "attrui", "attr", "tol", 5, "obj-180", "attrui", "float", 0.0, 5, "obj-179", "slider", "float", 0.0, 5, "obj-187", "attrui", "attr", "tol", 5, "obj-187", "attrui", "float", 0.0, 5, "obj-186", "slider", "float", 0.0, 5, "obj-190", "attrui", "attr", "tol", 5, "obj-190", "attrui", "float", 0.127733116764299, 5, "obj-189", "slider", "float", 0.127733111381531 ]
 						}
  ]
 				}
@@ -2209,13 +2148,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-171", 0 ],
-					"source" : [ "obj-169", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-20", 0 ],
 					"source" : [ "obj-17", 0 ]
 				}
@@ -2223,36 +2155,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-169", 0 ],
-					"source" : [ "obj-170", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 1 ],
-					"source" : [ "obj-171", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 1 ],
-					"source" : [ "obj-173", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-175", 0 ],
 					"source" : [ "obj-174", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-173", 0 ],
-					"source" : [ "obj-175", 0 ]
 				}
 
 			}
@@ -2548,15 +2452,15 @@
 				"patchline" : 				{
 					"destination" : [ "obj-148", 0 ],
 					"midpoints" : [ 127.5, 738.0, 21.0, 738.0, 21.0, 1356.0, 117.394735813140869, 1356.0 ],
-					"order" : 1,
+					"order" : 0,
 					"source" : [ "obj-47", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-171", 1 ],
-					"order" : 0,
+					"destination" : [ "obj-7", 1 ],
+					"order" : 1,
 					"source" : [ "obj-47", 0 ]
 				}
 
