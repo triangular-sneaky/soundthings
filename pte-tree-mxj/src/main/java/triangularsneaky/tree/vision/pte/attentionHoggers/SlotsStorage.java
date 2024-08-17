@@ -1,6 +1,5 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers;
 
-import triangularsneaky.tree.vision.pte.attentionHoggers.algo.AttentionTrackingAlgoBase;
 import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.util.*;
@@ -42,7 +41,7 @@ public class SlotsStorage {
                 return s;
             });
             log.finer(() -> "mapElementsToSlots: touching slot %s".formatted(slot));
-            slot.update(timestamp.get(), e.amplitude(), e.angle());
+            slot.update(timestamp.get(), e.amplitude(), e.effectiveValue(), e.angle());
         }
 
         // kill dead slots and replace them with new slots

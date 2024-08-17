@@ -1,10 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers;
 
 
-import triangularsneaky.tree.vision.pte.attentionHoggers.algo.AttentionTrackingAlgoBase;
-
-import java.util.*;
-
 public class Hoggers {
     public static final class AttentionSlot {
         private int slot;
@@ -22,6 +18,7 @@ public class Hoggers {
 
         private int lastTimestamp;
         private double amplitude;
+        private double effectiveAmplitude;
         private double angle;
 
         public AttentionSlot(int id, int x, int y, int w, int h, int area, int bornTimestamp) {
@@ -38,9 +35,10 @@ public class Hoggers {
             this.slot = slot;
         }
 
-        public void update(int timestamp, double amplitude, double angle) {
+        public void update(int timestamp, double amplitude, double effectiveAmplitude, double angle) {
             this.lastTimestamp = timestamp;
             this.amplitude = amplitude;
+            this.effectiveAmplitude = effectiveAmplitude;
             this.angle = angle;
         }
 
@@ -79,6 +77,10 @@ public class Hoggers {
 
         public double amplitude() {
             return amplitude;
+        }
+
+        public double effectiveAmplitude() {
+            return effectiveAmplitude;
         }
 
         public double angle() {
