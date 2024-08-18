@@ -127,8 +127,8 @@
 					"id" : "obj-49",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 585.0, 561.0, 122.0, 22.0 ],
 					"text" : "sneaky.resizepreview"
 				}
@@ -139,8 +139,8 @@
 					"id" : "obj-48",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 94.0, 1657.0, 189.0, 22.0 ],
 					"text" : "sneaky.resizepreview @width 200"
 				}
@@ -151,10 +151,10 @@
 					"id" : "obj-137",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1364.670000000000073, 296.0, 189.0, 22.0 ],
-					"text" : "sneaky.resizepreview @width 135",
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1364.670000000000073, 296.0, 191.0, 22.0 ],
+					"text" : "sneaky.resizePreview @width 135",
 					"varname" : "sneaky.resizepreview"
 				}
 
