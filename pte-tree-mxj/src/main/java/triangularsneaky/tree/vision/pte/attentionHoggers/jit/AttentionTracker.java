@@ -82,11 +82,11 @@ public class AttentionTracker extends MaxObject{
                                     Atom.newAtom(s.area()),                 // $7
 
                                     Atom.newAtom(s.amplitude()),            // $8
-                                    Atom.newAtom(s.angle()),                // $9
+                                    Atom.newAtom(s.angleNormalized01()),                // $9
 
                                     Atom.newAtom(s.getId()),                // $10
 
-                                    Atom.newAtom(s.effectiveAmplitude())    // $11
+                                    Atom.newAtom(s.effectiveAmplitude()),   // $11
 
 
                             });

@@ -462,7 +462,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 471.0, 452.0, 426.0, 851.0 ],
+					"patching_rect" : [ 471.0, 452.0, 428.0, 851.0 ],
 					"text" : "format $1 \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"YUY2 - 422YpCbCr8_yuvs - 160 x 120\" \"NV12 - 420YpCbCr8BiPlanar - 160 x 120\" \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\" \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\" \"YUY2 - 422YpCbCr8_yuvs - 320 x 176\" \"NV12 - 420YpCbCr8BiPlanar - 320 x 176\" \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\" \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\" \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\" \"YUY2 - 422YpCbCr8_yuvs - 432 x 240\" \"NV12 - 420YpCbCr8BiPlanar - 432 x 240\" \"YUY2 - 422YpCbCr8_yuvs - 544 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 544 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 360\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 752 x 416\" \"YUY2 - 422YpCbCr8_yuvs - 752 x 416\" \"NV12 - 420YpCbCr8BiPlanar - 800 x 448\" \"YUY2 - 422YpCbCr8_yuvs - 800 x 448\" \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\" \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\" \"NV12 - 420YpCbCr8BiPlanar - 864 x 480\" \"YUY2 - 422YpCbCr8_yuvs - 864 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 960 x 544\" \"YUY2 - 422YpCbCr8_yuvs - 960 x 544\" \"NV12 - 420YpCbCr8BiPlanar - 960 x 720\" \"YUY2 - 422YpCbCr8_yuvs - 960 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 1024 x 576\" \"YUY2 - 422YpCbCr8_yuvs - 1024 x 576\" \"NV12 - 420YpCbCr8BiPlanar - 1184 x 656\" \"YUY2 - 422YpCbCr8_yuvs - 1184 x 656\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 960\" \"YUY2 - 422YpCbCr8_yuvs - 1280 x 960\" \"YUY2 - 422YpCbCr8_yuvs - 160 x 120\" \"NV12 - 420YpCbCr8BiPlanar - 160 x 120\" \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\" \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\" \"YUY2 - 422YpCbCr8_yuvs - 320 x 176\" \"NV12 - 420YpCbCr8BiPlanar - 320 x 176\" \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\" \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\" \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\" \"YUY2 - 422YpCbCr8_yuvs - 432 x 240\" \"NV12 - 420YpCbCr8BiPlanar - 432 x 240\" \"YUY2 - 422YpCbCr8_yuvs - 544 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 544 x 288\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 360\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 752 x 416\" \"YUY2 - 422YpCbCr8_yuvs - 752 x 416\" \"NV12 - 420YpCbCr8BiPlanar - 800 x 448\" \"YUY2 - 422YpCbCr8_yuvs - 800 x 448\" \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\" \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\" \"NV12 - 420YpCbCr8BiPlanar - 864 x 480\" \"YUY2 - 422YpCbCr8_yuvs - 864 x 480\" \"NV12 - 420YpCbCr8BiPlanar - 960 x 544\" \"YUY2 - 422YpCbCr8_yuvs - 960 x 544\" \"NV12 - 420YpCbCr8BiPlanar - 960 x 720\" \"YUY2 - 422YpCbCr8_yuvs - 960 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 1024 x 576\" \"YUY2 - 422YpCbCr8_yuvs - 1024 x 576\" \"NV12 - 420YpCbCr8BiPlanar - 1184 x 656\" \"YUY2 - 422YpCbCr8_yuvs - 1184 x 656\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\" \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\" \"NV12 - 420YpCbCr8BiPlanar - 1280 x 960\" \"YUY2 - 422YpCbCr8_yuvs - 1280 x 960\""
 				}
 
@@ -656,8 +656,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 84.0, 347.0, 113.0, 23.0 ],
-					"text" : "jit.grab 320 240"
+					"patching_rect" : [ 84.0, 347.0, 98.0, 23.0 ],
+					"text" : "jit.grab 640 480"
 				}
 
 			}
@@ -868,7 +868,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-56", 0 ],
-					"midpoints" : [ 187.5, 373.5, 293.5, 373.5 ],
+					"midpoints" : [ 172.5, 373.5, 293.5, 373.5 ],
 					"source" : [ "obj-82", 1 ]
 				}
 

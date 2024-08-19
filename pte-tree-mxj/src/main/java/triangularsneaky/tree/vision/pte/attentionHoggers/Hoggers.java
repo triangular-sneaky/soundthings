@@ -87,6 +87,11 @@ public class Hoggers {
             return angle;
         }
 
+        final double PIx2 = 2 * Math.PI;
+        public double angleNormalized01() {
+            return (angle + Math.PI) / PIx2;
+        }
+
         public int getId() {
             return id;
         }
