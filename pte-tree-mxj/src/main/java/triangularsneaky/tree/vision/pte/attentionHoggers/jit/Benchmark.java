@@ -1,7 +1,5 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.jit;
 
-import com.cycling74.max.MaxObject;
-
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
@@ -13,12 +11,17 @@ class Benchmark {
     private final AtomicLong stopwatch = new AtomicLong(0);
     private final String name;
     private int reportingRate = 200;
+    private final Consumer<Long> lapTimesNanos;
     private long iterStart = 0;
+    public Benchmark(String name, int reportingRate, Consumer<String> loggingConsumer) {
+        this(name,reportingRate, loggingConsumer, z -> {} );
+    }
 
-    public Benchmark(String name, int reportingRate, Consumer<String> consumer) {
-        this.consumer = consumer;
+    public Benchmark(String name, int reportingRate, Consumer<String> loggingConsumer, Consumer<Long> lapTimesNanos) {
+        this.consumer = loggingConsumer;
         this.name = name;
         this.reportingRate = reportingRate;
+        this.lapTimesNanos = lapTimesNanos;
     }
 
     public void lap(Runnable block) {
@@ -41,7 +44,9 @@ class Benchmark {
 
     public void lapEnd(Supplier<String> callback) {
         if (iterStart == 0) throw new IllegalStateException("must call lapStart before lapEnd");
-        var elapsed = stopwatch.addAndGet(System.nanoTime() - iterStart);
+        long lapElapsed = System.nanoTime() - iterStart;
+        lapTimesNanos.accept(lapElapsed);
+        var elapsed = stopwatch.addAndGet(lapElapsed);
         int counter = this.counter.incrementAndGet();
         if (counter % reportingRate == 0) {
             var s = callback != null ? callback.get() : "";

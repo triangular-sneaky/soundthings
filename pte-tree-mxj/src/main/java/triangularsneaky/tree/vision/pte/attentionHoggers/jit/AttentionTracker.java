@@ -28,7 +28,12 @@ public class AttentionTracker extends MaxObject{
 
 
     final Map<String, Matrix> matrixCache = new ConcurrentHashMap<>();
-    Benchmark frameInBm = new Benchmark("Frame-in", 200, MaxObject::post);
+    Benchmark frameInBm = new Benchmark("Frame-in", 200, MaxObject::post, (nanos) -> {
+        var millis = nanos / 1_000_000;
+        if (millis > 30) {
+            log.warning("Frame-in: Elapsed: %d ms".formatted(millis));
+        }
+    });
     Benchmark frameOutBm = new Benchmark("Frame-out", 200, MaxObject::post);
 
     BitmapAttentionTrackingAlgo algo;
