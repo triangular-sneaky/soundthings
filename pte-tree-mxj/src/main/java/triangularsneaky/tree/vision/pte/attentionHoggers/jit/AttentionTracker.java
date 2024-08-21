@@ -76,7 +76,7 @@ public class AttentionTracker extends MaxObject{
 
                     outlet(0,
                             new Atom[]{
-                                    Atom.newAtom(s.slot()),                 // $1
+                                    Atom.newAtom(s.slot() + 1),                 // $1
                                     Atom.newAtom(s.age()),                  // $2
 
                                     Atom.newAtom(s.x()),                    // $3 = l
