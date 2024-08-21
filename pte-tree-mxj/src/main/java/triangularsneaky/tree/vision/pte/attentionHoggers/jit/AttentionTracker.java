@@ -1,5 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.jit;
 
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
@@ -37,7 +38,7 @@ public class AttentionTracker extends MaxObject{
     Benchmark frameOutBm = new Benchmark("Frame-out", 200, MaxObject::post);
 
     BitmapAttentionTrackingAlgo algo;
-    Disposable subscription = null;
+    CompositeDisposable subscription = null;
 
     public AttentionTracker() {
 
@@ -61,7 +62,8 @@ public class AttentionTracker extends MaxObject{
                 v -> v > 0,
                 new LinearAmpAndADEnvelope(10.0, 1.0, 1, 30*4));
         if (subscription != null) subscription.dispose();
-        subscription = algo.ticks().subscribe(slots -> {
+        subscription = new CompositeDisposable();
+        subscription.add(algo.ticks().subscribe(slots -> {
             log.fine("[%s] slots tick".formatted(Thread.currentThread().getName()));
 
             frameOutBm.lap(() -> {
@@ -97,7 +99,16 @@ public class AttentionTracker extends MaxObject{
                             });
                 });
             });
-        });
+        }));
+
+        subscription.add(algo.dims().subscribe(dims -> {
+            log.info("Emitting dim " + dims);
+            outlet(0, new Atom[] {
+                    Atom.newAtom("dim"),
+                    Atom.newAtom(dims.x()),
+                    Atom.newAtom(dims.y())
+            });
+        }));
     }
 
 

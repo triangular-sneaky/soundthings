@@ -1,5 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.algo;
 
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Rect;
@@ -37,6 +38,13 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     AttentionElement[][] detectedElementsBitmap = null;
     public SlotsStorage slotsStorage = new SlotsStorage(timestamp);
 
+    public record Dim(int x, int y) {
+        public static Dim create(int[] dims) {
+            return new Dim(dims[0], dims[1]);
+        }
+    }
+    final BehaviorSubject<Dim> dims = BehaviorSubject.create();
+
     @Override
     public void accept(Matrix matrix) {
         var ts = timestamp.incrementAndGet();
@@ -46,8 +54,9 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
             log.info(() -> "Rebuild to size %d,%d".formatted(m.dims()[0],m.dims()[1]));
             elements.clear();
             detectedElementsBitmap = new AttentionElement[m.dims()[0]][m.dims()[1]];
-        });
 
+        });
+        dims.onNext(Dim.create(matrix.dims()));
         clearDetectedElementsBitmap(matrix.dims());
         for (var e: elements.values()) e.setAmplitude(0.0); // do not carry over amplitude!
 
@@ -106,7 +115,7 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
         int maxJ = Math.min(j + sizeJ, processingMatrix.dims()[1]);
         var thisEffectiveValue = thisElement.effectiveValue();
         var kicksEveryoneOut = IntStream.range(i, maxI)
-                .map(ii -> java.util.Arrays.stream(detectedElementsBitmap[ii], j, maxJ)
+                .map(ii -> Arrays.stream(detectedElementsBitmap[ii], j, maxJ)
                         .filter(Objects::nonNull).allMatch(e -> {
                             log.finest(() -> "Matching %s to %s...".formatted( thisElement, e));
                             return e.effectiveValue() < thisEffectiveValue;
@@ -171,5 +180,9 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
 
     public void clearSlots() {
         slotsStorage.clear();
+    }
+
+    public BehaviorSubject<Dim> dims() {
+        return dims;
     }
 }
