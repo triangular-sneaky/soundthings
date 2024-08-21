@@ -162,7 +162,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1177.5, 1215.0, 119.53125, 35.0 ],
-					"text" : "39.055084 39.591515"
+					"text" : "38.871361 49.645325"
 				}
 
 			}
@@ -198,7 +198,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 883.0, 1232.0, 169.53125, 22.0 ],
-					"text" : "54.122097 48.558929"
+					"text" : "38.871361 49.645325"
 				}
 
 			}
@@ -335,7 +335,6 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-11",
@@ -1392,6 +1391,30 @@
 										"assistshowspatchername" : 0,
 										"visible" : 1,
 										"boxes" : [ 											{
+												"box" : 												{
+													"id" : "obj-109",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 109.089893877506256, 1155.229346754695143, 111.0, 22.0 ],
+													"text" : "prepend setvalue 0"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-108",
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 2,
+													"outlettype" : [ "", "" ],
+													"patching_rect" : [ 141.441441357135773, 1062.162161529064178, 84.0, 22.0 ],
+													"text" : "routepass dim"
+												}
+
+											}
+, 											{
 												"box" : 												{
 													"id" : "obj-106",
 													"maxclass" : "message",
@@ -4654,7 +4677,6 @@
 														"style" : "",
 														"subpatcher_template" : "",
 														"assistshowspatchername" : 0,
-														"visible" : 1,
 														"boxes" : [ 															{
 																"box" : 																{
 																	"id" : "obj-11",
@@ -8303,6 +8325,29 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-109", 0 ],
+													"source" : [ "obj-108", 0 ],
+													"watchpoint_flags" : 5,
+													"watchpoint_id" : 47
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-23", 0 ],
+													"source" : [ "obj-108", 1 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-4", 0 ],
+													"source" : [ "obj-109", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-16", 0 ],
 													"source" : [ "obj-13", 0 ]
 												}
@@ -8435,8 +8480,8 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-23", 0 ],
-													"order" : 0,
+													"destination" : [ "obj-108", 0 ],
+													"order" : 1,
 													"source" : [ "obj-32", 0 ]
 												}
 
@@ -8453,7 +8498,7 @@
 												"patchline" : 												{
 													"destination" : [ "obj-56", 0 ],
 													"midpoints" : [ 668.5, 930.0, 595.0, 930.0, 595.0, 1878.0, 336.700004875659943, 1878.0 ],
-													"order" : 1,
+													"order" : 0,
 													"source" : [ "obj-32", 0 ]
 												}
 
@@ -8482,9 +8527,7 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-32", 0 ],
-													"source" : [ "obj-36", 0 ],
-													"watchpoint_flags" : 5,
-													"watchpoint_id" : 43
+													"source" : [ "obj-36", 0 ]
 												}
 
 											}
@@ -16604,6 +16647,13 @@
 , 			{
 				"name" : "mxj.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "pan2.maxpat",
+				"bootpath" : "~/Library/Application Support/Cycling '74/Max 8/Examples/spatialization/panning/lib",
+				"patcherrelativepath" : "../../../../Library/Application Support/Cycling '74/Max 8/Examples/spatialization/panning/lib",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "pastebang.maxpat",
