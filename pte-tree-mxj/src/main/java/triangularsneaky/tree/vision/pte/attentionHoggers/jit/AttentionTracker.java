@@ -102,7 +102,7 @@ public class AttentionTracker extends MaxObject{
         }));
 
         subscription.add(algo.dims().subscribe(dims -> {
-            log.info("Emitting dim " + dims);
+            log.fine(() -> "Emitting dim " + dims);
             outlet(0, new Atom[] {
                     Atom.newAtom("dim"),
                     Atom.newAtom(dims.x()),
