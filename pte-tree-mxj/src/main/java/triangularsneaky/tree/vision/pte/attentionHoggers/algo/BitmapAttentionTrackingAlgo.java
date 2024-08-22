@@ -54,9 +54,8 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
             log.info(() -> "Rebuild to size %d,%d".formatted(m.dims()[0],m.dims()[1]));
             elements.clear();
             detectedElementsBitmap = new AttentionElement[m.dims()[0]][m.dims()[1]];
-
+            dims.onNext(Dim.create(matrix.dims()));
         });
-        dims.onNext(Dim.create(matrix.dims()));
         clearDetectedElementsBitmap(matrix.dims());
         for (var e: elements.values()) e.setAmplitude(0.0); // do not carry over amplitude!
 

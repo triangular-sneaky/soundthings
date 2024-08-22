@@ -1,5 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.jit;
 
+import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
@@ -63,6 +64,7 @@ public class AttentionTracker extends MaxObject{
                 new LinearAmpAndADEnvelope(10.0, 1.0, 1, 30*4));
         if (subscription != null) subscription.dispose();
         subscription = new CompositeDisposable();
+
         subscription.add(algo.ticks().subscribe(slots -> {
             log.fine("[%s] slots tick".formatted(Thread.currentThread().getName()));
 
@@ -76,24 +78,29 @@ public class AttentionTracker extends MaxObject{
                         log.severe("Slot outside of voices count! This is an error: %s".formatted(s));
                     }
 
+                    var dim = algo.dims().getValue();
+
                     outlet(0,
                             new Atom[]{
-                                    Atom.newAtom(s.slot() + 1),                 // $1
-                                    Atom.newAtom(s.age()),                  // $2
+                                    Atom.newAtom(s.slot() + 1),       // $1 = voice number
+                                    Atom.newAtom(s.age()),                  // $2 = age
 
                                     Atom.newAtom(s.x()),                    // $3 = l
                                     Atom.newAtom(s.y()),                    // $4 = t
                                     Atom.newAtom(s.x() + s.w()),      // $5 = r
                                     Atom.newAtom(s.y() + s.h()),      // $6 = b
 
-                                    Atom.newAtom(s.area()),                 // $7
+                                    Atom.newAtom(s.area()),                 // $7 = area
 
-                                    Atom.newAtom(s.amplitude()),            // $8
-                                    Atom.newAtom(s.angleNormalized01()),                // $9
+                                    Atom.newAtom(s.amplitude()),            // $8 = amp
+                                    Atom.newAtom(s.angleNormalized01()),    // $9 = angle_norm_01
 
-                                    Atom.newAtom(s.getId()),                // $10
+                                    Atom.newAtom(s.getId()),                // $10 = id
 
-                                    Atom.newAtom(s.effectiveAmplitude()),   // $11
+                                    Atom.newAtom(s.effectiveAmplitude()),   // zl.nth 11 = effective amp
+
+                                    Atom.newAtom((1.0 * s.x()) / dim.x() ),   // zl.nth 12 = x_norm_01
+                                    Atom.newAtom((1.0 * s.y()) / dim.y() ),   // zl.nth 13 = y_norm_01
 
 
                             });
@@ -101,14 +108,14 @@ public class AttentionTracker extends MaxObject{
             });
         }));
 
-        subscription.add(algo.dims().subscribe(dims -> {
-            log.fine(() -> "Emitting dim " + dims);
-            outlet(0, new Atom[] {
-                    Atom.newAtom("dim"),
-                    Atom.newAtom(dims.x()),
-                    Atom.newAtom(dims.y())
-            });
-        }));
+//        subscription.add(algo.dims().subscribe(dims -> {
+//            log.fine(() -> "Emitting dim " + dims);
+//            outlet(0, new Atom[] {
+//                    Atom.newAtom("dim"),
+//                    Atom.newAtom(dims.x()),
+//                    Atom.newAtom(dims.y())
+//            });
+//        }));
     }
 
 
