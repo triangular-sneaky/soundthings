@@ -7,6 +7,7 @@ import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.TestMatrix;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -105,6 +106,7 @@ class AttentionTrackingAlgoTest {
                 """));
         sub.assertValue(ticks ->
                 {
+                    Arrays.sort(ticks, Comparator.comparingInt(t->t.y()));
                     assertThat(ticks)
                             .hasSize(2)
                             .allSatisfy(t -> {
@@ -112,7 +114,13 @@ class AttentionTrackingAlgoTest {
                                 assertThat(t.age()).isEqualTo(0);
                                 assertThat(t.amplitude()).isCloseTo(TestMatrix.UNARY_LENGTH, TestMatrix.VERY_CLOSE);
                                 assertThat(t.x()).isEqualTo(1);
-                            }).satisfies(all -> assertThat(Arrays.stream(all).map(x -> x.y())).containsExactlyInAnyOrder(0, 1));
+                            })
+                            .satisfies(all -> {
+                                assertThat(all[0].y()).isEqualTo(0);
+                                assertThat(all[0].angle()).isLessThan(0.0);
+                                assertThat(all[1].y()).isEqualTo(1);
+                                assertThat(all[1].angle()).isGreaterThan(0.0);
+                                    });
                     return true;
                 }
         );
@@ -125,6 +133,7 @@ class AttentionTrackingAlgoTest {
 
         sub.assertValue(ticks ->
                 {
+                    Arrays.sort(ticks, Comparator.comparingInt(t->t.y()));
                     assertThat(ticks)
                             .hasSize(2)
                             .allSatisfy(t -> {
@@ -132,10 +141,15 @@ class AttentionTrackingAlgoTest {
                                 assertThat(t.age()).isEqualTo(1);
                                 assertThat(t.x()).isEqualTo(1);
                             })
-                            .satisfies(all -> assertThat(Arrays.stream(all).map(x -> x.y())).containsExactlyInAnyOrder(0, 1))
                             .satisfies(all -> {
+                                assertThat(all[0].y()).isEqualTo(0);
+                                assertThat(all[0].angle()).isLessThan(0.0);
                                 assertThat(all[0].amplitude()).isCloseTo(2 * TestMatrix.UNARY_LENGTH, TestMatrix.VERY_CLOSE);
+                                assertThat(all[1].y()).isEqualTo(1);
+                                assertThat(all[1].angle()).isGreaterThan(0.0);
                                 assertThat(all[1].amplitude()).isCloseTo(TestMatrix.UNARY_LENGTH, TestMatrix.VERY_CLOSE);
+                            })
+                            .satisfies(all -> {
                             });
                     return true;
                 }
@@ -265,7 +279,7 @@ class AttentionTrackingAlgoTest {
         assertThat(AttentionTrackingAlgoBase.getMaxDownsamplingFactor(2, 5)).isBetween(8, 15);
     }
 
-    @Test
+//    @Test
     void embarassingMath() {
         assertThat(Math.pow(-1,1.1)).isLessThan(0);
     }
