@@ -40,6 +40,72 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 524.0, 71.0, 35.0, 22.0 ],
+					"text" : "1000"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 582.0, 74.0, 29.5, 22.0 ],
+					"text" : "/ 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "int" ],
+					"patching_rect" : [ 541.0, 27.0, 29.5, 22.0 ],
+					"text" : "t b i"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "live.dial",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 380.0, 27.0, 41.0, 48.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 5.0, 177.0, 41.0, 48.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_initial" : [ 10 ],
+							"parameter_initial_enable" : 1,
+							"parameter_longname" : "live.dial[6]",
+							"parameter_mmax" : 60.0,
+							"parameter_mmin" : 5.0,
+							"parameter_modmode" : 4,
+							"parameter_shortname" : "fps",
+							"parameter_type" : 1,
+							"parameter_unitstyle" : 0
+						}
+
+					}
+,
+					"varname" : "live.dial"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"comment" : "",
 					"id" : "obj-2",
 					"index" : 1,
@@ -578,7 +644,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 50.0, 108.0, 42.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 79.0, 2.0, 42.0, 23.0 ],
+					"presentation_rect" : [ 35.0, 1.5, 42.0, 23.0 ],
 					"text" : "close"
 				}
 
@@ -594,27 +660,8 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 104.0, 108.0, 40.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 123.0, 2.0, 40.0, 23.0 ],
+					"presentation_rect" : [ 83.0, 1.5, 40.0, 23.0 ],
 					"text" : "open"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 13.0,
-					"format" : 6,
-					"id" : "obj-80",
-					"maxclass" : "flonum",
-					"minimum" : 0.5,
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 135.0, 159.0, 45.0, 23.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 32.0, 2.0, 45.0, 23.0 ],
-					"triscale" : 0.9
 				}
 
 			}
@@ -641,8 +688,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 84.0, 189.0, 74.0, 23.0 ],
-					"text" : "qmetro 100"
+					"patching_rect" : [ 84.0, 189.0, 67.0, 23.0 ],
+					"text" : "metro 100"
 				}
 
 			}
@@ -673,7 +720,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 84.0, 526.0, 55.0, 36.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 7.0, 183.0, 55.0, 36.0 ]
+					"presentation_rect" : [ 110.0, 183.0, 55.0, 36.0 ]
 				}
 
 			}
@@ -736,9 +783,44 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 1 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-93", 1 ],
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-82", 0 ],
 					"midpoints" : [ 169.5, 141.0, 69.5, 141.0, 69.5, 334.0, 93.5, 334.0 ],
 					"source" : [ "obj-45", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-5", 0 ]
 				}
 
 			}
@@ -840,13 +922,6 @@
 					"destination" : [ "obj-82", 0 ],
 					"midpoints" : [ 113.5, 141.0, 70.5, 141.0, 70.5, 335.0, 93.5, 335.0 ],
 					"source" : [ "obj-79", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-93", 1 ],
-					"source" : [ "obj-80", 0 ]
 				}
 
 			}
