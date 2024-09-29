@@ -2,7 +2,7 @@
 	"name" : "pte-tree-max",
 	"version" : 1,
 	"creationdate" : 3801980044,
-	"modificationdate" : 3804732053,
+	"modificationdate" : 3809086040,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -14,6 +14,11 @@
 				"kind" : "patcher",
 				"local" : 1,
 				"toplevel" : 1
+			}
+,
+			"camera-sandbox.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
 			}
 
 		}

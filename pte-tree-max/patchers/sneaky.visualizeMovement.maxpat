@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 34.0, 1372.0, 832.0 ],
+		"rect" : [ 34.0, 87.0, 1146.0, 779.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,20 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-14",
+					"maxclass" : "jit.fpsgui",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 805.0, 660.0, 80.0, 35.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-48",
 					"maxclass" : "newobj",
@@ -201,7 +215,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 513.0, 82.0, 129.0, 22.0 ],
+					"patching_rect" : [ 535.0, 85.0, 129.0, 22.0 ],
 					"text" : "jit.op @op pow @val 2"
 				}
 
@@ -386,7 +400,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "jit_matrix" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 49.999989000000028, 40.0, 30.0, 30.0 ]
 				}
 
