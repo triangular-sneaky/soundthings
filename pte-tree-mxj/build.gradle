@@ -26,6 +26,12 @@ CopySpec maxCodeCompileOutputSpec = copySpec {
     include 'classes/java/main/', 'resources/main/'
 }
 
+CopySpec maxCodeJarOutputSpec = copySpec {
+    from 'build/libs/'
+    include '*.jar'
+}
+
+
 CopySpec maxCodeJarsSpec = copySpec {
     from configurations.runtimeClasspath
     exclude "max.jar", "jitter.jar"
@@ -35,8 +41,8 @@ var maxCodeDir = new File("$projectDir/../pte-tree-max/code/")
 var maxOtherDir = new File("$projectDir/../pte-tree-max/other/")
 
 tasks.register('deployToMax', Copy) {
-    dependsOn(classes)
-//    dependsOn(copyT)
+//    dependsOn(classes)
+    dependsOn(jar)
 
     doFirst {
         print("Deploying to max")
@@ -47,7 +53,8 @@ tasks.register('deployToMax', Copy) {
 
     //layout.projectDirectory.dir("/../../pte-tree-max/code/")
     into maxCodeDir
-    with maxCodeCompileOutputSpec
+//    with maxCodeCompileOutputSpec
+    with maxCodeJarOutputSpec
 
     into maxCodeDir
     with maxCodeJarsSpec

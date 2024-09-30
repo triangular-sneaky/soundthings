@@ -47,7 +47,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 808.0, 1041.0, 50.0, 35.0 ],
-					"text" : "2.875833"
+					"text" : "4.092291"
 				}
 
 			}
@@ -1373,7 +1373,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 34.0, 87.0, 1372.0, 779.0 ],
+										"rect" : [ 34.0, 87.0, 963.0, 779.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -1411,7 +1411,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 469.0, 78.0, 50.0, 35.0 ],
-													"text" : "2.875833"
+													"text" : "4.092291"
 												}
 
 											}
@@ -2724,7 +2724,7 @@
 																	"numoutlets" : 1,
 																	"outlettype" : [ "" ],
 																	"patching_rect" : [ 686.0, 208.0, 50.0, 62.0 ],
-																	"text" : "jit_matrix u463006138"
+																	"text" : "jit_matrix u709005945"
 																}
 
 															}
@@ -2808,7 +2808,7 @@
 																	"numoutlets" : 2,
 																	"outlettype" : [ "", "" ],
 																	"patching_rect" : [ 949.0, 312.0, 189.0, 22.0 ],
-																	"text" : "sneaky.resizepreview @width 500"
+																	"text" : "sneaky.resizepreview @width 640"
 																}
 
 															}
@@ -3522,7 +3522,7 @@
 																	"numinlets" : 0,
 																	"numoutlets" : 1,
 																	"outlettype" : [ "" ],
-																	"patching_rect" : [ 613.669086694717407, 31.654677391052246, 30.0, 30.0 ]
+																	"patching_rect" : [ 584.5, 28.0, 30.0, 30.0 ]
 																}
 
 															}
@@ -3757,6 +3757,7 @@
 , 															{
 																"patchline" : 																{
 																	"destination" : [ "obj-9", 0 ],
+																	"disabled" : 1,
 																	"source" : [ "obj-20", 0 ]
 																}
 
@@ -10137,7 +10138,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 499.099098801612854, 830.5, 29.5, 22.0 ],
+													"patching_rect" : [ 1147.5, 952.0, 29.5, 22.0 ],
 													"presentation" : 1,
 													"presentation_rect" : [ 124.371621549129486, 21.621621608734131, 29.5, 22.0 ],
 													"text" : "zap"

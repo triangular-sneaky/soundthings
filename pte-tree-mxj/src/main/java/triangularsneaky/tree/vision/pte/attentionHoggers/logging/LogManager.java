@@ -5,41 +5,53 @@ import triangularsneaky.tree.vision.pte.attentionHoggers.jit.AttentionTracker;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Arrays;
+import java.io.InputStream;
+import java.util.Enumeration;
 import java.util.function.Consumer;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 
 public class LogManager {
 
+    public static String loadResourceFromJar(String jarPath, String resourceName) {
+        try (JarFile jarFile = new JarFile(jarPath)) {
+            Enumeration<JarEntry> entries = jarFile.entries();
+            while (entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
+                if (entry.getName().equals(resourceName)) {
+                    try (InputStream inputStream = jarFile.getInputStream(entry)) {
+                        return new String(inputStream.readAllBytes());
+                    }
+                }
+            }
+            throw new RuntimeException("Resource not found: " + resourceName);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load resource from JAR", e);
+        }
+    }
+
     public static void initLogging(Consumer<String> feedback) {
-        final File currentDir = new File(AttentionTracker.class.getProtectionDomain().getCodeSource().getLocation().getPath());
-        File logging = new File(currentDir,"../../../resources/main/logging.properties");
-        feedback.accept("Logging.properties file: %s, exists=%b".formatted(logging.getAbsolutePath(), logging.exists()));
-        if( logging.exists()){
+//        File logging = new File(jarPath,"../../../resources/main/logging.properties");
+//        feedback.accept("Logging.properties file: %s, exists=%b".formatted(logging.getAbsolutePath(), logging.exists()));
+        final File jarPath = new File(AttentionTracker.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+        feedback.accept("jarPath: %s".formatted(jarPath.getAbsolutePath()));
+//        if( logging.exists()){
             try {
                 feedback.accept("Reading logging config");
-                var s = Files.readString(logging.toPath());
-                s = s.replace("{DIR}", currentDir.getAbsolutePath());
+                var s = loadResourceFromJar(jarPath.getAbsolutePath(), "logging.properties");
+//                var s = readResourceFile("logging.properties");
+                s = s.replace("{JAR_DIR}", jarPath.getParentFile().getAbsolutePath());
                 feedback.accept("Logging config: " + s);
                 java.util.logging.LogManager.getLogManager().readConfiguration(new ByteArrayInputStream(s.getBytes()));
             } catch (IOException e) {
                 feedback.accept("Failed to log logging config " + e);
             }
-        }
+//        }
     }
     public static Logger getLogger(Class<?> clazz) {
         String name = clazz.getName();
-
-//        var nameParts = name.split("\\.");
-//        var shortenedName =
-//                String.join(".", Stream.concat(
-//                        Arrays.stream(nameParts).limit(nameParts.length-1)
-//                            .map(part -> part.substring(0,1)),
-//                                Stream.of(nameParts[nameParts.length-1])).toList());
         var shortenedName = name.replace("triangularsneaky.tree.vision.pte.attentionHoggers", "Δ∇");
-
         return java.util.logging.Logger.getLogger(shortenedName);
     }
 }
