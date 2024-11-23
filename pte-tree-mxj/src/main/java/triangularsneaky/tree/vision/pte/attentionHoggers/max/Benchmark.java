@@ -1,4 +1,4 @@
-package triangularsneaky.tree.vision.pte.attentionHoggers.jit;
+package triangularsneaky.tree.vision.pte.attentionHoggers.max;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;

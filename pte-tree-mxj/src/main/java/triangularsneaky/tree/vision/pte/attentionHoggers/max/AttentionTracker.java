@@ -1,8 +1,6 @@
-package triangularsneaky.tree.vision.pte.attentionHoggers.jit;
+package triangularsneaky.tree.vision.pte.attentionHoggers.max;
 
-import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
-import io.reactivex.rxjava3.disposables.Disposable;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
 import triangularsneaky.tree.vision.pte.attentionHoggers.algo.BitmapAttentionTrackingAlgo;
@@ -17,26 +15,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class AttentionTracker extends MaxObject{
+public class AttentionTracker extends JitMaxObject {
 
-    private static final Logger log = initFirstLogger();
-
-    private static Logger initFirstLogger() {
-        LogManager.initLogging(MaxObject::post);
-        return LogManager.getLogger(AttentionTracker.class);
-    }
+    private static final Logger log = LogManager.getLogger(AttentionTracker.class);
 
 
 
-
-    final Map<String, Matrix> matrixCache = new ConcurrentHashMap<>();
-    Benchmark frameInBm = new Benchmark("Frame-in", 200, MaxObject::post, (nanos) -> {
+    Benchmark frameInBm = new Benchmark("Frame-in", 2000, MaxObject::post, (nanos) -> {
         var millis = nanos / 1_000_000;
         if (millis > 30) {
             log.warning("Frame-in: Elapsed: %d ms".formatted(millis));
         }
     });
-    Benchmark frameOutBm = new Benchmark("Frame-out", 200, MaxObject::post);
+    Benchmark frameOutBm = new Benchmark("Frame-out", 2000, MaxObject::post);
 
     BitmapAttentionTrackingAlgo algo;
     CompositeDisposable subscription = null;
@@ -134,7 +125,7 @@ public class AttentionTracker extends MaxObject{
 
         try {
             log.fine("[%s] Frame start".formatted(Thread.currentThread().getName()));
-            var jm = matrixCache.computeIfAbsent(s, name -> new JitMatrix(new JitterMatrix(s)));
+            var jm = getMatrix(s);
 
             processAttentionMatrix(jm);
         } catch (Throwable e) {

@@ -1,18 +1,22 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.logging;
 
-import triangularsneaky.tree.vision.pte.attentionHoggers.jit.AttentionTracker;
+import com.cycling74.max.MaxObject;
+import triangularsneaky.tree.vision.pte.attentionHoggers.max.AttentionTracker;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Logger;
 
 public class LogManager {
+
+    private static AtomicBoolean isLoggingSetup = new AtomicBoolean(false);
 
     public static String loadResourceFromJar(String jarPath, String resourceName) {
         try (JarFile jarFile = new JarFile(jarPath)) {
@@ -50,6 +54,9 @@ public class LogManager {
 //        }
     }
     public static Logger getLogger(Class<?> clazz) {
+        if (isLoggingSetup.compareAndSet(false, true)) {
+            initLogging(MaxObject::post);
+        }
         String name = clazz.getName();
         var shortenedName = name.replace("triangularsneaky.tree.vision.pte.attentionHoggers", "Δ∇");
         return java.util.logging.Logger.getLogger(shortenedName);

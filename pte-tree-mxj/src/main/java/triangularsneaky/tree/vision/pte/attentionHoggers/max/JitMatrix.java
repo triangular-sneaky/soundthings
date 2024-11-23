@@ -1,11 +1,9 @@
-package triangularsneaky.tree.vision.pte.attentionHoggers.jit;
+package triangularsneaky.tree.vision.pte.attentionHoggers.max;
 
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
 import com.cycling74.jitter.JitterMatrix;
 import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.logging.Logger;
 
 public final class JitMatrix implements Matrix {
