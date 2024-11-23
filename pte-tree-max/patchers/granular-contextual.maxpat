@@ -45,6 +45,156 @@
 						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-287",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 743.200000000000045, 906.32000000000005, 22.0, 22.0 ],
+									"text" : "t b"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-286",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 661.65407657623291, 993.984874129295349, 123.0, 22.0 ],
+									"text" : "print TIME @popup 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-285",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "bang", "bang", "bang" ],
+									"patching_rect" : [ 645.112724661827087, 906.014957129955292, 42.0, 22.0 ],
+									"text" : "t b b b"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-284",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 2,
+									"outlettype" : [ "float", "" ],
+									"patching_rect" : [ 677.190000000000055, 953.490000000000009, 133.0, 22.0 ],
+									"text" : "timer @format samples"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-283",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 2,
+									"outlettype" : [ "int", "int" ],
+									"patching_rect" : [ 537.139999999999986, 924.100000000000023, 34.0, 22.0 ],
+									"text" : "histo"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-281",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "float", "bang" ],
+									"patching_rect" : [ 375.939816236495972, 728.566394950151448, 29.5, 22.0 ],
+									"text" : "t f b"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-280",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "float" ],
+									"patching_rect" : [ 451.879659116268158, 757.142789900302887, 29.5, 22.0 ],
+									"text" : "* 1."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-279",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "signal", "float" ],
+									"patching_rect" : [ 440.601464629173279, 516.541307508945465, 77.0, 22.0 ],
+									"text" : "mstosamps~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-278",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 10,
+									"outlettype" : [ "float", "list", "float", "float", "float", "float", "float", "", "int", "" ],
+									"patching_rect" : [ 375.939816236495972, 459.398455440998077, 113.5, 22.0 ],
+									"text" : "info~ rbFreqMap"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-277",
+									"maxclass" : "live.dial",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "float" ],
+									"parameter_enable" : 1,
+									"patching_rect" : [ 669.924752533435822, 581.954835534095764, 62.406009495258331, 48.0 ],
+									"saved_attribute_attributes" : 									{
+										"valueof" : 										{
+											"parameter_exponent" : 6.0,
+											"parameter_linknames" : 1,
+											"parameter_longname" : "live.dial",
+											"parameter_mmax" : 1000.0,
+											"parameter_mmin" : -1.0,
+											"parameter_modmode" : 3,
+											"parameter_osc_name" : "<default>",
+											"parameter_shortname" : "dry/wet",
+											"parameter_type" : 0,
+											"parameter_unitstyle" : 1
+										}
+
+									}
+,
+									"varname" : "live.dial"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"floatoutput" : 1,
+									"id" : "obj-276",
+									"maxclass" : "slider",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 375.939816236495972, 581.990000000000009, 20.0, 140.0 ],
+									"size" : 1.0
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-275",
 									"maxclass" : "number",
 									"numinlets" : 1,
@@ -188,25 +338,11 @@
 							}
 , 							{
 								"box" : 								{
-									"floatoutput" : 1,
-									"id" : "obj-214",
-									"maxclass" : "dial",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "float" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 703.007456362247467, 605.263104140758514, 40.0, 40.0 ],
-									"size" : 1.0
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-212",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 690.045049011707306, 766.16534548997879, 91.0, 22.0 ],
+									"patching_rect" : [ 576.691678106784821, 852.631503224372864, 91.0, 22.0 ],
 									"text" : "print @popup 1"
 								}
 
@@ -219,7 +355,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 592.481150388717651, 693.984900772571564, 24.0, 24.0 ]
+									"patching_rect" : [ 592.481150388717651, 680.549999999999955, 24.0, 24.0 ]
 								}
 
 							}
@@ -306,7 +442,7 @@
 											}
 , 											{
 												"box" : 												{
-													"code" : "decide() {\r\n\treturn noise() > 0.;\r\n}\r\n\r\nParam maxKeyLenSamps(10240);\r\n// Param firstWs(0);\r\nParam posWidthSamps(4410);\r\n\r\nParam fftWindowSize(1024);\r\n\r\n// Param targetFreqBin(0);\r\n\r\nParam dryWet(0.5);\r\n\r\nBuffer freqMap(\"rbFreqMap\");\r\n\r\n//Data match(posWidthWs);\r\nBuffer match(\"dbgMatch\");\r\n\r\nfirstSamps = in1;\r\nfirstWs = ceil(firstSamps / fftWindowSize);\r\n\r\ngranuleSizeSamps = in2;\r\n\r\n\r\nmaxKeyLenWs = ceil(maxKeyLenSamps / fftWindowSize);\r\nif (maxKeyLenWs == 0) {\r\n\tmaxKeyLenWs = 100000000;\r\n}\r\n\r\nkeyLenWs = min(ceil(granuleSizeSamps / fftWindowSize), maxKeyLenWs);\r\n\r\n\r\n\r\ntargetFreqBin = in3;\r\n\r\nposWidthWs = floor(posWidthSamps / fftWindowSize);\r\n\r\n\r\n//DEBUG\r\nout2 = posWidthWs;\r\n\r\n// calculate raw match\r\nmatchNormDivider = 0.;\r\n\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\r\n\t\r\n\tsourceFreqA = peek(freqMap, (firstWs + i) * fftWindowSize + targetFreqBin);\r\n\tm = sourceFreqA;\r\n\tmatchNormDivider += m;\r\n\tpoke(match, m, i);\r\n}\r\n\r\ncurKeyV = 0;\r\nmaxKeyV = 0;\r\nmaxKeyI = 0;\r\n\r\n// normalize and randomize match\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\r\n\tnormalizedM = peek(match, i) / matchNormDivider;\r\n\tr01 = (noise() + 1.) / 2.;\r\n\t\r\n\ts = normalizedM * dryWet + r01 * (1 - dryWet);\r\n\tpoke(match, s, i);\r\n}\r\n\r\n\r\n\t\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\t\r\n\tcurKeyV += peek(match, i);\r\n\tif (i >= keyLenWs) {\r\n\t\t\tcurKeyV -= peek(match, i - keyLenWs);\r\n\t}\r\n\tif (curKeyV > maxKeyV || curKeyV == maxKeyV && decide()) {\r\n\t\t\tmaxKeyV = curKeyV;\r\n\t\t\tmaxKeyI = i - keyLenWs + 1; \r\n\t}\r\n}\r\n\r\nout1 = maxKeyI;",
+													"code" : "decide() {\r\n\treturn noise() > 0.;\r\n}\r\n\r\nParam maxKeyLenSamps(10240);\r\n// Param firstWs(0);\r\nParam posWidthSamps(44100);\r\n\r\nParam fftWindowSize(1024);\r\n\r\n// Param targetFreqBin(0);\r\n\r\nParam dryWet(0.);\r\n\r\nBuffer freqMap(\"rbFreqMap\");\r\n\r\n//Data match(posWidthWs);\r\nBuffer match(\"dbgMatch\");\r\n\r\nfirstSamps = in1;\r\nfirstWs = ceil(firstSamps / fftWindowSize);\r\n\r\ngranuleSizeSamps = in2;\r\n\r\nDEBUG = -1;\r\n\r\nmaxKeyLenWs = ceil(maxKeyLenSamps / fftWindowSize);\r\nif (maxKeyLenWs == 0) {\r\n\tmaxKeyLenWs = 100000000;\r\n}\r\n\r\nkeyLenWs = min(ceil(granuleSizeSamps / fftWindowSize), maxKeyLenWs);\r\n\r\n\r\n\r\ntargetFreqBin = in3;\r\n\r\nposWidthWs = floor(posWidthSamps / fftWindowSize);\r\n\r\n\r\n// calculate raw match\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\r\n\t\r\n\tsourceFreqA = peek(freqMap, (firstWs + i) * fftWindowSize + targetFreqBin);\r\n\tm = sourceFreqA;\r\n\tpoke(match, m, i);\r\n}\r\n\r\ncurKeyV = 0;\r\n\r\n// normalize, window-agg, integrate match\r\nmatchSum = 0;\r\npopElement = 0;\r\n\r\n\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\t\r\n\tcurKeyV += peek(match, i) - popElement;\r\n\ttargetI =  i - keyLenWs + 1;\r\n\tif (targetI >= 0) {\r\n\t\tpopElement = peek(match, targetI);\r\n\t\tmatchSum += curKeyV;\r\n\t\tpoke(match, curKeyV, targetI);\r\n\t}\r\n}\r\n\r\n\r\nmean = matchSum / (posWidthWs - keyLenWs + 1);\r\n\r\nroll = 0.9 * matchSum;\r\n\r\nscaledMatchSum = 0;\r\nfor (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {\r\n\tf = peek(match, i);\r\n\tscaledF = max(0, (f - mean) * (dryWet + 1.) + mean);\r\n\tscaledMatchSum += scaledF;\r\n\tpoke(match, scaledF, i);\r\n}\r\n\r\nDEBUG = matchSum - scaledMatchSum;\r\n\r\nroll = ((noise() + 1.) / 2.) * scaledMatchSum;\r\n\r\n\r\nfor (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {\r\n\troll -= peek(match, i);\r\n\tif (roll <= 0) {\r\n\t\tout1 = i;\r\n\t\tbreak;\r\n\t}\r\n}\r\n\r\n\r\nout2 = DEBUG;",
 													"fontface" : 0,
 													"fontname" : "<Monospaced>",
 													"fontsize" : 12.0,
@@ -359,7 +495,7 @@
 										"originid" : "pat-2338"
 									}
 ,
-									"patching_rect" : [ 703.007456362247467, 709.022493422031403, 171.0, 31.0 ],
+									"patching_rect" : [ 703.007456362247467, 771.210000000000036, 171.0, 31.0 ],
 									"text" : "gen freq-mapper",
 									"textjustification" : 1
 								}
@@ -1127,7 +1263,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-212", 0 ],
-									"order" : 0,
+									"order" : 1,
 									"source" : [ "obj-209", 0 ]
 								}
 
@@ -1135,7 +1271,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-241", 0 ],
-									"order" : 1,
+									"order" : 2,
 									"source" : [ "obj-209", 0 ]
 								}
 
@@ -1149,7 +1285,15 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-209", 0 ],
+									"destination" : [ "obj-287", 0 ],
+									"order" : 0,
+									"source" : [ "obj-209", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-285", 0 ],
 									"source" : [ "obj-211", 0 ]
 								}
 
@@ -1158,13 +1302,6 @@
 								"patchline" : 								{
 									"destination" : [ "obj-209", 0 ],
 									"source" : [ "obj-213", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-215", 0 ],
-									"source" : [ "obj-214", 0 ]
 								}
 
 							}
@@ -1284,6 +1421,83 @@
 								"patchline" : 								{
 									"destination" : [ "obj-209", 2 ],
 									"source" : [ "obj-275", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-281", 0 ],
+									"source" : [ "obj-276", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-215", 0 ],
+									"source" : [ "obj-277", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-279", 0 ],
+									"source" : [ "obj-278", 6 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-280", 1 ],
+									"source" : [ "obj-279", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-209", 0 ],
+									"source" : [ "obj-280", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-278", 0 ],
+									"source" : [ "obj-281", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-280", 0 ],
+									"source" : [ "obj-281", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-286", 0 ],
+									"source" : [ "obj-284", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-209", 0 ],
+									"source" : [ "obj-285", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-284", 0 ],
+									"source" : [ "obj-285", 2 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-284", 1 ],
+									"source" : [ "obj-287", 0 ]
 								}
 
 							}
@@ -2624,8 +2838,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "multichannelsignal", "multichannelsignal" ],
-					"patching_rect" : [ 81.818181037902832, 320.129867076873779, 78.0, 22.0 ],
-					"text" : "mc.cartopol~"
+					"patching_rect" : [ 81.818181037902832, 320.129867076873779, 116.0, 22.0 ],
+					"text" : "mc.cartopol~ @bz 0"
 				}
 
 			}
@@ -4608,7 +4822,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"order" : 0,
+					"source" : [ "obj-58", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-49", 0 ],
+					"order" : 1,
 					"source" : [ "obj-58", 0 ]
 				}
 
@@ -4691,14 +4914,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-38", 0 ],
-					"order" : 0,
-					"source" : [ "obj-9", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-51", 0 ],
 					"source" : [ "obj-9", 2 ]
 				}
@@ -4714,7 +4929,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-58", 0 ],
-					"order" : 1,
 					"source" : [ "obj-9", 0 ]
 				}
 
@@ -4779,6 +4993,20 @@
 			}
  ],
 		"originid" : "pat-46",
+		"parameters" : 		{
+			"obj-129::obj-277" : [ "live.dial", "dry/wet", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "rchoose.maxpat",
 				"bootpath" : "~/Library/Application Support/Cycling '74/Max 9/Examples/sampling/granular/lib",
