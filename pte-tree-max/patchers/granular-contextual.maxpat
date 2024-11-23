@@ -14,6 +14,202 @@
 		"gridsize" : [ 15.0, 15.0 ],
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-174",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "float" ],
+					"patching_rect" : [ 1496.839055478572845, 314.080454528331757, 29.0, 22.0 ],
+					"text" : "thru"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-173",
+					"maxclass" : "newobj",
+					"numinlets" : 3,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 2467.0, 861.0, 126.0, 22.0 ],
+					"text" : "expr ($i1 + $i2 ) % $i3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-172",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 1364.0, 694.0, 40.0, 22.0 ],
+					"text" : "mc.*~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-171",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 1647.0, 700.0, 42.0, 22.0 ],
+					"text" : "mc.+~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-170",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1499.300970554351807, 683.960000000000036, 63.0, 22.0 ],
+					"text" : "expr 1-$f1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-169",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 1642.0, 635.0, 40.0, 22.0 ],
+					"text" : "mc.*~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-167",
+					"maxclass" : "live.dial",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 1426.0, 649.0, 41.0, 48.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_longname" : "live.dial[3]",
+							"parameter_mmax" : 1.0,
+							"parameter_modmode" : 3,
+							"parameter_osc_name" : "<default>",
+							"parameter_shortname" : "wet/dry",
+							"parameter_type" : 0,
+							"parameter_unitstyle" : 5
+						}
+
+					}
+,
+					"varname" : "live.dial[3]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-165",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 4,
+					"outlettype" : [ "multichannelsignal", "multichannelsignal", "", "" ],
+					"patching_rect" : [ 1800.329999999999927, 683.960000000000036, 68.0, 22.0 ],
+					"text" : "mc.matrix~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-164",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "float" ],
+					"patching_rect" : [ 2417.475695013999939, 856.310667872428894, 29.5, 22.0 ],
+					"text" : "+ 1."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-163",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 2505.825208365917206, 455.339799582958221, 92.0, 22.0 ],
+					"text" : "expr max(1\\,$i1)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-162",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 360.974022150039673, 121.779219627380371, 80.0, 22.0 ],
+					"text" : "mc.combine~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-161",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 310.679607391357422, 154.368929922580719, 29.0, 22.0 ],
+					"text" : "thru"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-158",
+					"maxclass" : "live.dial",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 256.139999999999986, 25.079999999999998, 41.0, 48.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_longname" : "live.dial[2]",
+							"parameter_mmax" : 5000.0,
+							"parameter_modmode" : 3,
+							"parameter_osc_name" : "<default>",
+							"parameter_shortname" : "osc freq",
+							"parameter_type" : 0,
+							"parameter_unitstyle" : 3
+						}
+
+					}
+,
+					"varname" : "live.dial[2]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-157",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 351.430000000000007, 46.68, 43.0, 22.0 ],
+					"text" : "cycle~"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-156",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -131,7 +327,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2453.398024618625641, 931.097074627876282, 150.0, 20.0 ],
+					"patching_rect" : [ 2498.05821818113327, 962.135909140110016, 150.0, 20.0 ],
 					"text" : "granule size, samps"
 				}
 
@@ -145,7 +341,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 2372.81550145149231, 930.097074627876282, 75.728154301643372, 22.0 ]
+					"patching_rect" : [ 2417.475695013999939, 961.165035367012024, 75.728154301643372, 22.0 ]
 				}
 
 			}
@@ -179,7 +375,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2453.398024618625641, 993.203869879245758, 150.0, 20.0 ],
+					"patching_rect" : [ 2498.05821818113327, 1024.2718306183815, 150.0, 20.0 ],
 					"text" : "match freq bin"
 				}
 
@@ -333,7 +529,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2453.398024618625641, 899.999987661838531, 150.0, 20.0 ],
+					"patching_rect" : [ 2498.05821818113327, 931.067948400974274, 150.0, 20.0 ],
 					"text" : "position width, samps"
 				}
 
@@ -346,7 +542,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 2372.81550145149231, 899.02911388874054, 75.728154301643372, 22.0 ]
+					"patching_rect" : [ 2417.475695013999939, 930.097074627876282, 75.728154301643372, 22.0 ]
 				}
 
 			}
@@ -356,7 +552,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2453.398024618625641, 870.873774468898773, 150.0, 20.0 ],
+					"patching_rect" : [ 2498.05821818113327, 901.941735208034515, 150.0, 20.0 ],
 					"text" : "position start, samps"
 				}
 
@@ -453,7 +649,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 2373.786375224590302, 869.902900695800781, 74.75728052854538, 22.0 ]
+					"patching_rect" : [ 2418.446568787097931, 900.970861434936523, 74.75728052854538, 22.0 ]
 				}
 
 			}
@@ -1428,7 +1624,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1512.0, 387.538959980010986, 59.0, 22.0 ],
+					"patching_rect" : [ 1532.5, 387.35631537437439, 59.0, 22.0 ],
 					"text" : "$1, $2 $3"
 				}
 
@@ -1850,7 +2046,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1638.0, 640.538959980010986, 54.0, 22.0 ],
+					"patching_rect" : [ 1652.0, 743.0, 54.0, 22.0 ],
 					"text" : "mc.dac~"
 				}
 
@@ -3574,7 +3770,6 @@
 , 			{
 				"box" : 				{
 					"buffername" : "rbSource",
-					"chanoffset" : 2,
 					"id" : "obj-6",
 					"maxclass" : "waveform~",
 					"numinlets" : 5,
@@ -3650,7 +3845,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 295.70815908908844, 142.019999999999982, 150.0, 20.0 ],
+					"patching_rect" : [ 388.349509239196777, 186.407764434814453, 150.0, 20.0 ],
 					"text" : "first channel is modulation"
 				}
 
@@ -3675,8 +3870,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 235.180000000000007, 164.02000000000001, 84.0, 22.0 ],
-					"text" : "mc.adc~ 3 1 2"
+					"patching_rect" : [ 244.600000000000023, 94.174755990505219, 74.0, 22.0 ],
+					"text" : "mc.adc~ 1 2"
 				}
 
 			}
@@ -3806,7 +4001,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 2372.81550145149231, 992.232996106147766, 75.728154301643372, 22.0 ]
+					"patching_rect" : [ 2417.475695013999939, 1023.300956845283508, 75.728154301643372, 22.0 ]
 				}
 
 			}
@@ -3963,7 +4158,7 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "decide() {\r\n\treturn noise() > 0.;\r\n}\r\n\r\nParam maxKeyLenSamps(10240);\r\n// Param firstWs(0);\r\nParam posWidthSamps(44100);\r\n\r\nParam fftWindowSize(1024);\r\n\r\nParam chans(1);\r\nParam chansOffset(1);\r\n\r\n// Param targetFreqBin(0);\r\n\r\nParam dryWet(0.);\r\n\r\nBuffer freqMap(\"rbFreqMap\");\r\n\r\n//Data match(posWidthWs);\r\nBuffer match(\"dbgMatch\");\r\n\r\nfreqMapSize = dim(freqMap);\r\n\r\n//firstPhase = in1;\r\nfirstSamps = in1;\r\n// firstPhase * freqMapSize;\r\nfirstWs = ceil(firstSamps / fftWindowSize);\r\n\r\ngranuleSizeSamps = in2;\r\n\r\nDEBUG = -1;\r\n\r\nchan = 0;\r\n\r\nmaxKeyLenWs = ceil(maxKeyLenSamps / fftWindowSize);\r\nif (maxKeyLenWs == 0) {\r\n\tmaxKeyLenWs = 100000000;\r\n}\r\n\r\nkeyLenWs = min(ceil(granuleSizeSamps / fftWindowSize), maxKeyLenWs);\r\n\r\n\r\n\r\ntargetFreqBin = in3;\r\n\r\nposWidthWs = floor(posWidthSamps / fftWindowSize);\r\n\r\n\r\n\r\n\r\n// calculate raw match\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\r\n\trawI = ((firstWs + i) * fftWindowSize + targetFreqBin);\r\n\tsourceFreqA = peek(freqMap, rawI % freqMapSize, chan + chansOffset );\r\n\tm = sourceFreqA;\r\n\tpoke(match, m, i, chan);\r\n\tDEBUG = m;\r\n}\r\n\r\ncurKeyV = 0;\r\n\r\n// normalize, window-agg, integrate match\r\nmatchSum = 0;\r\npopElement = 0;\r\n\r\n\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\t\r\n\tcurKeyV += peek(match, i, chan) - popElement;\r\n\ttargetI =  i - keyLenWs + 1;\r\n\tif (targetI >= 0) {\r\n\t\tpopElement = peek(match, targetI, chan);\r\n\t\tmatchSum += curKeyV;\r\n\t\tpoke(match, curKeyV, targetI, chan);\r\n\t}\r\n}\r\n\r\n\r\nmean = matchSum / (posWidthWs - keyLenWs + 1);\r\n\r\nroll = 0.9 * matchSum / mean;\r\n\r\nscaledMatchSum = 0;\r\nfor (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {\r\n\tf = peek(match, i, chan) / mean;\r\n\tscaledF = max(0, (f - mean) * (dryWet + 1.) + mean);\r\n\tscaledMatchSum += scaledF;\r\n\tpoke(match, scaledF, i, chan);\r\n}\r\n\r\n\r\nroll = ((noise() + 1.) / 2.) * scaledMatchSum;\r\n\r\ngrainPositionWs = 0;\r\n\r\nfor (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {\r\n\troll -= peek(match, i, chan);\r\n\tif (roll <= 0) {\r\n\t\tgrainPositionWs = i;\r\n\t\tbreak;\r\n\t}\r\n}\r\n\r\n\r\nout1 = ((firstWs + grainPositionWs) * fftWindowSize) % freqMapSize; // todo: randomize?\r\nout2 = DEBUG;",
+									"code" : "decide() {\r\n\treturn noise() > 0.;\r\n}\r\n\r\nParam maxKeyLenSamps(10240);\r\n// Param firstWs(0);\r\nParam posWidthSamps(44100);\r\n\r\nParam fftWindowSize(1024);\r\n\r\nParam chans(1);\r\nParam chansOffset(1);\r\n\r\n// Param targetFreqBin(0);\r\n\r\nParam dryWet(0.);\r\n\r\nBuffer freqMap(\"rbFreqMap\");\r\n\r\n//Data match(posWidthWs);\r\nBuffer match(\"dbgMatch\");\r\n\r\nfreqMapSize = dim(freqMap);\r\n\r\n//firstPhase = in1;\r\nfirstSamps = in1;\r\n// firstPhase * freqMapSize;\r\nfirstWs = ceil(firstSamps / fftWindowSize);\r\n\r\ngranuleSizeSamps = in2;\r\n\r\nDEBUG = -1;\r\n\r\nchan = 0;\r\n\r\nmaxKeyLenWs = ceil(maxKeyLenSamps / fftWindowSize);\r\nif (maxKeyLenWs == 0) {\r\n\tmaxKeyLenWs = 100000000;\r\n}\r\n\r\nkeyLenWs = min(ceil(granuleSizeSamps / fftWindowSize), maxKeyLenWs);\r\n\r\nDEBUG = keyLenWs;\r\n\r\ntargetFreqBin = in3;\r\n\r\nposWidthWs = floor(posWidthSamps / fftWindowSize);\r\n\r\n\r\n\r\n\r\n// calculate raw match\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\r\n\trawI = ((firstWs + i) * fftWindowSize + targetFreqBin);\r\n\tsourceFreqA = peek(freqMap, rawI % freqMapSize, chan + chansOffset );\r\n\tm = sourceFreqA;\r\n\tpoke(match, m, i, chan);\r\n}\r\n\r\ncurKeyV = 0;\r\n\r\n// normalize, window-agg, integrate match\r\nmatchSum = 0;\r\npopElement = 0;\r\n\r\n\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\t\r\n\tcurKeyV += peek(match, i, chan) - popElement;\r\n\ttargetI =  i - keyLenWs + 1;\r\n\tif (targetI >= 0) {\r\n\t\tpopElement = peek(match, targetI, chan);\r\n\t\tmatchSum += curKeyV;\r\n\t\tpoke(match, curKeyV, targetI, chan);\r\n\t}\r\n}\r\n\r\n\r\nmean = matchSum / (posWidthWs - keyLenWs + 1);\r\n\r\nroll = 0.9 * matchSum / mean;\r\n\r\nscaledMatchSum = 0;\r\nfor (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {\r\n\tf = peek(match, i, chan) / mean;\r\n\tscaledF = max(0, (f - mean) * (dryWet + 1.) + mean);\r\n\tscaledMatchSum += scaledF;\r\n\tpoke(match, scaledF, i, chan);\r\n}\r\n\r\n\r\nroll = ((noise() + 1.) / 2.) * scaledMatchSum;\r\n\r\ngrainPositionWs = 0;\r\n\r\nfor (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {\r\n\troll -= peek(match, i, chan);\r\n\tif (roll <= 0) {\r\n\t\tgrainPositionWs = i;\r\n\t\tbreak;\r\n\t}\r\n}\r\n\r\n\r\nout1 = ((firstWs + grainPositionWs) * fftWindowSize) % freqMapSize; // todo: randomize?\r\nout2 = DEBUG;",
 									"fontface" : 0,
 									"fontname" : "<Monospaced>",
 									"fontsize" : 12.0,
@@ -4018,7 +4213,8 @@
 ,
 					"patching_rect" : [ 1981.0, 1542.0, 171.0, 31.0 ],
 					"text" : "gen freq-mapper",
-					"textjustification" : 1
+					"textjustification" : 1,
+					"varname" : "gen_AA"
 				}
 
 			}
@@ -4089,24 +4285,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"order" : 1,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-73", 0 ],
-					"order" : 0,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"order" : 2,
+					"destination" : [ "obj-162", 1 ],
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -4145,7 +4324,9 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-18", 0 ],
-					"source" : [ "obj-104", 0 ]
+					"source" : [ "obj-104", 0 ],
+					"watchpoint_flags" : 5,
+					"watchpoint_id" : 1
 				}
 
 			}
@@ -4189,7 +4370,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-106", 0 ],
+					"destination" : [ "obj-169", 0 ],
 					"source" : [ "obj-110", 0 ]
 				}
 
@@ -4332,6 +4513,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-273", 0 ],
+					"source" : [ "obj-124", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-128", 0 ],
 					"source" : [ "obj-126", 0 ]
 				}
@@ -4353,8 +4541,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-124", 0 ],
-					"midpoints" : [ 2515.594626307487488, 753.0, 2538.0, 753.0, 2538.0, 807.0, 2445.0, 807.0, 2445.0, 855.0, 2370.0, 855.0, 2370.0, 891.0, 2382.31550145149231, 891.0 ],
+					"destination" : [ "obj-163", 0 ],
 					"source" : [ "obj-128", 1 ]
 				}
 
@@ -4390,8 +4577,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-70", 0 ],
-					"midpoints" : [ 2605.36404287815094, 810.0, 2610.0, 810.0, 2610.0, 855.0, 2383.286375224590302, 855.0 ],
+					"destination" : [ "obj-173", 1 ],
+					"midpoints" : [ 2605.36404287815094, 810.0, 2610.0, 810.0, 2610.0, 855.0, 2530.0, 855.0 ],
 					"source" : [ "obj-132", 1 ]
 				}
 
@@ -4470,7 +4657,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-275", 0 ],
-					"midpoints" : [ 1768.75, 963.0, 2382.31550145149231, 963.0 ],
+					"midpoints" : [ 1768.75, 963.0, 2426.975695013999939, 963.0 ],
 					"source" : [ "obj-145", 0 ]
 				}
 
@@ -4486,7 +4673,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-209", 1 ],
-					"midpoints" : [ 2382.31550145149231, 978.0, 2066.5, 978.0 ],
+					"midpoints" : [ 2426.975695013999939, 978.0, 2066.5, 978.0 ],
 					"source" : [ "obj-147", 0 ]
 				}
 
@@ -4501,15 +4688,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-147", 0 ],
-					"midpoints" : [ 2742.257244884967804, 855.0, 2358.0, 855.0, 2358.0, 927.0, 2382.31550145149231, 927.0 ],
+					"midpoints" : [ 2742.257244884967804, 887.5546875, 2358.0, 887.5546875, 2358.0, 927.0, 2426.975695013999939, 927.0 ],
 					"source" : [ "obj-150", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-104", 0 ],
-					"midpoints" : [ 1784.004830837249756, 1614.0, 1803.0, 1614.0, 1803.0, 1011.0, 1572.0, 1011.0, 1572.0, 567.0, 1494.0, 567.0, 1494.0, 351.0, 1519.0, 351.0 ],
+					"destination" : [ "obj-174", 0 ],
+					"midpoints" : [ 1784.004830837249756, 1614.0, 1803.0, 1614.0, 1803.0, 1011.0, 1572.0, 1011.0, 1572.0, 567.0, 1494.0, 567.0, 1494.0, 351.0, 1506.339055478572845, 351.0 ],
 					"source" : [ "obj-154", 1 ]
 				}
 
@@ -4525,6 +4712,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-93", 0 ],
 					"source" : [ "obj-156", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-162", 0 ],
+					"source" : [ "obj-157", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-157", 0 ],
+					"source" : [ "obj-158", 0 ]
 				}
 
 			}
@@ -4555,8 +4756,124 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"order" : 1,
+					"source" : [ "obj-161", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-73", 0 ],
+					"order" : 0,
+					"source" : [ "obj-161", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"order" : 2,
+					"source" : [ "obj-161", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-161", 0 ],
+					"source" : [ "obj-162", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-124", 0 ],
+					"midpoints" : [ 2515.325208365917206, 753.0, 2538.0, 753.0, 2538.0, 807.0, 2370.0390625, 807.0, 2370.0390625, 855.0, 2370.0, 855.0, 2370.0, 891.0, 2426.975695013999939, 891.0 ],
+					"source" : [ "obj-163", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-70", 0 ],
+					"source" : [ "obj-164", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-169", 1 ],
+					"midpoints" : [ 1435.5, 741.0, 1629.0, 741.0, 1629.0, 621.0, 1672.5, 621.0 ],
+					"order" : 0,
+					"source" : [ "obj-167", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-170", 0 ],
+					"midpoints" : [ 1435.5, 741.0, 1485.0, 741.0, 1485.0, 678.0, 1508.800970554351807, 678.0 ],
+					"order" : 1,
+					"source" : [ "obj-167", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-171", 1 ],
+					"source" : [ "obj-169", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-106", 0 ],
 					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-172", 1 ],
+					"source" : [ "obj-170", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-106", 0 ],
+					"source" : [ "obj-171", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-171", 0 ],
+					"midpoints" : [ 1373.5, 741.0, 1632.0, 741.0, 1632.0, 696.0, 1656.5, 696.0 ],
+					"source" : [ "obj-172", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-70", 0 ],
+					"source" : [ "obj-173", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-104", 0 ],
+					"order" : 1,
+					"source" : [ "obj-174", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"order" : 0,
+					"source" : [ "obj-174", 0 ]
 				}
 
 			}
@@ -4591,7 +4908,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-135", 0 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-209", 0 ]
 				}
 
@@ -4599,7 +4916,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-141", 1 ],
-					"order" : 1,
+					"order" : 2,
 					"source" : [ "obj-209", 0 ]
 				}
 
@@ -4616,7 +4933,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-212", 0 ],
-					"order" : 2,
+					"order" : 0,
 					"source" : [ "obj-209", 0 ]
 				}
 
@@ -4751,7 +5068,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-209", 2 ],
-					"midpoints" : [ 2382.31550145149231, 1374.0, 2142.5, 1374.0 ],
+					"midpoints" : [ 2426.975695013999939, 1374.0, 2142.5, 1374.0 ],
 					"source" : [ "obj-275", 0 ]
 				}
 
@@ -4977,6 +5294,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-101", 0 ],
+					"order" : 1,
+					"source" : [ "obj-5", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-172", 0 ],
+					"order" : 0,
 					"source" : [ "obj-5", 1 ]
 				}
 
@@ -5041,6 +5367,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-173", 0 ],
+					"source" : [ "obj-65", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"source" : [ "obj-7", 0 ]
 				}
@@ -5049,7 +5382,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-209", 0 ],
-					"midpoints" : [ 2383.286375224590302, 894.0, 2001.0, 894.0, 2001.0, 1527.0, 1990.5, 1527.0 ],
+					"midpoints" : [ 2427.946568787097931, 894.0, 2001.0, 894.0, 2001.0, 1527.0, 1990.5, 1527.0 ],
 					"source" : [ "obj-70", 0 ]
 				}
 
@@ -5058,6 +5391,15 @@
 				"patchline" : 				{
 					"destination" : [ "obj-119", 1 ],
 					"midpoints" : [ 2517.014529526233673, 801.009708285331726, 2429.815522015094757, 801.009708285331726, 2429.815522015094757, 765.009708285331726, 2420.970840871334076, 765.009708285331726 ],
+					"order" : 1,
+					"source" : [ "obj-71", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-173", 2 ],
+					"order" : 0,
 					"source" : [ "obj-71", 1 ]
 				}
 
@@ -5149,9 +5491,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-112", 0 ],
-					"source" : [ "obj-89", 0 ],
-					"watchpoint_flags" : 5,
-					"watchpoint_id" : 1
+					"source" : [ "obj-89", 0 ]
 				}
 
 			}
@@ -5238,6 +5578,8 @@
 		"originid" : "pat-6",
 		"parameters" : 		{
 			"obj-155" : [ "live.dial[1]", "freq", 0 ],
+			"obj-158" : [ "live.dial[2]", "osc freq", 0 ],
+			"obj-167" : [ "live.dial[3]", "wet/dry", 0 ],
 			"obj-277" : [ "live.dial", "dry/wet", 0 ],
 			"parameterbanks" : 			{
 				"0" : 				{
@@ -5249,6 +5591,34 @@
 			}
 ,
 			"inherited_shortname" : 1
+		}
+,
+		"parameter_map" : 		{
+			"midi" : 			{
+				"live.dial[2]" : 				{
+					"srcname" : "16.ctrl.0.chan.midi",
+					"min" : 0.0,
+					"max" : 5000.0,
+					"flags" : 2
+				}
+,
+				"live.dial[1]" : 				{
+					"srcname" : "17.ctrl.0.chan.midi",
+					"min" : 0.0,
+					"max" : 500.0,
+					"scale" : 3.0,
+					"flags" : 2
+				}
+,
+				"live.dial[3]" : 				{
+					"srcname" : "18.ctrl.0.chan.midi",
+					"min" : 0.0,
+					"max" : 1.0,
+					"flags" : 2
+				}
+
+			}
+
 		}
 ,
 		"dependency_cache" : [ 			{
