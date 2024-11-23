@@ -14,6 +14,66 @@
 		"gridsize" : [ 15.0, 15.0 ],
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-154",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "float" ],
+					"patching_rect" : [ 1716.504830837249756, 1589.320366561412811, 77.0, 22.0 ],
+					"text" : "sampstoms~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-122",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 1638.0, 328.155335307121277, 29.0, 22.0 ],
+					"text" : "thru"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 1532.800970554351807, 328.155335307121277, 29.5, 22.0 ],
+					"text" : "+"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-104",
+					"maxclass" : "newobj",
+					"numinlets" : 3,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1509.5, 356.310674726963043, 64.0, 22.0 ],
+					"text" : "pack 0 0 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-152",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1624.271822392940521, 1618.44657975435257, 150.0, 74.0 ],
+					"text" : "outputs:\n- start position, ms\n- end position, ms\n- grain size, ms\n"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-150",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1301,7 +1361,7 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1783.0, 268.538959980010986, 150.0, 22.0 ],
-					"size" : 100.0
+					"size" : 500.0
 				}
 
 			}
@@ -3618,18 +3678,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-283",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "int", "int" ],
-					"patching_rect" : [ 1654.0, 1587.0, 34.0, 22.0 ],
-					"text" : "histo"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-281",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -3885,7 +3933,7 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "decide() {\r\n\treturn noise() > 0.;\r\n}\r\n\r\nParam maxKeyLenSamps(10240);\r\n// Param firstWs(0);\r\nParam posWidthSamps(44100);\r\n\r\nParam fftWindowSize(1024);\r\n\r\nParam chans(1);\r\nParam chansOffset(1);\r\n\r\n// Param targetFreqBin(0);\r\n\r\nParam dryWet(0.);\r\n\r\nBuffer freqMap(\"rbFreqMap\");\r\n\r\n//Data match(posWidthWs);\r\nBuffer match(\"dbgMatch\");\r\n\r\nfreqMapSize = dim(freqMap);\r\n\r\n//firstPhase = in1;\r\nfirstSamps = in1;\r\n// firstPhase * freqMapSize;\r\nfirstWs = ceil(firstSamps / fftWindowSize);\r\n\r\ngranuleSizeSamps = in2;\r\n\r\nDEBUG = -1;\r\n\r\nchan = 0;\r\n\r\nmaxKeyLenWs = ceil(maxKeyLenSamps / fftWindowSize);\r\nif (maxKeyLenWs == 0) {\r\n\tmaxKeyLenWs = 100000000;\r\n}\r\n\r\nkeyLenWs = min(ceil(granuleSizeSamps / fftWindowSize), maxKeyLenWs);\r\n\r\n\r\n\r\ntargetFreqBin = in3;\r\n\r\nposWidthWs = floor(posWidthSamps / fftWindowSize);\r\n\r\n\r\n\r\n\r\n// calculate raw match\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\r\n\trawI = ((firstWs + i) * fftWindowSize + targetFreqBin);\r\n\tsourceFreqA = peek(freqMap, rawI % freqMapSize, chan + chansOffset );\r\n\tm = sourceFreqA;\r\n\tpoke(match, m, i, chan);\r\n\tDEBUG = m;\r\n}\r\n\r\ncurKeyV = 0;\r\n\r\n// normalize, window-agg, integrate match\r\nmatchSum = 0;\r\npopElement = 0;\r\n\r\n\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\t\r\n\tcurKeyV += peek(match, i, chan) - popElement;\r\n\ttargetI =  i - keyLenWs + 1;\r\n\tif (targetI >= 0) {\r\n\t\tpopElement = peek(match, targetI, chan);\r\n\t\tmatchSum += curKeyV;\r\n\t\tpoke(match, curKeyV, targetI, chan);\r\n\t}\r\n}\r\n\r\n\r\nmean = matchSum / (posWidthWs - keyLenWs + 1);\r\n\r\nroll = 0.9 * matchSum / mean;\r\n\r\nscaledMatchSum = 0;\r\nfor (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {\r\n\tf = peek(match, i, chan) / mean;\r\n\tscaledF = max(0, (f - mean) * (dryWet + 1.) + mean);\r\n\tscaledMatchSum += scaledF;\r\n\tpoke(match, scaledF, i, chan);\r\n}\r\n\r\n\r\nroll = ((noise() + 1.) / 2.) * scaledMatchSum;\r\n\r\ngrainPositionWs = 0;\r\n\r\nfor (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {\r\n\troll -= peek(match, i, chan);\r\n\tif (roll <= 0) {\r\n\t\tgrainPositionWs = i;\r\n\t\tbreak;\r\n\t}\r\n}\r\n\r\n\r\nout1 = (firstWs + grainPositionWs) * fftWindowSize; // todo: randomize?\r\nout2 = DEBUG;",
+									"code" : "decide() {\r\n\treturn noise() > 0.;\r\n}\r\n\r\nParam maxKeyLenSamps(10240);\r\n// Param firstWs(0);\r\nParam posWidthSamps(44100);\r\n\r\nParam fftWindowSize(1024);\r\n\r\nParam chans(1);\r\nParam chansOffset(1);\r\n\r\n// Param targetFreqBin(0);\r\n\r\nParam dryWet(0.);\r\n\r\nBuffer freqMap(\"rbFreqMap\");\r\n\r\n//Data match(posWidthWs);\r\nBuffer match(\"dbgMatch\");\r\n\r\nfreqMapSize = dim(freqMap);\r\n\r\n//firstPhase = in1;\r\nfirstSamps = in1;\r\n// firstPhase * freqMapSize;\r\nfirstWs = ceil(firstSamps / fftWindowSize);\r\n\r\ngranuleSizeSamps = in2;\r\n\r\nDEBUG = -1;\r\n\r\nchan = 0;\r\n\r\nmaxKeyLenWs = ceil(maxKeyLenSamps / fftWindowSize);\r\nif (maxKeyLenWs == 0) {\r\n\tmaxKeyLenWs = 100000000;\r\n}\r\n\r\nkeyLenWs = min(ceil(granuleSizeSamps / fftWindowSize), maxKeyLenWs);\r\n\r\n\r\n\r\ntargetFreqBin = in3;\r\n\r\nposWidthWs = floor(posWidthSamps / fftWindowSize);\r\n\r\n\r\n\r\n\r\n// calculate raw match\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\r\n\trawI = ((firstWs + i) * fftWindowSize + targetFreqBin);\r\n\tsourceFreqA = peek(freqMap, rawI % freqMapSize, chan + chansOffset );\r\n\tm = sourceFreqA;\r\n\tpoke(match, m, i, chan);\r\n\tDEBUG = m;\r\n}\r\n\r\ncurKeyV = 0;\r\n\r\n// normalize, window-agg, integrate match\r\nmatchSum = 0;\r\npopElement = 0;\r\n\r\n\r\nfor (i = 0; i < posWidthWs; i+= 1) {\r\n\t\t\r\n\tcurKeyV += peek(match, i, chan) - popElement;\r\n\ttargetI =  i - keyLenWs + 1;\r\n\tif (targetI >= 0) {\r\n\t\tpopElement = peek(match, targetI, chan);\r\n\t\tmatchSum += curKeyV;\r\n\t\tpoke(match, curKeyV, targetI, chan);\r\n\t}\r\n}\r\n\r\n\r\nmean = matchSum / (posWidthWs - keyLenWs + 1);\r\n\r\nroll = 0.9 * matchSum / mean;\r\n\r\nscaledMatchSum = 0;\r\nfor (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {\r\n\tf = peek(match, i, chan) / mean;\r\n\tscaledF = max(0, (f - mean) * (dryWet + 1.) + mean);\r\n\tscaledMatchSum += scaledF;\r\n\tpoke(match, scaledF, i, chan);\r\n}\r\n\r\n\r\nroll = ((noise() + 1.) / 2.) * scaledMatchSum;\r\n\r\ngrainPositionWs = 0;\r\n\r\nfor (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {\r\n\troll -= peek(match, i, chan);\r\n\tif (roll <= 0) {\r\n\t\tgrainPositionWs = i;\r\n\t\tbreak;\r\n\t}\r\n}\r\n\r\n\r\nout1 = ((firstWs + grainPositionWs) * fftWindowSize) % freqMapSize; // todo: randomize?\r\nout2 = DEBUG;",
 									"fontface" : 0,
 									"fontname" : "<Monospaced>",
 									"fontsize" : 12.0,
@@ -3946,48 +3994,12 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-122",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1283.0, 1026.375917613506317, 29.0, 22.0 ],
-					"text" : "thru"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-15",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"patching_rect" : [ 1194.0, 1060.375917613506317, 29.5, 22.0 ],
-					"text" : "+"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-104",
-					"maxclass" : "newobj",
-					"numinlets" : 3,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1171.0, 1088.375917613506317, 64.0, 22.0 ],
-					"text" : "pack 0 0 0"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-13",
 					"maxclass" : "newobj",
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 1172.0, 1026.375917613506317, 91.0, 22.0 ],
+					"patching_rect" : [ 1170.873770356178284, 948.543676316738129, 91.0, 22.0 ],
 					"text" : "rchoose 0 1000"
 				}
 
@@ -4192,7 +4204,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-211", 0 ],
-					"midpoints" : [ 1522.5, 372.0, 1647.0, 372.0, 1647.0, 564.0, 1746.0, 564.0, 1746.0, 963.0, 1841.538809835910797, 963.0 ],
+					"midpoints" : [ 1522.5, 281.74666385864839, 1309.591024043038487, 281.74666385864839, 1309.591024043038487, 962.892591618932784, 1746.0, 962.892591618932784, 1746.0, 963.0, 1841.538809835910797, 963.0 ],
 					"order" : 1,
 					"source" : [ "obj-114", 0 ]
 				}
@@ -4321,22 +4333,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-132", 0 ],
 					"source" : [ "obj-129", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-104", 0 ],
-					"order" : 1,
-					"source" : [ "obj-13", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"order" : 0,
-					"source" : [ "obj-13", 0 ]
 				}
 
 			}
@@ -4482,8 +4478,24 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-104", 0 ],
+					"midpoints" : [ 1784.004830837249756, 1614.0, 1803.0, 1614.0, 1803.0, 1011.0, 1572.0, 1011.0, 1572.0, 567.0, 1494.0, 567.0, 1494.0, 351.0, 1519.0, 351.0 ],
+					"source" : [ "obj-154", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-103", 0 ],
 					"order" : 1,
+					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-122", 0 ],
+					"order" : 2,
 					"source" : [ "obj-16", 0 ]
 				}
 
@@ -4544,6 +4556,15 @@
 				"patchline" : 				{
 					"destination" : [ "obj-141", 1 ],
 					"order" : 1,
+					"source" : [ "obj-209", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-154", 0 ],
+					"midpoints" : [ 1990.5, 1575.0, 1726.004830837249756, 1575.0 ],
+					"order" : 3,
 					"source" : [ "obj-209", 0 ]
 				}
 
