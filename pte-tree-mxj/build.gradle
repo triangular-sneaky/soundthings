@@ -61,7 +61,11 @@ tasks.register('deployToMax', Copy) {
 
 }
 
-testClasses {
+jar {
+    dependsOn(classes)
+}
+
+classes {
     finalizedBy deployToMax
 }
 
