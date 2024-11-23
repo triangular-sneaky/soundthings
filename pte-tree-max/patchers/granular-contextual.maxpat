@@ -14,6 +14,47 @@
 		"gridsize" : [ 15.0, 15.0 ],
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-156",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1554.368910729885101, 127.0, 92.0, 22.0 ],
+					"text" : "expr 1000. / $f1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-155",
+					"maxclass" : "live.dial",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 1488.349494159221649, 79.09708696603775, 41.0, 48.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_exponent" : 2.0,
+							"parameter_initial" : [ 100 ],
+							"parameter_initial_enable" : 1,
+							"parameter_longname" : "live.dial[1]",
+							"parameter_mmax" : 500.0,
+							"parameter_modmode" : 3,
+							"parameter_osc_name" : "<default>",
+							"parameter_shortname" : "freq",
+							"parameter_type" : 0,
+							"parameter_unitstyle" : 3
+						}
+
+					}
+,
+					"varname" : "live.dial[1]"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-154",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1186,24 +1227,12 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-91",
-					"linecount" : 3,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 1387.0, 98.538959980010986, 437.0, 47.0 ],
-					"text" : "MC provides a great sandbox for working with density and layering, like granular sampling techniques. Here is a simple granular synth employing mc.voiceallocator~ and mc.target to manage 16 overlapping grains."
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontsize" : 36.0,
 					"id" : "obj-50",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1387.0, 49.538959980010986, 381.0, 47.0 ],
+					"patching_rect" : [ 1294.5, 30.09708696603775, 381.0, 47.0 ],
 					"text" : "MC Granular Synthesis"
 				}
 
@@ -1234,8 +1263,9 @@
 			}
 , 			{
 				"box" : 				{
+					"format" : 6,
 					"id" : "obj-93",
-					"maxclass" : "number",
+					"maxclass" : "flonum",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
@@ -1360,7 +1390,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1783.0, 268.538959980010986, 150.0, 22.0 ],
+					"patching_rect" : [ 1782.5, 268.538959980010986, 150.0, 22.0 ],
 					"size" : 500.0
 				}
 
@@ -4486,6 +4516,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-156", 0 ],
+					"source" : [ "obj-155", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-93", 0 ],
+					"source" : [ "obj-156", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-103", 0 ],
 					"order" : 1,
 					"source" : [ "obj-16", 0 ]
@@ -5193,6 +5237,7 @@
  ],
 		"originid" : "pat-6",
 		"parameters" : 		{
+			"obj-155" : [ "live.dial[1]", "freq", 0 ],
 			"obj-277" : [ "live.dial", "dry/wet", 0 ],
 			"parameterbanks" : 			{
 				"0" : 				{
