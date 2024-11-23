@@ -2,7 +2,7 @@
 	"name" : "pte-tree-max",
 	"version" : 1,
 	"creationdate" : 3801980044,
-	"modificationdate" : 3809086040,
+	"modificationdate" : 3812798280,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -19,6 +19,16 @@
 			"camera-sandbox.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
+			}
+,
+			"contextual-soundscapes.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/_art/pte-tree",
+					"projectrelativepath" : ".."
+				}
+
 			}
 
 		}

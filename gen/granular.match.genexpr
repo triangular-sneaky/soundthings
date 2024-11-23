@@ -1,0 +1,62 @@
+decide() {
+	return noise() > 0.;
+}
+
+Param keyLenWs(10);
+Param firstWs(0);
+Param posWidthWs(100);
+
+Param fftWindowSize(1024);
+
+Param targetFreqBin(0);
+
+Param dryWet(0.5);
+
+Buffer freqMap("rbFreqMap");
+
+//Data match(posWidthWs);
+Buffer match("dbgMatch");
+
+Data r(posWidthWs);
+
+// calculate raw match
+matchNormDivider = 0.;
+
+for (i = 0; i < posWidthWs; i+= 1) {
+	
+	r01 = (noise() + 1.) / 2.;
+	poke(r, r01, i);
+	
+	sourceFreqA = peek(freqMap, (firstWs + i) * fftWindowSize + targetFreqBin);
+	m = sourceFreqA;
+	matchNormDivider += m;
+	poke(match, m, i);
+}
+
+curKeyV = 0;
+maxKeyV = 0;
+maxKeyI = 0;
+
+// normalize and randomize match
+for (i = 0; i < posWidthWs; i+= 1) {
+
+	normalizedM = peek(match, i) / matchNormDivider;
+	s = normalizedM * dryWet + peek(r, i) * (1 - dryWet);
+	poke(match, s, i);
+}
+
+
+	
+for (i = 0; i < posWidthWs; i+= 1) {
+		
+	curKeyV += peek(match, i);
+	if (i >= keyLenWs) {
+			curKeyV -= peek(match, i - keyLenWs);
+	}
+	if (curKeyV > maxKeyV || curKeyV == maxKeyV && decide()) {
+			maxKeyV = curKeyV;
+			maxKeyI = i - keyLenWs; 
+	}
+}
+
+out1 = maxKeyI;
