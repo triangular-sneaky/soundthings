@@ -51,14 +51,14 @@ posWidthWs = floor(posWidthSamps / fftWindowSize);
 
 
 
-
+DEBUG = posWidthWs;
 // calculate raw match
-for (i = 0; i < posWidthWs; i+= 1) {
-	
+for (i = 0; i < posWidthWs; i += 1) {
+
 	rawI = ((firstWs + i) * fftWindowSize + targetFreqBin);
-	sourceFreqA = peek(freqMap, rawI % freqMapSize, chan + chansOffset );
+	sourceFreqA = freqMap.peek(rawI % freqMapSize, chan + chansOffset);
 	m = sourceFreqA;
-	poke(match, m, i, chan);
+	match.poke(m, i, chan);
 }
 
 curKeyV = 0;
@@ -68,14 +68,14 @@ matchSum = 0;
 popElement = 0;
 
 
-for (i = 0; i < posWidthWs; i+= 1) {
-		
-	curKeyV += peek(match, i, chan) - popElement;
-	targetI =  i - keyLenWs + 1;
+for (i = 0; i < posWidthWs; i += 1) {
+
+	curKeyV += match.peek(i, chan) - popElement;
+	targetI = i - keyLenWs + 1;
 	if (targetI >= 0) {
-		popElement = peek(match, targetI, chan);
+		popElement = match.peek(targetI, chan);
 		matchSum += curKeyV;
-		poke(match, curKeyV, targetI, chan);
+		match.poke(curKeyV, targetI, chan);
 	}
 }
 
@@ -86,10 +86,10 @@ roll = 0.9 * matchSum / mean;
 
 scaledMatchSum = 0;
 for (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {
-	f = peek(match, i, chan) / mean;
+	f = match.peek(i, chan) / mean;
 	scaledF = max(0, (f - mean) * (dryWet + 1.) + mean);
 	scaledMatchSum += scaledF;
-	poke(match, scaledF, i, chan);
+	match.poke(scaledF, i, chan);
 }
 
 
@@ -98,7 +98,7 @@ roll = ((noise() + 1.) / 2.) * scaledMatchSum;
 grainPositionWs = 0;
 
 for (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {
-	roll -= peek(match, i, chan);
+	roll -= match.peek(i, chan);
 	if (roll <= 0) {
 		grainPositionWs = i;
 		break;
@@ -107,10 +107,10 @@ for (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {
 
 debugIndex = ((firstWs + grainPositionWs) * fftWindowSize + targetFreqBin) % freqMapSize;
 
-//DEBUG = peek(freqMap, debugIndex, chan + chansOffset);
+//DEBUG = freqMap.peek(debugIndex, chan + chansOffset);
 //DEBUG = debugIndex;
 //z,DEBUG = peek(freqMap, 0, channels=2);
-DEBUG = freqMap.peek(44031,1);
+//DEBUG = freqMap.peek(44031, 1);
 
 out1 = ((firstWs + grainPositionWs) * fftWindowSize) % freqMapSize; // todo: randomize?
 out2 = DEBUG;
