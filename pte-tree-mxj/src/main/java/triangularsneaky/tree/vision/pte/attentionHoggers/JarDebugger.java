@@ -1,7 +1,5 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers;
 
-import com.cycling74.max.MaxObject;
-import triangularsneaky.tree.vision.pte.attentionHoggers.jit.AttentionTracker;
 import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.io.InputStream;

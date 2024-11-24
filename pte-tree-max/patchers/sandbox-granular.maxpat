@@ -136,7 +136,7 @@
 
 							}
  ],
-						"originid" : "pat-2146"
+						"originid" : "pat-71"
 					}
 ,
 					"patching_rect" : [ 1196.0, 1255.0, 29.0, 22.0 ],
@@ -1754,7 +1754,7 @@
 
 							}
  ],
-						"originid" : "pat-344",
+						"originid" : "pat-107",
 						"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ]
 					}
 ,
@@ -2905,7 +2905,7 @@
 
 			}
  ],
-		"originid" : "pat-308",
+		"originid" : "pat-69",
 		"parameters" : 		{
 			"obj-45" : [ "live.gain~", "live.gain~", 0 ],
 			"obj-57::obj-21::obj-6" : [ "live.tab[3]", "live.tab[1]", 0 ],
