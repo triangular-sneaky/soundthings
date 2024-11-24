@@ -2,6 +2,7 @@ decide() {
 	return noise() > 0.;
 }
 
+	
 Param maxKeyLenSamps(10240);
 // Param firstWs(0);
 Param posWidthSamps(44100);
@@ -20,12 +21,18 @@ Buffer freqMap("rbFreqMap");
 //Data match(posWidthWs);
 Buffer match("dbgMatch");
 
+freqMapSize = dim(freqMap);
+
+//firstPhase = in1;
 firstSamps = in1;
+// firstPhase * freqMapSize;
 firstWs = ceil(firstSamps / fftWindowSize);
 
 granuleSizeSamps = in2;
 
 DEBUG = -1;
+
+DEBUG_IN = in4;
 
 chan = 0;
 
@@ -36,13 +43,13 @@ if (maxKeyLenWs == 0) {
 
 keyLenWs = min(ceil(granuleSizeSamps / fftWindowSize), maxKeyLenWs);
 
-
+DEBUG = keyLenWs;
 
 targetFreqBin = in3;
 
 posWidthWs = floor(posWidthSamps / fftWindowSize);
 
-freqMapSize = dim(freqMap);
+
 
 
 // calculate raw match
@@ -52,7 +59,6 @@ for (i = 0; i < posWidthWs; i+= 1) {
 	sourceFreqA = peek(freqMap, rawI % freqMapSize, chan + chansOffset );
 	m = sourceFreqA;
 	poke(match, m, i, chan);
-	DEBUG = m;
 }
 
 curKeyV = 0;
@@ -99,6 +105,13 @@ for (i = 0; i < posWidthWs - keyLenWs + 1; i += 1) {
 	}
 }
 
+debugIndex = ((firstWs + grainPositionWs) * fftWindowSize + targetFreqBin) % freqMapSize;
 
-out1 = (firstWs + grainPositionWs) * fftWindowSize; // todo: randomize?
+//DEBUG = peek(freqMap, debugIndex, chan + chansOffset);
+//DEBUG = debugIndex;
+//z,DEBUG = peek(freqMap, 0, channels=2);
+DEBUG = freqMap.peek(44031,1);
+
+out1 = ((firstWs + grainPositionWs) * fftWindowSize) % freqMapSize; // todo: randomize?
 out2 = DEBUG;
+
