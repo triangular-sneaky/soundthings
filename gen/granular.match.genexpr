@@ -2,14 +2,14 @@ decide() {
 	return noise() > 0.;
 }
 
-fftWiForSourceSi(si, snFftWindowSize) {
+fftfiForSourceSi(si, snFftWindowSize) {
 	return floor(si / snFftWindowSize ) + 1;
 }
 // notation
 // si -> sample index in source
 // sn -> number of samples in source
-// wi -> fft window index in fftmap
-// wn -> number of fft windows in fftmap
+// fi -> fft frame index in fftmap
+// fn -> number of fft frames in fftmap
 	
 Param snMaxKeyLen(10240);
 Param snPosStartOffset(44100); // negative offset back
@@ -25,23 +25,23 @@ Param dryWet(0.);
 Buffer freqMap("rbFreqMap");
 Buffer fftPhase("rbFftPhase");
 
-//Data match(wnPosWidth);
+//Data match(fnPosWidth);
 Buffer match("dbgMatch");
 
 freqMapSize = dim(freqMap);
 // inputs and derivatives
-// in1: buffer head siHead -> drives wiPosStart, wnPosWidth, wiGuide
+// in1: buffer head siHead -> drives fiPosStart, fnPosWidth, fiGuide
 siHead = in1;
-wiGuide = floor(siHead / snFftWindowSize) - 1; // index of last fully written fft window
+fiGuide = floor(siHead / snFftWindowSize) - 1; // index of last fully written fft frame
 
 siPosStart = siHead + snPosStartOffset;
 siPosEnd = siHead + snPosEndOffset;
 
-wiPosStart = fftWiForSourceSi(siPosStart, snFftWindowSize);
-wiPosEnd = fftWiForSourceSi(siPosEnd, snFftWindowSize);
+fiPosStart = fftfiForSourceSi(siPosStart, snFftWindowSize);
+fiPosEnd = fftfiForSourceSi(siPosEnd, snFftWindowSize);
 
-wnPosWidth = max(1, wiPosEnd - wiPosStart);
-wiPosStart = min(wiPosStart, wiGuide);
+fnPosWidth = max(1, fiPosEnd - fiPosStart);
+fiPosStart = min(fiPosStart, fiGuide);
 
 snGranuleSize = in2;
 
@@ -51,34 +51,34 @@ DEBUG_IN = in4;
 
 chan = 0;
 
-wnMaxKeyLen = ceil(snMaxKeyLen / snFftWindowSize);
-if (wnMaxKeyLen == 0) {
-	wnMaxKeyLen = 100000000;
+fnMaxKeyLen = ceil(snMaxKeyLen / snFftWindowSize);
+if (fnMaxKeyLen == 0) {
+	fnMaxKeyLen = 100000000;
 }
 
-wnKeyLen = min(ceil(snGranuleSize / snFftWindowSize), wnMaxKeyLen);
+fnKeyLen = min(ceil(snGranuleSize / snFftWindowSize), fnMaxKeyLen);
 
-// 1. process / cache wiGuide @ guideChan
+// 1. process / cache fiGuide @ guideChan
 // 2. 
 
 maxBinV = -1;
 maxBin = -1;
 
 // DEBUG: verify fft indexing
-for (i = 0; i < wnPosWidth * snFftWindowSize; i += 1) {
-	rawI = (wiPosStart * snFftWindowSize + i);
-	v = freqMap.peek(rawI % freqMapSize, sourceChan);
-	p = fftPhase.peek(rawI % freqMapSize, sourceChan);
+for (i = 0; i < fnPosWidth * snFftWindowSize; i += 1) {
+	rafi = (fiPosStart * snFftWindowSize + i);
+	v = freqMap.peek(rafi % freqMapSize, sourceChan);
+	p = fftPhase.peek(rafi % freqMapSize, sourceChan);
 	if (p != i % snFftWindowSize) {
 		DEBUG = i;
 	}
 }
 
 // calculate raw match
-for (i = 0; i < wnPosWidth; i += 1) {
+for (i = 0; i < fnPosWidth; i += 1) {
 
-	rawI = ((wiPosStart + i) * snFftWindowSize + targetFreqBin);
-	sourceFreqA = freqMap.peek(rawI % freqMapSize, sourceChan);
+	rafi = ((fiPosStart + i) * snFftWindowSize + targetFreqBin);
+	sourceFreqA = freqMap.peek(rafi % freqMapSize, sourceChan);
 	if (i == 0) {
 		//	DEBUG = sourceFreqA;
 	}
@@ -89,15 +89,15 @@ for (i = 0; i < wnPosWidth; i += 1) {
 
 curKeyV = 0;
 
-// normalize, window-agg, integrate match
+// normalize, frame-agg, integrate match
 matchSum = 0;
 popElement = 0;
 
 
-for (i = 0; i < wnPosWidth; i += 1) {
+for (i = 0; i < fnPosWidth; i += 1) {
 
 	curKeyV += match.peek(i, chan) - popElement;
-	targetI = i - wnKeyLen + 1;
+	targetI = i - fnKeyLen + 1;
 	if (targetI >= 0) {
 		popElement = match.peek(targetI, chan);
 		matchSum += curKeyV;
@@ -106,12 +106,12 @@ for (i = 0; i < wnPosWidth; i += 1) {
 }
 
 
-mean = matchSum / (wnPosWidth - wnKeyLen + 1);
+mean = matchSum / (fnPosWidth - fnKeyLen + 1);
 
 roll = 0.9 * matchSum / mean;
 
 scaledMatchSum = 0;
-for (i = 0; i < wnPosWidth - wnKeyLen + 1; i += 1) {
+for (i = 0; i < fnPosWidth - fnKeyLen + 1; i += 1) {
 	f = match.peek(i, chan) / mean;
 	scaledF = max(0, (f - mean) * (dryWet + 1.) + mean);
 	scaledMatchSum += scaledF;
@@ -123,7 +123,7 @@ roll = ((noise() + 1.) / 2.) * scaledMatchSum;
 
 grainPositionWs = 0;
 
-for (i = 0; i < wnPosWidth - wnKeyLen + 1; i += 1) {
+for (i = 0; i < fnPosWidth - fnKeyLen + 1; i += 1) {
 	roll -= match.peek(i, chan);
 	if (roll <= 0) {
 		grainPositionWs = i;
@@ -132,7 +132,7 @@ for (i = 0; i < wnPosWidth - wnKeyLen + 1; i += 1) {
 }
 
 
-debugIndex = ((wiPosStart + grainPositionWs) * snFftWindowSize + targetFreqBin) % freqMapSize;
+debugIndex = ((fiPosStart + grainPositionWs) * snFftWindowSize + targetFreqBin) % freqMapSize;
 
 //DEBUG = freqMap.peek(debugIndex, sourceChan);
 //DEBUG = debugIndex;
@@ -141,7 +141,7 @@ debugIndex = ((wiPosStart + grainPositionWs) * snFftWindowSize + targetFreqBin) 
 
 
 
-out1 = ((wiPosStart + grainPositionWs) * snFftWindowSize) % freqMapSize; // todo: randomize?
+out1 = ((fiPosStart + grainPositionWs) * snFftWindowSize) % freqMapSize; // todo: randomize?
 
 
 out2 = DEBUG;
