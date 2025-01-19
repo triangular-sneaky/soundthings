@@ -6,6 +6,10 @@ fftFiForSourceSi(si, snFftWindowSize) {
 	return floor(si / snFftWindowSize ) + 1;
 }
 
+wrapSi(si, sn) {
+	return (si + sn) % sn;
+}
+
 
 // ===================================
 // notation
@@ -52,6 +56,7 @@ fftMagSize = dim(fftMag);
 
 siHead = in1; //buffer head siHead -> drives fiPosStart, fnPosWidth, fiGuide
 fiGuide = floor(siHead / snFftWindowSize) - 1; // index of last fully written fft frame
+fiSource = fiGuide; // assume same heads for guide nd source for now
 
 siPosStart = siHead + snPosStartOffset;
 siPosEnd = siHead + snPosEndOffset;
@@ -94,16 +99,16 @@ DEBUG = -1;
 maxM = -1;
 maxMI = -1;
 for (i = 0; i < snFftWindowSize; i += 1) {
-	siRaw = (fiGuide * snFftWindowSize + i);
-	m = fftMag.peek(siRaw % fftMagSize, guideChan);
-	p = fftPhase.peek(siRaw % fftMagSize, guideChan);
+	siRaw = wrapSi(fiPosStart * snFftWindowSize + i, fftMagSize);
+	m = fftMag.peek(siRaw, guideChan);
+	p = fftPhase.peek(siRaw, guideChan);
 	if (maxM < m) {
 		maxM = m;
 		maxMI = i;
 	}
-}
+} 
 DEBUG_POC_FFT_INDEXING = maxMI;
-
+DEBUG_SI_POS_START = wrapSi(fiPosStart * snFftWindowSize, fftMagSize);
 
 // ===================================
 // OLD LOGIC
@@ -182,6 +187,6 @@ DEBUG_POC_FFT_INDEXING = maxMI;
 
 // out1 = ((fiPosStart + grainPositionWs) * snFftWindowSize) % fftMagSize; // todo: randomize?
 
-
+out1 = -1;
 out2 = DEBUG_POC_FFT_INDEXING;
 

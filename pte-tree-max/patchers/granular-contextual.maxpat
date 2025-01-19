@@ -294,6 +294,258 @@
 						"title" : "choose-grain-size-and-position",
 						"boxes" : [ 							{
 								"box" : 								{
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 0.764705882352941, 0.16078431372549, 1.0 ],
+									"bubbleside" : 0,
+									"id" : "obj-113",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 1066.0, 1594.0, 236.0, 41.0 ],
+									"prototypename" : "design bubble",
+									"text" : "siPosStart",
+									"textcolor" : [ 0.23921568627451, 0.23921568627451, 0.23921568627451, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-112",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "bang", "float" ],
+									"patching_rect" : [ 2267.0, 630.0, 44.0, 24.0 ],
+									"text" : "t b f"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-111",
+									"maxclass" : "number",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1140.0, 1483.0, 117.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 0.764705882352941, 0.16078431372549, 1.0 ],
+									"id" : "obj-110",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 2386.0, 736.0, 140.0, 42.0 ],
+									"prototypename" : "design bubble",
+									"text" : "debug viewer at position start",
+									"textcolor" : [ 0.23921568627451, 0.23921568627451, 0.23921568627451, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-107",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "signal", "float" ],
+									"patching_rect" : [ 2336.0, 606.0, 80.0, 24.0 ],
+									"text" : "mstosamps~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-106",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 2533.349999999999909, 510.029999999999973, 37.0, 24.0 ],
+									"text" : "1024"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-105",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "signal", "float" ],
+									"patching_rect" : [ 2414.059999999999945, 845.850000000000023, 80.0, 24.0 ],
+									"text" : "sampstoms~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-103",
+									"maxclass" : "number",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 2257.0, 822.0, 109.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-101",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 2257.0, 780.159999999999854, 109.0, 24.0 ],
+									"text" : "expr $i1 * $i2"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-98",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 2257.0, 736.0, 160.0, 24.0 ],
+									"text" : "expr ceil( $f1 / $f2)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-97",
+									"maxclass" : "newobj",
+									"numinlets" : 3,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 2253.0, 696.5, 210.0, 24.0 ],
+									"text" : "expr ($i1 + $i2 + $i3) % $i3"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-96",
+									"maxclass" : "number",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1081.0, 1554.0, 145.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-95",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "signal", "float" ],
+									"patching_rect" : [ 1140.0, 1518.0, 80.0, 24.0 ],
+									"text" : "sampstoms~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 0.764705882352941, 0.16078431372549, 1.0 ],
+									"id" : "obj-94",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 1318.0, 1503.0, 236.0, 26.0 ],
+									"prototypename" : "design bubble",
+									"text" : "indexing",
+									"textcolor" : [ 0.23921568627451, 0.23921568627451, 0.23921568627451, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-92",
+									"maxclass" : "number",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1280.0, 1563.0, 205.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-91",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1329.0, 1391.0, 24.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-89",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 4,
+									"outlettype" : [ "int", "float", "int", "int" ],
+									"patching_rect" : [ 1318.0, 1431.0, 73.0, 24.0 ],
+									"text" : "dspstate~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-81",
+									"maxclass" : "number",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1268.0, 1419.0, 50.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-80",
+									"maxclass" : "newobj",
+									"numinlets" : 3,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1268.0, 1473.0, 188.0, 24.0 ],
+									"text" : "expr (1+ $i1) * $f2 / $i3"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-79",
+									"maxclass" : "gain~",
+									"multichannelvariant" : 1,
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "multichannelsignal", "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 2942.0, 1204.0, 22.0, 140.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-68",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -1500,7 +1752,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "setvalue", "int" ],
-									"patching_rect" : [ 2605.320000000000164, 780.159999999999968, 73.0, 24.0 ],
+									"patching_rect" : [ 2605.320000000000164, 780.159999999999854, 73.0, 24.0 ],
 									"text" : "mc.target"
 								}
 
@@ -1816,10 +2068,9 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 0.0, -60.0, 1007.999999999999886, 760.0 ],
+										"rect" : [ 34.0, 34.0, 1372.0, 832.0 ],
 										"gridsize" : [ 15.0, 15.0 ],
 										"style" : "my default patcher",
-										"visible" : 1,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-19",
@@ -2611,7 +2862,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1309.0, 1059.0, 134.0, 24.0 ],
+									"patching_rect" : [ 1309.0, 1054.0, 134.0, 24.0 ],
 									"text" : "r fftWindowSize"
 								}
 
@@ -3692,6 +3943,17 @@
 										"title" : "freq-mapper",
 										"boxes" : [ 											{
 												"box" : 												{
+													"id" : "obj-3",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 36.350000000000001, 975.950000000000045, 246.0, 24.0 ],
+													"text" : "out 1 @comment grain start\\, samps"
+												}
+
+											}
+, 											{
+												"box" : 												{
 													"id" : "obj-1",
 													"linecount" : 2,
 													"maxclass" : "newobj",
@@ -3722,7 +3984,7 @@
 													"maxclass" : "newobj",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 508.965482354164124, 1078.620615720748901, 152.0, 24.0 ],
+													"patching_rect" : [ 536.0, 993.0, 152.0, 24.0 ],
 													"text" : "out 2 @comment DEBUG"
 												}
 
@@ -3748,25 +4010,14 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 27.0, 14.70588207244873, 208.0, 40.0 ],
+													"patching_rect" : [ 38.0, 8.0, 208.0, 40.0 ],
 													"text" : "in 1 @comment buffer head\\, samples"
 												}
 
 											}
 , 											{
 												"box" : 												{
-													"id" : "obj-9",
-													"maxclass" : "newobj",
-													"numinlets" : 1,
-													"numoutlets" : 0,
-													"patching_rect" : [ 35.172411382198334, 1078.620615720748901, 282.0, 24.0 ],
-													"text" : "out 1 @comment grain position\\, samples"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"code" : "decide() {\n\treturn noise() > 0.;\n}\n\nfftFiForSourceSi(si, snFftWindowSize) {\n\treturn floor(si / snFftWindowSize ) + 1;\n}\n\n\n// ===================================\n// notation\n// si -> sample index in source\n// sn -> number of samples in source\n// fi -> fft frame index in fftmap\n// fn -> number of fft frames in fftmap\n// ===================================\n\t\n// ===================================\n// parameters\n// ===================================\nParam snMaxKeyLen(10240);\nParam snPosStartOffset(44100); // negative offset back\nParam snPosEndOffset(44100); // negative offset back\n\nParam snFftWindowSize(1024);\n\nParam sourceChan(1);\nParam guideChan(0);\n\nParam dryWet(0.);\n\n// ===================================\n// external data\n// ===================================\n\nBuffer fftMag(\"rbFftMag\");\nBuffer fftPhase(\"rbFftPhase\");\n\n// ===================================\n// internal data\n// ===================================\n\n\n//Data match(fnPosWidth);\nBuffer match(\"dbgMatch\");\n\nfftMagSize = dim(fftMag); \n\n// ===================================\n// inputs and derivatives\n// ===================================\n\nsiHead = in1; //buffer head siHead -> drives fiPosStart, fnPosWidth, fiGuide\nfiGuide = floor(siHead / snFftWindowSize) - 1; // index of last fully written fft frame\n\nsiPosStart = siHead + snPosStartOffset;\nsiPosEnd = siHead + snPosEndOffset;\n\nfiPosStart = fftFiForSourceSi(siPosStart, snFftWindowSize);\nfiPosEnd = fftFiForSourceSi(siPosEnd, snFftWindowSize);\n\nfnPosWidth = max(1, fiPosEnd - fiPosStart);\nfiPosStart = min(fiPosStart, fiGuide);\n\n\nsnGranuleSize = in2;\n\n\nfnMaxKeyLen = ceil(snMaxKeyLen / snFftWindowSize);\nif (fnMaxKeyLen == 0) {\n\tfnMaxKeyLen = 100000000;\n}\nfnKeyLen = min(ceil(snGranuleSize / snFftWindowSize), fnMaxKeyLen);\n\n\n// ===================================\n// stubs and TODOs\n// ===================================\nchan = 0;\n\n// ===================================\n// DEBUG\n// ===================================\nDEBUG_IN = in4;\nDEBUG = -1;\n\n\n\n// ----------------------------------\n// DEBUG: debugging: indexing poc \n// PoC draw FFT index on scope: \n// find max freq in a frame at fiPosStart and debug_out its index\n// ----------------------------------\nmaxM = -1;\nmaxMI = -1;\nfor (i = 0; i < snFftWindowSize; i += 1) {\n\tsiRaw = (fiGuide * snFftWindowSize + i);\n\tm = fftMag.peek(siRaw % fftMagSize, guideChan);\n\tp = fftPhase.peek(siRaw % fftMagSize, guideChan);\n\tif (maxM < m) {\n\t\tmaxM = m;\n\t\tmaxMI = i;\n\t}\n}\nDEBUG_POC_FFT_INDEXING = maxMI;\n\n\n// ===================================\n// OLD LOGIC\n// ===================================\n\n// // TODO: ?????\n// // 1. process / cache fiGuide @ guideChan\n// // 2. \n\n// // calculate raw match\n// for (i = 0; i < fnPosWidth; i += 1) {\n\n// \trawI = ((fiPosStart + i) * snFftWindowSize + targetFreqBin);\n// \tsourceFreqA = fftMag.peek(rawI % fftMagSize, sourceChan);\n// \tif (i == 0) {\n// \t\t//\tDEBUG = sourceFreqA;\n// \t}\n// \tm = sourceFreqA;\n// \tmatch.poke(m, i, chan);\n// }\n\n\n// curKeyV = 0;\n\n// // normalize, frame-agg, integrate match\n// matchSum = 0;\n// popElement = 0;\n\n\n// for (i = 0; i < fnPosWidth; i += 1) {\n\n// \tcurKeyV += match.peek(i, chan) - popElement;\n// \ttargetI = i - fnKeyLen + 1;\n// \tif (targetI >= 0) {\n// \t\tpopElement = match.peek(targetI, chan);\n// \t\tmatchSum += curKeyV;\n// \t\tmatch.poke(curKeyV, targetI, chan);\n// \t}\n// }\n\n\n// mean = matchSum / (fnPosWidth - fnKeyLen + 1);\n\n// roll = 0.9 * matchSum / mean;\n\n// scaledMatchSum = 0;\n// for (i = 0; i < fnPosWidth - fnKeyLen + 1; i += 1) {\n// \tf = match.peek(i, chan) / mean;\n// \tscaledF = max(0, (f - mean) * (dryWet + 1.) + mean);\n// \tscaledMatchSum += scaledF;\n// \tmatch.poke(scaledF, i, chan);\n// }\n\n\n// roll = ((noise() + 1.) / 2.) * scaledMatchSum;\n\n// grainPositionWs = 0;\n\n// for (i = 0; i < fnPosWidth - fnKeyLen + 1; i += 1) {\n// \troll -= match.peek(i, chan);\n// \tif (roll <= 0) {\n// \t\tgrainPositionWs = i;\n// \t\tbreak;\n// \t}\n// }\n\n\n// debugIndex = ((fiPosStart + grainPositionWs) * snFftWindowSize + targetFreqBin) % fftMagSize;\n\n// //DEBUG = fftMag.peek(debugIndex, sourceChan);\n// //DEBUG = debugIndex;\n// //z,DEBUG = peek(fftMag, 0, channels=2);\n// //DEBUG = fftMag.peek(44031, 1);\n\n\n\n// out1 = ((fiPosStart + grainPositionWs) * snFftWindowSize) % fftMagSize; // todo: randomize?\n\n\nout2 = DEBUG_POC_FFT_INDEXING;\n\n",
+													"code" : "decide() {\n\treturn noise() > 0.;\n}\n\nfftFiForSourceSi(si, snFftWindowSize) {\n\treturn floor(si / snFftWindowSize ) + 1;\n}\n\nwrapSi(si, sn) {\n\treturn (si + sn) % sn;\n}\n\n\n// ===================================\n// notation\n// si -> sample index in source\n// sn -> number of samples in source\n// fi -> fft frame index in fftmap\n// fn -> number of fft frames in fftmap\n// ===================================\n\t\n// ===================================\n// parameters\n// ===================================\nParam snMaxKeyLen(10240);\nParam snPosStartOffset(44100); // negative offset back\nParam snPosEndOffset(44100); // negative offset back\n\nParam snFftWindowSize(1024);\n\nParam sourceChan(1);\nParam guideChan(0);\n\nParam dryWet(0.);\n\n// ===================================\n// external data\n// ===================================\n\nBuffer fftMag(\"rbFftMag\");\nBuffer fftPhase(\"rbFftPhase\");\n\n// ===================================\n// internal data\n// ===================================\n\n\n//Data match(fnPosWidth);\nBuffer match(\"dbgMatch\");\n\nfftMagSize = dim(fftMag); \n\n// ===================================\n// inputs and derivatives\n// ===================================\n\nsiHead = in1; //buffer head siHead -> drives fiPosStart, fnPosWidth, fiGuide\nfiGuide = floor(siHead / snFftWindowSize) - 1; // index of last fully written fft frame\nfiSource = fiGuide; // assume same heads for guide nd source for now\n\nsiPosStart = siHead + snPosStartOffset;\nsiPosEnd = siHead + snPosEndOffset;\n\nfiPosStart = fftFiForSourceSi(siPosStart, snFftWindowSize);\nfiPosEnd = fftFiForSourceSi(siPosEnd, snFftWindowSize);\n\nfnPosWidth = max(1, fiPosEnd - fiPosStart);\nfiPosStart = min(fiPosStart, fiGuide);\n\n\nsnGranuleSize = in2;\n\n\nfnMaxKeyLen = ceil(snMaxKeyLen / snFftWindowSize);\nif (fnMaxKeyLen == 0) {\n\tfnMaxKeyLen = 100000000;\n}\nfnKeyLen = min(ceil(snGranuleSize / snFftWindowSize), fnMaxKeyLen);\n\n\n// ===================================\n// stubs and TODOs\n// ===================================\nchan = 0;\n\n// ===================================\n// DEBUG\n// ===================================\nDEBUG_IN = in4;\nDEBUG = -1;\n\n\n\n// ----------------------------------\n// DEBUG: debugging: indexing poc \n// PoC draw FFT index on scope: \n// find max freq in a frame at fiPosStart and debug_out its index\n// ----------------------------------\nmaxM = -1;\nmaxMI = -1;\nfor (i = 0; i < snFftWindowSize; i += 1) {\n\tsiRaw = wrapSi(fiPosStart * snFftWindowSize + i, fftMagSize);\n\tm = fftMag.peek(siRaw, guideChan);\n\tp = fftPhase.peek(siRaw, guideChan);\n\tif (maxM < m) {\n\t\tmaxM = m;\n\t\tmaxMI = i;\n\t}\n} \nDEBUG_POC_FFT_INDEXING = maxMI;\nDEBUG_SI_POS_START = wrapSi(fiPosStart * snFftWindowSize, fftMagSize);\n\n// ===================================\n// OLD LOGIC\n// ===================================\n\n// // TODO: ?????\n// // 1. process / cache fiGuide @ guideChan\n// // 2. \n\n// // calculate raw match\n// for (i = 0; i < fnPosWidth; i += 1) {\n\n// \trawI = ((fiPosStart + i) * snFftWindowSize + targetFreqBin);\n// \tsourceFreqA = fftMag.peek(rawI % fftMagSize, sourceChan);\n// \tif (i == 0) {\n// \t\t//\tDEBUG = sourceFreqA;\n// \t}\n// \tm = sourceFreqA;\n// \tmatch.poke(m, i, chan);\n// }\n\n\n// curKeyV = 0;\n\n// // normalize, frame-agg, integrate match\n// matchSum = 0;\n// popElement = 0;\n\n\n// for (i = 0; i < fnPosWidth; i += 1) {\n\n// \tcurKeyV += match.peek(i, chan) - popElement;\n// \ttargetI = i - fnKeyLen + 1;\n// \tif (targetI >= 0) {\n// \t\tpopElement = match.peek(targetI, chan);\n// \t\tmatchSum += curKeyV;\n// \t\tmatch.poke(curKeyV, targetI, chan);\n// \t}\n// }\n\n\n// mean = matchSum / (fnPosWidth - fnKeyLen + 1);\n\n// roll = 0.9 * matchSum / mean;\n\n// scaledMatchSum = 0;\n// for (i = 0; i < fnPosWidth - fnKeyLen + 1; i += 1) {\n// \tf = match.peek(i, chan) / mean;\n// \tscaledF = max(0, (f - mean) * (dryWet + 1.) + mean);\n// \tscaledMatchSum += scaledF;\n// \tmatch.poke(scaledF, i, chan);\n// }\n\n\n// roll = ((noise() + 1.) / 2.) * scaledMatchSum;\n\n// grainPositionWs = 0;\n\n// for (i = 0; i < fnPosWidth - fnKeyLen + 1; i += 1) {\n// \troll -= match.peek(i, chan);\n// \tif (roll <= 0) {\n// \t\tgrainPositionWs = i;\n// \t\tbreak;\n// \t}\n// }\n\n\n// debugIndex = ((fiPosStart + grainPositionWs) * snFftWindowSize + targetFreqBin) % fftMagSize;\n\n// //DEBUG = fftMag.peek(debugIndex, sourceChan);\n// //DEBUG = debugIndex;\n// //z,DEBUG = peek(fftMag, 0, channels=2);\n// //DEBUG = fftMag.peek(44031, 1);\n\n\n\n// out1 = ((fiPosStart + grainPositionWs) * snFftWindowSize) % fftMagSize; // todo: randomize?\n\nout1 = -1;\nout2 = DEBUG_POC_FFT_INDEXING;\n\n",
 													"fontface" : 0,
 													"fontname" : "<Monospaced>",
 													"fontsize" : 12.0,
@@ -3775,36 +4026,15 @@
 													"numinlets" : 4,
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
-													"patching_rect" : [ 26.896549880504608, 71.724133014678955, 1078.620615720748901, 826.896495044231415 ]
+													"patching_rect" : [ 27.0, 72.0, 1095.0, 712.0 ]
 												}
 
 											}
  ],
 										"lines" : [ 											{
 												"patchline" : 												{
-													"destination" : [ "obj-5", 3 ],
-													"source" : [ "obj-1", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
 													"destination" : [ "obj-5", 0 ],
 													"source" : [ "obj-14", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-5", 2 ],
-													"source" : [ "obj-15", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-5", 1 ],
-													"source" : [ "obj-18", 0 ]
 												}
 
 											}
@@ -3817,7 +4047,7 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-9", 0 ],
+													"destination" : [ "obj-3", 0 ],
 													"source" : [ "obj-5", 0 ]
 												}
 
@@ -3865,20 +4095,6 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 1318.0, 1157.0, 50.0, 24.0 ],
 									"text" : "reset"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"attr" : "posWidthSamps",
-									"id" : "obj-269",
-									"maxclass" : "attrui",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 1309.0, 1125.0, 224.0, 24.0 ],
-									"text_width" : 124.0
 								}
 
 							}
@@ -3981,6 +4197,33 @@
 								}
 
 							}
+, 							{
+								"box" : 								{
+									"attr" : "snPosEndOffset",
+									"id" : "obj-69",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1394.0, 965.0, 181.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"attr" : "snPosStartOffset",
+									"fontsize" : 12.0,
+									"id" : "obj-71",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1394.0, 937.0, 181.0, 24.0 ]
+								}
+
+							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -4014,6 +4257,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-103", 0 ],
+									"source" : [ "obj-101", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-25", 0 ],
 									"midpoints" : [ 2417.5, 311.0, 2417.0, 311.0, 2417.0, 332.0, 2441.5, 332.0 ],
 									"source" : [ "obj-102", 0 ]
@@ -4022,8 +4272,66 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-105", 0 ],
+									"source" : [ "obj-103", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-21", 0 ],
+									"source" : [ "obj-105", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-101", 1 ],
+									"order" : 1,
+									"source" : [ "obj-106", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-98", 1 ],
+									"order" : 0,
+									"source" : [ "obj-106", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-97", 2 ],
+									"source" : [ "obj-107", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-12", 0 ],
 									"source" : [ "obj-11", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-95", 0 ],
+									"source" : [ "obj-111", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-97", 1 ],
+									"source" : [ "obj-112", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-97", 0 ],
+									"source" : [ "obj-112", 0 ]
 								}
 
 							}
@@ -4096,7 +4404,16 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-106", 0 ],
+									"order" : 1,
+									"source" : [ "obj-15", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-17", 0 ],
+									"order" : 0,
 									"source" : [ "obj-15", 0 ]
 								}
 
@@ -4147,6 +4464,15 @@
 								"patchline" : 								{
 									"destination" : [ "obj-289", 0 ],
 									"midpoints" : [ 1318.5, 1085.0, 1318.5, 1085.0 ],
+									"order" : 1,
+									"source" : [ "obj-179", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-80", 2 ],
+									"order" : 0,
 									"source" : [ "obj-179", 0 ]
 								}
 
@@ -4160,7 +4486,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-29", 0 ],
+									"destination" : [ "obj-79", 0 ],
 									"source" : [ "obj-19", 0 ]
 								}
 
@@ -4191,6 +4517,14 @@
 								"patchline" : 								{
 									"destination" : [ "obj-18", 0 ],
 									"source" : [ "obj-20", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-111", 0 ],
+									"disabled" : 1,
+									"source" : [ "obj-209", 1 ]
 								}
 
 							}
@@ -4230,6 +4564,15 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-256", 0 ],
+									"order" : 0,
+									"source" : [ "obj-209", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-81", 0 ],
+									"order" : 1,
 									"source" : [ "obj-209", 1 ]
 								}
 
@@ -4279,16 +4622,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-21", 0 ],
-									"order" : 0,
-									"source" : [ "obj-25", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-54", 0 ],
-									"order" : 1,
 									"source" : [ "obj-25", 0 ]
 								}
 
@@ -4316,13 +4650,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-209", 0 ],
-									"source" : [ "obj-269", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-102", 0 ],
 									"order" : 0,
 									"source" : [ "obj-27", 6 ]
@@ -4331,15 +4658,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-54", 1 ],
-									"order" : 2,
-									"source" : [ "obj-27", 6 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-55", 1 ],
+									"destination" : [ "obj-107", 0 ],
 									"order" : 1,
 									"source" : [ "obj-27", 6 ]
 								}
@@ -4347,7 +4666,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-57", 0 ],
+									"destination" : [ "obj-54", 1 ],
 									"order" : 3,
 									"source" : [ "obj-27", 6 ]
 								}
@@ -4355,16 +4674,23 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-148", 0 ],
-									"order" : 1,
-									"source" : [ "obj-273", 0 ]
+									"destination" : [ "obj-55", 1 ],
+									"order" : 2,
+									"source" : [ "obj-27", 6 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-269", 0 ],
-									"order" : 0,
+									"destination" : [ "obj-57", 0 ],
+									"order" : 4,
+									"source" : [ "obj-27", 6 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-148", 0 ],
 									"source" : [ "obj-273", 0 ]
 								}
 
@@ -4626,6 +4952,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-69", 0 ],
+									"source" : [ "obj-49", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-64", 0 ],
 									"order" : 0,
 									"source" : [ "obj-52", 1 ]
@@ -4700,6 +5033,24 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 0.995808124542236, 0.800123929977417, 0.399986684322357, 1.0 ],
+									"destination" : [ "obj-199", 0 ],
+									"midpoints" : [ 1828.5, 597.30078125, 1062.5, 597.30078125 ],
+									"order" : 1,
+									"source" : [ "obj-59", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-97", 0 ],
+									"order" : 0,
+									"source" : [ "obj-59", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
 									"source" : [ "obj-62", 0 ]
 								}
@@ -4723,6 +5074,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-63", 0 ],
 									"source" : [ "obj-64", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-209", 0 ],
+									"source" : [ "obj-69", 0 ]
 								}
 
 							}
@@ -4752,10 +5110,31 @@
 							}
 , 							{
 								"patchline" : 								{
-									"color" : [ 0.995808124542236, 0.800123929977417, 0.399986684322357, 1.0 ],
-									"destination" : [ "obj-199", 0 ],
-									"midpoints" : [ 1823.0, 638.0, 1062.5, 638.0 ],
+									"destination" : [ "obj-112", 0 ],
+									"order" : 0,
 									"source" : [ "obj-70", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-71", 0 ],
+									"order" : 1,
+									"source" : [ "obj-70", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-209", 0 ],
+									"source" : [ "obj-71", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-29", 0 ],
+									"source" : [ "obj-79", 0 ]
 								}
 
 							}
@@ -4768,8 +5147,59 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-92", 0 ],
+									"source" : [ "obj-80", 0 ],
+									"watchpoint_flags" : 5,
+									"watchpoint_id" : 2
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-80", 0 ],
+									"source" : [ "obj-81", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-62", 0 ],
 									"source" : [ "obj-82", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-80", 1 ],
+									"source" : [ "obj-89", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-89", 0 ],
+									"source" : [ "obj-91", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-96", 0 ],
+									"source" : [ "obj-95", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-98", 0 ],
+									"source" : [ "obj-97", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-101", 0 ],
+									"source" : [ "obj-98", 0 ]
 								}
 
 							}
@@ -6063,10 +6493,9 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 87.0, 1372.0, 779.0 ],
+						"rect" : [ 34.0, 34.0, 1372.0, 832.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"style" : "my default patcher",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-19",
