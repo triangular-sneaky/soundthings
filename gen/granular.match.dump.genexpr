@@ -1,30 +1,42 @@
+
 decide() {
 	return noise() > 0.;
 }
 
-fftFiForSourceSi(si, snFftWindowSize) {
-	return floor(si / snFftWindowSize ) + 1;
+
+
+_wrap(value, cap) {
+	zuppo = value + cap;
+	return zuppo % cap;
 }
 
-wrapSi(si, sn) {
-	return (si + sn) % sn;
+ssiToSfi(ssi, snFftWindowSize) {
+	return floor(ssi / snFftWindowSize );
 }
+
+sfiToBinAddress(sfi, binIndex, snFftWindowSize, bufferSize) {
+	return _wrap(((sfi + 1) * snFftWindowSize + binIndex), bufferSize);
+}
+
 
 
 // ===================================
 // notation
-// si -> sample index in source
+// ssi -> sample (value) index in source
 // sn -> number of samples in source
-// fi -> fft frame index in fftmap
-// fn -> number of fft frames in fftmap
+// sfi -> frame index in source
+// fn -> number of fft frames
+
+// ~~fi -> fft frame index in fftmap~~
+// ~~ffti -> fft value index in fftmap~~
 // ===================================
 	
 // ===================================
 // parameters
 // ===================================
 Param snMaxKeyLen(10240);
-Param snPosStartOffset(44100); // negative offset back
-Param snPosEndOffset(44100); // negative offset back
+Param snPosStartOffset(0); // negative offset back
+Param snPosEndOffset(0); // negative offset back
 
 Param snFftWindowSize(1024);
 
@@ -48,34 +60,36 @@ Buffer fftPhase("rbFftPhase");
 //Data match(fnPosWidth);
 Buffer match("dbgMatch");
 
-fftMagSize = dim(fftMag); 
+fftMagSize = dim(fftMag);
+fnTotal = fftMagSize / snFftWindowSize;
 
 // ===================================
 // inputs and derivatives
 // ===================================
 
-siHead = in1; //buffer head siHead -> drives fiPosStart, fnPosWidth, fiGuide
-fiGuide = floor(siHead / snFftWindowSize) - 1; // index of last fully written fft frame
-fiSource = fiGuide; // assume same heads for guide nd source for now
+siGuideHead = in1;// TODO: separate guide/source indexing
+siSourceHead = in1; //buffer head siSourceHead -> drives fiPosStart, fnPosWidth, fiGuideHead
+fiGuideHead = ssiToSfi(siGuideHead, snFftWindowSize) - 1; // index of last fully written fft frame
+fiSourceHead = fiGuideHead; // TODO: separate guide/source indexing
 
-siPosStart = siHead + snPosStartOffset;
-siPosEnd = siHead + snPosEndOffset;
+siPosStart = siSourceHead + snPosStartOffset;
+siPosEnd = siSourceHead + snPosEndOffset;
 
-fiPosStart = fftFiForSourceSi(siPosStart, snFftWindowSize);
-fiPosEnd = fftFiForSourceSi(siPosEnd, snFftWindowSize);
+fiPosStart = ssiToSfi(siPosStart, snFftWindowSize);
+fiPosEnd = ssiToSfi(siPosEnd, snFftWindowSize);
 
+fiPosStart = min(fiPosStart, fiSourceHead);
+fiPosEnd = min(fiPosEnd, fiSourceHead);
 fnPosWidth = max(1, fiPosEnd - fiPosStart);
-fiPosStart = min(fiPosStart, fiGuide);
 
+// TODO: keylen???
+//snGranuleSize = in2;
 
-snGranuleSize = in2;
-
-
-fnMaxKeyLen = ceil(snMaxKeyLen / snFftWindowSize);
-if (fnMaxKeyLen == 0) {
-	fnMaxKeyLen = 100000000;
-}
-fnKeyLen = min(ceil(snGranuleSize / snFftWindowSize), fnMaxKeyLen);
+// fnMaxKeyLen = ceil(snMaxKeyLen / snFftWindowSize);
+// if (fnMaxKeyLen == 0) {
+// 	fnMaxKeyLen = 100000000;
+// }
+// fnKeyLen = min(ceil(snGranuleSize / snFftWindowSize), fnMaxKeyLen);
 
 
 // ===================================
@@ -87,35 +101,54 @@ chan = 0;
 // DEBUG
 // ===================================
 DEBUG_IN = in4;
-DEBUG = -1;
-
-
+DEBUG_0 = 0;
+DEBUG_1 = 0;
+DEBUG_2 = 0;
+DEBUG_3 = 0;
 
 // ----------------------------------
 // DEBUG: debugging: indexing poc 
 // PoC draw FFT index on scope: 
 // find max freq in a frame at fiPosStart and debug_out its index
+// NOTE: intentionally using source pos on guide chan. this wont stand later
 // ----------------------------------
 maxM = -1;
 maxMI = -1;
 for (i = 0; i < snFftWindowSize; i += 1) {
-	siRaw = wrapSi(fiPosStart * snFftWindowSize + i, fftMagSize);
-	m = fftMag.peek(siRaw, guideChan);
-	p = fftPhase.peek(siRaw, guideChan);
+	binAddress = sfiToBinAddress(fiPosStart, i, snFftWindowSize, fftMagSize);
+	m = fftMag.peek(fftiRaw, guideChan);
+	p = fftPhase.peek(fftiRaw, guideChan);
 	if (maxM < m) {
 		maxM = m;
 		maxMI = i;
 	}
 } 
 DEBUG_POC_FFT_INDEXING = maxMI;
-DEBUG_SI_POS_START = wrapSi(fiPosStart * snFftWindowSize, fftMagSize);
+DEBUG_SANITY_0 = fftMagSize;
+DEBUG_0_BIN_ADDRESS = sfiToBinAddress(fiPosStart, 0, snFftWindowSize, fftMagSize);
+
+
+DEBUG_0 = DEBUG_0_BIN_ADDRESS;
+DEBUG_1 = (((fiPosStart + 1) * snFftWindowSize + 0) + fftMagSize) % fftMagSize;
+DEBUG_2 = _wrap(((fiPosStart + 1) * snFftWindowSize + 0), fftMagSize);
+DEBUG_3 = snFftWindowSize;
+
+out3 = fiPosStart;
+
+out1 = -1;
+out2 = DEBUG_0;
+out3 = DEBUG_1;
+out4 = DEBUG_2;
+out5 = DEBUG_3;
+
+
 
 // ===================================
 // OLD LOGIC
 // ===================================
 
 // // TODO: ?????
-// // 1. process / cache fiGuide @ guideChan
+// // 1. process / cache fiGuideHead @ guideChan
 // // 2. 
 
 // // calculate raw match
@@ -187,6 +220,4 @@ DEBUG_SI_POS_START = wrapSi(fiPosStart * snFftWindowSize, fftMagSize);
 
 // out1 = ((fiPosStart + grainPositionWs) * snFftWindowSize) % fftMagSize; // todo: randomize?
 
-out1 = -1;
-out2 = DEBUG_POC_FFT_INDEXING;
 
