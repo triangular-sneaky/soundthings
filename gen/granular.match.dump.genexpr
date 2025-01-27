@@ -1,9 +1,6 @@
-
 decide() {
 	return noise() > 0.;
 }
-
-
 
 _wrap(value, cap) {
 	zuppo = value + cap;
@@ -101,10 +98,10 @@ chan = 0;
 // DEBUG
 // ===================================
 DEBUG_IN = in4;
-DEBUG_0 = 0;
-DEBUG_1 = 0;
-DEBUG_2 = 0;
-DEBUG_3 = 0;
+DEBUG_0 = 0.;
+DEBUG_1 = 0.;
+DEBUG_2 = 0.;
+DEBUG_3 = 0.;
 
 // ----------------------------------
 // DEBUG: debugging: indexing poc 
@@ -112,12 +109,12 @@ DEBUG_3 = 0;
 // find max freq in a frame at fiPosStart and debug_out its index
 // NOTE: intentionally using source pos on guide chan. this wont stand later
 // ----------------------------------
-maxM = -1;
+maxM = -1.;
 maxMI = -1;
 for (i = 0; i < snFftWindowSize; i += 1) {
 	binAddress = sfiToBinAddress(fiPosStart, i, snFftWindowSize, fftMagSize);
-	m = fftMag.peek(fftiRaw, guideChan);
-	p = fftPhase.peek(fftiRaw, guideChan);
+	m = fftMag.peek(binAddress, guideChan);
+	p = fftPhase.peek(binAddress, guideChan);
 	if (maxM < m) {
 		maxM = m;
 		maxMI = i;
@@ -126,12 +123,12 @@ for (i = 0; i < snFftWindowSize; i += 1) {
 DEBUG_POC_FFT_INDEXING = maxMI;
 DEBUG_SANITY_0 = fftMagSize;
 DEBUG_0_BIN_ADDRESS = sfiToBinAddress(fiPosStart, 0, snFftWindowSize, fftMagSize);
+DEBUG_0_BIN_VALUE = fftMag.peek(DEBUG_0_BIN_ADDRESS, guideChan);
 
-
-DEBUG_0 = DEBUG_0_BIN_ADDRESS;
-DEBUG_1 = (((fiPosStart + 1) * snFftWindowSize + 0) + fftMagSize) % fftMagSize;
-DEBUG_2 = _wrap(((fiPosStart + 1) * snFftWindowSize + 0), fftMagSize);
-DEBUG_3 = snFftWindowSize;
+DEBUG_0 = DEBUG_POC_FFT_INDEXING;
+DEBUG_1 = DEBUG_0_BIN_ADDRESS;
+DEBUG_2 = DEBUG_0_BIN_VALUE;
+DEBUG_3 = maxM;
 
 out3 = fiPosStart;
 
