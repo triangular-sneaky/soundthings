@@ -32,6 +32,12 @@ ne(a, b) {
 	return a != b;
 }
 
+assertEq(textIndex, a, b) {
+	if (a == b) {
+		return 0;
+	} else return textIndex;
+}
+
 // ===================================
 // notation
 // ssi -> sample (value) index in source
@@ -53,7 +59,7 @@ Param snPosEndOffset(0); // negative offset back
 Param snFftWindowSize(1024);
 
 // number of source chans
-Param nSourceChans(4);
+Param nSourceChans(3);
 
 Param dryWet(0.);
 
@@ -121,30 +127,6 @@ DEBUG_0 = 0.;
 DEBUG_1 = 0.;
 DEBUG_2 = 0.;
 DEBUG_3 = 0.;
-
-// ====== TEST SECTION ==============
-TEST_IN = in6;
-testFails = 0.;
-
-if (TEST_IN != 0) {
-	if (ne(0, getGuideChanI(S_WAV, nSourceChans))) {
-		testFails += 1;
-	}
-	if (ne(4, getGuideChanI(S_MAG, nSourceChans))) {
-		testFails += 1;
-	}
-	if (ne(1,  getSourceChanI(S_WAV, 0, nSourceChans))) {
-		testFails += 1;
-	}
-	if (ne(5, getSourceChanI(S_MAG, 1, nSourceChans))) {
-		testFails += 1;
-	}
-
-
-}
-out6 = -testFails;
-
-// ====== /TEST SECTION ==============
 
 
 // ----------------------------------
@@ -259,3 +241,30 @@ out5 = DEBUG_3;
 // out1 = ((fiPosStart + grainPositionWs) * snFftWindowSize) % fftMagSize; // todo: randomize?
 
 
+
+
+
+// ====== TEST SECTION ==============
+TEST_IN = in6;
+testFailures = 0;
+
+if (TEST_IN != 0) {
+	testFailures += assertEq(0x1, 0, getGuideChanI(S_WAV, nSourceChans));
+	testFailures += assertEq(0x2, 4, getGuideChanI(S_MAG, nSourceChans));
+	testFailures += assertEq(0x4, 1,  getSourceChanI(S_WAV, 0, nSourceChans));
+	testFailures += assertEq(0x8, 5, getSourceChanI(S_MAG, 1, nSourceChans));
+	// if (ne()) {
+	// 	testFails += 1;
+	// }
+	// if (ne()) {
+	// 	testFails += 1;
+	// }
+	// if (ne()) {
+	// 	testFails += 1;
+	// }
+
+
+}
+out6 = -testFailures;
+
+// ====== /TEST SECTION ==============
