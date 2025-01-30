@@ -253,18 +253,7 @@ if (TEST_IN != 0) {
 	testFailures += assertEq(0x2, 4, getGuideChanI(S_MAG, nSourceChans));
 	testFailures += assertEq(0x4, 1,  getSourceChanI(S_WAV, 0, nSourceChans));
 	testFailures += assertEq(0x8, 5, getSourceChanI(S_MAG, 1, nSourceChans));
-	// if (ne()) {
-	// 	testFails += 1;
-	// }
-	// if (ne()) {
-	// 	testFails += 1;
-	// }
-	// if (ne()) {
-	// 	testFails += 1;
-	// }
-
-
 }
-out6 = -testFailures;
+out6 = testFailures;
 
 // ====== /TEST SECTION ==============

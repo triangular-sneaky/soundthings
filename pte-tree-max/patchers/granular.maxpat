@@ -473,6 +473,75 @@
 						"title" : "gr.graingen",
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-90",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1519.0, 2223.0, 88.0, 24.0 ],
+									"text" : "prepend set"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-87",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1537.920000000000073, 2190.409999999999854, 160.0, 24.0 ],
+									"text" : "prepend failed tests:"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-83",
+									"maxclass" : "textedit",
+									"numinlets" : 1,
+									"numoutlets" : 4,
+									"outlettype" : [ "", "int", "", "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1502.0, 2257.0, 320.0, 41.0 ],
+									"text" : "failed tests: 0"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-78",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1551.710000000000036, 1906.569999999999936, 66.0, 24.0 ],
+									"text" : "expr $i1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"code" : "function msg_int(val) {\r\n\r\n\tlet list = [];\r\n\tfor (var i = 0; i < 5; i++) {\r\n\t\t\tif ((val & (1 << i)) != 0) {\r\n\t\t\t\t\tlist = [...list,  1<<i];\r\n\t\t\t}\r\n\t}\r\n\tif (list.length == 0) list = [0];\r\n\toutlet(0, list);\r\n\t\t\r\n}",
+									"filename" : "none",
+									"fontface" : 0,
+									"fontname" : "<Monospaced>",
+									"fontsize" : 12.0,
+									"id" : "obj-77",
+									"maxclass" : "v8.codebox",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1546.0, 1962.0, 340.0, 200.0 ],
+									"saved_object_attributes" : 									{
+										"parameter_enable" : 0
+									}
+
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"bubble" : 1,
 									"bubble_bgcolor" : [ 1.0, 0.764705882352941, 0.16078431372549, 1.0 ],
 									"bubbleside" : 2,
@@ -5198,7 +5267,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-65", 0 ],
+									"destination" : [ "obj-78", 0 ],
 									"source" : [ "obj-209", 5 ]
 								}
 
@@ -5779,6 +5848,20 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-87", 0 ],
+									"source" : [ "obj-77", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-77", 0 ],
+									"source" : [ "obj-78", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-131", 0 ],
 									"source" : [ "obj-79", 0 ]
 								}
@@ -5809,8 +5892,22 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-90", 0 ],
+									"source" : [ "obj-87", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-80", 1 ],
 									"source" : [ "obj-89", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-83", 0 ],
+									"source" : [ "obj-90", 0 ]
 								}
 
 							}
