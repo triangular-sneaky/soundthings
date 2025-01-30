@@ -15,7 +15,22 @@ sfiToBinAddress(sfi, binIndex, snFftWindowSize, bufferSize) {
 	return _wrap(((sfi + 1) * snFftWindowSize + binIndex), bufferSize);
 }
 
+// get 0-based source chan index
+getSourceChanI(section, sourceChanRelI, nSourceChans) {
+	return (nSourceChans + 1) * section + sourceChanRelI + 1;
+}
 
+getGuideChanI(section, nSourceChans) {
+	return (nSourceChans + 1) * section;
+}
+
+getFrameChanI(nSourceChans) {
+	return getSourceChanI(3, nSourceChans, 0);
+}
+
+ne(a, b) {
+	return a != b;
+}
 
 // ===================================
 // notation
@@ -37,8 +52,8 @@ Param snPosEndOffset(0); // negative offset back
 
 Param snFftWindowSize(1024);
 
-Param sourceChan(1);
-Param guideChan(0);
+// number of source chans
+Param nSourceChans(4);
 
 Param dryWet(0.);
 
@@ -46,8 +61,7 @@ Param dryWet(0.);
 // external data
 // ===================================
 
-Buffer fftMag("rbFftMag");
-Buffer fftPhase("rbFftPhase");
+Buffer data("rbGranularData");
 
 // ===================================
 // internal data
@@ -57,8 +71,13 @@ Buffer fftPhase("rbFftPhase");
 //Data match(fnPosWidth);
 Buffer match("dbgMatch");
 
-fftMagSize = dim(fftMag);
-fnTotal = fftMagSize / snFftWindowSize;
+// sections
+S_WAV = 0;
+S_MAG = 1;
+S_PHASE = 2;
+
+dataSize = dim(data);
+fnTotal = dataSize / snFftWindowSize;
 
 // ===================================
 // inputs and derivatives
@@ -103,6 +122,31 @@ DEBUG_1 = 0.;
 DEBUG_2 = 0.;
 DEBUG_3 = 0.;
 
+// ====== TEST SECTION ==============
+TEST_IN = in6;
+testFails = 0.;
+
+if (TEST_IN != 0) {
+	if (ne(0, getGuideChanI(S_WAV, nSourceChans))) {
+		testFails += 1;
+	}
+	if (ne(4, getGuideChanI(S_MAG, nSourceChans))) {
+		testFails += 1;
+	}
+	if (ne(1,  getSourceChanI(S_WAV, 0, nSourceChans))) {
+		testFails += 1;
+	}
+	if (ne(5, getSourceChanI(S_MAG, 1, nSourceChans))) {
+		testFails += 1;
+	}
+
+
+}
+out6 = -testFails;
+
+// ====== /TEST SECTION ==============
+
+
 // ----------------------------------
 // DEBUG: debugging: indexing poc 
 // PoC draw FFT index on scope: 
@@ -112,25 +156,22 @@ DEBUG_3 = 0.;
 maxM = -1.;
 maxMI = -1;
 for (i = 0; i < snFftWindowSize; i += 1) {
-	binAddress = sfiToBinAddress(fiPosStart, i, snFftWindowSize, fftMagSize);
-	m = fftMag.peek(binAddress, guideChan);
-	p = fftPhase.peek(binAddress, guideChan);
+	binAddress = sfiToBinAddress(fiPosStart, i, snFftWindowSize, dataSize);
+	m = data.peek(binAddress, getGuideChanI(S_MAG, nSourceChans));
 	if (maxM < m) {
 		maxM = m;
 		maxMI = i;
 	}
 } 
 DEBUG_POC_FFT_INDEXING = maxMI;
-DEBUG_SANITY_0 = fftMagSize;
-DEBUG_0_BIN_ADDRESS = sfiToBinAddress(fiPosStart, 0, snFftWindowSize, fftMagSize);
-DEBUG_0_BIN_VALUE = fftMag.peek(DEBUG_0_BIN_ADDRESS, guideChan);
+DEBUG_SANITY_0 = dataSize;
+DEBUG_0_BIN_ADDRESS = sfiToBinAddress(fiPosStart, 0, snFftWindowSize, dataSize);
+DEBUG_0_BIN_VALUE = data.peek(DEBUG_0_BIN_ADDRESS, getGuideChanI(S_MAG, nSourceChans));
 
 DEBUG_0 = DEBUG_POC_FFT_INDEXING;
 DEBUG_1 = DEBUG_0_BIN_ADDRESS;
-DEBUG_2 = DEBUG_0_BIN_VALUE;
+DEBUG_2 = 0;
 DEBUG_3 = maxM;
-
-out3 = fiPosStart;
 
 out1 = -1;
 out2 = DEBUG_0;
