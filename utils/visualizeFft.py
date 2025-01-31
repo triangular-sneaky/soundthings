@@ -257,7 +257,7 @@ class FloatPlotter:
                 self.offset = new_offset
                 self.plot()
             else:
-                print("Offset out of valid range")
+                print(f"Offset out of valid range: len(self.data)={len(self.data)}")
                 self.txt_offset.set_val(str(self.offset))
         except ValueError:
             print("Invalid input")

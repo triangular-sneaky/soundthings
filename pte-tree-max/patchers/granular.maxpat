@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 159.0, 200.0, 454.0 ],
+		"rect" : [ 134.0, 133.0, 200.0, 480.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"style" : "my default patcher",
 		"boxes" : [ 			{
@@ -533,7 +533,7 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "function msg_int(val) {\r\n\r\n\tlet list = [];\r\n\tfor (var i = 0; i < 32; i++) {\r\n\t\t\tif ((val & (1 << i)) != 0) {\r\n\t\t\t\t\tlist = [...list,  1<<i];\r\n\t\t\t}\r\n\t}\r\n\tif (list.length == 0) {\r\n\t\t\toutlet(0, `[v] All tests passed`);\r\n\t} else {\r\n\t\toutlet(0, `[!] Failed tests: ${list.length}:\\n${list.join('\\n')}`);\r\n\t}\r\n\t\t\r\n}",
+									"code" : "function msg_int(val) {\r\n\r\n\tlet list = [];\r\n\tfor (var i = 0; i < 32; i++) {\r\n\t\t\tif ((val & (1 << i)) != 0) {\r\n\t\t\t\t\tlist = [...list,  1<<i];\r\n\t\t\t}\r\n\t}\r\n\tif (list.length == 0) {\r\n\t\t\toutlet(0, `[v] All tests passed`);\r\n\t} else {\r\n\t\toutlet(0, `[!] Failed tests: ${list.length}:\\n${list.map(n => \"0x\" + n.toString(16)).join('\\n')}`);\r\n\t}\r\n\t\t\r\n}",
 									"filename" : "none",
 									"fontface" : 0,
 									"fontname" : "<Monospaced>",
@@ -543,7 +543,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1537.0, 1897.0, 340.0, 200.0 ],
+									"patching_rect" : [ 1537.0, 1844.0, 451.0, 253.0 ],
 									"saved_object_attributes" : 									{
 										"parameter_enable" : 0
 									}
@@ -1701,7 +1701,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 977.0, 1654.0, 320.0, 41.0 ],
-									"text" : "8. 1024. 0. 7.752788"
+									"text" : "15. 439296. -2. 7.733635"
 								}
 
 							}
@@ -7712,6 +7712,7 @@
 										"classnamespace" : "box",
 										"rect" : [ 0.0, 0.0, 1007.999999999999886, 700.0 ],
 										"gridsize" : [ 15.0, 15.0 ],
+										"visible" : 1,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-30",
@@ -7719,7 +7720,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "signal" ],
-													"patching_rect" : [ 339.0, 173.2109375, 37.0, 24.0 ],
+													"patching_rect" : [ 339.0, 173.2109375, 37.0, 22.0 ],
 													"text" : "thru"
 												}
 
@@ -7731,7 +7732,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "int" ],
-													"patching_rect" : [ 50.0, 189.2109375, 30.0, 24.0 ],
+													"patching_rect" : [ 50.0, 189.2109375, 30.0, 22.0 ],
 													"text" : "+ 1"
 												}
 
@@ -7743,7 +7744,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "signal" ],
-													"patching_rect" : [ 232.0, 141.2109375, 37.0, 24.0 ],
+													"patching_rect" : [ 232.0, 141.2109375, 37.0, 22.0 ],
 													"text" : "sig~"
 												}
 
@@ -7755,7 +7756,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 3,
 													"outlettype" : [ "int", "int", "bang" ],
-													"patching_rect" : [ 50.0, 114.2109375, 59.0, 24.0 ],
+													"patching_rect" : [ 50.0, 114.2109375, 59.0, 22.0 ],
 													"text" : "t i i b"
 												}
 
@@ -7767,7 +7768,7 @@
 													"numinlets" : 3,
 													"numoutlets" : 1,
 													"outlettype" : [ "signal" ],
-													"patching_rect" : [ 180.0, 178.2109375, 88.0, 24.0 ],
+													"patching_rect" : [ 180.0, 178.2109375, 88.0, 22.0 ],
 													"text" : "selector~ 2"
 												}
 
@@ -7779,7 +7780,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "float" ],
-													"patching_rect" : [ 232.0, 108.2109375, 73.0, 24.0 ],
+													"patching_rect" : [ 232.0, 108.2109375, 73.0, 22.0 ],
 													"text" : "snapshot~"
 												}
 
@@ -8121,7 +8122,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-27", 0 ],
+									"destination" : [ "obj-25", 0 ],
 									"source" : [ "obj-204", 0 ]
 								}
 
@@ -9760,11 +9761,11 @@
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_enum" : [ "off", "on" ],
-											"parameter_longname" : "toggle",
+											"parameter_longname" : "recordToggle",
 											"parameter_mmax" : 1,
 											"parameter_modmode" : 0,
 											"parameter_osc_name" : "<default>",
-											"parameter_shortname" : "toggle",
+											"parameter_shortname" : "recordToggle",
 											"parameter_type" : 2
 										}
 
@@ -11213,35 +11214,6 @@
 					}
 ,
 					"text" : "p deprecated_gen_freq_selector_from_guide"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bubble" : 1,
-					"bubble_bgcolor" : [ 1.0, 0.764705882352941, 0.16078431372549, 1.0 ],
-					"id" : "obj-248",
-					"linecount" : 2,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 252.0, 636.0, 150.0, 42.0 ],
-					"text" : "rbFftMag[1+m]\nrbFftPhase[1+m]",
-					"textcolor" : [ 0.23921568627451, 0.23921568627451, 0.23921568627451, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bubble" : 1,
-					"bubble_bgcolor" : [ 1.0, 0.764705882352941, 0.16078431372549, 1.0 ],
-					"id" : "obj-241",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 252.0, 600.0, 150.0, 26.0 ],
-					"text" : "rbSource[1+m]",
-					"textcolor" : [ 0.23921568627451, 0.23921568627451, 0.23921568627451, 1.0 ]
 				}
 
 			}
@@ -13337,7 +13309,7 @@
 			"obj-140::obj-4" : [ "testToggle", "testToggle", 0 ],
 			"obj-140::obj-47" : [ "slider[1]", "slider", 0 ],
 			"obj-140::obj-48" : [ "slider", "slider", 0 ],
-			"obj-282::obj-3" : [ "toggle", "toggle", 0 ],
+			"obj-282::obj-3" : [ "recordToggle", "recordToggle", 0 ],
 			"obj-32::obj-19" : [ "msBufferSize", "msBufferSize", 0 ],
 			"obj-32::obj-32" : [ "number", "number", 0 ],
 			"obj-39::obj-158" : [ "live.dial[2]", "osc freq", 0 ],
@@ -13406,6 +13378,13 @@
 ,
 				"testToggle" : 				{
 					"srcname" : "46.ctrl.0.chan.midi",
+					"min" : 0.0,
+					"max" : 1.0,
+					"flags" : 2
+				}
+,
+				"recordToggle" : 				{
+					"srcname" : "45.ctrl.0.chan.midi",
 					"min" : 0.0,
 					"max" : 1.0,
 					"flags" : 2
