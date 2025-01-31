@@ -7,15 +7,28 @@ _wrap(value, cap) {
 	return zuppo % cap;
 }
 
+_getSnFrameDrift(ssi, data, nSourceChans) {
+	snFrameDrift = data.peek(_wrap(ssi, dim(data)), getFrameChanI(nSourceChans));
+	if (snFrameDrift == 0) return 0;
+}
+
 ssiToSfi(ssi, snFftWindowSize, data, nSourceChans) {
 	snFrameDrift = data.peek(_wrap(ssi, dim(data)), getFrameChanI(nSourceChans));
 	return floor( (ssi - snFrameDrift) / snFftWindowSize );
 }
 
+sfiToFrameStartAddress(sfi, snFftWindowSize, data, nSourceChans) {
+	return _sfiToFrameAddress(sfi, 0, snFftWindowSize, data, nSourceChans);
+}
+
 sfiToBinAddress(sfi, binIndex, snFftWindowSize, data, nSourceChans) {
+	return _sfiToFrameAddress(sfi + 1, binIndex, snFftWindowSize, data, nSourceChans);
+}
+
+_sfiToFrameAddress(sfi, frameIndex, snFftWindowSize, data, nSourceChans) {
 	ssiFrameStartRaw = (sfi + 1) * snFftWindowSize;
 	snFrameDrift = data.peek(_wrap(ssiFrameStartRaw, dim(data)), getFrameChanI(nSourceChans));
-	return _wrap((ssiFrameStartRaw - snFrameDrift + binIndex), dim(data));
+	return _wrap((ssiFrameStartRaw - snFrameDrift + frameIndex), dim(data));
 }
 
 // get 0-based source chan index
@@ -153,7 +166,7 @@ DEBUG_1 = DEBUG_0_BIN_ADDRESS;
 DEBUG_2 = fiPosStart;
 DEBUG_3 = maxM;
 
-out1 = -1;
+out1 = sfiToFrameStartAddress(fiPosStart, snFftWindowSize, data, nSourceChans);
 
 
 
@@ -252,7 +265,7 @@ if (TEST_IN == 1) {
 
 	// ssiToSfi
 	testFailures += assertEq(0x20, 1, ssiToSfi(2000, snFftWindowSize, data, nSourceChans));
-	f, DEBUG_0 = 			assertEq(0x40, -1, ssiToSfi(0, snFftWindowSize, data, nSourceChans));
+	f = 			assertEq(0x40, -1, ssiToSfi(0, snFftWindowSize, data, nSourceChans));
 	testFailures += f;
 	testFailures += assertEq(0x80, 0, 
 		ssiToSfi(snFftWindowSize - data.peek(0, getFrameChanI(nSourceChans)),
@@ -271,7 +284,12 @@ if (TEST_IN == 1) {
 			getFrameChanI(nSourceChans)
 	));
 
-	// 
+	// sfiToFrameStartAddress
+	testFailures += assertEq(0x400, 1, ssiToSfi(2000, snFftWindowSize, data, nSourceChans));
+	f, DEBUG_0 = assertEq(0x800, 1024+512, 
+		sfiToFrameStartAddress(1, snFftWindowSize,
+			data, nSourceChans));
+	testFailures += f;
 	
 }
 out6 = testFailures;
