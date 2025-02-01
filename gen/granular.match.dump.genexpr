@@ -2,33 +2,37 @@ decide() {
 	return noise() > 0.;
 }
 
+uniformRand01() {
+	return ((noise() + 1.) / 2.);
+}
+
 _wrap(value, cap) {
 	zuppo = value + cap;
 	return zuppo % cap;
 }
 
-_getSnFrameDrift(ssi, data, nSourceChans) {
-	snFrameDrift = data.peek(_wrap(ssi, dim(data)), getFrameChanI(nSourceChans));
+_getSnFrameDrift(si, data, nSourceChans) {
+	snFrameDrift = data.peek(_wrap(si, dim(data)), getFrameChanI(nSourceChans));
 	if (snFrameDrift == 0) return 0;
 }
 
-ssiToSfi(ssi, snFftWindowSize, data, nSourceChans) {
-	snFrameDrift = data.peek(_wrap(ssi, dim(data)), getFrameChanI(nSourceChans));
-	return floor( (ssi - snFrameDrift) / snFftWindowSize );
+siToFi(si, snFftWindowSize, data, nSourceChans) {
+	snFrameDrift = data.peek(_wrap(si, dim(data)), getFrameChanI(nSourceChans));
+	return floor( (si - snFrameDrift) / snFftWindowSize );
 }
 
-sfiToFrameStartAddress(sfi, snFftWindowSize, data, nSourceChans) {
-	return _sfiToFrameAddress(sfi, 0, snFftWindowSize, data, nSourceChans);
+fiToFrameStartAddress(fi, snFftWindowSize, data, nSourceChans) {
+	return _fiToFrameAddress(fi, 0, snFftWindowSize, data, nSourceChans);
 }
 
-sfiToBinAddress(sfi, binIndex, snFftWindowSize, data, nSourceChans) {
-	return _sfiToFrameAddress(sfi + 1, binIndex, snFftWindowSize, data, nSourceChans);
+fiToBinAddress(fi, binIndex, snFftWindowSize, data, nSourceChans) {
+	return _fiToFrameAddress(fi + 1, binIndex, snFftWindowSize, data, nSourceChans);
 }
 
-_sfiToFrameAddress(sfi, frameIndex, snFftWindowSize, data, nSourceChans) {
-	ssiFrameStartRaw = (sfi + 1) * snFftWindowSize;
-	snFrameDrift = data.peek(_wrap(ssiFrameStartRaw, dim(data)), getFrameChanI(nSourceChans));
-	return _wrap((ssiFrameStartRaw - snFrameDrift + frameIndex), dim(data));
+_fiToFrameAddress(fi, frameIndex, snFftWindowSize, data, nSourceChans) {
+	siFrameStartRaw = (fi + 1) * snFftWindowSize;
+	snFrameDrift = data.peek(_wrap(siFrameStartRaw, dim(data)), getFrameChanI(nSourceChans));
+	return _wrap((siFrameStartRaw - snFrameDrift + frameIndex), dim(data));
 }
 
 // get 0-based source chan index
@@ -50,12 +54,27 @@ assertEq(textIndex, a, b) {
 	} else return textIndex, b;
 }
 
+findFundamental(fi, iSourceChan, snFftWindowSize, data, nSourceChans) {
+	maxM = -1;
+	maxMI = -1;
+	for (i = 0; i < snFftWindowSize; i += 1) {
+		binAddress = fiToBinAddress(fi, i, snFftWindowSize, data, nSourceChans);
+		S_MAG = 1; 
+		m = data.peek(binAddress, getSourceChanI(S_MAG, iSourceChan, nSourceChans));
+		if (maxM < m) {
+			maxM = m;
+			maxMI = i;
+		}
+	} 
+	return maxMI, maxM;
+}
+
 // ===================================
 // notation
-// ssi -> sample (value) index in wave
+// si -> sample (value) index in wave
 // sn -> number of samples in wave
-// sfi -> frame index in source
-// fn -> number of fft wave
+// fi -> frame index in source
+// fn -> number of frames
 
 
 // ===================================
@@ -72,7 +91,13 @@ Param snFftWindowSize(1024);
 // number of source chans
 Param nSourceChans(3);
 
-Param dryWet(0.);
+// todo: use
+Param guideModulationDryWet(0.);
+
+Param magnitudeScaleToleranceUp(1.);
+Param magnitudeScaleToleranceDown(1.);
+
+Param method(1);
 
 // ===================================
 // external data
@@ -89,9 +114,16 @@ Buffer data("rbGranularData");
 Buffer match("dbgMatch");
 
 // sections
+// NOTE: inlined above
 S_WAV = 0;
 S_MAG = 1;
 S_PHASE = 2;
+
+// methods
+METHOD_DEBUG_JUST_POSITION_START = 0;
+METHOD_DEBUG_JUST_HEAD = 1;
+
+METHOD_UNIFORM_SCALED = 2;
 
 dataSize = dim(data);
 fnTotal = dataSize / snFftWindowSize;
@@ -102,14 +134,14 @@ fnTotal = dataSize / snFftWindowSize;
 
 siGuideHead = in1;// TODO: separate guide/source indexing
 siSourceHead = in1; //buffer head siSourceHead -> drives fiPosStart, fnPosWidth, fiGuideHead
-fiGuideHead = ssiToSfi(siGuideHead - 2*snFftWindowSize,snFftWindowSize, data, nSourceChans) ; // index of last fully written fft frameframe
+fiGuideHead = siToFi(siGuideHead - 2*snFftWindowSize,snFftWindowSize, data, nSourceChans) ; // index of last fully written fft frameframe
 fiSourceHead = fiGuideHead; // TODO: separate guide/source indexing
 
 siPosStart = siSourceHead + snPosStartOffset;
 siPosEnd = siSourceHead + snPosEndOffset;
 
-fiPosStart = ssiToSfi(siPosStart, snFftWindowSize, data, nSourceChans);
-fiPosEnd = ssiToSfi(siPosEnd, snFftWindowSize, data, nSourceChans);
+fiPosStart = siToFi(siPosStart, snFftWindowSize, data, nSourceChans);
+fiPosEnd = siToFi(siPosEnd, snFftWindowSize, data, nSourceChans);
 
 fiPosStart = min(fiPosStart, fiSourceHead);
 fiPosEnd = min(fiPosEnd, fiSourceHead);
@@ -131,42 +163,82 @@ fnPosWidth = max(1, fiPosEnd - fiPosStart);
 chan = 0;
 
 // ===================================
+// results
+// ===================================
+ResultGrainPos = 0;
+ResultGrainScale = 1.;
+ResultGrainPhaseShift = 0.;
+
+// ===================================
 // DEBUG
 // ===================================
-DEBUG_IN = in4;
-DEBUG_0 = 0.;
-DEBUG_1 = 0.;
-DEBUG_2 = 0.;
-DEBUG_3 = 0.;
+DebugIn = in4;
+Debug0 = 0.;
+Debug1 = 0.;
+Debug2 = 0.;
+Debug3 = 0.;
 
 
-// ----------------------------------
-// DEBUG: debugging: indexing poc 
-// PoC draw FFT index on scope: 
-// find max freq in a frame at fiPosStart and debug_out its index
-// NOTE: intentionally using source pos on guide chan. this wont stand later
-// ----------------------------------
-maxM = -1.;
-maxMI = -1;
-for (i = 0; i < snFftWindowSize; i += 1) {
-	binAddress = sfiToBinAddress(fiPosStart, i, snFftWindowSize, data, nSourceChans);
-	m = data.peek(binAddress, getGuideChanI(S_MAG, nSourceChans));
-	if (maxM < m) {
-		maxM = m;
-		maxMI = i;
-	}
-} 
-DEBUG_POC_FFT_INDEXING = maxMI;
-DEBUG_SANITY_0 = dataSize;
-DEBUG_0_BIN_ADDRESS = sfiToBinAddress(fiPosStart, 0, snFftWindowSize, data, nSourceChans);
-DEBUG_0_BIN_VALUE = data.peek(DEBUG_0_BIN_ADDRESS, getGuideChanI(S_MAG, nSourceChans));
+if (method == METHOD_DEBUG_JUST_POSITION_START) {
+	// ----------------------------------
+	// DEBUG: debugging: indexing poc 
+	// PoC draw FFT index on scope: 
+	// find max freq in a frame at fiPosStart and debug_out its index
+	// NOTE: intentionally using source pos on guide chan. this wont stand later
+	// ----------------------------------
+	maxM = -1.;
+	maxMI = -1;
+	for (i = 0; i < snFftWindowSize; i += 1) {
+		binAddress = fiToBinAddress(fiPosStart, i, snFftWindowSize, data, nSourceChans);
+		m = data.peek(binAddress, getGuideChanI(S_MAG, nSourceChans));
+		if (maxM < m) {
+			maxM = m;
+			maxMI = i;
+		}
+	} 
+	DebugPocFftIndexing = maxMI;
+	DebugSanity0 = dataSize;
+	Debug0BinAddress = fiToBinAddress(fiPosStart, 0, snFftWindowSize, data, nSourceChans);
+	Debug0BinValue = data.peek(Debug0BinAddress, getGuideChanI(S_MAG, nSourceChans));
 
-DEBUG_0 = DEBUG_POC_FFT_INDEXING;
-DEBUG_1 = DEBUG_0_BIN_ADDRESS;
-DEBUG_2 = fiPosStart;
-DEBUG_3 = maxM;
+	Debug0 = DebugPocFftIndexing;
+	Debug1 = Debug0BinAddress;
+	Debug2 = fiPosStart;
+	Debug3 = maxM;
 
-out1 = sfiToFrameStartAddress(fiPosStart, snFftWindowSize, data, nSourceChans);
+	ResultGrainPos = fiToFrameStartAddress(fiPosStart, snFftWindowSize, data, nSourceChans);
+
+}
+
+if (method == METHOD_DEBUG_JUST_HEAD) {
+	ResultGrainPos = fiToFrameStartAddress(fiGuideHead, snFftWindowSize, data, nSourceChans);
+}
+
+if (method == METHOD_UNIFORM_SCALED ) {
+	// ---------------------------------
+	// PoC method with uniform pick and scale by guide_mag[source_fundamental_bin] / source_mag[source_fundamental_bin]
+	// ---------------------------------
+
+	
+	// for (i = 0; i < 1000; i += 1) {
+		fiResultGrain = floor(fiPosStart + uniformRand01() * fnPosWidth);
+		ResultGrainPos = fiToFrameStartAddress(fiResultGrain, snFftWindowSize, data, nSourceChans);
+
+		
+		fundamentalI, apparentMag = findFundamental(fiResultGrain, 0, snFftWindowSize, data, nSourceChans);
+		desiredMag = data.peek(fiToBinAddress(fiGuideHead, fundamentalI, snFftWindowSize, data, nSourceChans), getGuideChanI(S_MAG, nSourceChans));
+
+		targetScale = desiredMag / apparentMag;
+		// if (targetScale > 1 - magnitudeScaleToleranceDown && targ)
+	// }
+	
+	ResultGrainScale = targetScale;
+	Debug0 = fundamentalI;
+	Debug1 = apparentMag;
+	Debug2 = desiredMag;
+}
+
+
 
 
 
@@ -252,50 +324,70 @@ out1 = sfiToFrameStartAddress(fiPosStart, snFftWindowSize, data, nSourceChans);
 
 
 // ====== TEST SECTION ==============
-TEST_IN = in6;
-testFailures = 0;
+TestIn = in6;
+TestFailures = 0;
 
-if (TEST_IN == 1) {
+if (TestIn == 1) {
 	// chan indexing
-	testFailures += assertEq(0x1, 0, getGuideChanI(S_WAV, nSourceChans));
-	testFailures += assertEq(0x2, 4, getGuideChanI(S_MAG, nSourceChans));
-	testFailures += assertEq(0x4, 1, getSourceChanI(S_WAV, 0, nSourceChans));
-	testFailures += assertEq(0x8, 6, getSourceChanI(S_MAG, 1, nSourceChans));
-	testFailures += assertEq(0x10, 12, getFrameChanI(nSourceChans));
+	TestFailures += assertEq(0x1, 0, getGuideChanI(S_WAV, nSourceChans));
+	TestFailures += assertEq(0x2, 4, getGuideChanI(S_MAG, nSourceChans));
+	TestFailures += assertEq(0x4, 1, getSourceChanI(S_WAV, 0, nSourceChans));
+	TestFailures += assertEq(0x8, 6, getSourceChanI(S_MAG, 1, nSourceChans));
+	TestFailures += assertEq(0x10, 12, getFrameChanI(nSourceChans));
 
-	// ssiToSfi
-	testFailures += assertEq(0x20, 1, ssiToSfi(2000, snFftWindowSize, data, nSourceChans));
-	f = 			assertEq(0x40, -1, ssiToSfi(0, snFftWindowSize, data, nSourceChans));
-	testFailures += f;
-	testFailures += assertEq(0x80, 0, 
-		ssiToSfi(snFftWindowSize - data.peek(0, getFrameChanI(nSourceChans)),
+	// siToFi
+	TestFailures += assertEq(0x20, 1, siToFi(2000, snFftWindowSize, data, nSourceChans));
+	f = 			assertEq(0x40, -1, siToFi(0, snFftWindowSize, data, nSourceChans));
+	TestFailures += f;
+	TestFailures += assertEq(0x80, 0, 
+		siToFi(snFftWindowSize - data.peek(0, getFrameChanI(nSourceChans)),
 			snFftWindowSize, data, nSourceChans));
-	testFailures += assertEq(0x100, -1, 
-		ssiToSfi(snFftWindowSize - data.peek(0, getFrameChanI(nSourceChans)),
+	TestFailures += assertEq(0x100, -1, 
+		siToFi(snFftWindowSize - data.peek(0, getFrameChanI(nSourceChans)),
 			snFftWindowSize, data, nSourceChans) - 1);
 
-	// sfiToBinAddress
-	testFailures += assertEq(0x200, 16, data.peek(
-		sfiToBinAddress(
-			ssiToSfi(2000, snFftWindowSize, data, nSourceChans),
+	// fiToBinAddress
+	TestFailures += assertEq(0x200, 16, data.peek(
+		fiToBinAddress(
+			siToFi(2000, snFftWindowSize, data, nSourceChans),
 			16,
 			snFftWindowSize,
 			data, nSourceChans), 
 			getFrameChanI(nSourceChans)
 	));
 
-	// sfiToFrameStartAddress
-	testFailures += assertEq(0x400, 1, ssiToSfi(2000, snFftWindowSize, data, nSourceChans));
-	f, DEBUG_0 = assertEq(0x800, 1024+512, 
-		sfiToFrameStartAddress(1, snFftWindowSize,
+	// fiToFrameStartAddress
+	TestFailures += assertEq(0x400, 1, siToFi(2000, snFftWindowSize, data, nSourceChans));
+	f, Debug0 = assertEq(0x800, 1024+512, 
+		fiToFrameStartAddress(1, snFftWindowSize,
 			data, nSourceChans));
-	testFailures += f;
+	TestFailures += f;
+
+	// uniformRand01
+	fail1000 = 0;
+	for (i = 0; i < 1000; i+=1) {
+		r = uniformRand01();
+		if (r < 0. || r > 1.) {
+			fail1000 += 1;
+		}
+	} 
+	Debug0 = fail1000;
+	TestFailures += assertEq(0x1000, 0, fail1000);
+
 	
 }
-out6 = testFailures;
-
 // ====== /TEST SECTION ==============
-out2 = DEBUG_0;
-out3 = DEBUG_1;
-out4 = DEBUG_2;
-out5 = DEBUG_3;
+
+// ======= returns ===================
+
+out1 = ResultGrainPos;
+out2 = ResultGrainScale;
+out3 = ResultGrainPhaseShift ;
+
+
+out4 = Debug0;
+out5 = Debug1;
+out6 = Debug2;
+out7 = Debug3;
+
+out8 = TestFailures;
