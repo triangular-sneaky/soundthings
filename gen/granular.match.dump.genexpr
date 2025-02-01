@@ -94,8 +94,8 @@ Param nSourceChans(3);
 // todo: use
 Param guideModulationDryWet(0.);
 
-Param magnitudeScaleToleranceUp(1.);
-Param magnitudeScaleToleranceDown(1.);
+Param magnitudeScaleToleranceUp(10.);
+Param magnitudeScaleToleranceDown(0.);
 
 Param method(1);
 
@@ -120,10 +120,10 @@ S_MAG = 1;
 S_PHASE = 2;
 
 // methods
-METHOD_DEBUG_JUST_POSITION_START = 0;
-METHOD_DEBUG_JUST_HEAD = 1;
+ALGO_LINEAR_POS_START = 0;
+ALGO_LINEAR_HEAD = 1;
 
-METHOD_UNIFORM_SCALED = 2;
+ALGO_SCULPT = 2;
 
 dataSize = dim(data);
 fnTotal = dataSize / snFftWindowSize;
@@ -179,7 +179,7 @@ Debug2 = 0.;
 Debug3 = 0.;
 
 
-if (method == METHOD_DEBUG_JUST_POSITION_START) {
+if (method == ALGO_LINEAR_POS_START) {
 	// ----------------------------------
 	// DEBUG: debugging: indexing poc 
 	// PoC draw FFT index on scope: 
@@ -210,25 +210,29 @@ if (method == METHOD_DEBUG_JUST_POSITION_START) {
 
 }
 
-if (method == METHOD_DEBUG_JUST_HEAD) {
+if (method == ALGO_LINEAR_HEAD) {
 	ResultGrainPos = fiToFrameStartAddress(fiGuideHead, snFftWindowSize, data, nSourceChans);
 }
 
-if (method == METHOD_UNIFORM_SCALED ) {
+if (method == ALGO_SCULPT ) {
 	// ---------------------------------
-	// PoC method with uniform pick and scale by guide_mag[source_fundamental_bin] / source_mag[source_fundamental_bin]
+	// Sculpting algo based on source fundamental: uniform pick and scale by guide_mag[source_fundamental_bin] / source_mag[source_fundamental_bin]
 	// ---------------------------------
 
 	
 	// for (i = 0; i < 1000; i += 1) {
-		fiResultGrain = floor(fiPosStart + uniformRand01() * fnPosWidth);
-		ResultGrainPos = fiToFrameStartAddress(fiResultGrain, snFftWindowSize, data, nSourceChans);
+	fiResultGrain = floor(fiPosStart + uniformRand01() * fnPosWidth);
+	ResultGrainPos = fiToFrameStartAddress(fiResultGrain, snFftWindowSize, data, nSourceChans);
 
-		
-		fundamentalI, apparentMag = findFundamental(fiResultGrain, 0, snFftWindowSize, data, nSourceChans);
-		desiredMag = data.peek(fiToBinAddress(fiGuideHead, fundamentalI, snFftWindowSize, data, nSourceChans), getGuideChanI(S_MAG, nSourceChans));
+	
+	fundamentalI, apparentMag = findFundamental(fiResultGrain, 0, snFftWindowSize, data, nSourceChans);
+	desiredMag = data.peek(fiToBinAddress(fiGuideHead, fundamentalI, snFftWindowSize, data, nSourceChans), getGuideChanI(S_MAG, nSourceChans));
 
-		targetScale = desiredMag / apparentMag;
+	targetScale = 1.;
+
+	if (apparentMag != 0) {
+		targetScale = min(desiredMag / apparentMag, magnitudeScaleToleranceUp);
+	}
 		// if (targetScale > 1 - magnitudeScaleToleranceDown && targ)
 	// }
 	
