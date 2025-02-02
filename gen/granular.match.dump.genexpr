@@ -97,7 +97,7 @@ Param guideModulationDryWet(0.);
 Param magnitudeScaleToleranceUp(10.);
 Param magnitudeScaleToleranceDown(0.);
 
-Param method(1);
+Param algo(1);
 
 // ===================================
 // external data
@@ -166,6 +166,7 @@ chan = 0;
 // results
 // ===================================
 ResultGrainPos = 0;
+ResultGrainChan = 0;
 ResultGrainScale = 1.;
 ResultGrainPhaseShift = 0.;
 
@@ -179,7 +180,7 @@ Debug2 = 0.;
 Debug3 = 0.;
 
 
-if (method == ALGO_LINEAR_POS_START) {
+if (algo == ALGO_LINEAR_POS_START) {
 	// ----------------------------------
 	// DEBUG: debugging: indexing poc 
 	// PoC draw FFT index on scope: 
@@ -210,11 +211,11 @@ if (method == ALGO_LINEAR_POS_START) {
 
 }
 
-if (method == ALGO_LINEAR_HEAD) {
+if (algo == ALGO_LINEAR_HEAD) {
 	ResultGrainPos = fiToFrameStartAddress(fiGuideHead, snFftWindowSize, data, nSourceChans);
 }
 
-if (method == ALGO_SCULPT ) {
+if (algo == ALGO_SCULPT ) {
 	// ---------------------------------
 	// Sculpting algo based on source fundamental: uniform pick and scale by guide_mag[source_fundamental_bin] / source_mag[source_fundamental_bin]
 	// ---------------------------------
@@ -224,8 +225,9 @@ if (method == ALGO_SCULPT ) {
 	fiResultGrain = floor(fiPosStart + uniformRand01() * fnPosWidth);
 	ResultGrainPos = fiToFrameStartAddress(fiResultGrain, snFftWindowSize, data, nSourceChans);
 
-	
-	fundamentalI, apparentMag = findFundamental(fiResultGrain, 0, snFftWindowSize, data, nSourceChans);
+	ResultGrainChan = floor(uniformRand01() * nSourceChans);
+
+	fundamentalI, apparentMag = findFundamental(fiResultGrain, ResultGrainChan, snFftWindowSize, data, nSourceChans);
 	desiredMag = data.peek(fiToBinAddress(fiGuideHead, fundamentalI, snFftWindowSize, data, nSourceChans), getGuideChanI(S_MAG, nSourceChans));
 
 	targetScale = 1.;
@@ -385,13 +387,14 @@ if (TestIn == 1) {
 // ======= returns ===================
 
 out1 = ResultGrainPos;
-out2 = ResultGrainScale;
-out3 = ResultGrainPhaseShift ;
+out2 = ResultGrainChan ;
+out3 = ResultGrainScale;
+out4 = ResultGrainPhaseShift;
 
 
-out4 = Debug0;
-out5 = Debug1;
-out6 = Debug2;
-out7 = Debug3;
+out10 = Debug0;
+out11 = Debug1;
+out12 = Debug2;
+out13 = Debug3;
 
-out8 = TestFailures;
+out15 = TestFailures;
