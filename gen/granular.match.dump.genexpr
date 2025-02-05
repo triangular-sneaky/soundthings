@@ -48,13 +48,13 @@ getFrameChanI(nSourceChans) {
 	return (nSourceChans + 1)*3;
 }
 
-assertEq(textIndex, a, b) {
+assertEq(testIndex, a, b) {
 	if (a == b) {
 		return 0;
-	} else return textIndex, b;
+	} else return testIndex, b;
 }
 
-function selectKthLargest(data, chan, start, len, k) {
+selectKthLargest(data, chan, start, len, k) {
     if (k > len) return -1;
 
     left = k + 1;
@@ -459,4 +459,4 @@ out11 = Debug1;
 out12 = Debug2;
 out13 = Debug3;
 
-out15 = TestFailures;
+out15 = 1-TestFailures;
