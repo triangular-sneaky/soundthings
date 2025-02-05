@@ -54,6 +54,42 @@ assertEq(textIndex, a, b) {
 	} else return textIndex, b;
 }
 
+function selectKthLargest(data, chan, start, len, k) {
+    if (k > len) return -1;
+
+    left = k + 1;
+    prevLargest = 9999999;
+    candidateI = -1;
+
+    while (candidateI < 0) {
+        maxV = -99999;
+        maxI = -1;
+        thisRoundLeft = left;
+        candidateI = -1;
+        for (i = start; i < len + start; i += 1) {
+            v = data.peek(i, chan);
+            if (v < prevLargest) {
+                if (v > maxV) {
+                    maxI = i;
+                    maxV = v;
+                    thisRoundLeft = left;
+                    candidateI = -1;
+                }
+                if (v == maxV) {
+                    thisRoundLeft -= 1;
+                    if (thisRoundLeft == 0) {
+                        candidateI = i;
+                    }
+                }
+            }
+        }
+        left = thisRoundLeft;
+
+        prevLargest = maxV;
+    }
+    return candidateI;
+
+}
 findFundamental(fi, iSourceChan, snFftWindowSize, data, nSourceChans) {
 	maxM = -1;
 	maxMI = -1;
@@ -68,6 +104,8 @@ findFundamental(fi, iSourceChan, snFftWindowSize, data, nSourceChans) {
 	} 
 	return maxMI, maxM;
 }
+
+
 
 // ===================================
 // notation
@@ -112,6 +150,9 @@ Buffer data("rbGranularData");
 
 //Data match(fnPosWidth);
 Buffer match("dbgMatch");
+
+Data testData(100);
+
 
 // sections
 // NOTE: inlined above
@@ -332,6 +373,7 @@ if (algo == ALGO_SCULPT ) {
 // ====== TEST SECTION ==============
 TestIn = in6;
 TestFailures = 0;
+Debug3 = in6;
 
 if (TestIn == 1) {
 	// chan indexing
@@ -342,6 +384,7 @@ if (TestIn == 1) {
 	TestFailures += assertEq(0x10, 12, getFrameChanI(nSourceChans));
 
 	// siToFi
+	// Note: these will fail if no data is recorded
 	TestFailures += assertEq(0x20, 1, siToFi(2000, snFftWindowSize, data, nSourceChans));
 	f = 			assertEq(0x40, -1, siToFi(0, snFftWindowSize, data, nSourceChans));
 	TestFailures += f;
@@ -380,7 +423,26 @@ if (TestIn == 1) {
 	Debug0 = fail1000;
 	TestFailures += assertEq(0x1000, 0, fail1000);
 
-	
+		
+}
+if (TestIn == 2) {
+	// selectKthLargest
+	testData.poke(0.0, 2, 0);
+	testData.poke(3.0, 3, 0);
+	testData.poke(1.0, 4, 0);
+	testData.poke(1.0, 5, 0);
+	testData.poke(2.0, 6, 0);
+	testData.poke(3.0, 7, 0);
+
+	TestFailures += assertEq(0x1, 3, selectKthLargest(testData, 0, 2, 6, 0));
+	TestFailures += assertEq(0x2, 7, selectKthLargest(testData, 0, 2, 6, 1));
+	f, Debug0= assertEq(0x4, 6, selectKthLargest(testData, 0, 2, 6, 2));
+	TestFailures += f;
+	TestFailures += assertEq(0x8, 4, selectKthLargest(testData, 0, 2, 6, 3));
+	TestFailures += assertEq(0x10, 5, selectKthLargest(testData, 0, 2, 6, 4));
+	TestFailures += assertEq(0x20, 2, selectKthLargest(testData, 0, 2, 6, 5));
+	TestFailures += assertEq(0x40, 6, selectKthLargest(testData, 0, 2, 5, 1));
+
 }
 // ====== /TEST SECTION ==============
 
