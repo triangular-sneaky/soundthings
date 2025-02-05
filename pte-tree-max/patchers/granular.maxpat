@@ -1826,7 +1826,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 1028.90625, 1396.484375, 216.40625, 28.125 ],
-									"text" : "0. 0. 0. 0."
+									"text" : "58368. 2. 0.050138 0."
 								}
 
 							}
@@ -1881,7 +1881,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-83",
-									"linecount" : 5,
+									"linecount" : 10,
 									"maxclass" : "textedit",
 									"nosymquotes" : 1,
 									"numinlets" : 1,
@@ -1889,7 +1889,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 1537.0, 2173.0, 320.0, 212.0 ],
-									"text" : "[v] SUCCESS\n--------\n\n[v] 1. All tests passed\n[v] 2. All tests passed"
+									"text" : "[!] FAILURE (5)\n--------\n\n[!] 1. Failed tests: 5:\n1.0x40\n1.0x80\n1.0x100\n1.0x200\n1.0x800\n[v] 2. All tests passed"
 								}
 
 							}
@@ -2970,7 +2970,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 977.0, 1654.0, 320.0, 41.0 ],
-									"text" : "0. 0. 0. 0."
+									"text" : "1. 79.27002 3.974405 0."
 								}
 
 							}
@@ -5609,6 +5609,10 @@
 									"numoutlets" : 15,
 									"outlettype" : [ "float", "float", "float", "float", "float", "float", "float", "float", "float", "float", "float", "float", "float", "float", "float" ],
 									"patching_rect" : [ 1080.282387267975537, 1200.384729862213135, 280.307716369628906, 48.0 ],
+									"saved_object_attributes" : 									{
+										"autoexport" : 0
+									}
+,
 									"text" : "gen freq-mapper",
 									"textjustification" : 1,
 									"varname" : "gen_AA"
@@ -5776,7 +5780,8 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 1080.46875, 1170.3125, 187.5, 24.0 ]
+									"patching_rect" : [ 1203.0, 797.0, 187.5, 24.0 ],
+									"text_width" : 124.53125
 								}
 
 							}
@@ -7481,7 +7486,7 @@
 ,
 					"patching_rect" : [ 2340.0, 546.236583232879639, 356.0, 222.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.20000022649765, 403.200006008148193, 538.400008022785187, 523.200007796287537 ],
+					"presentation_rect" : [ 17.799995988607407, 403.0, 538.400008022785187, 523.200007796287537 ],
 					"viewvisibility" : 1
 				}
 
@@ -8458,7 +8463,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"numinlets" : 2,
+					"numinlets" : 3,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
 					"patcher" : 					{
@@ -8477,6 +8482,154 @@
 						"gridsize" : [ 15.0, 15.0 ],
 						"style" : "my default patcher",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-18",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 15.0, 13.0, 150.0, 22.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 12.0, 11.0, 94.0, 22.0 ],
+									"text" : "gr  src  gd"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-13",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 553.139999999999986, 504.04000000000002, 59.0, 24.0 ],
+									"text" : "mc.dac~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-12",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 561.0, 217.0, 102.0, 24.0 ],
+									"text" : "mc.mixdown~ 2"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-11",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 636.740000000000009, 210.22999999999999, 66.0, 24.0 ],
+									"text" : "mc.pack~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "guide",
+									"id" : "obj-9",
+									"index" : 3,
+									"maxclass" : "inlet",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 613.0, 141.0, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-7",
+									"knobcolor" : [ 1.0, 0.984313725490196, 0.454901960784314, 1.0 ],
+									"maxclass" : "gain~",
+									"multichannelvariant" : 1,
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "multichannelsignal", "" ],
+									"parameter_enable" : 1,
+									"patching_rect" : [ 593.269999999999982, 281.710000000000093, 22.0, 140.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 76.0, 35.0, 22.0, 140.0 ],
+									"saved_attribute_attributes" : 									{
+										"valueof" : 										{
+											"parameter_longname" : "gain~[2]",
+											"parameter_mmax" : 157.0,
+											"parameter_modmode" : 3,
+											"parameter_osc_name" : "<default>",
+											"parameter_shortname" : "gain~[2]",
+											"parameter_type" : 0
+										}
+
+									}
+,
+									"varname" : "gain~[2]"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"knobcolor" : [ 0.901960784313726, 0.619607843137255, 0.952941176470588, 1.0 ],
+									"maxclass" : "gain~",
+									"multichannelvariant" : 1,
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "multichannelsignal", "" ],
+									"parameter_enable" : 1,
+									"patching_rect" : [ 561.0, 281.710000000000036, 22.0, 140.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 44.0, 35.0, 22.0, 140.0 ],
+									"saved_attribute_attributes" : 									{
+										"valueof" : 										{
+											"parameter_longname" : "gain~[1]",
+											"parameter_mmax" : 157.0,
+											"parameter_modmode" : 3,
+											"parameter_osc_name" : "<default>",
+											"parameter_shortname" : "gain~[1]",
+											"parameter_type" : 0
+										}
+
+									}
+,
+									"varname" : "gain~[1]"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"knobcolor" : [ 0.435294117647059, 0.337254901960784, 0.517647058823529, 1.0 ],
+									"maxclass" : "gain~",
+									"multichannelvariant" : 1,
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "multichannelsignal", "" ],
+									"parameter_enable" : 1,
+									"patching_rect" : [ 528.730000000000018, 281.70999999999998, 22.0, 140.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 12.0, 35.0, 22.0, 140.0 ],
+									"saved_attribute_attributes" : 									{
+										"valueof" : 										{
+											"parameter_longname" : "gain~",
+											"parameter_mmax" : 157.0,
+											"parameter_modmode" : 3,
+											"parameter_osc_name" : "<default>",
+											"parameter_shortname" : "gain~",
+											"parameter_type" : 0
+										}
+
+									}
+,
+									"varname" : "gain~"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-172",
 									"maxclass" : "newobj",
@@ -8533,8 +8686,6 @@
 									"outlettype" : [ "", "float" ],
 									"parameter_enable" : 1,
 									"patching_rect" : [ 95.0, 40.000000085937472, 41.0, 48.0 ],
-									"presentation" : 1,
-									"presentation_rect" : [ 14.0, 13.0, 41.0, 48.0 ],
 									"saved_attribute_attributes" : 									{
 										"textcolor" : 										{
 											"expression" : ""
@@ -8577,7 +8728,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 50.0, 40.000000085937472, 30.0, 30.0 ]
+									"patching_rect" : [ 524.730000000000018, 141.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -8590,12 +8741,26 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 377.0, 40.000000085937472, 30.0, 30.0 ]
+									"patching_rect" : [ 571.0, 141.0, 30.0, 30.0 ]
 								}
 
 							}
  ],
 						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-7", 0 ],
+									"source" : [ "obj-11", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"source" : [ "obj-12", 0 ]
+								}
+
+							}
+, 							{
 								"patchline" : 								{
 									"destination" : [ "obj-169", 1 ],
 									"midpoints" : [ 104.5, 231.607335935014362, 360.908737865538569, 231.607335935014362, 360.908737865538569, 101.999950728080876, 468.5, 101.999950728080876 ],
@@ -8644,15 +8809,52 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-172", 0 ],
+									"destination" : [ "obj-5", 0 ],
 									"source" : [ "obj-44", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-169", 0 ],
+									"destination" : [ "obj-12", 0 ],
 									"source" : [ "obj-45", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-13", 0 ],
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-13", 0 ],
+									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-13", 0 ],
+									"source" : [ "obj-7", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-11", 1 ],
+									"order" : 0,
+									"source" : [ "obj-9", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-11", 0 ],
+									"order" : 1,
+									"source" : [ "obj-9", 0 ]
 								}
 
 							}
@@ -8670,7 +8872,9 @@
  ]
 					}
 ,
-					"patching_rect" : [ 1090.0, 1110.0, 65.0, 72.0 ],
+					"patching_rect" : [ 1090.0, 1110.0, 111.0, 196.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 602.0, 730.200007796287537, 111.0, 196.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -10841,7 +11045,522 @@
 						"rect" : [ 34.0, 34.0, 1130.0, 832.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"style" : "my default patcher",
+						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-33",
+									"maxclass" : "preset",
+									"numinlets" : 1,
+									"numoutlets" : 5,
+									"outlettype" : [ "preset", "int", "preset", "int", "" ],
+									"patching_rect" : [ 1055.279999999999973, 21.079999999999998, 100.0, 40.0 ],
+									"preset_data" : [ 										{
+											"number" : 1,
+											"data" : [ 5, "obj-158", "live.dial", "float", 0.0, 5, "obj-2", "tab", "int", 1, 5, "obj-12", "playlist~", "preset_count", 2, 7, "obj-12", "playlist~", "preset_clipstate", 1, "filekind", "audiofile", 7, "obj-12", "playlist~", "preset_clipstate", 1, "absolutepath", "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/jukebox/skmt-lawrence.wav", 7, "obj-12", "playlist~", "preset_clipstate", 1, "filename", "skmt-lawrence.wav", 7, "obj-12", "playlist~", "preset_clipstate", 1, "loop", 1, 8, "obj-12", "playlist~", "preset_clipstate", 1, "selection", 0.7981220657277, 0.366197183098592, 7, "obj-12", "playlist~", "preset_clipstate", 1, "id", "u990002735", 7, "obj-12", "playlist~", "preset_content", 1, "loop", 1, 7, "obj-12", "playlist~", "preset_clipstate", 2, "filekind", "audiofile", 7, "obj-12", "playlist~", "preset_clipstate", 2, "absolutepath", "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/jukebox/archive-lights-p1.wav", 7, "obj-12", "playlist~", "preset_clipstate", 2, "filename", "archive-lights-p1.wav", 7, "obj-12", "playlist~", "preset_clipstate", 2, "loop", 0, 8, "obj-12", "playlist~", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-12", "playlist~", "preset_clipstate", 2, "id", "u226002754", 4, "obj-12", "playlist~", "preset_execute", 5, "obj-13", "playlist~", "preset_count", 1, 7, "obj-13", "playlist~", "preset_clipstate", 1, "filekind", "audiofile", 7, "obj-13", "playlist~", "preset_clipstate", 1, "absolutepath", "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0056-birds, voices.WAV", 7, "obj-13", "playlist~", "preset_clipstate", 1, "filename", "ZOOM0056-birds, voices.WAV", 7, "obj-13", "playlist~", "preset_clipstate", 1, "loop", 1, 8, "obj-13", "playlist~", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-13", "playlist~", "preset_clipstate", 1, "id", "u880004166", 7, "obj-13", "playlist~", "preset_content", 1, "loop", 1, 4, "obj-13", "playlist~", "preset_execute", 5, "obj-17", "playlist~", "preset_count", 1, 7, "obj-17", "playlist~", "preset_clipstate", 1, "filekind", "audiofile", 7, "obj-17", "playlist~", "preset_clipstate", 1, "absolutepath", "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0061-Footsteps in snow.WAV", 7, "obj-17", "playlist~", "preset_clipstate", 1, "filename", "ZOOM0061-Footsteps in snow.WAV", 7, "obj-17", "playlist~", "preset_clipstate", 1, "loop", 1, 8, "obj-17", "playlist~", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-17", "playlist~", "preset_clipstate", 1, "id", "u281004185", 7, "obj-17", "playlist~", "preset_content", 1, "loop", 1, 4, "obj-17", "playlist~", "preset_execute", 5, "obj-16", "playlist~", "preset_count", 1, 7, "obj-16", "playlist~", "preset_clipstate", 1, "filekind", "audiofile", 7, "obj-16", "playlist~", "preset_clipstate", 1, "absolutepath", "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0062-CNY.WAV", 7, "obj-16", "playlist~", "preset_clipstate", 1, "filename", "ZOOM0062-CNY.WAV", 7, "obj-16", "playlist~", "preset_clipstate", 1, "loop", 1, 8, "obj-16", "playlist~", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-16", "playlist~", "preset_clipstate", 1, "id", "u242012871", 7, "obj-16", "playlist~", "preset_content", 1, "loop", 1, 4, "obj-16", "playlist~", "preset_execute", 5, "obj-22", "playlist~", "preset_count", 4, 7, "obj-22", "playlist~", "preset_clipstate", 1, "filekind", "audiofile", 7, "obj-22", "playlist~", "preset_clipstate", 1, "absolutepath", "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0056-birds, voices.WAV", 7, "obj-22", "playlist~", "preset_clipstate", 1, "filename", "ZOOM0056-birds, voices.WAV", 7, "obj-22", "playlist~", "preset_clipstate", 1, "loop", 0, 8, "obj-22", "playlist~", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-22", "playlist~", "preset_clipstate", 1, "id", "u370000516", 7, "obj-22", "playlist~", "preset_clipstate", 2, "filekind", "audiofile", 7, "obj-22", "playlist~", "preset_clipstate", 2, "absolutepath", "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0057-birds + water stream.WAV", 7, "obj-22", "playlist~", "preset_clipstate", 2, "filename", "ZOOM0057-birds + water stream.WAV", 7, "obj-22", "playlist~", "preset_clipstate", 2, "loop", 0, 8, "obj-22", "playlist~", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-22", "playlist~", "preset_clipstate", 2, "id", "u260000511", 7, "obj-22", "playlist~", "preset_clipstate", 3, "filekind", "audiofile", 7, "obj-22", "playlist~", "preset_clipstate", 3, "absolutepath", "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0062-CNY.WAV", 7, "obj-22", "playlist~", "preset_clipstate", 3, "filename", "ZOOM0062-CNY.WAV", 7, "obj-22", "playlist~", "preset_clipstate", 3, "loop", 0, 8, "obj-22", "playlist~", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-22", "playlist~", "preset_clipstate", 3, "id", "u021000514", 7, "obj-22", "playlist~", "preset_clipstate", 4, "filekind", "audiofile", 7, "obj-22", "playlist~", "preset_clipstate", 4, "absolutepath", "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0061-Footsteps in snow.WAV", 7, "obj-22", "playlist~", "preset_clipstate", 4, "filename", "ZOOM0061-Footsteps in snow.WAV", 7, "obj-22", "playlist~", "preset_clipstate", 4, "loop", 0, 8, "obj-22", "playlist~", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-22", "playlist~", "preset_clipstate", 4, "id", "u869000513", 4, "obj-22", "playlist~", "preset_execute" ]
+										}
+ ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-29",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"patching_rect" : [ 685.0, 190.400002837181091, 30.0, 24.0 ],
+									"text" : "+ 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-26",
+									"maxclass" : "newobj",
+									"numinlets" : 3,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 445.0, 415.670000000000073, 109.0, 24.0 ],
+									"text" : "mc.selector~ 2"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-25",
+									"maxclass" : "ezdac~",
+									"numinlets" : 2,
+									"numoutlets" : 0,
+									"patching_rect" : [ 1133.0, 300.0, 45.0, 45.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-24",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 1138.0, 106.0, 150.0, 22.0 ],
+									"text" : "full list"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"basictuning" : 440,
+									"clipheight" : 36.25,
+									"data" : 									{
+										"clips" : [ 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0056-birds, voices.WAV",
+												"filename" : "ZOOM0056-birds, voices.WAV",
+												"filekind" : "audiofile",
+												"id" : "u370000516",
+												"loop" : 0,
+												"content_state" : 												{
+
+												}
+
+											}
+, 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0057-birds + water stream.WAV",
+												"filename" : "ZOOM0057-birds + water stream.WAV",
+												"filekind" : "audiofile",
+												"id" : "u260000511",
+												"loop" : 0,
+												"content_state" : 												{
+
+												}
+
+											}
+, 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0062-CNY.WAV",
+												"filename" : "ZOOM0062-CNY.WAV",
+												"filekind" : "audiofile",
+												"id" : "u021000514",
+												"loop" : 0,
+												"content_state" : 												{
+
+												}
+
+											}
+, 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0061-Footsteps in snow.WAV",
+												"filename" : "ZOOM0061-Footsteps in snow.WAV",
+												"filekind" : "audiofile",
+												"id" : "u869000513",
+												"loop" : 0,
+												"content_state" : 												{
+
+												}
+
+											}
+ ]
+									}
+,
+									"followglobaltempo" : 0,
+									"formantcorrection" : 0,
+									"id" : "obj-22",
+									"maxclass" : "playlist~",
+									"mode" : "basic",
+									"numinlets" : 1,
+									"numoutlets" : 5,
+									"originallength" : [ 0.0, "ticks" ],
+									"originaltempo" : 120.0,
+									"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1133.0, 145.0, 324.0, 149.0 ],
+									"pitchcorrection" : 0,
+									"quality" : "basic",
+									"saved_attribute_attributes" : 									{
+										"candicane2" : 										{
+											"expression" : ""
+										}
+,
+										"candicane3" : 										{
+											"expression" : ""
+										}
+,
+										"candicane4" : 										{
+											"expression" : ""
+										}
+,
+										"candicane5" : 										{
+											"expression" : ""
+										}
+,
+										"candicane6" : 										{
+											"expression" : ""
+										}
+,
+										"candicane7" : 										{
+											"expression" : ""
+										}
+,
+										"candicane8" : 										{
+											"expression" : ""
+										}
+
+									}
+,
+									"timestretch" : [ 0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-20",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 1245.666666666666742, 338.0, 394.0, 22.0 ],
+									"text" : "Source:"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-19",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 863.0, 347.0, 142.0, 22.0 ],
+									"text" : "Guide:"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"basictuning" : 0,
+									"clipheight" : 52.333334922790527,
+									"data" : 									{
+										"clips" : [ 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0062-CNY.WAV",
+												"filename" : "ZOOM0062-CNY.WAV",
+												"filekind" : "audiofile",
+												"id" : "u242012871",
+												"loop" : 1,
+												"content_state" : 												{
+													"loop" : 1
+												}
+
+											}
+, 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/jukebox/archive-lights-p1.wav",
+												"filename" : "archive-lights-p1.wav",
+												"filekind" : "audiofile",
+												"id" : "u756013780",
+												"loop" : 1,
+												"content_state" : 												{
+													"loop" : 1
+												}
+
+											}
+ ]
+									}
+,
+									"followglobaltempo" : 0,
+									"formantcorrection" : 0,
+									"id" : "obj-16",
+									"maxclass" : "playlist~",
+									"mode" : "basic",
+									"numinlets" : 1,
+									"numoutlets" : 5,
+									"originallength" : [ 0 ],
+									"originaltempo" : 0,
+									"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1738.666718482971191, 373.333344459533691, 266.666674613952637, 106.666669845581055 ],
+									"pitchcorrection" : 0,
+									"quality" : "basic",
+									"saved_attribute_attributes" : 									{
+										"candicane2" : 										{
+											"expression" : ""
+										}
+,
+										"candicane3" : 										{
+											"expression" : ""
+										}
+,
+										"candicane4" : 										{
+											"expression" : ""
+										}
+,
+										"candicane5" : 										{
+											"expression" : ""
+										}
+,
+										"candicane6" : 										{
+											"expression" : ""
+										}
+,
+										"candicane7" : 										{
+											"expression" : ""
+										}
+,
+										"candicane8" : 										{
+											"expression" : ""
+										}
+
+									}
+,
+									"timestretch" : [ 0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"basictuning" : 0,
+									"clipheight" : 52.333334922790527,
+									"data" : 									{
+										"clips" : [ 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0061-Footsteps in snow.WAV",
+												"filename" : "ZOOM0061-Footsteps in snow.WAV",
+												"filekind" : "audiofile",
+												"id" : "u281004185",
+												"loop" : 1,
+												"content_state" : 												{
+													"loop" : 1
+												}
+
+											}
+, 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/jukebox/archive-lights-p1.wav",
+												"filename" : "archive-lights-p1.wav",
+												"filekind" : "audiofile",
+												"id" : "u281003746",
+												"loop" : 1,
+												"content_state" : 												{
+													"loop" : 1
+												}
+
+											}
+ ]
+									}
+,
+									"followglobaltempo" : 0,
+									"formantcorrection" : 0,
+									"id" : "obj-17",
+									"maxclass" : "playlist~",
+									"mode" : "basic",
+									"numinlets" : 1,
+									"numoutlets" : 5,
+									"originallength" : [ 0 ],
+									"originaltempo" : 0,
+									"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1441.333376288414001, 373.333344459533691, 266.666674613952637, 106.666669845581055 ],
+									"pitchcorrection" : 0,
+									"quality" : "basic",
+									"saved_attribute_attributes" : 									{
+										"candicane2" : 										{
+											"expression" : ""
+										}
+,
+										"candicane3" : 										{
+											"expression" : ""
+										}
+,
+										"candicane4" : 										{
+											"expression" : ""
+										}
+,
+										"candicane5" : 										{
+											"expression" : ""
+										}
+,
+										"candicane6" : 										{
+											"expression" : ""
+										}
+,
+										"candicane7" : 										{
+											"expression" : ""
+										}
+,
+										"candicane8" : 										{
+											"expression" : ""
+										}
+
+									}
+,
+									"timestretch" : [ 0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-15",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 1011.0, 593.0, 88.0, 24.0 ],
+									"text" : "mc.combine~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-14",
+									"maxclass" : "newobj",
+									"numinlets" : 3,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 1045.0, 540.0, 80.0, 24.0 ],
+									"text" : "mc.pack~ 3"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"basictuning" : 0,
+									"clipheight" : 105.666669845581055,
+									"data" : 									{
+										"clips" : [ 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/jukebox/archive-lights-p1.wav",
+												"filename" : "archive-lights-p1.wav",
+												"filekind" : "audiofile",
+												"id" : "u792013771",
+												"loop" : 1,
+												"content_state" : 												{
+													"loop" : 1
+												}
+
+											}
+ ]
+									}
+,
+									"followglobaltempo" : 0,
+									"formantcorrection" : 0,
+									"id" : "obj-13",
+									"maxclass" : "playlist~",
+									"mode" : "basic",
+									"numinlets" : 1,
+									"numoutlets" : 5,
+									"originallength" : [ 0 ],
+									"originaltempo" : 0,
+									"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1145.333367466926575, 373.333344459533691, 266.666674613952637, 106.666669845581055 ],
+									"pitchcorrection" : 0,
+									"quality" : "basic",
+									"saved_attribute_attributes" : 									{
+										"candicane2" : 										{
+											"expression" : ""
+										}
+,
+										"candicane3" : 										{
+											"expression" : ""
+										}
+,
+										"candicane4" : 										{
+											"expression" : ""
+										}
+,
+										"candicane5" : 										{
+											"expression" : ""
+										}
+,
+										"candicane6" : 										{
+											"expression" : ""
+										}
+,
+										"candicane7" : 										{
+											"expression" : ""
+										}
+,
+										"candicane8" : 										{
+											"expression" : ""
+										}
+
+									}
+,
+									"timestretch" : [ 0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"basictuning" : 440,
+									"clipheight" : 52.333334922790527,
+									"data" : 									{
+										"clips" : [ 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/jukebox/skmt-lawrence.wav",
+												"filename" : "skmt-lawrence.wav",
+												"filekind" : "audiofile",
+												"id" : "u990002735",
+												"selection" : [ 0.568075117370892, 1.0 ],
+												"loop" : 1,
+												"content_state" : 												{
+													"loop" : 1
+												}
+
+											}
+, 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/jukebox/archive-lights-p1.wav",
+												"filename" : "archive-lights-p1.wav",
+												"filekind" : "audiofile",
+												"id" : "u226002754",
+												"loop" : 0,
+												"content_state" : 												{
+
+												}
+
+											}
+ ]
+									}
+,
+									"followglobaltempo" : 0,
+									"formantcorrection" : 0,
+									"id" : "obj-12",
+									"maxclass" : "playlist~",
+									"mode" : "basic",
+									"numinlets" : 1,
+									"numoutlets" : 5,
+									"originallength" : [ 0.0, "ticks" ],
+									"originaltempo" : 120.0,
+									"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 848.000025272369385, 373.333344459533691, 266.666674613952637, 106.666669845581055 ],
+									"pitchcorrection" : 0,
+									"quality" : "basic",
+									"saved_attribute_attributes" : 									{
+										"candicane2" : 										{
+											"expression" : ""
+										}
+,
+										"candicane3" : 										{
+											"expression" : ""
+										}
+,
+										"candicane4" : 										{
+											"expression" : ""
+										}
+,
+										"candicane5" : 										{
+											"expression" : ""
+										}
+,
+										"candicane6" : 										{
+											"expression" : ""
+										}
+,
+										"candicane7" : 										{
+											"expression" : ""
+										}
+,
+										"candicane8" : 										{
+											"expression" : ""
+										}
+
+									}
+,
+									"timestretch" : [ 0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-2",
 									"maxclass" : "tab",
@@ -10849,7 +11568,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 820.0, 235.0, 291.0, 24.0 ],
+									"patching_rect" : [ 685.0, 151.0, 291.0, 24.0 ],
 									"tabs" : [ "adc", "samples", "osc", "noise" ]
 								}
 
@@ -11109,11 +11828,37 @@
 								}
 
 							}
+, 							{
+								"box" : 								{
+									"id" : "obj-27",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1291.0, 115.0, 44.0, 24.0 ],
+									"text" : "clear"
+								}
+
+							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-162", 0 ],
 									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-15", 0 ],
+									"source" : [ "obj-12", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-14", 0 ],
+									"source" : [ "obj-13", 0 ]
 								}
 
 							}
@@ -11126,9 +11871,23 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-15", 1 ],
+									"source" : [ "obj-14", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-162", 1 ],
 									"disabled" : 1,
 									"source" : [ "obj-140", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-26", 2 ],
+									"source" : [ "obj-15", 0 ]
 								}
 
 							}
@@ -11157,17 +11916,23 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-271", 0 ],
-									"order" : 0,
+									"destination" : [ "obj-14", 2 ],
+									"source" : [ "obj-16", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-26", 1 ],
+									"disabled" : 1,
 									"source" : [ "obj-162", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-30", 0 ],
-									"order" : 1,
-									"source" : [ "obj-162", 0 ]
+									"destination" : [ "obj-14", 1 ],
+									"source" : [ "obj-17", 0 ]
 								}
 
 							}
@@ -11176,6 +11941,43 @@
 									"destination" : [ "obj-162", 1 ],
 									"disabled" : 1,
 									"source" : [ "obj-175", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-29", 0 ],
+									"source" : [ "obj-2", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-25", 0 ],
+									"source" : [ "obj-22", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-271", 0 ],
+									"order" : 0,
+									"source" : [ "obj-26", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-30", 0 ],
+									"order" : 1,
+									"source" : [ "obj-26", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-22", 0 ],
+									"source" : [ "obj-27", 0 ]
 								}
 
 							}
@@ -11190,6 +11992,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-4", 0 ],
 									"source" : [ "obj-271", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-26", 0 ],
+									"source" : [ "obj-29", 0 ]
 								}
 
 							}
@@ -11244,7 +12053,8 @@
 						"style" : "my default patcher"
 					}
 ,
-					"text" : "p feed-guide-and-source"
+					"text" : "p feed-guide-and-source",
+					"varname" : "feed-guide-and-source"
 				}
 
 			}
@@ -13446,6 +14256,7 @@
 							"parameter_initial" : [ 100.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_longname" : "nVoices",
+							"parameter_mmax" : 1000.0,
 							"parameter_modmode" : 3,
 							"parameter_osc_name" : "<default>",
 							"parameter_shortname" : "nVoices",
@@ -13454,6 +14265,7 @@
 
 					}
 ,
+					"size" : 1001.0,
 					"varname" : "nVoices"
 				}
 
@@ -14146,7 +14958,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-50", 1 ],
+					"destination" : [ "obj-50", 0 ],
 					"source" : [ "obj-110", 0 ]
 				}
 
@@ -14832,7 +15644,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-50", 0 ],
+					"destination" : [ "obj-50", 1 ],
 					"order" : 1,
 					"source" : [ "obj-39", 2 ]
 				}
@@ -14840,7 +15652,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-50", 2 ],
+					"order" : 0,
+					"source" : [ "obj-39", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-73", 0 ],
+					"order" : 1,
 					"source" : [ "obj-39", 1 ]
 				}
 
@@ -14983,6 +15804,9 @@
 			"obj-32::obj-32" : [ "number", "number", 0 ],
 			"obj-39::obj-158" : [ "live.dial[2]", "osc freq", 0 ],
 			"obj-50::obj-167" : [ "live.dial[3]", "wet/dry", 0 ],
+			"obj-50::obj-5" : [ "gain~", "gain~", 0 ],
+			"obj-50::obj-6" : [ "gain~[1]", "gain~[1]", 0 ],
+			"obj-50::obj-7" : [ "gain~[2]", "gain~[2]", 0 ],
 			"obj-52::obj-155" : [ "density", "density", 0 ],
 			"obj-84" : [ "button", "button", 0 ],
 			"obj-86" : [ "nVoices", "nVoices", 0 ],
@@ -15065,15 +15889,71 @@
 					"max" : 1000.0,
 					"flags" : 2
 				}
+,
+				"gain~" : 				{
+					"srcname" : "2.ctrl.0.chan.midi",
+					"min" : 0.0,
+					"max" : 157.0,
+					"flags" : 2
+				}
+,
+				"gain~[1]" : 				{
+					"srcname" : "3.ctrl.0.chan.midi",
+					"min" : 0.0,
+					"max" : 157.0,
+					"flags" : 2
+				}
+,
+				"gain~[2]" : 				{
+					"srcname" : "4.ctrl.0.chan.midi",
+					"min" : 0.0,
+					"max" : 157.0,
+					"flags" : 2
+				}
 
 			}
 
 		}
 ,
 		"dependency_cache" : [ 			{
+				"name" : "ZOOM0056-birds, voices.WAV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025",
+				"patcherrelativepath" : "../../../../Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025",
+				"type" : "WAVE",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "ZOOM0057-birds + water stream.WAV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025",
+				"patcherrelativepath" : "../../../../Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025",
+				"type" : "WAVE",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "ZOOM0061-Footsteps in snow.WAV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025",
+				"patcherrelativepath" : "../../../../Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025",
+				"type" : "WAVE",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "ZOOM0062-CNY.WAV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025",
+				"patcherrelativepath" : "../../../../Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025",
+				"type" : "WAVE",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "archive-lights-p1.wav",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/jukebox",
+				"patcherrelativepath" : "../../../../Library/CloudStorage/OneDrive-Personal/Art/jukebox",
+				"type" : "WAVE",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "freq-mapper.gendsp",
-				"bootpath" : "~/_art/pte-tree/gen",
-				"patcherrelativepath" : "../../gen",
+				"bootpath" : "~/_art/pte-tree/pte-tree-max/code",
+				"patcherrelativepath" : "../code",
 				"type" : "gDSP",
 				"implicit" : 1
 			}
@@ -15089,6 +15969,13 @@
 				"bootpath" : "~/_art/pte-tree/pte-tree-max/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "skmt-lawrence.wav",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/jukebox",
+				"patcherrelativepath" : "../../../../Library/CloudStorage/OneDrive-Personal/Art/jukebox",
+				"type" : "WAVE",
 				"implicit" : 1
 			}
 , 			{

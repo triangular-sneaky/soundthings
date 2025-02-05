@@ -9,9 +9,10 @@ function msg_int(val) {
     if (inlet == 1) {
         testCase = val;
     } else {
+        let testFlags = 1 - val;
         let list = [];
         for (var i = 0; i < 32; i++) {
-            if ((val & (1 << i)) != 0) {
+            if ((testFlags & (1 << i)) != 0) {
                 list = [...list, 1 << i];
                 numberOfFailedTests++;
             }
