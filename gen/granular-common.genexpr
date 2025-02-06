@@ -1,0 +1,49 @@
+decide() {
+	return noise() > 0.;
+}
+
+uniformRand01() {
+	return ((noise() + 1.) / 2.);
+}
+
+_wrap(value, cap) {
+	zuppo = value + cap;
+	return zuppo % cap;
+}
+
+_getSnFrameDrift(si, data, nSourceChans) {
+	snFrameDrift = data.peek(_wrap(si, dim(data)), getFrameChanI(nSourceChans));
+	if (snFrameDrift == 0) return 0;
+}
+
+siToFi(si, snFftWindowSize, data, nSourceChans) {
+	snFrameDrift = data.peek(_wrap(si, dim(data)), getFrameChanI(nSourceChans));
+	return floor( (si - snFrameDrift) / snFftWindowSize );
+}
+
+fiToFrameStartAddress(fi, snFftWindowSize, data, nSourceChans) {
+	return _fiToFrameAddress(fi, 0, snFftWindowSize, data, nSourceChans);
+}
+
+fiToBinAddress(fi, binIndex, snFftWindowSize, data, nSourceChans) {
+	return _fiToFrameAddress(fi + 1, binIndex, snFftWindowSize, data, nSourceChans);
+}
+
+_fiToFrameAddress(fi, frameIndex, snFftWindowSize, data, nSourceChans) {
+	siFrameStartRaw = fi * snFftWindowSize;
+	snFrameDrift = data.peek(_wrap(siFrameStartRaw, dim(data)), getFrameChanI(nSourceChans));
+	snFrameDriftCorrection = snFrameDrift == 0 ? 0 : snFftWindowSize - snFrameDrift;
+	return _wrap((siFrameStartRaw + snFrameDriftCorrection + frameIndex), dim(data));
+}
+// get 0-based source chan index
+getSourceChanI(section, sourceChanRelI, nSourceChans) {
+	return (nSourceChans + 1) * section + sourceChanRelI + 1;
+}
+
+getGuideChanI(section, nSourceChans) {
+	return (nSourceChans + 1) * section;
+}
+
+getFrameChanI(nSourceChans) {
+	return (nSourceChans + 1)*3;
+}
