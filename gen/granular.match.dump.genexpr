@@ -30,9 +30,10 @@ fiToBinAddress(fi, binIndex, snFftWindowSize, data, nSourceChans) {
 }
 
 _fiToFrameAddress(fi, frameIndex, snFftWindowSize, data, nSourceChans) {
-	siFrameStartRaw = (fi + 1) * snFftWindowSize;
+	siFrameStartRaw = fi * snFftWindowSize;
 	snFrameDrift = data.peek(_wrap(siFrameStartRaw, dim(data)), getFrameChanI(nSourceChans));
-	return _wrap((siFrameStartRaw - snFrameDrift + frameIndex), dim(data));
+	snFrameDriftCorrection = snFrameDrift == 0 ? 0 : snFftWindowSize - snFrameDrift;
+	return _wrap((siFrameStartRaw + snFrameDriftCorrection + frameIndex), dim(data));
 }
 
 // get 0-based source chan index
@@ -50,7 +51,7 @@ getFrameChanI(nSourceChans) {
 
 assertEq(testIndex, a, b) {
 	if (a == b) {
-		return 0;
+		return 0, b;
 	} else return testIndex, b;
 }
 
@@ -385,18 +386,22 @@ if (TestIn == 1) {
 
 	// siToFi
 	// Note: these will fail if no data is recorded
+	frameDrift = data.peek(_wrap(0, dim(data)), getFrameChanI(nSourceChans));
+
 	TestFailures += assertEq(0x20, 1, siToFi(2000, snFftWindowSize, data, nSourceChans));
-	f = 			assertEq(0x40, -1, siToFi(0, snFftWindowSize, data, nSourceChans));
+	Debug1 = frameDrift;
+	frameCountCorrection = frameDrift == 0 ? 1 : 0;
+	f, Debug0 = 			assertEq(0x40, -1 + frameCountCorrection , siToFi(0, snFftWindowSize, data, nSourceChans));
 	TestFailures += f;
-	TestFailures += assertEq(0x80, 0, 
+	TestFailures += assertEq(0x80, 0 + frameCountCorrection, 
 		siToFi(snFftWindowSize - data.peek(0, getFrameChanI(nSourceChans)),
 			snFftWindowSize, data, nSourceChans));
-	TestFailures += assertEq(0x100, -1, 
+	TestFailures += assertEq(0x100, -1 + frameCountCorrection, 
 		siToFi(snFftWindowSize - data.peek(0, getFrameChanI(nSourceChans)),
 			snFftWindowSize, data, nSourceChans) - 1);
 
 	// fiToBinAddress
-	TestFailures += assertEq(0x200, 16, data.peek(
+	f, Debug0 = assertEq(0x200, 16, data.peek(
 		fiToBinAddress(
 			siToFi(2000, snFftWindowSize, data, nSourceChans),
 			16,
@@ -404,10 +409,13 @@ if (TestIn == 1) {
 			data, nSourceChans), 
 			getFrameChanI(nSourceChans)
 	));
+	TestFailures += f;
+
 
 	// fiToFrameStartAddress
 	TestFailures += assertEq(0x400, 1, siToFi(2000, snFftWindowSize, data, nSourceChans));
-	f, Debug0 = assertEq(0x800, 1024+512, 
+	expectedFrame1StartAddress =  (2 - frameCountCorrection) * 1024 - frameDrift;
+	f, Debug1 = assertEq(0x800, expectedFrame1StartAddress, 
 		fiToFrameStartAddress(1, snFftWindowSize,
 			data, nSourceChans));
 	TestFailures += f;
@@ -420,9 +428,23 @@ if (TestIn == 1) {
 			fail1000 += 1;
 		}
 	} 
-	Debug0 = fail1000;
 	TestFailures += assertEq(0x1000, 0, fail1000);
 
+	// frame chan sanity
+	prevFrameV = -1;
+	f = 0;
+	for (i = 0; i < 2000 && f == 0; i+=1) {
+		frameV = data.peek(i, getFrameChanI(nSourceChans));
+		expectedFrameV = prevFrameV == 1023 ? 0 : prevFrameV+1;
+		f = assertEq(0x2000, expectedFrameV, frameV);
+		if (f != 0) {
+			Debug0 = i;
+			Debug1 = frameV;
+			Debug2 = prevFrameV;
+		}
+		prevFrameV = frameV;
+	}
+	TestFailures += f;
 		
 }
 if (TestIn == 2) {
