@@ -106,6 +106,30 @@ findFundamental(fi, iSourceChan, snFftWindowSize, data, nSourceChans) {
 	return maxMI, maxM;
 }
 
+calculateRelativeDistance(freqBinI1, freqBinI2) {
+	// VERY naive
+	return abs(freqBinI1 - freqBinI2);
+}
+
+rollWithWeights(weights, chan, start, len) {
+	// 1. calc sum
+	sum = 0;
+	for (i = start; i < start + len; i += 1) {
+		sum += weights.peek(i, chan);
+	}
+
+	roll = uniformRand01() * sum;
+
+	acc = 0;
+	result = -1;
+	for (i = start; i < start + len && result < 0; i += 1) {
+		acc += weights.peek(i, chan);
+		if (acc >= roll) {
+			result = i;
+		}
+	}
+	return result;
+}
 
 
 // ===================================
@@ -139,6 +163,14 @@ Param magnitudeScaleToleranceDown(0.);
 Param algo(1);
 
 // ===================================
+// Algo params: ALGO_BIGBUS_SCULPT
+History bigBusNextStop(0);
+Param saturation(0.);
+Param brightness(1.);
+// ===================================
+
+
+// ===================================
 // external data
 // ===================================
 
@@ -166,6 +198,7 @@ ALGO_LINEAR_POS_START = 0;
 ALGO_LINEAR_HEAD = 1;
 
 ALGO_SCULPT = 2;
+ALGO_BIGBUS_SCULPT = 3;
 
 dataSize = dim(data);
 fnTotal = dataSize / snFftWindowSize;
@@ -208,7 +241,7 @@ chan = 0;
 // results
 // ===================================
 ResultGrainPos = 0;
-ResultGrainChan = 0;
+ResultGrainChan = floor(uniformRand01() * nSourceChans);
 ResultGrainScale = 1.;
 ResultGrainPhaseShift = 0.;
 
@@ -286,6 +319,40 @@ if (algo == ALGO_SCULPT ) {
 	Debug2 = desiredMag;
 }
 
+if (algo == ALGO_BIGBUS_SCULPT) {
+	nGuidePeaks = max(1, floor(saturation * brightness));
+	bigBusNextStop = (bigBusNextStop + 1) % nGuidePeaks;
+
+	bin0Address = fiToBinAddress(fiGuideHead, 0, snFftWindowSize, data, nSourceChans);
+	peakBinAddress = selectKthLargest(
+		data, 
+		getGuideChanI(S_MAG, nSourceChans), 
+		bin0Address, 
+		snFftWindowSize, 
+		bigBusNextStop
+	);
+	peakI = peakBinAddress - bin0Address;
+	peakV = data.peek(peakBinAddress, 
+		getGuideChanI(S_MAG, nSourceChans));
+	Debug0 = fiGuideHead ;
+	Debug1 = peakI;
+	Debug2 = peakV;
+
+	// calculate weights into match
+	for (i = 0; i <  fnPosWidth; i += 1) {
+		fi = i + fiPosStart;
+		fundamental = findFundamental(fi, ResultGrainChan,
+			snFftWindowSize, data, nSourceChans);
+
+		distance = calculateRelativeDistance(fundamental, peakI);
+		match.poke(distance, i, 0);
+	}
+
+	// roll
+	roll = rollWithWeights(match, 0, 0, fnPosWidth);
+	fiResultGrain = roll + fiPosStart;
+	ResultGrainPos = fiToFrameStartAddress(fiResultGrain, snFftWindowSize, data, nSourceChans);
+}
 
 
 
@@ -436,11 +503,13 @@ if (TestIn == 1) {
 	for (i = 0; i < 2000 && f == 0; i+=1) {
 		frameV = data.peek(i, getFrameChanI(nSourceChans));
 		expectedFrameV = prevFrameV == 1023 ? 0 : prevFrameV+1;
-		f = assertEq(0x2000, expectedFrameV, frameV);
-		if (f != 0) {
-			Debug0 = i;
-			Debug1 = frameV;
-			Debug2 = prevFrameV;
+		if (prevFrameV != -1) {
+			f = assertEq(0x2000, expectedFrameV, frameV);
+			if (f != 0) {
+				Debug0 = i;
+				Debug1 = frameV;
+				Debug2 = prevFrameV;
+			}
 		}
 		prevFrameV = frameV;
 	}
@@ -466,6 +535,18 @@ if (TestIn == 2) {
 	TestFailures += assertEq(0x40, 6, selectKthLargest(testData, 0, 2, 5, 1));
 
 }
+if (TestIn == 3) {
+	// performance tests
+
+	nsScanLength = 44100*2;
+	Debug0 = nsScanLength;
+	sum = 0;
+	for (si = 0; si < nsScanLength; si += 1) {
+		sum += data.peek(si, 0);
+	}
+	Debug1 = sum;
+}
+
 // ====== /TEST SECTION ==============
 
 // ======= returns ===================

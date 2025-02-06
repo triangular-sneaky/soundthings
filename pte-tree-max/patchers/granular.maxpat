@@ -683,7 +683,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 1653.789999999999964, 1594.670000000000073, 80.0, 24.0 ],
-									"text" : "loadmess 2"
+									"text" : "loadmess 3"
 								}
 
 							}
@@ -1797,10 +1797,10 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 2672.0, 476.0, 148.0, 122.0 ],
+									"patching_rect" : [ 2672.0, 476.0, 150.0, 155.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 358.400005340576172, 33.600000500679016, 148.0, 122.0 ],
-									"tabs" : [ "LINEAR_POS_START", "LINEAR_HEAD", "SCULPT" ],
+									"tabs" : [ "LINEAR_POS_START", "LINEAR_HEAD", "SCULPT", "BIGBUS_SCULPT" ],
 									"truncate" : 0,
 									"varname" : "tab"
 								}
@@ -1826,7 +1826,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 1028.90625, 1396.484375, 216.40625, 28.125 ],
-									"text" : "58368. 2. 0.050138 0."
+									"text" : "437760. 1. 1. 0."
 								}
 
 							}
@@ -1881,7 +1881,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-83",
-									"linecount" : 10,
+									"linecount" : 6,
 									"maxclass" : "textedit",
 									"nosymquotes" : 1,
 									"numinlets" : 1,
@@ -1889,7 +1889,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 1537.0, 2173.0, 320.0, 212.0 ],
-									"text" : "[!] FAILURE (5)\n--------\n\n[!] 1. Failed tests: 5:\n1.0x40\n1.0x80\n1.0x100\n1.0x200\n1.0x800\n[v] 2. All tests passed"
+									"text" : "[v] SUCCESS\n--------\n\n[v] 1. All tests passed\n[v] 2. All tests passed\n[v] 3. All tests passed"
 								}
 
 							}
@@ -2970,7 +2970,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 977.0, 1654.0, 320.0, 41.0 ],
-									"text" : "1. 79.27002 3.974405 0."
+									"text" : "132300. -11.190648 0. 3."
 								}
 
 							}
@@ -5108,6 +5108,7 @@
 										"classnamespace" : "box",
 										"rect" : [ 34.0, 34.0, 1372.0, 832.0 ],
 										"gridsize" : [ 15.0, 15.0 ],
+										"visible" : 1,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-2",
@@ -5150,7 +5151,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 236.979157626628876, 146.874994397163391, 100.0, 22.0 ],
+													"patching_rect" : [ 296.800004422664642, 147.200002193450928, 100.0, 22.0 ],
 													"text" : "if $i1 > 0 then $i1"
 												}
 
@@ -5197,7 +5198,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 2,
 													"outlettype" : [ "float", "" ],
-													"patching_rect" : [ 82.0, 147.0, 133.0, 22.0 ],
+													"patching_rect" : [ 111.200001657009125, 163.200002431869507, 133.0, 22.0 ],
 													"text" : "timer @format samples"
 												}
 
@@ -5286,7 +5287,7 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-1", 0 ],
-													"order" : 0,
+													"order" : 1,
 													"source" : [ "obj-285", 2 ]
 												}
 
@@ -5308,7 +5309,7 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-284", 0 ],
-													"order" : 1,
+													"order" : 0,
 													"source" : [ "obj-285", 2 ]
 												}
 
@@ -7042,19 +7043,17 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-209", 5 ],
-									"source" : [ "obj-29", 1 ],
-									"watchpoint_flags" : 5,
-									"watchpoint_id" : 3
+									"destination" : [ "obj-199", 0 ],
+									"source" : [ "obj-29", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-209", 0 ],
-									"source" : [ "obj-29", 0 ],
+									"destination" : [ "obj-209", 5 ],
+									"source" : [ "obj-29", 1 ],
 									"watchpoint_flags" : 5,
-									"watchpoint_id" : 7
+									"watchpoint_id" : 3
 								}
 
 							}
@@ -11490,10 +11489,10 @@
 												"filename" : "skmt-lawrence.wav",
 												"filekind" : "audiofile",
 												"id" : "u990002735",
-												"selection" : [ 0.568075117370892, 1.0 ],
-												"loop" : 1,
+												"selection" : [ 0.0, 0.431924882629108 ],
+												"loop" : 0,
 												"content_state" : 												{
-													"loop" : 1
+													"loop" : 0
 												}
 
 											}
@@ -11502,9 +11501,9 @@
 												"filename" : "archive-lights-p1.wav",
 												"filekind" : "audiofile",
 												"id" : "u226002754",
-												"loop" : 0,
+												"loop" : 1,
 												"content_state" : 												{
-
+													"loop" : 1
 												}
 
 											}
