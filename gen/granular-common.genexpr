@@ -11,10 +11,10 @@ _wrap(value, cap) {
 	return zuppo % cap;
 }
 
-_getSnFrameDrift(si, data, nSourceChans) {
-	snFrameDrift = data.peek(_wrap(si, dim(data)), getBinIndexChan(nSourceChans));
-	if (snFrameDrift == 0) return 0;
-}
+// _getSnFrameDrift(si, data, nSourceChans) {
+// 	snFrameDrift = data.peek(_wrap(si, dim(data)), getBinIndexChan(nSourceChans));
+// 	if (snFrameDrift == 0) return 0;
+// }
 
 siToFi(si, snFftWindowSize, data, nSourceChans) {
 	snFrameDrift = data.peek(_wrap(si, dim(data)), getBinIndexChan(nSourceChans));
@@ -40,12 +40,15 @@ peekFrameCache(fi, field, sourceChanRelI, snFftWindowSize, data, nSourceChans) {
 	);
 }
 
-pokeFrameCache(value, fi, field, sourceChanRelI, snFftWindowSize, data, nSourceChans) {
+pokeFrameCache(value, fi, fld, sourceChanRelI, snFftWindowSize, data, nSourceChans) {
+	address = addressCacheField(fi, fld,  snFftWindowSize, data, nSourceChans);
+	chan = getSourceChan(SEC_FRAME_CACHE(), sourceChanRelI, nSourceChans);
 	data.poke(
 		value,
-		addressCacheField(fi, field,  snFftWindowSize, data, nSourceChans), 
-		getSourceChan(SEC_FRAME_CACHE(), sourceChanRelI, nSourceChans)
+		address, 
+		chan
 	);
+	return 0;
 }
 
 

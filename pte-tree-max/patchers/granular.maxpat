@@ -750,7 +750,7 @@
 											}
 , 											{
 												"box" : 												{
-													"code" : "require(\"granular-common.genexpr\");\n\nBuffer data(\"rbGranularData\");\n\n\n// number of source chans\nParam nSourceChans(3);\nParam snFftWindowSize(1024);\n\n\nsiSourceHeadWritten = in1;\n\n// POC\ndata.poke(777 + siSourceHeadWritten, siSourceHeadWritten, 13);\n\n// analyzed frame is a frame around 1 frame size back from written head\nsiSourceAnalyzed = _wrap(siSourceHeadWritten - snFftWindowSize, dim(data));\nfiSourceAnalyzed = siToFi(siSourceAnalyzed, snFftWindowSize, data, nSourceChans);\n\n// todo: write a test to ensure frame number increments at currentBinIndex=0\n\ncurrentBinIndex = data.peek(siSourceHeadWritten, getBinIndexChan(nSourceChans));\nfor (chanI = 0; chanI < nSourceChans; chanI += 1) {\n\n    pokeFrameCache(666, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, \n            snFftWindowSize, data, nSourceChans);\n\n    // layout per chan per frame: (maxI)(maxV)\n    // ()\n    thisFramePrevMaxV = -1;\n     peekFrameCache(fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, \n        snFftWindowSize, data, nSourceChans);\n\n    thisV = data.peek(siSourceHeadWritten, getSourceChan(SEC_MAG(), chanI, nSourceChans));\n    if (thisV > thisFramePrevMaxV) {\n        thisFramePrevMaxV = thisV;\n        pokeFrameCache(666+currentBinIndex, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, \n            snFftWindowSize, data, nSourceChans);\n        pokeFrameCache(666+thisV, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, \n            snFftWindowSize, data, nSourceChans);\n    }\n}",
+													"code" : "require(\"granular-common.genexpr\");\n\nBuffer data(\"rbGranularData\");\n\n\n// number of source chans\nParam nSourceChans(3);\nParam snFftWindowSize(1024);\n\n\nsiSourceHeadWritten = in1;\n\n\n// analyzed frame is a frame around 1 frame size back from written head\nsiSourceAnalyzed = _wrap(siSourceHeadWritten - snFftWindowSize, dim(data));\nfiSourceAnalyzed = siToFi(siSourceAnalyzed, snFftWindowSize, data, nSourceChans);\n\n// todo: write a test to ensure frame number increments at currentBinIndex=0\n\ncurrentBinIndex = data.peek(siSourceHeadWritten, getBinIndexChan(nSourceChans));\nif (currentBinIndex < snFftWindowSize/2) {\n    for (chanI = 0; chanI < nSourceChans; chanI += 1) {\n\n        // pokeFrameCache(666, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, \n        //         snFftWindowSize, data, nSourceChans);\n\n        // layout per chan per frame: (maxI)(maxV)\n        // ()\n        thisFramePrevMaxV = peekFrameCache(fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, \n            snFftWindowSize, data, nSourceChans);\n\n        thisV = data.peek(siSourceHeadWritten, getSourceChan(SEC_MAG(), chanI, nSourceChans));\n        if (thisV > thisFramePrevMaxV) {\n            thisFramePrevMaxV = thisV;\n            pokeFrameCache(currentBinIndex, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, \n                snFftWindowSize, data, nSourceChans);\n            pokeFrameCache(thisV, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, \n                snFftWindowSize, data, nSourceChans);\n        }\n    }\n}",
 													"fontface" : 0,
 													"fontname" : "<Monospaced>",
 													"fontsize" : 12.0,
@@ -1966,7 +1966,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 1028.90625, 1396.484375, 216.40625, 28.125 ],
-									"text" : "438272. 0. 1. 0."
+									"text" : "438272. 2. 1. 0."
 								}
 
 							}
@@ -2021,7 +2021,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-83",
-									"linecount" : 11,
+									"linecount" : 9,
 									"maxclass" : "textedit",
 									"nosymquotes" : 1,
 									"numinlets" : 1,
@@ -2029,7 +2029,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 1537.0, 2173.0, 320.0, 212.0 ],
-									"text" : "[!] FAILURE (2)\n--------\n\n[v] 1. All tests passed\nDBG:,16,1536,0,1\n[v] 2. All tests passed\nDBG:,6,0,0,2\n[!] 3. Failed tests: 2:\n3.0x1\n3.0x2\nDBG:,0,0,17.40994644165039,3"
+									"text" : "[v] SUCCESS\n--------\n\n[v] 1. All tests passed\nDBG: | 16 | 1088 | 0 | 1\n[v] 2. All tests passed\nDBG: | 6 | 0 | 0 | 2\n[v] 3. All tests passed\nDBG: | 3 | 19 | 3 | 22.013036727905273"
 								}
 
 							}

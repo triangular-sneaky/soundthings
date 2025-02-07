@@ -10,8 +10,6 @@ Param snFftWindowSize(1024);
 
 siSourceHeadWritten = in1;
 
-// POC
-data.poke(777 + siSourceHeadWritten, siSourceHeadWritten, 13);
 
 // analyzed frame is a frame around 1 frame size back from written head
 siSourceAnalyzed = _wrap(siSourceHeadWritten - snFftWindowSize, dim(data));
@@ -20,23 +18,24 @@ fiSourceAnalyzed = siToFi(siSourceAnalyzed, snFftWindowSize, data, nSourceChans)
 // todo: write a test to ensure frame number increments at currentBinIndex=0
 
 currentBinIndex = data.peek(siSourceHeadWritten, getBinIndexChan(nSourceChans));
-for (chanI = 0; chanI < nSourceChans; chanI += 1) {
+if (currentBinIndex < snFftWindowSize/2) {
+    for (chanI = 0; chanI < nSourceChans; chanI += 1) {
 
-    pokeFrameCache(666, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, 
+        // pokeFrameCache(666, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, 
+        //         snFftWindowSize, data, nSourceChans);
+
+        // layout per chan per frame: (maxI)(maxV)
+        // ()
+        thisFramePrevMaxV = peekFrameCache(fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, 
             snFftWindowSize, data, nSourceChans);
 
-    // // layout per chan per frame: (maxI)(maxV)
-    // // ()
-    // thisFramePrevMaxV = -1;
-    //  peekFrameCache(fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, 
-    //     snFftWindowSize, data, nSourceChans);
-
-    // thisV = data.peek(siSourceHeadWritten, getSourceChan(SEC_MAG(), chanI, nSourceChans));
-    // if (thisV > thisFramePrevMaxV) {
-    //     thisFramePrevMaxV = thisV;
-    //     pokeFrameCache(666+currentBinIndex, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, 
-    //         snFftWindowSize, data, nSourceChans);
-    //     pokeFrameCache(666+thisV, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, 
-    //         snFftWindowSize, data, nSourceChans);
-    // }
+        thisV = data.peek(siSourceHeadWritten, getSourceChan(SEC_MAG(), chanI, nSourceChans));
+        if (thisV > thisFramePrevMaxV) {
+            thisFramePrevMaxV = thisV;
+            pokeFrameCache(currentBinIndex, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, 
+                snFftWindowSize, data, nSourceChans);
+            pokeFrameCache(thisV, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, 
+                snFftWindowSize, data, nSourceChans);
+        }
+    }
 }
