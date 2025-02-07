@@ -1,0 +1,33 @@
+require("granular-common.genexpr");
+
+Buffer data("rbGranularData");
+
+
+// number of source chans
+Param nSourceChans(3);
+Param snFftWindowSize(1024);
+
+
+S_WAV = 0;
+S_MAG = 1;
+S_PHASE = 2;
+S_FRAME_INFO_CACHE = 3;
+
+siSourceHeadBeingWritten = in1;
+// frame index is -1 from 
+fiSourceHeadBeingWritten = siToFi(_wrap(siSourceHeadBeingWritten - snFftWindowSize, dim(data)), snFftWindowSize, data, nSourceChans);
+
+// todo: write a test to ensure frame number increments at currentBinIndex=0
+
+currentBinIndex = data.peek(siSourceHeadBeingWritten, getBinIndexChan(nSourceChans));
+for (chanI = 0; chanI < nSourceChans; chanI += 1) {
+    // layout per chan per frame: (maxI)(maxV)
+    // ()
+    thisFramePrevMaxV = currentBinIndex != 0 ? data.peek(fiSourceHeadBeingWritten * 2 + 1, getSourceChan(S_FRAME_FUNDAMENTAL, chanI, nSourceChans)) : 0;
+    thisV = data.peek(siSourceHeadBeingWritten, getSourceChan(S_MAG, chanI, nSourceChans));
+    if (thisV > thisFramePrevMaxV) {
+        thisFramePrevMaxV = thisV;
+        data.poke(currentBinIndex, fiSourceHeadBeingWritten * 2, getSourceChan(S_FRAME_FUNDAMENTAL, chanI, nSourceChans));
+        data.poke(thisV, fiSourceHeadBeingWritten * 2 + 1, getSourceChan(S_FRAME_FUNDAMENTAL, chanI, nSourceChans));
+    }
+}

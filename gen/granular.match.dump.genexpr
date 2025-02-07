@@ -50,7 +50,7 @@ findFundamental(fi, iSourceChan, snFftWindowSize, data, nSourceChans) {
 	for (i = 0; i < snFftWindowSize; i += 1) {
 		binAddress = fiToBinAddress(fi, i, snFftWindowSize, data, nSourceChans);
 		S_MAG = 1; 
-		m = data.peek(binAddress, getSourceChanI(S_MAG, iSourceChan, nSourceChans));
+		m = data.peek(binAddress, getSourceChan(S_MAG, iSourceChan, nSourceChans));
 		if (maxM < m) {
 			maxM = m;
 			maxMI = i;
@@ -141,10 +141,11 @@ Data testData(100);
 
 
 // sections
-// NOTE: inlined above
+// NOTE: inlined in functions and shared
 S_WAV = 0;
 S_MAG = 1;
 S_PHASE = 2;
+S_FRAME_INFO_CACHE = 3;
 
 // methods
 ALGO_LINEAR_POS_START = 0;
@@ -219,7 +220,7 @@ if (algo == ALGO_LINEAR_POS_START) {
 	maxMI = -1;
 	for (i = 0; i < snFftWindowSize; i += 1) {
 		binAddress = fiToBinAddress(fiPosStart, i, snFftWindowSize, data, nSourceChans);
-		m = data.peek(binAddress, getGuideChanI(S_MAG, nSourceChans));
+		m = data.peek(binAddress, getGuideChan(S_MAG, nSourceChans));
 		if (maxM < m) {
 			maxM = m;
 			maxMI = i;
@@ -228,7 +229,7 @@ if (algo == ALGO_LINEAR_POS_START) {
 	DebugPocFftIndexing = maxMI;
 	DebugSanity0 = dataSize;
 	Debug0BinAddress = fiToBinAddress(fiPosStart, 0, snFftWindowSize, data, nSourceChans);
-	Debug0BinValue = data.peek(Debug0BinAddress, getGuideChanI(S_MAG, nSourceChans));
+	Debug0BinValue = data.peek(Debug0BinAddress, getGuideChan(S_MAG, nSourceChans));
 
 	Debug0 = DebugPocFftIndexing;
 	Debug1 = Debug0BinAddress;
@@ -256,7 +257,7 @@ if (algo == ALGO_SCULPT ) {
 	ResultGrainChan = floor(uniformRand01() * nSourceChans);
 
 	fundamentalI, apparentMag = findFundamental(fiResultGrain, ResultGrainChan, snFftWindowSize, data, nSourceChans);
-	desiredMag = data.peek(fiToBinAddress(fiGuideHead, fundamentalI, snFftWindowSize, data, nSourceChans), getGuideChanI(S_MAG, nSourceChans));
+	desiredMag = data.peek(fiToBinAddress(fiGuideHead, fundamentalI, snFftWindowSize, data, nSourceChans), getGuideChan(S_MAG, nSourceChans));
 
 	targetScale = 1.;
 
@@ -279,14 +280,14 @@ if (algo == ALGO_BIGBUS_SCULPT) {
 	bin0Address = fiToBinAddress(fiGuideHead, 0, snFftWindowSize, data, nSourceChans);
 	peakBinAddress = selectKthLargest(
 		data, 
-		getGuideChanI(S_MAG, nSourceChans), 
+		getGuideChan(S_MAG, nSourceChans), 
 		bin0Address, 
 		snFftWindowSize, 
 		bigBusNextStop
 	);
 	peakI = peakBinAddress - bin0Address;
 	peakV = data.peek(peakBinAddress, 
-		getGuideChanI(S_MAG, nSourceChans));
+		getGuideChan(S_MAG, nSourceChans));
 	Debug0 = fiGuideHead ;
 	Debug1 = peakI;
 	Debug2 = peakV;
@@ -398,15 +399,16 @@ Debug3 = in6;
 
 if (TestIn == 1) {
 	// chan indexing
-	TestFailures += assertEq(0x1, 0, getGuideChanI(S_WAV, nSourceChans));
-	TestFailures += assertEq(0x2, 4, getGuideChanI(S_MAG, nSourceChans));
-	TestFailures += assertEq(0x4, 1, getSourceChanI(S_WAV, 0, nSourceChans));
-	TestFailures += assertEq(0x8, 6, getSourceChanI(S_MAG, 1, nSourceChans));
-	TestFailures += assertEq(0x10, 12, getFrameChanI(nSourceChans));
+	TestFailures += assertEq(0x1, 1, getGuideChan(S_WAV, nSourceChans));
+	TestFailures += assertEq(0x2, 5, getGuideChan(S_MAG, nSourceChans));
+	TestFailures += assertEq(0x4, 2, getSourceChan(S_WAV, 0, nSourceChans));
+	TestFailures += assertEq(0x8, 7, getSourceChan(S_MAG, 1, nSourceChans));
+	TestFailures += assertEq(0x8, 12, getSourceChan(S_PHASE, nSourceChans-1, nSourceChans));
+	TestFailures += assertEq(0x10, 0, getBinIndexChan(nSourceChans));
 
 	// siToFi
 	// Note: these will fail if no data is recorded
-	frameDrift = data.peek(_wrap(0, dim(data)), getFrameChanI(nSourceChans));
+	frameDrift = data.peek(_wrap(0, dim(data)), getBinIndexChan(nSourceChans));
 
 	TestFailures += assertEq(0x20, 1, siToFi(2000, snFftWindowSize, data, nSourceChans));
 	Debug1 = frameDrift;
@@ -414,10 +416,10 @@ if (TestIn == 1) {
 	f, Debug0 = 			assertEq(0x40, -1 + frameCountCorrection , siToFi(0, snFftWindowSize, data, nSourceChans));
 	TestFailures += f;
 	TestFailures += assertEq(0x80, 0 + frameCountCorrection, 
-		siToFi(snFftWindowSize - data.peek(0, getFrameChanI(nSourceChans)),
+		siToFi(snFftWindowSize - data.peek(0, getBinIndexChan(nSourceChans)),
 			snFftWindowSize, data, nSourceChans));
 	TestFailures += assertEq(0x100, -1 + frameCountCorrection, 
-		siToFi(snFftWindowSize - data.peek(0, getFrameChanI(nSourceChans)),
+		siToFi(snFftWindowSize - data.peek(0, getBinIndexChan(nSourceChans)),
 			snFftWindowSize, data, nSourceChans) - 1);
 
 	// fiToBinAddress
@@ -427,7 +429,7 @@ if (TestIn == 1) {
 			16,
 			snFftWindowSize,
 			data, nSourceChans), 
-			getFrameChanI(nSourceChans)
+			getBinIndexChan(nSourceChans)
 	));
 	TestFailures += f;
 
@@ -454,7 +456,7 @@ if (TestIn == 1) {
 	prevFrameV = -1;
 	f = 0;
 	for (i = 0; i < 2000 && f == 0; i+=1) {
-		frameV = data.peek(i, getFrameChanI(nSourceChans));
+		frameV = data.peek(i, getBinIndexChan(nSourceChans));
 		expectedFrameV = prevFrameV == 1023 ? 0 : prevFrameV+1;
 		if (prevFrameV != -1) {
 			f = assertEq(0x2000, expectedFrameV, frameV);

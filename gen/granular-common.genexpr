@@ -12,12 +12,12 @@ _wrap(value, cap) {
 }
 
 _getSnFrameDrift(si, data, nSourceChans) {
-	snFrameDrift = data.peek(_wrap(si, dim(data)), getFrameChanI(nSourceChans));
+	snFrameDrift = data.peek(_wrap(si, dim(data)), getBinIndexChan(nSourceChans));
 	if (snFrameDrift == 0) return 0;
 }
 
 siToFi(si, snFftWindowSize, data, nSourceChans) {
-	snFrameDrift = data.peek(_wrap(si, dim(data)), getFrameChanI(nSourceChans));
+	snFrameDrift = data.peek(_wrap(si, dim(data)), getBinIndexChan(nSourceChans));
 	return floor( (si - snFrameDrift) / snFftWindowSize );
 }
 
@@ -31,19 +31,19 @@ fiToBinAddress(fi, binIndex, snFftWindowSize, data, nSourceChans) {
 
 _fiToFrameAddress(fi, frameIndex, snFftWindowSize, data, nSourceChans) {
 	siFrameStartRaw = fi * snFftWindowSize;
-	snFrameDrift = data.peek(_wrap(siFrameStartRaw, dim(data)), getFrameChanI(nSourceChans));
+	snFrameDrift = data.peek(_wrap(siFrameStartRaw, dim(data)), getBinIndexChan(nSourceChans));
 	snFrameDriftCorrection = snFrameDrift == 0 ? 0 : snFftWindowSize - snFrameDrift;
 	return _wrap((siFrameStartRaw + snFrameDriftCorrection + frameIndex), dim(data));
 }
 // get 0-based source chan index
-getSourceChanI(section, sourceChanRelI, nSourceChans) {
-	return (nSourceChans + 1) * section + sourceChanRelI + 1;
+getSourceChan(section, sourceChanRelI, nSourceChans) {
+	return 1+ (nSourceChans + 1) * section + sourceChanRelI + 1;
 }
 
-getGuideChanI(section, nSourceChans) {
-	return (nSourceChans + 1) * section;
+getGuideChan(section, nSourceChans) {
+	return 1+ (nSourceChans + 1) * section;
 }
 
-getFrameChanI(nSourceChans) {
-	return (nSourceChans + 1)*3;
+getBinIndexChan(nSourceChans) {
+	return 0;
 }
