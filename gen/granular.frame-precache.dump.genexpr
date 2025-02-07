@@ -36,6 +36,15 @@ if (currentBinIndex < snFftWindowSize/2) {
                 snFftWindowSize, data, nSourceChans);
             pokeFrameCache(thisV, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, 
                 snFftWindowSize, data, nSourceChans);
+
+            pokeFrameCache(fiSourceAnalyzed, fiSourceAnalyzed, F_FRAME_CACHE_DEBUG_0(), chanI, 
+                snFftWindowSize, data, nSourceChans);
+            pokeFrameCache(siSourceAnalyzed, fiSourceAnalyzed, F_FRAME_CACHE_DEBUG_1(), chanI, 
+                snFftWindowSize, data, nSourceChans);
+                
+           
         }
+
+         
     }
 }

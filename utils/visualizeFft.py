@@ -62,20 +62,11 @@ class FloatPlotter:
         self.plot()
 
     def find_initial_offset(self):
-        # Check first two values of each channel
-        last_nonzero_channel = 0
-        first_nonzero_value = 0
-
-        for ch in range(self.num_channels):
-            val1 = self.all_data[ch]
-            val2 = self.all_data[ch + self.num_channels] if len(self.all_data) > ch + self.num_channels else 0
-
-            if not (val1 == 0 and val2 == 0):
-                last_nonzero_channel = ch
-                first_nonzero_value = val1
-
-        # Calculate initial offset
-        return int(round(1024 - first_nonzero_value))
+        drift = self.all_data[0]
+        if drift > 0:
+            return int(round(1024 - drift))
+        else:
+            return 0
 
     def bin_to_freq(self, bin_num):
         return bin_num * self.freq_resolution

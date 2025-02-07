@@ -465,6 +465,26 @@ if (TestIn == 1) {
 		prevFrameV = frameV;
 	}
 	TestFailures += f;
+
+	f, Debug0 = assertEq(0x4000, 15, data.peek(
+		addressBin(
+			0,
+			15,
+			snFftWindowSize,
+			data, nSourceChans), 
+			getBinIndexChan(nSourceChans)
+	));
+	TestFailures += f;
+	f, Debug0 = assertEq(0x4000, 0, data.peek(
+		addressBin(
+			-1,
+			0,
+			snFftWindowSize,
+			data, nSourceChans), 
+			getBinIndexChan(nSourceChans)
+	));
+	TestFailures += f;
+
 		
 }
 if (TestIn == 2) {
@@ -504,7 +524,7 @@ if (TestIn == 3) {
 
 
 	f = 0;
-	for (fi = 0; fi < 20 && f == 0; fi += 1) {
+	for (fi = -1; fi < 20 && f == 0; fi += 1) {
 		maxI = -1;
 		maxV = -1;
 		for (bin = 0; bin < 512; bin += 1) {
@@ -536,18 +556,36 @@ if (TestIn == 3) {
 	TestFailures += assertEq(0x4, 14, getSourceChan(SEC_FRAME_CACHE(), 0, nSourceChans));
 	TestFailures += assertEq(0x8, 16, getSourceChan(SEC_FRAME_CACHE(), nSourceChans-1, nSourceChans));
 
-	//poke
-	oldVal = peekFrameCache(177, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,
-		snFftWindowSize, data, nSourceChans);
+
+	f = 0;
+	impliedAddrDrift = -1;
+	for (i = 0; i < 2 && f == 0; i+=1) {
+		fi = i == 0 ? -1 : (i == 1 ? 1 : 177);
+		//poke
+		oldVal, peekAddr = peekFrameCache(fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,
+			snFftWindowSize, data, nSourceChans);
+		
+		_, pokeAddr = pokeFrameCache(oldVal * 2, fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,
+			snFftWindowSize, data, nSourceChans);
+
+		curImpliedAddrDrift = (peekAddr + 1024) % 1024;
+		if (i > 0) {
+			f = assertEq(0x40, impliedAddrDrift, curImpliedAddrDrift);
+			// Debug1 = impliedAddrDrift;
+			// Debug2 = fi;
+		}
+		f += assertEq(0x10, oldVal * 2, peekFrameCache(fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,
+			snFftWindowSize, data, nSourceChans));
+		f += assertEq(0x20, peekAddr, pokeAddr);
+		
+		impliedAddrDrift = curImpliedAddrDrift;
+
+		pokeFrameCache(oldVal, fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,
+			snFftWindowSize, data, nSourceChans);
+	}
+	TestFailures += f;
 	
-	pokeFrameCache(oldVal * 2, 177, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,
-		snFftWindowSize, data, nSourceChans);
 
-	TestFailures += assertEq(0x10, oldVal * 2, peekFrameCache(177, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,
-		snFftWindowSize, data, nSourceChans));
-
-	pokeFrameCache(oldVal, 177, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,
-		snFftWindowSize, data, nSourceChans);
 		
 }
 

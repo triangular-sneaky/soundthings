@@ -30,14 +30,15 @@ addressBin(fi, binIndex, snFftWindowSize, data, nSourceChans) {
 }
 
 addressCacheField(fi, field, snFftWindowSize, data, nSourceChans) {
-	return _addressInFrame(fi + 1, field, snFftWindowSize, data, nSourceChans);
+	return _addressInFrame(fi, field, snFftWindowSize, data, nSourceChans);
 }
 
 peekFrameCache(fi, field, sourceChanRelI, snFftWindowSize, data, nSourceChans) {
+	address = addressCacheField(fi, field,  snFftWindowSize, data, nSourceChans);
 	return data.peek(
-		addressCacheField(fi, field,  snFftWindowSize, data, nSourceChans), 
+		address, 
 		getSourceChan(SEC_FRAME_CACHE(), sourceChanRelI, nSourceChans)
-	);
+	), address;
 }
 
 pokeFrameCache(value, fi, fld, sourceChanRelI, snFftWindowSize, data, nSourceChans) {
@@ -48,7 +49,7 @@ pokeFrameCache(value, fi, fld, sourceChanRelI, snFftWindowSize, data, nSourceCha
 		address, 
 		chan
 	);
-	return 0;
+	return 0, address;
 }
 
 
@@ -81,3 +82,8 @@ SEC_FRAME_CACHE() { return 3;}
 // fields in SEC_FRAME_CACHE
 F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX() { return 0; }
 F_FRAME_CACHE_FUNDAMENTAL_VALUE() { return 1; }
+
+F_FRAME_CACHE_DEBUG_0() { return 64; }
+F_FRAME_CACHE_DEBUG_1() { return F_FRAME_CACHE_DEBUG_0() + 1; }
+F_FRAME_CACHE_DEBUG_2() { return F_FRAME_CACHE_DEBUG_0() + 2; }
+
