@@ -63,26 +63,29 @@ calculateRelativeDistance(freqBinI1, freqBinI2) {
 	return abs(freqBinI1 - freqBinI2);
 }
 
-rollWithWeights(weights, chan, start, len) {
-	// 1. calc sum
-	sum = 0;
-	for (i = start; i < start + len; i += 1) {
-		sum += weights.peek(i, chan);
-	}
+rollWithWeights(weights, start, len, chanStart, chansCount) {
+        // 1. calc sum
+        sum = 0;
+        for (chan = chanStart; chan < chanStart + chansCount; chan += 1)
+            for (i = start; i < start + len; i += 1) {
+                sum += weights.peek(i, chan);
+            }
 
-	roll = uniformRand01() * sum;
+        roll = uniformRand01() * sum;
 
-	acc = 0;
-	result = -1;
-	for (i = start; i < start + len && result < 0; i += 1) {
-		acc += weights.peek(i, chan);
-		if (acc >= roll) {
-			result = i;
-		}
-	}
-	return result;
-}
-
+        acc = 0;
+        result = -1;
+        resultChan = -1;
+        for (chan = chanStart; chan < chanStart + chansCount && result < 0; chan += 1)
+            for (i = start; i < start + len && result < 0; i += 1) {
+                acc += weights.peek(i, chan);
+                if (acc >= roll) {
+                    result = i;
+                    resultChan = chan;
+                }
+            }
+        return result, resultChan;
+    }
 
 // ===================================
 // notation
@@ -191,7 +194,7 @@ chan = 0;
 // results
 // ===================================
 ResultGrainPos = 0;
-ResultGrainChan = floor(uniformRand01() * nSourceChans);
+ResultGrainChan = 0;
 ResultGrainScale = 1.;
 ResultGrainPhaseShift = 0.;
 
@@ -263,6 +266,7 @@ if (algo == ALGO_SCULPT ) {
 		// if (targetScale > 1 - magnitudeScaleToleranceDown && targ)
 	// }
 	
+	ResultGrainChan = getSourceChan(SEC_WAV(), floor(uniformRand01() * nSourceChans), nSourceChans);
 	ResultGrainScale = targetScale;
 	Debug0 = fundamentalI;
 	Debug1 = apparentMag;
@@ -284,24 +288,38 @@ if (algo == ALGO_BIGBUS_SCULPT) {
 	peakI = peakBinAddress - bin0Address;
 	peakV = data.peek(peakBinAddress, 
 		getGuideChan(SEC_MAG(), nSourceChans));
-	Debug0 = fiGuideHead ;
-	Debug1 = peakI;
-	Debug2 = peakV;
+	// Debug0 = fiGuideHead ;
+	Debug0 = peakI;
+	Debug1 = peakV;
 
 	// calculate weights into match
+	for (chanI = 0; chanI < nSourceChans; chanI += 1)
 	for (i = 0; i <  fnPosWidth; i += 1) {
 		fi = i + fiPosStart;
-		fundamental = findFundamental(fi, ResultGrainChan,
+		fundamental = peekFrameCache(fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI,
 			snFftWindowSize, data, nSourceChans);
 
 		distance = calculateRelativeDistance(fundamental, peakI);
-		match.poke(distance, i, 0);
+		match.poke(exp(-distance), i, chanI);
 	}
 
 	// roll
-	roll = rollWithWeights(match, 0, 0, fnPosWidth);
+	roll,chan = rollWithWeights(match, 0, fnPosWidth, 0, nSourceChans);
+	// Debug0 = roll;
+	// Debug1 = chan;
+	// Debug2 = fnPosWidth;
+
+
+
 	fiResultGrain = roll + fiPosStart;
 	ResultGrainPos = addressWavFrameStart(fiResultGrain, snFftWindowSize, data, nSourceChans);
+	ResultGrainChan = getSourceChan(SEC_WAV(), chan, nSourceChans);
+	Debug2 = 
+		peekFrameCache(fiResultGrain, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chan,
+			snFftWindowSize, data, nSourceChans);
+	Debug3 = 
+		peekFrameCache(fiResultGrain, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chan,
+			snFftWindowSize, data, nSourceChans);
 }
 
 
@@ -391,7 +409,6 @@ if (algo == ALGO_BIGBUS_SCULPT) {
 // ====== TEST SECTION ==============
 TestIn = in6;
 TestFailures = 0;
-Debug3 = in6;
 
 if (TestIn == 1) {
 	// chan indexing

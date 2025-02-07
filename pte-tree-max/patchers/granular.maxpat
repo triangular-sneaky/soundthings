@@ -658,7 +658,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "float", "int", "float", "int" ],
+					"outlettype" : [ "float", "float", "float", "int" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
@@ -676,6 +676,93 @@
 						"style" : "my default patcher",
 						"title" : "gr.graingen",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-77",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 998.0, 1415.0, 124.0, 24.0 ],
+									"text" : "r tracingEnabled"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-80",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 995.0, 1455.0, 37.0, 24.0 ],
+									"text" : "gate"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-73",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 927.0, 1570.0, 124.0, 24.0 ],
+									"text" : "r tracingEnabled"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-68",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 924.0, 1610.0, 37.0, 24.0 ],
+									"text" : "gate"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-67",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 2097.130000000000109, 1267.180000000000064, 124.0, 24.0 ],
+									"text" : "s tracingEnabled"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-45",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 2117.0, 1207.0, 150.0, 22.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 40.800000607967377, 156.0, 150.0, 22.0 ],
+									"text" : "enable tracing"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-65",
+									"maxclass" : "toggle",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 2091.0, 1206.0, 24.0, 24.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 13.800000607967377, 155.0, 24.0, 24.0 ],
+									"svg" : ""
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-43",
 									"maxclass" : "newobj",
@@ -750,7 +837,7 @@
 											}
 , 											{
 												"box" : 												{
-													"code" : "require(\"granular-common.genexpr\");\n\nBuffer data(\"rbGranularData\");\n\n\n// number of source chans\nParam nSourceChans(3);\nParam snFftWindowSize(1024);\n\n\nsiSourceHeadWritten = in1;\n\n\n// analyzed frame is a frame around 1 frame size back from written head\nsiSourceAnalyzed = _wrap(siSourceHeadWritten - snFftWindowSize, dim(data));\nfiSourceAnalyzed = siToFi(siSourceAnalyzed, snFftWindowSize, data, nSourceChans);\n\n// todo: write a test to ensure frame number increments at currentBinIndex=0\n\ncurrentBinIndex = data.peek(siSourceHeadWritten, getBinIndexChan(nSourceChans));\nif (currentBinIndex < snFftWindowSize/2) {\n    for (chanI = 0; chanI < nSourceChans; chanI += 1) {\n\n        // pokeFrameCache(666, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, \n        //         snFftWindowSize, data, nSourceChans);\n\n        // layout per chan per frame: (maxI)(maxV)\n        // ()\n        thisFramePrevMaxV = peekFrameCache(fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, \n            snFftWindowSize, data, nSourceChans);\n\n        thisV = data.peek(siSourceHeadWritten, getSourceChan(SEC_MAG(), chanI, nSourceChans));\n        if (thisV > thisFramePrevMaxV) {\n            thisFramePrevMaxV = thisV;\n            pokeFrameCache(currentBinIndex, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, \n                snFftWindowSize, data, nSourceChans);\n            pokeFrameCache(thisV, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, \n                snFftWindowSize, data, nSourceChans);\n        }\n    }\n}",
+													"code" : "require(\"granular-common.genexpr\");\n\nBuffer data(\"rbGranularData\");\n\n\n// number of source chans\nParam nSourceChans(3);\nParam snFftWindowSize(1024);\n\n\nsiSourceHeadWritten = in1;\n\n\n// analyzed frame is a frame around 1 frame size back from written head\nsiSourceAnalyzed = _wrap(siSourceHeadWritten - snFftWindowSize, dim(data));\nfiSourceAnalyzed = siToFi(siSourceAnalyzed, snFftWindowSize, data, nSourceChans);\n\n// todo: write a test to ensure frame number increments at currentBinIndex=0\n\ncurrentBinIndex = data.peek(siSourceHeadWritten, getBinIndexChan(nSourceChans));\nif (currentBinIndex < snFftWindowSize/2) {\n    for (chanI = 0; chanI < nSourceChans; chanI += 1) {\n\n        // pokeFrameCache(666, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, \n        //         snFftWindowSize, data, nSourceChans);\n\n        // layout per chan per frame: (maxI)(maxV)\n        // ()\n        thisFramePrevMaxV = peekFrameCache(fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, \n            snFftWindowSize, data, nSourceChans);\n\n        thisV = data.peek(siSourceHeadWritten, getSourceChan(SEC_MAG(), chanI, nSourceChans));\n        if (thisV > thisFramePrevMaxV) {\n            thisFramePrevMaxV = thisV;\n            pokeFrameCache(currentBinIndex, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, \n                snFftWindowSize, data, nSourceChans);\n            pokeFrameCache(thisV, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, \n                snFftWindowSize, data, nSourceChans);\n\n            pokeFrameCache(fiSourceAnalyzed, fiSourceAnalyzed, F_FRAME_CACHE_DEBUG_0(), chanI, \n                snFftWindowSize, data, nSourceChans);\n            pokeFrameCache(siSourceAnalyzed, fiSourceAnalyzed, F_FRAME_CACHE_DEBUG_1(), chanI, \n                snFftWindowSize, data, nSourceChans);\n                \n           \n        }\n\n         \n    }\n}",
 													"fontface" : 0,
 													"fontname" : "<Monospaced>",
 													"fontsize" : 12.0,
@@ -910,18 +997,6 @@
 									"presentation" : 1,
 									"presentation_rect" : [ 243.600003063678741, 185.600002765655518, 121.600001811981201, 22.0 ],
 									"text" : "scope channel:"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-248",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "int" ],
-									"patching_rect" : [ 737.142951607704163, 1513.333527266979218, 30.0, 24.0 ],
-									"text" : "+ 1"
 								}
 
 							}
@@ -1952,7 +2027,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 1034.0, 1365.0, 145.0, 24.0 ],
+									"patching_rect" : [ 1042.0, 1462.0, 145.0, 24.0 ],
 									"text" : "print RES: @popup 1"
 								}
 
@@ -1965,8 +2040,8 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 1028.90625, 1396.484375, 216.40625, 28.125 ],
-									"text" : "438272. 2. 1. 0."
+									"patching_rect" : [ 1037.0, 1494.0, 216.40625, 28.125 ],
+									"text" : "116224. 3. 1. 0."
 								}
 
 							}
@@ -2029,7 +2104,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 1537.0, 2173.0, 320.0, 212.0 ],
-									"text" : "[v] SUCCESS\n--------\n\n[v] 1. All tests passed\nDBG: | 16 | 1088 | 0 | 1\n[v] 2. All tests passed\nDBG: | 6 | 0 | 0 | 2\n[v] 3. All tests passed\nDBG: | 3 | 19 | 3 | 22.013036727905273"
+									"text" : "[v] SUCCESS\n--------\n\n[v] 1. All tests passed\nDBG: | 0 | 1024 | 347 | 0\n[v] 2. All tests passed\nDBG: | 6 | 2 | 347 | 0\n[v] 3. All tests passed\nDBG: | 2 | 19 | 2 | 21.923803329467773"
 								}
 
 							}
@@ -3110,7 +3185,7 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 977.0, 1654.0, 320.0, 41.0 ],
-									"text" : "0. 0. 0. 0."
+									"text" : "16. 8.972461 10. 31.236444"
 								}
 
 							}
@@ -4882,7 +4957,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 110.0, 106.0, 1000.0, 720.0 ],
+										"rect" : [ 1580.0, 1203.0, 453.0, 328.0 ],
 										"openinpresentation" : 1,
 										"gridsize" : [ 15.0, 15.0 ],
 										"boxes" : [ 											{
@@ -5052,6 +5127,7 @@
 													"allowdrag" : 0,
 													"beats" : 0,
 													"buffername" : "dbgMatch",
+													"chanoffset" : 3,
 													"id" : "obj-219",
 													"maxclass" : "waveform~",
 													"numinlets" : 5,
@@ -5076,8 +5152,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 2,
 													"outlettype" : [ "float", "bang" ],
-													"patching_rect" : [ 98.0, 275.0, 238.0, 22.0 ],
-													"text" : "buffer~ dbgMatch 10000 1 @format float32"
+													"patching_rect" : [ 98.0, 275.0, 244.0, 22.0 ],
+													"text" : "buffer~ dbgMatch 10000 10 @format float32"
 												}
 
 											}
@@ -5088,10 +5164,11 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 16.0, 112.0, 143.0, 22.0 ],
+													"patching_rect" : [ 16.0, 112.0, 182.0, 22.0 ],
 													"presentation" : 1,
-													"presentation_rect" : [ 1.0, 88.0, 143.0, 22.0 ],
-													"text" : "writeraw ~/dbgMatch.dbg"
+													"presentation_linecount" : 2,
+													"presentation_rect" : [ 1.0, 88.0, 143.0, 35.0 ],
+													"text" : "writeraw ~/dbgMatch.dbg float32"
 												}
 
 											}
@@ -5117,6 +5194,19 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 135.0, 353.0, 30.0, 30.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"attr" : "chanoffset",
+													"id" : "obj-8",
+													"maxclass" : "attrui",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"parameter_enable" : 0,
+													"patching_rect" : [ 167.0, 3.0, 150.0, 22.0 ]
 												}
 
 											}
@@ -5216,6 +5306,13 @@
 												"patchline" : 												{
 													"destination" : [ "obj-4", 0 ],
 													"source" : [ "obj-6", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-219", 0 ],
+													"source" : [ "obj-8", 0 ]
 												}
 
 											}
@@ -6061,24 +6158,16 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-115", 0 ],
-									"order" : 1,
-									"source" : [ "obj-114", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-158", 0 ],
-									"order" : 2,
-									"source" : [ "obj-114", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-43", 0 ],
 									"order" : 0,
+									"source" : [ "obj-114", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-68", 1 ],
+									"order" : 1,
 									"source" : [ "obj-114", 0 ]
 								}
 
@@ -6092,24 +6181,16 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-122", 0 ],
-									"order" : 2,
-									"source" : [ "obj-118", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-126", 0 ],
-									"order" : 1,
-									"source" : [ "obj-118", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-243", 1 ],
 									"order" : 0,
+									"source" : [ "obj-118", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-80", 1 ],
+									"order" : 1,
 									"source" : [ "obj-118", 0 ]
 								}
 
@@ -6825,17 +6906,17 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-247", 0 ],
+									"destination" : [ "obj-246", 0 ],
 									"order" : 1,
-									"source" : [ "obj-209", 2 ]
+									"source" : [ "obj-209", 1 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-248", 0 ],
+									"destination" : [ "obj-247", 0 ],
 									"order" : 1,
-									"source" : [ "obj-209", 1 ]
+									"source" : [ "obj-209", 2 ]
 								}
 
 							}
@@ -7030,13 +7111,6 @@
 								"patchline" : 								{
 									"destination" : [ "obj-209", 0 ],
 									"source" : [ "obj-245", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-246", 0 ],
-									"source" : [ "obj-248", 0 ]
 								}
 
 							}
@@ -7530,6 +7604,29 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-67", 0 ],
+									"source" : [ "obj-65", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-115", 0 ],
+									"order" : 0,
+									"source" : [ "obj-68", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-158", 0 ],
+									"order" : 1,
+									"source" : [ "obj-68", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-209", 0 ],
 									"source" : [ "obj-69", 0 ]
 								}
@@ -7576,8 +7673,22 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-68", 0 ],
+									"source" : [ "obj-73", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
 									"source" : [ "obj-76", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-80", 0 ],
+									"source" : [ "obj-77", 0 ]
 								}
 
 							}
@@ -7594,6 +7705,22 @@
 								"patchline" : 								{
 									"destination" : [ "obj-214", 0 ],
 									"source" : [ "obj-79", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-122", 0 ],
+									"order" : 1,
+									"source" : [ "obj-80", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-126", 0 ],
+									"order" : 0,
+									"source" : [ "obj-80", 0 ]
 								}
 
 							}
@@ -9130,6 +9257,7 @@
 						"rect" : [ 34.0, 87.0, 1146.0, 779.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"style" : "my default patcher",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-4",
@@ -10922,6 +11050,20 @@
 								}
 
 							}
+, 							{
+								"box" : 								{
+									"id" : "obj-12",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 298.0, 742.0, 44.0, 24.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 7.0, 250.0, 44.0, 24.0 ],
+									"text" : "clear"
+								}
+
+							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -10941,6 +11083,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-34", 0 ],
 									"source" : [ "obj-11", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-12", 0 ]
 								}
 
 							}
@@ -11659,9 +11808,20 @@
 , 							{
 								"box" : 								{
 									"basictuning" : 0,
-									"clipheight" : 105.666669845581055,
+									"clipheight" : 52.333334922790527,
 									"data" : 									{
 										"clips" : [ 											{
+												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/assets/field_recordings/2025/ZOOM0056-birds, voices.WAV",
+												"filename" : "ZOOM0056-birds, voices.WAV",
+												"filekind" : "audiofile",
+												"id" : "u622005712",
+												"loop" : 1,
+												"content_state" : 												{
+													"loop" : 1
+												}
+
+											}
+, 											{
 												"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/jukebox/archive-lights-p1.wav",
 												"filename" : "archive-lights-p1.wav",
 												"filekind" : "audiofile",
@@ -11736,10 +11896,10 @@
 												"filename" : "skmt-lawrence.wav",
 												"filekind" : "audiofile",
 												"id" : "u990002735",
-												"selection" : [ 0.0, 0.431924882629108 ],
-												"loop" : 0,
+												"selection" : [ 0.471698113207547, 0.778301886792453 ],
+												"loop" : 1,
 												"content_state" : 												{
-													"loop" : 0
+													"loop" : 1
 												}
 
 											}

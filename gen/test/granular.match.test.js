@@ -46,24 +46,28 @@ testObject = {
 
     },
 
-    rollWithWeights(weights, chan, start, len) {
+    rollWithWeights(weights, start, len, chanStart, chansCount) {
         // 1. calc sum
         sum = 0;
-        for (i = start; i < start + len; i += 1) {
-            sum += weights.peek(i, chan);
-        }
+        for (chan = chanStart; chan < chanStart + chansCount; chan += 1)
+            for (i = start; i < start + len; i += 1) {
+                sum += weights.peek(i, chan);
+            }
 
         roll = uniformRand01() * sum;
 
         acc = 0;
         result = -1;
-        for (i = start; i < start + len && result < 0; i += 1) {
-            acc += weights.peek(i, chan);
-            if (acc >= roll) {
-                result = i;
+        resultChan = -1;
+        for (chan = chanStart; chan < chanStart + chansCount && result < 0; chan += 1)
+            for (i = start; i < start + len && result < 0; i += 1) {
+                acc += weights.peek(i, chan);
+                if (acc >= roll) {
+                    result = i;
+                    resultChan = chan;
+                }
             }
-        }
-        return result;
+        return [result, resultChan];
     }
     // =================================
 };
@@ -72,8 +76,8 @@ selectKthLargest = testObject.selectKthLargest;
 
 testData = {
     data: {},
-    poke(v, i, chan) { this.data[i] = v },
-    peek(i, chan) { return this.data[i]; },
+    poke(v, i, chan) { this.data[i + "_" + chan] = v },
+    peek(i, chan) { return this.data[i + "_" + chan]; },
     reset() { this.data = {}; }
 }
 
@@ -107,7 +111,7 @@ test('selectKthLargest', () => {
 
 });
 
-test('rollWithWeights', () => {
+test('rollWithWeights, 1 chan', () => {
     // JS only
     testData.reset();
     let weights = [0., 3.0, 1., 14., 2., 3.];
@@ -120,7 +124,8 @@ test('rollWithWeights', () => {
     let histogram = new Array(len).fill(0);
 
     for (var i = 0; i < rollCount; i++) {
-        let r = testObject.rollWithWeights(testData, 0, 0, len);
+        let [r, chan] = testObject.rollWithWeights(testData, 0, len, 0, 1);
+        expect(chan).toBe(0);
         expect(r).toBeGreaterThanOrEqual(0);
         expect(r).toBeLessThan(len);
         histogram[r]++;
@@ -129,4 +134,35 @@ test('rollWithWeights', () => {
     for (var i = 0; i < len; i++) {
         expect(histogram[i] * weightNormalizer / rollCount).toBeCloseTo(testData.peek(i, 0), 0);
     }
+});
+
+test('rollWithWeights, 2 chans', () => {
+    // JS only
+    testData.reset();
+    let weights = [[0., 3.0, 1., 14., 2., 3.],
+    [1., 2.0, 1., 2., 1., 22.]];
+    weights.forEach((w, chan) =>
+        w.forEach((v, idx) =>
+            testData.poke(v, idx, chan)));
+    expect(testData.peek(1, 1)).toBe(2.0);
+    expect(testData.peek(5, 1)).toBe(22.0);
+    let len = weights[0].length;
+    let rollCount = 10240;
+    let divider = rollCount;
+    let weightNormalizer = weights.reduce((total, current) => total + current.reduce((t, c) => t + c, 0), 0);
+    let histogram = [new Array(len).fill(0), new Array(len).fill(0)];
+
+    for (var i = 0; i < rollCount; i++) {
+        let [r, chan] = testObject.rollWithWeights(testData, 0, len, 0, 2);
+        expect(chan).toBeGreaterThanOrEqual(0);
+        expect(chan).toBeLessThanOrEqual(1);
+        expect(r).toBeGreaterThanOrEqual(0);
+        expect(r).toBeLessThan(len);
+        histogram[chan][r]++;
+    }
+    console.log(histogram);
+    for (var chan = 0; chan < weights.length; chan++)
+        for (var i = 0; i < len; i++) {
+            expect(histogram[chan][i] * weightNormalizer / rollCount).toBeCloseTo(testData.peek(i, chan), 0);
+        }
 });
