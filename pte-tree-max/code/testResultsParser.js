@@ -27,6 +27,10 @@ function msg_int(val) {
 
 }
 
+function comment(...val) {
+    resultStrings[resultStrings.length - 1] = `${resultStrings[resultStrings.length - 1]}\n${val}`;
+}
+
 function bang() {
     resultStrings = [
         numberOfFailedTests == 0 ? "[v] SUCCESS" : `[!] FAILURE (${numberOfFailedTests})`,

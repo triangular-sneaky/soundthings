@@ -21,15 +21,36 @@ siToFi(si, snFftWindowSize, data, nSourceChans) {
 	return floor( (si - snFrameDrift) / snFftWindowSize );
 }
 
-fiToFrameStartAddress(fi, snFftWindowSize, data, nSourceChans) {
-	return _fiToFrameAddress(fi, 0, snFftWindowSize, data, nSourceChans);
+addressWavFrameStart(fi, snFftWindowSize, data, nSourceChans) {
+	return _addressInFrame(fi, 0, snFftWindowSize, data, nSourceChans);
 }
 
-fiToBinAddress(fi, binIndex, snFftWindowSize, data, nSourceChans) {
-	return _fiToFrameAddress(fi + 1, binIndex, snFftWindowSize, data, nSourceChans);
+addressBin(fi, binIndex, snFftWindowSize, data, nSourceChans) {
+	return _addressInFrame(fi + 1, binIndex, snFftWindowSize, data, nSourceChans);
 }
 
-_fiToFrameAddress(fi, frameIndex, snFftWindowSize, data, nSourceChans) {
+addressCacheField(fi, field, snFftWindowSize, data, nSourceChans) {
+	return _addressInFrame(fi + 1, field, snFftWindowSize, data, nSourceChans);
+}
+
+peekFrameCache(fi, field, sourceChanRelI, snFftWindowSize, data, nSourceChans) {
+	return data.peek(
+		addressCacheField(fi, field,  snFftWindowSize, data, nSourceChans), 
+		getSourceChan(SEC_FRAME_CACHE(), sourceChanRelI, nSourceChans)
+	);
+}
+
+pokeFrameCache(value, fi, field, sourceChanRelI, snFftWindowSize, data, nSourceChans) {
+	data.poke(
+		value,
+		addressCacheField(fi, field,  snFftWindowSize, data, nSourceChans), 
+		getSourceChan(SEC_FRAME_CACHE(), sourceChanRelI, nSourceChans)
+	);
+}
+
+
+
+_addressInFrame(fi, frameIndex, snFftWindowSize, data, nSourceChans) {
 	siFrameStartRaw = fi * snFftWindowSize;
 	snFrameDrift = data.peek(_wrap(siFrameStartRaw, dim(data)), getBinIndexChan(nSourceChans));
 	snFrameDriftCorrection = snFrameDrift == 0 ? 0 : snFftWindowSize - snFrameDrift;
@@ -47,3 +68,13 @@ getGuideChan(section, nSourceChans) {
 getBinIndexChan(nSourceChans) {
 	return 0;
 }
+
+// sections
+SEC_WAV() { return 0;}
+SEC_MAG() { return 1;} 
+SEC_PHASE() { return 2;}
+SEC_FRAME_CACHE() { return 3;}
+
+// fields in SEC_FRAME_CACHE
+F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX() { return 0; }
+F_FRAME_CACHE_FUNDAMENTAL_VALUE() { return 1; }

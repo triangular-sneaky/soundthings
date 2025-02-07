@@ -8,26 +8,35 @@ Param nSourceChans(3);
 Param snFftWindowSize(1024);
 
 
-S_WAV = 0;
-S_MAG = 1;
-S_PHASE = 2;
-S_FRAME_INFO_CACHE = 3;
+siSourceHeadWritten = in1;
 
-siSourceHeadBeingWritten = in1;
-// frame index is -1 from 
-fiSourceHeadBeingWritten = siToFi(_wrap(siSourceHeadBeingWritten - snFftWindowSize, dim(data)), snFftWindowSize, data, nSourceChans);
+// POC
+data.poke(777 + siSourceHeadWritten, siSourceHeadWritten, 13);
+
+// analyzed frame is a frame around 1 frame size back from written head
+siSourceAnalyzed = _wrap(siSourceHeadWritten - snFftWindowSize, dim(data));
+fiSourceAnalyzed = siToFi(siSourceAnalyzed, snFftWindowSize, data, nSourceChans);
 
 // todo: write a test to ensure frame number increments at currentBinIndex=0
 
-currentBinIndex = data.peek(siSourceHeadBeingWritten, getBinIndexChan(nSourceChans));
+currentBinIndex = data.peek(siSourceHeadWritten, getBinIndexChan(nSourceChans));
 for (chanI = 0; chanI < nSourceChans; chanI += 1) {
-    // layout per chan per frame: (maxI)(maxV)
-    // ()
-    thisFramePrevMaxV = currentBinIndex != 0 ? data.peek(fiSourceHeadBeingWritten * 2 + 1, getSourceChan(S_FRAME_FUNDAMENTAL, chanI, nSourceChans)) : 0;
-    thisV = data.peek(siSourceHeadBeingWritten, getSourceChan(S_MAG, chanI, nSourceChans));
-    if (thisV > thisFramePrevMaxV) {
-        thisFramePrevMaxV = thisV;
-        data.poke(currentBinIndex, fiSourceHeadBeingWritten * 2, getSourceChan(S_FRAME_FUNDAMENTAL, chanI, nSourceChans));
-        data.poke(thisV, fiSourceHeadBeingWritten * 2 + 1, getSourceChan(S_FRAME_FUNDAMENTAL, chanI, nSourceChans));
-    }
+
+    pokeFrameCache(666, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, 
+            snFftWindowSize, data, nSourceChans);
+
+    // // layout per chan per frame: (maxI)(maxV)
+    // // ()
+    // thisFramePrevMaxV = -1;
+    //  peekFrameCache(fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, 
+    //     snFftWindowSize, data, nSourceChans);
+
+    // thisV = data.peek(siSourceHeadWritten, getSourceChan(SEC_MAG(), chanI, nSourceChans));
+    // if (thisV > thisFramePrevMaxV) {
+    //     thisFramePrevMaxV = thisV;
+    //     pokeFrameCache(666+currentBinIndex, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI, 
+    //         snFftWindowSize, data, nSourceChans);
+    //     pokeFrameCache(666+thisV, fiSourceAnalyzed, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chanI, 
+    //         snFftWindowSize, data, nSourceChans);
+    // }
 }
