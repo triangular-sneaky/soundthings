@@ -406,6 +406,7 @@ class FloatPlotter:
 
 # Example usage
 # filepath = "/Users/dpoz/rbFftMag.bin"
-filepath = "/Users/dpoz/rbGranularData.bin"
+# filepath = "/Users/dpoz/rbGranularData.bin"
+filepath = "/Users/dpoz/dbgMatch.dbg"
 FloatPlotter(filepath, channel=1, window=512, step=512)
 plt.show()
