@@ -198,6 +198,9 @@ ResultGrainChan = 0;
 ResultGrainScale = 1.;
 ResultGrainPhaseShift = 0.;
 
+TelemetryGuideMatchBin  = 0.;
+TelemetrySourceMatchBin = 0.
+
 // ===================================
 // DEBUG
 // ===================================
@@ -318,12 +321,16 @@ if (algo == ALGO_BIGBUS) {
 	fiResultGrain = roll + fiPosStart;
 	ResultGrainPos = addressWavFrameStart(fiResultGrain, snFftWindowSize, data, nSourceChans);
 	ResultGrainChan = getSourceChan(SEC_WAV(), chan, nSourceChans);
-	Debug2 = 
+	TelemetrySourceMatchBin = 
 		peekFrameCache(fiResultGrain, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chan,
 			snFftWindowSize, data, nSourceChans);
+	Debug2 = TelemetrySourceMatchBin;
 	Debug3 = 
 		peekFrameCache(fiResultGrain, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chan,
 			snFftWindowSize, data, nSourceChans);
+
+	TelemetryGuideMatchBin = peakI;
+	
 }
 
 
@@ -542,6 +549,8 @@ out2 = ResultGrainChan ;
 out3 = ResultGrainScale;
 out4 = ResultGrainPhaseShift;
 
+out6 = TelemetryGuideMatchBin;
+out7 = TelemetrySourceMatchBin;
 
 out10 = Debug0;
 out11 = Debug1;
