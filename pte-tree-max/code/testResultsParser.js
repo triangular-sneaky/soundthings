@@ -28,8 +28,10 @@ function msg_int(val) {
 }
 
 function comment(...val) {
-    s = val.join(" | ");
-    resultStrings[resultStrings.length - 1] = `${resultStrings[resultStrings.length - 1]}\n${s}`;
+    if (val && val.length) {
+        s = val.join(" | ");
+        resultStrings[resultStrings.length - 1] = `${resultStrings[resultStrings.length - 1]}\n${s}`;
+    }
 }
 
 function bang() {
