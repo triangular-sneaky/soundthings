@@ -199,7 +199,7 @@ ResultGrainScale = 1.;
 ResultGrainPhaseShift = 0.;
 
 TelemetryGuideMatchBin  = 0.;
-TelemetrySourceMatchBin = 0.
+TelemetrySourceMatchBin = 0.;
 
 // ===================================
 // DEBUG
