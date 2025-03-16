@@ -1,0 +1,366 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 9,
+			"minor" : 0,
+			"revision" : 4,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 34.0, 87.0, 1372.0, 779.0 ],
+		"gridsize" : [ 15.0, 15.0 ],
+		"style" : "my default patcher",
+		"title" : "freq-mapper",
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 464.0, 1093.0, 282.0, 24.0 ],
+					"text" : "out 9 @comment TelemetryGuideHarmonics"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-16",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 448.0, 1057.0, 224.0, 24.0 ],
+					"text" : "out 8 @comment TelemetryGuideV"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 432.0, 1014.0, 282.0, 24.0 ],
+					"text" : "out 7 @comment TelemetrySourceMatchBin"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 417.0, 975.950000000000045, 275.0, 24.0 ],
+					"text" : "out 6 @comment TelemetryGuideMatchBin"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 70.0, 1020.0, 275.0, 24.0 ],
+					"text" : "out 2 @comment grain channel\\, 0-based"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 150.0, 1107.0, 253.0, 24.0 ],
+					"text" : "out 4 @comment grain phase shift??"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 135.0, 1065.0, 246.0, 24.0 ],
+					"text" : "out 3 @comment grain scale factor"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 748.0, 1093.0, 174.0, 24.0 ],
+					"text" : "out 13 @comment DEBUG 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 737.0, 1057.0, 174.0, 24.0 ],
+					"text" : "out 12 @comment DEBUG 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 720.0, 1022.0, 174.0, 24.0 ],
+					"text" : "out 11 @comment DEBUG 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1009.0, 997.0, 203.0, 24.0 ],
+					"text" : "out 15 @comment TEST_RESULT"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1082.0, 9.722222685813904, 174.0, 24.0 ],
+					"text" : "in 6 @comment TEST FLAG"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 36.350000000000001, 975.950000000000045, 246.0, 24.0 ],
+					"text" : "out 1 @comment grain start\\, samps"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 911.80559903383255, 9.722222685813904, 154.0, 40.0 ],
+					"text" : "in 4 @comment DEBUG IN"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-18",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 317.0, 3.0, 290.0, 40.0 ],
+					"text" : "in 2 @comment Granule size\\, samples @default 442"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-17",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 697.0, 988.0, 174.0, 24.0 ],
+					"text" : "out 10 @comment DEBUG 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 659.027809202671051, 14.70588207244873, 196.0, 40.0 ],
+					"text" : "in 3 @comment guide mark\\, samples"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-14",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 38.0, 8.0, 208.0, 40.0 ],
+					"text" : "in 1 @comment buffer head\\, samples"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "require(\"granular-common.genexpr\");\n\n\n\nassertEq(testIndex, a, b) {\n\tif (a == b) {\n\t\treturn 0, b;\n\t} else return testIndex, b;\n}\n\nselectKthLargest(data, chan, start, len, k) {\n    if (k > len) return -1;\n\n    left = k + 1;\n    prevLargest = 9999999;\n    candidateI = -1;\n\n    while (candidateI < 0) {\n        maxV = -99999;\n        maxI = -1;\n        thisRoundLeft = left;\n        candidateI = -1;\n        for (i = start; i < len + start; i += 1) {\n            v = data.peek(i, chan);\n            if (v < prevLargest) {\n                if (v > maxV) {\n                    maxI = i;\n                    maxV = v;\n                    thisRoundLeft = left;\n                    candidateI = -1;\n                }\n                if (v == maxV) {\n                    thisRoundLeft -= 1;\n                    if (thisRoundLeft == 0) {\n                        candidateI = i;\n                    }\n                }\n            }\n        }\n        left = thisRoundLeft;\n\n        prevLargest = maxV;\n    }\n    return candidateI;\n\n}\nfindFundamental(fi, iSourceChan, snFftWindowSize, data, nSourceChans) {\n\tmaxM = -1;\n\tmaxMI = -1;\n\tfor (i = 0; i < snFftWindowSize; i += 1) {\n\t\tbinAddress = addressBin(fi, i, snFftWindowSize, data, nSourceChans);\n\t\tm = data.peek(binAddress, getSourceChan(SEC_MAG(), iSourceChan, nSourceChans));\n\t\tif (maxM < m) {\n\t\t\tmaxM = m;\n\t\t\tmaxMI = i;\n\t\t}\n\t} \n\treturn maxMI, maxM;\n}\n\ncalculateRelativeDistance(freqBinI1, freqBinI2) {\n\t// VERY naive\n\treturn abs(freqBinI1 - freqBinI2);\n}\n\nrollWithWeights(weights, start, len, chanStart, chansCount) {\n        // 1. calc sum\n        sum = 0;\n        for (chan = chanStart; chan < chanStart + chansCount; chan += 1)\n            for (i = start; i < start + len; i += 1) {\n                sum += weights.peek(i, chan);\n            }\n\n        roll = uniformRand01() * sum;\n\n        acc = 0;\n        result = -1;\n        resultChan = -1;\n        for (chan = chanStart; chan < chanStart + chansCount && result < 0; chan += 1)\n            for (i = start; i < start + len && result < 0; i += 1) {\n                acc += weights.peek(i, chan);\n                if (acc >= roll) {\n                    result = i;\n                    resultChan = chan;\n                }\n            }\n        return result, resultChan;\n    }\n\n// ===================================\n// notation\n// si -> sample (value) index in wave\n// sn -> number of samples in wave\n// fi -> frame index in source\n// fn -> number of frames\n\n\n// ===================================\n\t\n// ===================================\n// parameters\n// ===================================\nParam snMaxKeyLen(10240);\nParam snPosStartOffset(0); // negative offset back\nParam snPosEndOffset(0); // negative offset back\n\nParam snFftWindowSize(1024);\n\n// number of source chans\nParam nSourceChans(3);\n\n// todo: use\nParam guideModulationDryWet(0.);\n\nParam magnitudeScaleToleranceUp(10.);\nParam magnitudeScaleToleranceDown(0.);\n\nParam algo(1);\n\n// ===================================\n// Algo params: ALGO_BIGBUS\nHistory bigBusNextStop(0);\nParam saturation(0.);\nParam brightness(1.);\n// ===================================\n\n\n// ===================================\n// external data\n// ===================================\n\nBuffer data(\"rbGranularData\");\n\n// ===================================\n// internal data\n// ===================================\n\n\n//Data match(fnPosWidth);\nBuffer match(\"dbgMatch\");\n\nData testData(100);\n\n\n// sections\n// NOTE: inlined in functions and shared\n\n\n// methods\nALGO_LINEAR_POS_START = 0;\nALGO_LINEAR_HEAD = 1;\n\nALGO_SCULPT = 2;\nALGO_BIGBUS = 3;\n\ndataSize = dim(data);\nfnTotal = dataSize / snFftWindowSize;\n\n// ===================================\n// inputs and derivatives\n// ===================================\n\nsiGuideHead = in1;// TODO: separate guide/source indexing\nsiSourceHead = in1; //buffer head siSourceHead -> drives fiPosStart, fnPosWidth, fiGuideHead\nfiGuideHead = siToFi(siGuideHead - 2*snFftWindowSize,snFftWindowSize, data, nSourceChans) ; // index of last fully written fft frameframe\nfiSourceHead = fiGuideHead; // TODO: separate guide/source indexing\n\nsiPosStart = siSourceHead + snPosStartOffset;\nsiPosEnd = siSourceHead + snPosEndOffset;\n\nfiPosStart = siToFi(siPosStart, snFftWindowSize, data, nSourceChans);\nfiPosEnd = siToFi(siPosEnd, snFftWindowSize, data, nSourceChans);\n\nfiPosStart = min(fiPosStart, fiSourceHead);\nfiPosEnd = min(fiPosEnd, fiSourceHead);\nfnPosWidth = max(1, fiPosEnd - fiPosStart);\n\n// TODO: keylen???\n//snGranuleSize = in2;\n\n// fnMaxKeyLen = ceil(snMaxKeyLen / snFftWindowSize);\n// if (fnMaxKeyLen == 0) {\n// \tfnMaxKeyLen = 100000000;\n// }\n// fnKeyLen = min(ceil(snGranuleSize / snFftWindowSize), fnMaxKeyLen);\n\n\n// ===================================\n// stubs and TODOs\n// ===================================\nchan = 0;\n\n// ===================================\n// results\n// ===================================\nResultGrainPos = 0;\nResultGrainChan = 0;\nResultGrainScale = 1.;\nResultGrainPhaseShift = 0.;\n\nTelemetryGuideMatchBin  = 0.;\nTelemetrySourceMatchBin = 0.;\nTelemetryGuideV = 0.;\nTelemetryGuideHarmonics = 0.;\n\n// ===================================\n// DEBUG\n// ===================================\nDebugIn = in4;\nDebug0 = 0.;\nDebug1 = 0.;\nDebug2 = 0.;\nDebug3 = 0.;\n\n// ===================================\n// ALGOS\n// ===================================\n\n\nif (algo == ALGO_LINEAR_POS_START) {\n\t// ----------------------------------\n\t// DEBUG: debugging: indexing poc \n\t// PoC draw FFT index on scope: \n\t// find max freq in a frame at fiPosStart and debug_out its index\n\t// NOTE: intentionally using source pos on guide chan. this wont stand later\n\t// ----------------------------------\n\tmaxM = -1.;\n\tmaxMI = -1;\n\tfor (i = 0; i < snFftWindowSize; i += 1) {\n\t\tbinAddress = addressBin(fiPosStart, i, snFftWindowSize, data, nSourceChans);\n\t\tm = data.peek(binAddress, getGuideChan(SEC_MAG(), nSourceChans));\n\t\tif (maxM < m) {\n\t\t\tmaxM = m;\n\t\t\tmaxMI = i;\n\t\t}\n\t} \n\tDebugPocFftIndexing = maxMI;\n\tDebugSanity0 = dataSize;\n\tDebug0BinAddress = addressBin(fiPosStart, 0, snFftWindowSize, data, nSourceChans);\n\tDebug0BinValue = data.peek(Debug0BinAddress, getGuideChan(SEC_MAG(), nSourceChans));\n\n\tDebug0 = DebugPocFftIndexing;\n\tDebug1 = Debug0BinAddress;\n\tDebug2 = fiPosStart;\n\tDebug3 = maxM;\n\n\tResultGrainPos = addressWavFrameStart(fiPosStart, snFftWindowSize, data, nSourceChans);\n\n}\n\nif (algo == ALGO_LINEAR_HEAD) {\n\tResultGrainPos = addressWavFrameStart(fiGuideHead, snFftWindowSize, data, nSourceChans);\n}\n\nif (algo == ALGO_SCULPT ) {\n\t// ---------------------------------\n\t// Sculpting algo based on source fundamental: uniform pick and scale by guide_mag[source_fundamental_bin] / source_mag[source_fundamental_bin]\n\t// ---------------------------------\n\n\t\n\t// for (i = 0; i < 1000; i += 1) {\n\tfiResultGrain = floor(fiPosStart + uniformRand01() * fnPosWidth);\n\tResultGrainPos = addressWavFrameStart(fiResultGrain, snFftWindowSize, data, nSourceChans);\n\n\tResultGrainChan = floor(uniformRand01() * nSourceChans);\n\n\tfundamentalI, apparentMag = findFundamental(fiResultGrain, ResultGrainChan, snFftWindowSize, data, nSourceChans);\n\tdesiredMag = data.peek(addressBin(fiGuideHead, fundamentalI, snFftWindowSize, data, nSourceChans), getGuideChan(SEC_MAG(), nSourceChans));\n\n\ttargetScale = 1.;\n\n\tif (apparentMag != 0) {\n\t\ttargetScale = min(desiredMag / apparentMag, magnitudeScaleToleranceUp);\n\t}\n\t\t// if (targetScale > 1 - magnitudeScaleToleranceDown && targ)\n\t// }\n\t\n\tResultGrainChan = getSourceChan(SEC_WAV(), floor(uniformRand01() * nSourceChans), nSourceChans);\n\tResultGrainScale = targetScale;\n\tDebug0 = fundamentalI;\n\tDebug1 = apparentMag;\n\tDebug2 = desiredMag;\n}\n\nif (algo == ALGO_BIGBUS) {\n\tnGuidePeaks = max(1, floor(saturation * brightness));\n\tbigBusNextStop = (bigBusNextStop + 1) % nGuidePeaks;\n\n\tbin0Address = addressBin(fiGuideHead, 0, snFftWindowSize, data, nSourceChans);\n\tpeakBinAddress = selectKthLargest(\n\t\tdata, \n\t\tgetGuideChan(SEC_MAG(), nSourceChans), \n\t\tbin0Address, \n\t\tsnFftWindowSize, \n\t\tbigBusNextStop\n\t);\n\tpeakI = peakBinAddress - bin0Address;\n\tpeakV = data.peek(peakBinAddress, \n\t\tgetGuideChan(SEC_MAG(), nSourceChans));\n\t// Debug0 = fiGuideHead ;\n\tDebug0 = peakI;\n\tDebug1 = peakV;\n\n\t// calculate weights into match\n\tfor (chanI = 0; chanI < nSourceChans; chanI += 1)\n\tfor (i = 0; i <  fnPosWidth; i += 1) {\n\t\tfi = i + fiPosStart;\n\t\tfundamental = peekFrameCache(fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chanI,\n\t\t\tsnFftWindowSize, data, nSourceChans);\n\n\t\tdistance = calculateRelativeDistance(fundamental, peakI);\n\t\t// todo: zero out weight if magnitude is outside of acceptable range\n\t\tmatch.poke(exp(-distance), i, chanI);\n\t}\n\n\t// roll\n\troll,chan = rollWithWeights(match, 0, fnPosWidth, 0, nSourceChans);\n\t// Debug0 = roll;\n\t// Debug1 = chan;\n\t// Debug2 = fnPosWidth;\n\n\n\n\tfiResultGrain = roll + fiPosStart;\n\tResultGrainPos = addressWavFrameStart(fiResultGrain, snFftWindowSize, data, nSourceChans);\n\tResultGrainChan = getSourceChan(SEC_WAV(), chan, nSourceChans);\n\tsourceV = peekFrameCache(fiResultGrain, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), chan,\n\t\t\tsnFftWindowSize, data, nSourceChans);\n\tResultGrainScale = peakV / sourceV;\n\t\n\tTelemetryGuideV = peakV;\n\tTelemetrySourceMatchBin = \n\t\tpeekFrameCache(fiResultGrain, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), chan,\n\t\t\tsnFftWindowSize, data, nSourceChans);\n\tDebug2 = TelemetrySourceMatchBin;\n\tDebug3 = sourceV;\n\n\n\tTelemetryGuideMatchBin = peakI;\n\t\n}\n\n\n\n// ===================================\n// / ALGOS\n// ===================================\n\n\n// ====== TEST SECTION ==============\nTestIn = in6;\nTestFailures = 0;\n\nif (TestIn == 1) {\n\t// chan indexing\n\tTestFailures += assertEq(0x1, 1, getGuideChan(SEC_WAV(), nSourceChans));\n\tTestFailures += assertEq(0x2, 5, getGuideChan(SEC_MAG(), nSourceChans));\n\tTestFailures += assertEq(0x4, 2, getSourceChan(SEC_WAV(), 0, nSourceChans));\n\tTestFailures += assertEq(0x8, 7, getSourceChan(SEC_MAG(), 1, nSourceChans));\n\tTestFailures += assertEq(0x8, 12, getSourceChan(SEC_PHASE(), nSourceChans-1, nSourceChans));\n\tTestFailures += assertEq(0x10, 0, getBinIndexChan(nSourceChans));\n\n\t// siToFi\n\t// Note: these will fail if no data is recorded\n\tframeDrift = data.peek(_wrap(0, dim(data)), getBinIndexChan(nSourceChans));\n\n\tTestFailures += assertEq(0x20, 1, siToFi(2000, snFftWindowSize, data, nSourceChans));\n\tDebug1 = frameDrift;\n\tframeCountCorrection = frameDrift == 0 ? 1 : 0;\n\tf, Debug0 = \t\t\tassertEq(0x40, -1 + frameCountCorrection , siToFi(0, snFftWindowSize, data, nSourceChans));\n\tTestFailures += f;\n\tTestFailures += assertEq(0x80, 0 + frameCountCorrection, \n\t\tsiToFi(snFftWindowSize - data.peek(0, getBinIndexChan(nSourceChans)),\n\t\t\tsnFftWindowSize, data, nSourceChans));\n\tTestFailures += assertEq(0x100, -1 + frameCountCorrection, \n\t\tsiToFi(snFftWindowSize - data.peek(0, getBinIndexChan(nSourceChans)),\n\t\t\tsnFftWindowSize, data, nSourceChans) - 1);\n\n\t// addressBin\n\tf, Debug0 = assertEq(0x200, 16, data.peek(\n\t\taddressBin(\n\t\t\tsiToFi(2000, snFftWindowSize, data, nSourceChans),\n\t\t\t16,\n\t\t\tsnFftWindowSize,\n\t\t\tdata, nSourceChans), \n\t\t\tgetBinIndexChan(nSourceChans)\n\t));\n\tTestFailures += f;\n\n\n\t// addressWavFrameStart\n\tTestFailures += assertEq(0x400, 1, siToFi(2000, snFftWindowSize, data, nSourceChans));\n\texpectedFrame1StartAddress =  (2 - frameCountCorrection) * 1024 - frameDrift;\n\tf, Debug1 = assertEq(0x800, expectedFrame1StartAddress, \n\t\taddressWavFrameStart(1, snFftWindowSize,\n\t\t\tdata, nSourceChans));\n\tTestFailures += f;\n\n\t// uniformRand01\n\tfail1000 = 0;\n\tfor (i = 0; i < 1000; i+=1) {\n\t\tr = uniformRand01();\n\t\tif (r < 0. || r > 1.) {\n\t\t\tfail1000 += 1;\n\t\t}\n\t} \n\tTestFailures += assertEq(0x1000, 0, fail1000);\n\n\t// frame chan sanity\n\tprevFrameV = -1;\n\tf = 0;\n\tfor (i = 0; i < 2000 && f == 0; i+=1) {\n\t\tframeV = data.peek(i, getBinIndexChan(nSourceChans));\n\t\texpectedFrameV = prevFrameV == 1023 ? 0 : prevFrameV+1;\n\t\tif (prevFrameV != -1) {\n\t\t\tf = assertEq(0x2000, expectedFrameV, frameV);\n\t\t\tif (f != 0) {\n\t\t\t\tDebug0 = i;\n\t\t\t\tDebug1 = frameV;\n\t\t\t\tDebug2 = prevFrameV;\n\t\t\t}\n\t\t}\n\t\tprevFrameV = frameV;\n\t}\n\tTestFailures += f;\n\n\tf, Debug0 = assertEq(0x4000, 15, data.peek(\n\t\taddressBin(\n\t\t\t0,\n\t\t\t15,\n\t\t\tsnFftWindowSize,\n\t\t\tdata, nSourceChans), \n\t\t\tgetBinIndexChan(nSourceChans)\n\t));\n\tTestFailures += f;\n\tf, Debug0 = assertEq(0x4000, 0, data.peek(\n\t\taddressBin(\n\t\t\t-1,\n\t\t\t0,\n\t\t\tsnFftWindowSize,\n\t\t\tdata, nSourceChans), \n\t\t\tgetBinIndexChan(nSourceChans)\n\t));\n\tTestFailures += f;\n\n\t\t\n}\nif (TestIn == 2) {\n\t// selectKthLargest\n\ttestData.poke(0.0, 2, 0);\n\ttestData.poke(3.0, 3, 0);\n\ttestData.poke(1.0, 4, 0);\n\ttestData.poke(1.0, 5, 0);\n\ttestData.poke(2.0, 6, 0);\n\ttestData.poke(3.0, 7, 0);\n\n\tTestFailures += assertEq(0x1, 3, selectKthLargest(testData, 0, 2, 6, 0));\n\tTestFailures += assertEq(0x2, 7, selectKthLargest(testData, 0, 2, 6, 1));\n\tf, Debug0= assertEq(0x4, 6, selectKthLargest(testData, 0, 2, 6, 2));\n\tTestFailures += f;\n\tTestFailures += assertEq(0x8, 4, selectKthLargest(testData, 0, 2, 6, 3));\n\tTestFailures += assertEq(0x10, 5, selectKthLargest(testData, 0, 2, 6, 4));\n\tTestFailures += assertEq(0x20, 2, selectKthLargest(testData, 0, 2, 6, 5));\n\tTestFailures += assertEq(0x40, 6, selectKthLargest(testData, 0, 2, 5, 1));\n\n}\nif (TestIn == 3) {\n\t// performance and precaching tests\n\n\t// performance - looks like >2 secs will result in a crash\n\tnsScanLength = 44100*0;\n\tDebug0 = nsScanLength;\n\tsum = 0;\n\tfor (si = 0; si < nsScanLength; si += 1) {\n\t\tsum += data.peek(si, 0);\n\t}\n\tDebug1 = sum;\n\n\t// precaching\n\tprevFrameIndex = -1;\n\tsourceChanI = 1;\n\n\n\tf = 0;\n\tfor (fi = -1; fi < 20 && f == 0; fi += 1) {\n\t\tmaxI = -1;\n\t\tmaxV = -1;\n\t\tfor (bin = 0; bin < 512; bin += 1) {\n\t\t\tv = data.peek(\n\t\t\t\taddressBin(fi, bin,  snFftWindowSize, data, nSourceChans), \n\t\t\t\tgetSourceChan(SEC_MAG(), sourceChanI, nSourceChans)\n\t\t\t);\n\t\t\tif (v > maxV ) {\n\t\t\t\tmaxV = v;\n\t\t\t\tmaxI = bin;\n\t\t\t}\n\t\t}\n\n\t\tf,Debug0 = assertEq(0x01, \n\t\t\tmaxI,\n\t\t\tpeekFrameCache(fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), sourceChanI, \n        \t\tsnFftWindowSize, data, nSourceChans));\n\t\tDebug1 = fi;\n\t\tDebug2 = maxI;\n\t\tDebug3 = maxV;\n\n\t\tf += assertEq(0x02, \n\t\t\tmaxV,\n\t\t\tpeekFrameCache(fi, F_FRAME_CACHE_FUNDAMENTAL_VALUE(), sourceChanI, \n        \t\tsnFftWindowSize, data, nSourceChans));\n\t}\n\tTestFailures += f;\n\n\tTestFailures += assertEq(0x4, 14, getSourceChan(SEC_FRAME_CACHE(), 0, nSourceChans));\n\tTestFailures += assertEq(0x8, 16, getSourceChan(SEC_FRAME_CACHE(), nSourceChans-1, nSourceChans));\n\n\n\tf = 0;\n\timpliedAddrDrift = -1;\n\tfor (i = 0; i < 2 && f == 0; i+=1) {\n\t\tfi = i == 0 ? -1 : (i == 1 ? 1 : 177);\n\t\t//poke\n\t\toldVal, peekAddr = peekFrameCache(fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,\n\t\t\tsnFftWindowSize, data, nSourceChans);\n\t\t\n\t\t_, pokeAddr = pokeFrameCache(oldVal * 2, fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,\n\t\t\tsnFftWindowSize, data, nSourceChans);\n\n\t\tcurImpliedAddrDrift = (peekAddr + 1024) % 1024;\n\t\tif (i > 0) {\n\t\t\tf = assertEq(0x40, impliedAddrDrift, curImpliedAddrDrift);\n\t\t\t// Debug1 = impliedAddrDrift;\n\t\t\t// Debug2 = fi;\n\t\t}\n\t\tf += assertEq(0x10, oldVal * 2, peekFrameCache(fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,\n\t\t\tsnFftWindowSize, data, nSourceChans));\n\t\tf += assertEq(0x20, peekAddr, pokeAddr);\n\t\t\n\t\timpliedAddrDrift = curImpliedAddrDrift;\n\n\t\tpokeFrameCache(oldVal, fi, F_FRAME_CACHE_FUNDAMENTAL_BIN_INDEX(), 1,\n\t\t\tsnFftWindowSize, data, nSourceChans);\n\t}\n\tTestFailures += f;\n\t\n\n\t\t\n}\n\n// ====== /TEST SECTION ==============\n\n// ======= returns ===================\n\nout1 = ResultGrainPos;\nout2 = ResultGrainChan ;\nout3 = ResultGrainScale;\nout4 = ResultGrainPhaseShift;\n\nout6 = TelemetryGuideMatchBin;\nout7 = TelemetrySourceMatchBin;\nout8 = TelemetryGuideV;\nout9 = TelemetryGuideHarmonics;\n\nout10 = Debug0;\nout11 = Debug1;\nout12 = Debug2;\nout13 = Debug3;\n\nout15 = 1-TestFailures;\n",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"maxclass" : "codebox",
+					"numinlets" : 6,
+					"numoutlets" : 15,
+					"outlettype" : [ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ],
+					"patching_rect" : [ 27.0, 72.0, 942.0, 715.0 ]
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 3 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 5 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"source" : [ "obj-5", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"source" : [ "obj-5", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-12", 0 ],
+					"source" : [ "obj-5", 5 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
+					"source" : [ "obj-5", 6 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"source" : [ "obj-5", 7 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-17", 0 ],
+					"source" : [ "obj-5", 9 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-5", 8 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-5", 14 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-5", 10 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-5", 11 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"source" : [ "obj-5", 12 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-5", 2 ]
+				}
+
+			}
+ ],
+		"originid" : "pat-66",
+		"styles" : [ 			{
+				"name" : "my default patcher",
+				"default" : 				{
+					"fontname" : [ "Fira Code Light Regular" ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+ ]
+	}
+
+}
