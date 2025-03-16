@@ -1,5 +1,5 @@
 {
-	"name" : "pte-tree-max",
+	"name" : "visual-synth-max",
 	"version" : 1,
 	"creationdate" : 3801980044,
 	"modificationdate" : 3812798280,
@@ -20,17 +20,6 @@
 				"kind" : "patcher",
 				"local" : 1
 			}
-,
-			"contextual-soundscapes.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1,
-				"singleton" : 				{
-					"bootpath" : "~/_art/pte-tree",
-					"projectrelativepath" : ".."
-				}
-
-			}
-
 		}
 ,
 		"media" : 		{

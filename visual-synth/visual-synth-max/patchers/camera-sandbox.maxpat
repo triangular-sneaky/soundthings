@@ -908,7 +908,6 @@
 			}
 , 			{
 				"name" : "camera.maxpat",
-				"bootpath" : "~/_art/pte-tree/pte-tree-max/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
