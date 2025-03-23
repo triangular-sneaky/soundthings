@@ -2,7 +2,7 @@
 	"name" : "painter-max",
 	"version" : 1,
 	"creationdate" : 3825196510,
-	"modificationdate" : 3825433103,
+	"modificationdate" : 3825467355,
 	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -22,6 +22,11 @@
 			}
 ,
 			"painter-research_pfft.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"painter.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
