@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 0.0, -30.0, 1007.999999999999886, 730.0 ],
+		"rect" : [ 34.0, 87.0, 1008.0, 730.0 ],
 		"bglocked" : 1,
 		"gridsize" : [ 15.0, 15.0 ],
 		"style" : "my default patcher",
@@ -21,8 +21,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 382.620000000000005, 297.399999999999977, 95.0, 24.0 ],
-					"text" : "index~ input"
+					"patching_rect" : [ 382.620000000000005, 297.399999999999977, 80.0, 24.0 ],
+					"text" : "index~ #1"
 				}
 
 			}
@@ -364,7 +364,7 @@
 
 							}
  ],
-						"originid" : "pat-237",
+						"originid" : "pat-86",
 						"styles" : [ 							{
 								"name" : "my default patcher",
 								"default" : 								{
@@ -542,8 +542,7 @@
 
 			}
  ],
-		"originid" : "pat-235",
-		"autosave" : 0,
+		"originid" : "pat-84",
 		"styles" : [ 			{
 				"name" : "my default patcher",
 				"default" : 				{
