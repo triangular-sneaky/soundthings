@@ -37,8 +37,8 @@ CopySpec maxCodeJarsSpec = copySpec {
     exclude "max.jar", "jitter.jar"
 }
 
-var maxCodeDir = new File("$projectDir/../pte-tree-max/code/")
-var maxOtherDir = new File("$projectDir/../pte-tree-max/other/")
+var maxCodeDir = new File("$projectDir/../visual-synth-max/code/")
+var maxOtherDir = new File("$projectDir/../visual-synth-max/other/")
 
 tasks.register('deployToMax', Copy) {
 //    dependsOn(classes)
