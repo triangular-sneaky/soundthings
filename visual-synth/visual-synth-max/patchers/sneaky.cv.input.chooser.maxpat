@@ -2,43 +2,41 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 8,
-			"minor" : 6,
-			"revision" : 4,
+			"major" : 9,
+			"minor" : 0,
+			"revision" : 9,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
 		"rect" : [ 34.0, 87.0, 888.0, 779.0 ],
-		"bglocked" : 0,
 		"openinpresentation" : 1,
-		"default_fontsize" : 12.0,
-		"default_fontface" : 0,
-		"default_fontname" : "Arial",
-		"gridonopen" : 1,
 		"gridsize" : [ 15.0, 15.0 ],
-		"gridsnaponopen" : 1,
-		"objectsnaponopen" : 1,
-		"statusbarvisible" : 2,
-		"toolbarvisible" : 1,
-		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 0,
-		"righttoolbarpinned" : 0,
-		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
-		"tallnewobj" : 0,
-		"boxanimatetime" : 200,
-		"enablehscroll" : 1,
-		"enablevscroll" : 1,
-		"devicewidth" : 0.0,
-		"description" : "",
-		"digest" : "",
-		"tags" : "",
-		"style" : "",
-		"subpatcher_template" : "",
-		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-42",
+					"lockeddragscroll" : 1,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "multi-capture.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 1509.0, 18.0, 544.0, 445.186029732227325 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 260.0, 0.0, 781.0, 239.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-173",
 					"maxclass" : "newobj",
@@ -1552,7 +1550,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 606.557308435440063, 907.269999999999982, 50.0, 62.0 ],
-					"text" : "jit_matrix u424006324"
+					"text" : "jit_matrix u729016193"
 				}
 
 			}
@@ -1565,10 +1563,10 @@
 					"outlettype" : [ "preset", "int", "preset", "int", "" ],
 					"patching_rect" : [ 443.0, 431.0, 55.0, 19.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 281.0, 177.599248886108398, 55.0, 19.0 ],
+					"presentation_rect" : [ 203.333330452442169, 205.099248886108398, 55.0, 19.0 ],
 					"preset_data" : [ 						{
 							"number" : 1,
-							"data" : [ 5, "obj-4", "attrui", "attr", "size", 6, "obj-4", "attrui", "list", 641, 466, 5, "obj-8", "toggle", "int", 1, 5, "obj-14", "toggle", "int", 1, 5, "obj-25", "toggle", "int", 0, 5, "obj-38", "number", "int", 50, 5, "obj-32", "toggle", "int", 0, 5, "obj-36", "number", "int", 320, 5, "obj-37", "number", "int", 240, 5, "obj-46", "jit.playlist", "preset_count", 4, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "absolutepath", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filename", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "id", "u246005615", 7, "obj-46", "jit.playlist", "preset_content", 1, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "absolutepath", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filename", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "id", "u972000900", 7, "obj-46", "jit.playlist", "preset_content", 2, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "absolutepath", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filename", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "id", "u414001211", 7, "obj-46", "jit.playlist", "preset_content", 3, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "absolutepath", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filename", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "id", "u997011856", 7, "obj-46", "jit.playlist", "preset_content", 4, "loop", 1, 4, "obj-46", "jit.playlist", "preset_execute", 5, "obj-54", "toggle", "int", 0, 11, "obj-117", "swatch", "list", 0.358823529411765, 0.641176470588235, 0.641176470588235, 1.0, 0.5, 0.282352941176471, 0.5, 11, "obj-74", "swatch", "list", 0.437254901960785, 0.562745098039215, 0.562745098039215, 1.0, 0.5, 0.125490196078431, 0.5, 11, "obj-77", "swatch", "list", 0.43921568627451, 0.56078431372549, 0.56078431372549, 1.0, 0.5, 0.12156862745098, 0.5, 5, "obj-81", "tab", "int", -1, 5, "<invalid>", "toggle", "int", 1, 5, "obj-180", "attrui", "attr", "tol", 5, "obj-180", "attrui", "float", 0.2, 5, "obj-179", "slider", "float", 0.0, 5, "obj-187", "attrui", "attr", "tol", 5, "obj-187", "attrui", "float", 0.2, 5, "obj-186", "slider", "float", 0.0, 5, "obj-190", "attrui", "attr", "tol", 5, "obj-190", "attrui", "float", 0.230514599942061, 5, "obj-189", "slider", "float", 0.230514600872993 ]
+							"data" : [ 5, "obj-8", "toggle", "int", 1, 5, "obj-14", "toggle", "int", 1, 5, "obj-25", "toggle", "int", 0, 5, "obj-38", "number", "int", 50, 5, "obj-32", "toggle", "int", 0, 5, "obj-36", "number", "int", 320, 5, "obj-37", "number", "int", 240, 5, "obj-46", "jit.playlist", "preset_count", 4, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "absolutepath", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "filename", "01-wind-multiang_combined_20240724210310.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 1, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 1, "id", "u246005615", 7, "obj-46", "jit.playlist", "preset_content", 1, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "absolutepath", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "filename", "20240509_102327.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 2, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 2, "id", "u972000900", 7, "obj-46", "jit.playlist", "preset_content", 2, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "absolutepath", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "filename", "20240623_225810.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 3, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 3, "id", "u414001211", 7, "obj-46", "jit.playlist", "preset_content", 3, "loop", 1, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filekind", "moviefile", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "absolutepath", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "filename", "20240623_225839.mp4", 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "loop", 1, 8, "obj-46", "jit.playlist", "preset_clipstate", 4, "selection", -1.0, -1.0, 7, "obj-46", "jit.playlist", "preset_clipstate", 4, "id", "u997011856", 7, "obj-46", "jit.playlist", "preset_content", 4, "loop", 1, 4, "obj-46", "jit.playlist", "preset_execute", 5, "obj-54", "toggle", "int", 0, 11, "obj-117", "swatch", "list", 0.358823529411765, 0.641176470588235, 0.641176470588235, 1.0, 0.5, 0.282352941176471, 0.5, 11, "obj-74", "swatch", "list", 0.437254901960785, 0.562745098039215, 0.562745098039215, 1.0, 0.5, 0.125490196078431, 0.5, 11, "obj-77", "swatch", "list", 0.43921568627451, 0.56078431372549, 0.56078431372549, 1.0, 0.5, 0.12156862745098, 0.5, 5, "obj-81", "tab", "int", -1, 5, "obj-180", "attrui", "attr", "tol", 5, "obj-180", "attrui", "float", 0.2, 5, "obj-179", "slider", "float", 0.0, 5, "obj-187", "attrui", "attr", "tol", 5, "obj-187", "attrui", "float", 0.2, 5, "obj-186", "slider", "float", 0.0, 5, "obj-190", "attrui", "attr", "tol", 5, "obj-190", "attrui", "float", 0.230514599942061, 5, "obj-189", "slider", "float", 0.230514600872993 ]
 						}
 , 						{
 							"number" : 2,
@@ -1595,12 +1593,10 @@
 					"maxclass" : "bpatcher",
 					"name" : "camera.maxpat",
 					"numinlets" : 0,
-					"numoutlets" : 1,
+					"numoutlets" : 3,
 					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "jit_matrix" ],
+					"outlettype" : [ "jit_matrix", "", "" ],
 					"patching_rect" : [ 1062.0, -4.0, 283.0, 236.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 502.0, -9.0, 278.0, 231.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1796,7 +1792,38 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 712.977148532867432, 9.923664808273315, 232.061084747314453, 172.519095897674561 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 281.0, -4.09159255027771, 225.0, 180.0 ]
+					"presentation_rect" : [ 1047.0, 17.099248886108398, 225.0, 180.0 ],
+					"saved_attribute_attributes" : 					{
+						"candicane2" : 						{
+							"expression" : ""
+						}
+,
+						"candicane3" : 						{
+							"expression" : ""
+						}
+,
+						"candicane4" : 						{
+							"expression" : ""
+						}
+,
+						"candicane5" : 						{
+							"expression" : ""
+						}
+,
+						"candicane6" : 						{
+							"expression" : ""
+						}
+,
+						"candicane7" : 						{
+							"expression" : ""
+						}
+,
+						"candicane8" : 						{
+							"expression" : ""
+						}
+
+					}
+
 				}
 
 			}
@@ -1948,42 +1975,16 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 6,
-							"revision" : 4,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 9,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "jit.gen",
 						"rect" : [ 84.0, 129.0, 250.0, 253.0 ],
-						"bglocked" : 0,
-						"openinpresentation" : 0,
-						"default_fontsize" : 12.0,
-						"default_fontface" : 0,
-						"default_fontname" : "Arial",
-						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
-						"gridsnaponopen" : 1,
-						"objectsnaponopen" : 1,
-						"statusbarvisible" : 2,
-						"toolbarvisible" : 1,
-						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 0,
-						"righttoolbarpinned" : 0,
-						"bottomtoolbarpinned" : 0,
-						"toolbars_unpinned_last_save" : 0,
-						"tallnewobj" : 0,
-						"boxanimatetime" : 200,
-						"enablehscroll" : 1,
-						"enablevscroll" : 1,
-						"devicewidth" : 0.0,
-						"description" : "",
-						"digest" : "",
-						"tags" : "",
-						"style" : "",
-						"subpatcher_template" : "",
-						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-1",
@@ -3638,6 +3639,13 @@
 					"destination" : [ "obj-5", 0 ],
 					"order" : 1,
 					"source" : [ "obj-4", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-55", 1 ],
+					"source" : [ "obj-42", 0 ]
 				}
 
 			}

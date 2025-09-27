@@ -2,43 +2,78 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 8,
-			"minor" : 6,
-			"revision" : 4,
+			"major" : 9,
+			"minor" : 0,
+			"revision" : 9,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 536.0, 34.0, 172.0, 231.0 ],
-		"bglocked" : 0,
+		"rect" : [ 536.0, 4.0, 172.0, 261.0 ],
 		"openinpresentation" : 1,
-		"default_fontsize" : 12.0,
-		"default_fontface" : 0,
-		"default_fontname" : "Arial",
-		"gridonopen" : 1,
 		"gridsize" : [ 15.0, 15.0 ],
-		"gridsnaponopen" : 1,
-		"objectsnaponopen" : 1,
-		"statusbarvisible" : 2,
-		"toolbarvisible" : 1,
-		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 0,
-		"righttoolbarpinned" : 0,
-		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
-		"tallnewobj" : 0,
-		"boxanimatetime" : 200,
-		"enablehscroll" : 1,
-		"enablevscroll" : 1,
-		"devicewidth" : 0.0,
-		"description" : "",
-		"digest" : "",
-		"tags" : "",
-		"style" : "",
-		"subpatcher_template" : "",
-		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 342.0, 730.0, 103.0, 22.0 ],
+					"text" : "join 2 @triggers 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"comment" : "device/format",
+					"id" : "obj-12",
+					"index" : 2,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 359.0, 796.450000000000045, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "" ],
+					"patching_rect" : [ 284.0, 441.5, 29.5, 22.0 ],
+					"text" : "t b l"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"comment" : "device/format",
+					"id" : "obj-10",
+					"index" : 3,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 507.339999999999975, 796.450000000000045, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 477.0, 730.0, 103.0, 22.0 ],
+					"text" : "join 2 @triggers 1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-11",
 					"maxclass" : "newobj",
@@ -199,42 +234,16 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 6,
-							"revision" : 4,
+							"major" : 9,
+							"minor" : 0,
+							"revision" : 9,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
 						"rect" : [ 34.0, 34.0, 1372.0, 832.0 ],
-						"bglocked" : 0,
-						"openinpresentation" : 0,
-						"default_fontsize" : 12.0,
-						"default_fontface" : 0,
-						"default_fontname" : "Arial",
-						"gridonopen" : 1,
 						"gridsize" : [ 15.0, 15.0 ],
-						"gridsnaponopen" : 1,
-						"objectsnaponopen" : 1,
-						"statusbarvisible" : 2,
-						"toolbarvisible" : 1,
-						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 0,
-						"righttoolbarpinned" : 0,
-						"bottomtoolbarpinned" : 0,
-						"toolbars_unpinned_last_save" : 0,
-						"tallnewobj" : 0,
-						"boxanimatetime" : 200,
-						"enablehscroll" : 1,
-						"enablevscroll" : 1,
-						"devicewidth" : 0.0,
-						"description" : "",
-						"digest" : "",
-						"tags" : "",
-						"style" : "",
-						"subpatcher_template" : "",
-						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -459,13 +468,6 @@
 					}
 ,
 					"patching_rect" : [ 284.0, 379.0, 170.0, 23.0 ],
-					"saved_object_attributes" : 					{
-						"description" : "",
-						"digest" : "",
-						"globalpatchername" : "",
-						"tags" : ""
-					}
-,
 					"text" : "p vdev/format"
 				}
 
@@ -561,7 +563,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-65",
-					"items" : [ "YUY2 - 422YpCbCr8_yuvs - 176 x 144", ",", "NV12 - 420YpCbCr8BiPlanar - 176 x 144", ",", "YUY2 - 422YpCbCr8_yuvs - 320 x 240", ",", "NV12 - 420YpCbCr8BiPlanar - 320 x 240", ",", "YUY2 - 422YpCbCr8_yuvs - 352 x 288", ",", "NV12 - 420YpCbCr8BiPlanar - 352 x 288", ",", "YUY2 - 422YpCbCr8_yuvs - 640 x 480", ",", "NV12 - 420YpCbCr8BiPlanar - 640 x 480", ",", "NV12 - 420YpCbCr8BiPlanar - 800 x 600", ",", "YUY2 - 422YpCbCr8_yuvs - 800 x 600", ",", "NV12 - 420YpCbCr8BiPlanar - 1280 x 720", ",", "YUY2 - 422YpCbCr8_yuvs - 1280 x 720" ],
+					"items" : [ "YUY2 - 422YpCbCr8_yuvs - 160 x 120", ",", "NV12 - 420YpCbCr8BiPlanar - 160 x 120", ",", "YUY2 - 422YpCbCr8_yuvs - 176 x 144", ",", "NV12 - 420YpCbCr8BiPlanar - 176 x 144", ",", "YUY2 - 422YpCbCr8_yuvs - 320 x 176", ",", "NV12 - 420YpCbCr8BiPlanar - 320 x 176", ",", "YUY2 - 422YpCbCr8_yuvs - 320 x 240", ",", "NV12 - 420YpCbCr8BiPlanar - 320 x 240", ",", "YUY2 - 422YpCbCr8_yuvs - 352 x 288", ",", "NV12 - 420YpCbCr8BiPlanar - 352 x 288", ",", "YUY2 - 422YpCbCr8_yuvs - 432 x 240", ",", "NV12 - 420YpCbCr8BiPlanar - 432 x 240", ",", "YUY2 - 422YpCbCr8_yuvs - 544 x 288", ",", "NV12 - 420YpCbCr8BiPlanar - 544 x 288", ",", "NV12 - 420YpCbCr8BiPlanar - 640 x 360", ",", "YUY2 - 422YpCbCr8_yuvs - 640 x 480", ",", "NV12 - 420YpCbCr8BiPlanar - 640 x 480", ",", "NV12 - 420YpCbCr8BiPlanar - 752 x 416", ",", "YUY2 - 422YpCbCr8_yuvs - 752 x 416", ",", "NV12 - 420YpCbCr8BiPlanar - 800 x 448", ",", "YUY2 - 422YpCbCr8_yuvs - 800 x 448", ",", "NV12 - 420YpCbCr8BiPlanar - 800 x 600", ",", "YUY2 - 422YpCbCr8_yuvs - 800 x 600", ",", "NV12 - 420YpCbCr8BiPlanar - 864 x 480", ",", "YUY2 - 422YpCbCr8_yuvs - 864 x 480", ",", "NV12 - 420YpCbCr8BiPlanar - 960 x 544", ",", "YUY2 - 422YpCbCr8_yuvs - 960 x 544", ",", "NV12 - 420YpCbCr8BiPlanar - 960 x 720", ",", "YUY2 - 422YpCbCr8_yuvs - 960 x 720", ",", "NV12 - 420YpCbCr8BiPlanar - 1024 x 576", ",", "YUY2 - 422YpCbCr8_yuvs - 1024 x 576", ",", "NV12 - 420YpCbCr8BiPlanar - 1184 x 656", ",", "YUY2 - 422YpCbCr8_yuvs - 1184 x 656", ",", "NV12 - 420YpCbCr8BiPlanar - 1280 x 720", ",", "YUY2 - 422YpCbCr8_yuvs - 1280 x 720", ",", "NV12 - 420YpCbCr8BiPlanar - 1280 x 960", ",", "YUY2 - 422YpCbCr8_yuvs - 1280 x 960" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -590,7 +592,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-69",
-					"items" : [ "FaceTime HD Camera", ",", "USB Camera" ],
+					"items" : [ "FaceTime HD Camera", ",", "C270 HD WEBCAM", ",", "USB Camera" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -844,6 +846,27 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-66", 0 ],
+					"source" : [ "obj-13", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-73", 0 ],
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-12", 0 ],
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-4", 1 ],
 					"source" : [ "obj-3", 1 ]
 				}
@@ -917,8 +940,17 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-14", 1 ],
+					"order" : 0,
+					"source" : [ "obj-64", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-82", 0 ],
 					"midpoints" : [ 517.5, 506.0, 74.5, 506.0, 74.5, 335.0, 93.5, 335.0 ],
+					"order" : 1,
 					"source" : [ "obj-64", 0 ]
 				}
 
@@ -932,16 +964,46 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-82", 0 ],
-					"midpoints" : [ 293.5, 506.0, 74.5, 506.0, 74.5, 336.0, 93.5, 336.0 ],
+					"destination" : [ "obj-7", 1 ],
+					"source" : [ "obj-65", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"order" : 0,
 					"source" : [ "obj-66", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-66", 0 ],
+					"destination" : [ "obj-82", 0 ],
+					"midpoints" : [ 293.5, 506.0, 74.5, 506.0, 74.5, 336.0, 93.5, 336.0 ],
+					"order" : 1,
+					"source" : [ "obj-66", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-69", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-69", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"source" : [ "obj-7", 0 ]
 				}
 
 			}
@@ -1044,6 +1106,16 @@
 					"source" : [ "obj-93", 0 ]
 				}
 
+			}
+ ],
+		"styles" : [ 			{
+				"name" : "my default patcher",
+				"default" : 				{
+					"fontname" : [ "Fira Code Light Regular" ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
 			}
  ]
 	}
