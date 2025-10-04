@@ -16,6 +16,54 @@
 		"style" : "my default patcher",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-23",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 467.579999999999984, 1588.400000000000091, 124.0, 24.0 ],
+					"text" : "prepend gridspec"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-21",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 455.298387289047241, 1544.199043214321136, 66.0, 24.0 ],
+					"text" : "pack 1 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-20",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "int", "int" ],
+					"patching_rect" : [ 466.298387289047241, 1368.000020384788513, 44.0, 24.0 ],
+					"text" : "t i i"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"comment" : "",
+					"id" : "obj-18",
+					"index" : 2,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 470.879999999999995, 1721.259999999999991, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"comment" : "",
 					"id" : "obj-15",
 					"index" : 1,
@@ -256,7 +304,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "{\n\t\"FaceTime HD Camera\" : [ \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" ]\n}\n",
+					"code" : "{\n\t\"FaceTime HD Camera\" : [ \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" ],\n\t\"USB Camera\" : [ \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\", \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\", \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\", \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\", \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\", \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\", \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\", \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\" ]\n}\n",
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
 					"fontsize" : 12.0,
@@ -388,7 +436,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 431.689999999999998, 1379.740000000000009, 152.0, 24.0 ],
+					"patching_rect" : [ 454.14368999004364, 1402.210079312324524, 152.0, 24.0 ],
 					"text" : "expr ceil($f2 / $f1)"
 				}
 
@@ -410,10 +458,10 @@
 					"id" : "obj-102",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "clear", "int", "int" ],
-					"patching_rect" : [ 352.829999999999984, 1287.3599999999999, 88.0, 24.0 ],
-					"text" : "t clear 0 i"
+					"numoutlets" : 4,
+					"outlettype" : [ "clear", "int", "int", "int" ],
+					"patching_rect" : [ 352.829999999999984, 1287.3599999999999, 102.0, 24.0 ],
+					"text" : "t clear 0 i i"
 				}
 
 			}
@@ -436,9 +484,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 86.5, 1483.0, 250.0, 187.0 ],
+					"patching_rect" : [ 86.5, 1483.0, 250.0, 93.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ -1.149425268173218, 1.425284862518311, 250.0, 187.0 ],
+					"presentation_rect" : [ -1.149425268173218, 1.425284862518311, 250.0, 93.0 ],
 					"sync" : 1
 				}
 
@@ -672,7 +720,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 678.33335354924202, 870.333359271287918, 50.0, 24.0 ],
-					"text" : "0"
+					"text" : "1"
 				}
 
 			}
@@ -1177,7 +1225,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "//0, \"USB Camera\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r1, \"FaceTime HD Camera\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\";\r//2, \"C270 HD WEBCAM\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r",
+					"code" : "0, \"USB Camera\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r//, \"FaceTime HD Camera\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\";\r1, \"FaceTime HD Camera\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\";\r//2, \"C270 HD WEBCAM\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r",
 					"editlocked" : 1,
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
@@ -1392,7 +1440,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-103", 0 ],
-					"order" : 1,
 					"source" : [ "obj-102", 2 ]
 				}
 
@@ -1400,16 +1447,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-104", 1 ],
-					"order" : 0,
-					"source" : [ "obj-102", 2 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-104", 0 ],
-					"order" : 0,
-					"source" : [ "obj-103", 0 ]
+					"source" : [ "obj-102", 3 ]
 				}
 
 			}
@@ -1423,8 +1461,16 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-106", 0 ],
+					"destination" : [ "obj-20", 0 ],
 					"order" : 0,
+					"source" : [ "obj-103", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-106", 0 ],
+					"order" : 1,
 					"source" : [ "obj-104", 0 ]
 				}
 
@@ -1432,7 +1478,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-108", 0 ],
-					"order" : 1,
+					"order" : 2,
+					"source" : [ "obj-104", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-21", 1 ],
+					"order" : 0,
 					"source" : [ "obj-104", 0 ]
 				}
 
@@ -1670,6 +1724,27 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-104", 0 ],
+					"source" : [ "obj-20", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-21", 0 ],
+					"source" : [ "obj-20", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-16", 0 ],
 					"source" : [ "obj-22", 0 ]
 				}
@@ -1679,6 +1754,15 @@
 				"patchline" : 				{
 					"destination" : [ "obj-25", 0 ],
 					"source" : [ "obj-22", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"source" : [ "obj-23", 0 ],
+					"watchpoint_flags" : 5,
+					"watchpoint_id" : 49
 				}
 
 			}

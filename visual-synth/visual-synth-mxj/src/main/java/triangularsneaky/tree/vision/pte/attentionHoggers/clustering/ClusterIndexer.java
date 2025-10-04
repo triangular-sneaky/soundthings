@@ -13,9 +13,13 @@ public class ClusterIndexer {
 
     public ClusterIndexer(ClusterSpec clusterSpec) {
         this.clusterSpec = clusterSpec;
-        this.indexAllocators =
-                Stream.iterate(0, i -> i < clusterSpec.getClustersCount(), i -> i +1)
-                        .map(ignored -> new IntAllocator()).toArray(IntAllocator[]::new);
+        if (clusterSpec.getClustersCount() <= 0) {
+            throw new IllegalArgumentException("Whats wrong with this clusterspec? " + clusterSpec);
+        }
+        this.indexAllocators = new IntAllocator[clusterSpec.getClustersCount()];
+        for (int j = 0; j < indexAllocators.length; j++) {
+            indexAllocators[j] = new IntAllocator();
+        }
     }
 
     public void assignToCluster(Hoggers.AttentionSlot slot, Rect rect) {
@@ -25,11 +29,16 @@ public class ClusterIndexer {
     }
 
     private int coalesceIndex(int clusterIndex) {
-        return Math.min(Math.max(clusterIndex, 0), indexAllocators.length - 1);
+        if (clusterIndex < 0) return 0;
+        if (clusterIndex >= indexAllocators.length) return Math.max(0, indexAllocators.length - 1);
+        return clusterIndex;
     }
 
     public void unassignFromCluster(Hoggers.AttentionSlot slot) {
-        indexAllocators[slot.getClusterIndex()].release(slot.getVoiceIndexInCluster());
+        int clusterIndex = slot.getClusterIndex();
+        if (clusterIndex >= 0 && clusterIndex < indexAllocators.length) {
+            indexAllocators[clusterIndex].release(slot.getVoiceIndexInCluster());
+        }
     }
 
 

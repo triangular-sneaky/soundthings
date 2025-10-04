@@ -21,7 +21,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 808.0, 1041.0, 50.0, 35.0 ],
-					"text" : "10.264167"
+					"text" : "13.707375"
 				}
 
 			}
@@ -1269,6 +1269,18 @@
 										"visible" : 1,
 										"boxes" : [ 											{
 												"box" : 												{
+													"id" : "obj-112",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 1266.0, 635.0, 29.0, 22.0 ],
+													"text" : "thru"
+												}
+
+											}
+, 											{
+												"box" : 												{
 													"id" : "obj-99",
 													"maxclass" : "message",
 													"numinlets" : 2,
@@ -1449,7 +1461,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 469.0, 78.0, 50.0, 35.0 ],
-													"text" : "10.264167"
+													"text" : "13.707375"
 												}
 
 											}
@@ -2157,10 +2169,11 @@
 												"box" : 												{
 													"id" : "obj-93",
 													"maxclass" : "newobj",
-													"numinlets" : 1,
+													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 1878.0, 765.0, 100.0, 22.0 ]
+													"patching_rect" : [ 1340.0, 595.0, 96.0, 22.0 ],
+													"text" : "receive gridspec"
 												}
 
 											}
@@ -2770,7 +2783,7 @@
 																	"numoutlets" : 1,
 																	"outlettype" : [ "" ],
 																	"patching_rect" : [ 686.0, 208.0, 50.0, 62.0 ],
-																	"text" : "jit_matrix u617006762"
+																	"text" : "jit_matrix u328006774"
 																}
 
 															}
@@ -10165,6 +10178,13 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-32", 0 ],
+													"source" : [ "obj-112", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-4", 0 ],
 													"source" : [ "obj-113", 0 ]
 												}
@@ -10474,9 +10494,7 @@
 													"destination" : [ "obj-56", 0 ],
 													"midpoints" : [ 1109.5, 1785.0, 336.700004875659943, 1785.0 ],
 													"order" : 0,
-													"source" : [ "obj-32", 0 ],
-													"watchpoint_flags" : 5,
-													"watchpoint_id" : 48
+													"source" : [ "obj-32", 0 ]
 												}
 
 											}
@@ -11043,6 +11061,13 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-112", 0 ],
+													"source" : [ "obj-93", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-98", 0 ],
 													"source" : [ "obj-94", 0 ]
 												}
@@ -11078,7 +11103,7 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-32", 0 ],
+													"destination" : [ "obj-112", 0 ],
 													"source" : [ "obj-99", 0 ]
 												}
 
@@ -14309,16 +14334,6 @@
 			"obj-6::obj-6::obj-14::obj-27" : [ "live.dial", "live.dial", 0 ],
 			"obj-6::obj-8" : [ "toggle[1]", "toggle[1]", 0 ],
 			"obj-6::obj-93::obj-1" : [ "live.dial[6]", "fps", 0 ],
-			"parameterbanks" : 			{
-				"0" : 				{
-					"index" : 0,
-					"name" : "",
-					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ],
-					"buttons" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
-				}
-
-			}
-,
 			"parameter_overrides" : 			{
 				"obj-140::obj-194::obj-20" : 				{
 					"parameter_longname" : "mute[1]"

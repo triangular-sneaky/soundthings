@@ -1,29 +1,30 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.max;
 
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import com.cycling74.max.Atom;
+import com.cycling74.max.MaxObject;
+
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.subjects.BehaviorSubject;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
 import triangularsneaky.tree.vision.pte.attentionHoggers.algo.BitmapAttentionTrackingAlgo;
-import com.cycling74.max.*;
 import triangularsneaky.tree.vision.pte.attentionHoggers.clustering.ClusterIndexer;
 import triangularsneaky.tree.vision.pte.attentionHoggers.clustering.GridSpec;
 import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 import triangularsneaky.tree.vision.pte.attentionHoggers.util.Dim;
 import triangularsneaky.tree.vision.pte.attentionHoggers.util.Pair;
 
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
 public class AttentionTracker extends JitMaxObject {
 
     private static final Logger log = LogManager.getLogger(AttentionTracker.class);
-
-
 
     Benchmark frameInBm = new Benchmark("Frame-in", 2000, MaxObject::post, (nanos) -> {
         var millis = nanos / 1_000_000;
@@ -36,9 +37,8 @@ public class AttentionTracker extends JitMaxObject {
     BitmapAttentionTrackingAlgo algo;
     CompositeDisposable subscription = null;
 
-
-    BehaviorSubject<Dim> gridSize =
-            BehaviorSubject.create();
+    BehaviorSubject<Dim> gridSize
+            = BehaviorSubject.create();
 
     public AttentionTracker() {
 
@@ -46,8 +46,8 @@ public class AttentionTracker extends JitMaxObject {
 
         declareIO(1, 1);
 //        createInfoOutlet(false);
-        setInletAssist(new String[] {"Attention matrix and control messages", "Aux"});
-        setOutletAssist(new String[] {"Attention slots", "Aux"});
+        setInletAssist(new String[]{"Attention matrix and control messages", "Aux"});
+        setOutletAssist(new String[]{"Attention slots", "Aux"});
         log.info("Started up");
         outletBang(getInfoIdx());
         Observable
@@ -55,9 +55,9 @@ public class AttentionTracker extends JitMaxObject {
                 .subscribe(p -> {
                     algo.slotsStorage.setClusterIndexer(
                             Optional.ofNullable(p.b())
-                            .map(gridSize -> new GridSpec(gridSize.x(), gridSize.y(), p.a().x(), p.a().y()))
-                            .map(ClusterIndexer::new)
-                            .orElse(null));
+                                    .map(gridSize -> new GridSpec(gridSize.x(), gridSize.y(), p.a().x(), p.a().y()))
+                                    .map(ClusterIndexer::new)
+                                    .orElse(null));
                 });
     }
 
@@ -68,8 +68,10 @@ public class AttentionTracker extends JitMaxObject {
                 2,
                 0.0,
                 v -> v > 0,
-                new LinearAmpAndADEnvelope(10.0, 1.0, 1, 30*4));
-        if (subscription != null) subscription.dispose();
+                new LinearAmpAndADEnvelope(10.0, 1.0, 1, 30 * 4));
+        if (subscription != null) {
+            subscription.dispose();
+        }
         subscription = new CompositeDisposable();
 
         subscription.add(algo.ticks().subscribe(slots -> {
@@ -80,7 +82,6 @@ public class AttentionTracker extends JitMaxObject {
                 slots.forEach(s -> {
 
 //                    outlet(0, new double[]{s.x(), s.y(), s.x() + s.w(), s.y() + s.h(), s.age(), s.amplitude(), s.angle()});
-
                     if (s.slot() >= algo.voicesCount()) {
                         log.severe("Slot outside of voices count! This is an error: %s".formatted(s));
                     }
@@ -89,28 +90,28 @@ public class AttentionTracker extends JitMaxObject {
 
                     outlet(0,
                             new Atom[]{
-                                    Atom.newAtom(s.slot() + 1),       // $1 = voice number (1-based)
-                                    Atom.newAtom(s.age()),                  // $2 = age
+                                Atom.newAtom(s.slot() + 1), // $1 = voice number (1-based)
+                                Atom.newAtom(s.age()), // $2 = age
 
-                                    Atom.newAtom(s.x()),                    // $3 = l
-                                    Atom.newAtom(s.y()),                    // $4 = t
-                                    Atom.newAtom(s.x() + s.w()),      // $5 = r
-                                    Atom.newAtom(s.y() + s.h()),      // $6 = b
+                                Atom.newAtom(s.x()), // $3 = l
+                                Atom.newAtom(s.y()), // $4 = t
+                                Atom.newAtom(s.x() + s.w()), // $5 = r
+                                Atom.newAtom(s.y() + s.h()), // $6 = b
 
-                                    Atom.newAtom(s.area()),                 // $7 = area
+                                Atom.newAtom(s.area()), // $7 = area
 
-                                    Atom.newAtom(s.amplitude()),            // $8 = amp
-                                    Atom.newAtom(s.angleNormalized01()),    // $9 = angle_norm_01
+                                Atom.newAtom(s.amplitude()), // $8 = amp
+                                Atom.newAtom(s.angleNormalized01()), // $9 = angle_norm_01
 
-                                    Atom.newAtom(s.getId()),                // $10 = id
+                                Atom.newAtom(s.getId()), // $10 = id
 
-                                    Atom.newAtom(s.effectiveAmplitude()),   // zl.nth 11 = effective amp
+                                Atom.newAtom(s.effectiveAmplitude()), // zl.nth 11 = effective amp
 
-                                    Atom.newAtom((1.0 * s.x()) / dim.x() ),   // zl.nth 12 = x_norm_01
-                                    Atom.newAtom((1.0 * s.y()) / dim.y() ),   // zl.nth 13 = y_norm_01
+                                Atom.newAtom((1.0 * s.x()) / dim.x()), // zl.nth 12 = x_norm_01
+                                Atom.newAtom((1.0 * s.y()) / dim.y()), // zl.nth 13 = y_norm_01
 
-                                    Atom.newAtom(s.getClusterIndex()),          // zl.nth 14 = cluster_index
-                                    Atom.newAtom(s.getVoiceIndexInCluster())    // zl.nth 15 = voice_index_in_cluster
+                                Atom.newAtom(s.getClusterIndex()), // zl.nth 14 = cluster_index
+                                Atom.newAtom(s.getVoiceIndexInCluster()) // zl.nth 15 = voice_index_in_cluster
                             });
                 });
             });
@@ -126,7 +127,6 @@ public class AttentionTracker extends JitMaxObject {
 //        }));
     }
 
-
     @Override
     protected void loadbang() {
         super.loadbang();
@@ -136,8 +136,7 @@ public class AttentionTracker extends JitMaxObject {
     }
 
     @SuppressWarnings("unused")
-    public void jit_matrix(String s)
-    {
+    public void jit_matrix(String s) {
         var shouldLowerLoggingLevelInTheEnd = verboseLoggingCounter.decrementAndGet() == 0;
 
         try {
@@ -184,7 +183,7 @@ public class AttentionTracker extends JitMaxObject {
 
     @SuppressWarnings("unused")
     public void amplitudePower(double power) {
-        log.info("aplitudePower=" + power);
+        log.info("amplitudePower=" + power);
         algo.setAmplitudePower(power);
     }
 
@@ -196,6 +195,10 @@ public class AttentionTracker extends JitMaxObject {
 
     @SuppressWarnings("unused")
     public void gridspec(int[] gridDims) {
+        if (gridDims.length != 2) {
+            log.severe("gridspec must have length 2");
+        } else
+            log.info("gridspec=%d %d".formatted(gridDims[0], gridDims[1]));
         gridSize.onNext(Dim.create(gridDims));
     }
 
@@ -203,7 +206,7 @@ public class AttentionTracker extends JitMaxObject {
 
     @SuppressWarnings("unused")
     public void verboseFrames(int framesCount) {
-        log.info("verboseFrames: Enabling verbose logging for %d frames".formatted( framesCount));
+        log.info("verboseFrames: Enabling verbose logging for %d frames".formatted(framesCount));
         verboseLoggingCounter.set(framesCount);
         setLoggingLevel(Level.FINEST);
     }
@@ -211,12 +214,12 @@ public class AttentionTracker extends JitMaxObject {
     @SuppressWarnings("unused")
     public void setVerboseLogging(boolean verbose) {
         var level = verbose ? Level.FINEST : Level.INFO;
-        log.info("setVerboseLogging: verbose logging %s".formatted( verbose ? "ON" : "OFF"));
+        log.info("setVerboseLogging: verbose logging %s".formatted(verbose ? "ON" : "OFF"));
         setLoggingLevel(level);
     }
 
     public void setLoggingLevel(Level level) {
-        log.info("Setting level to %s".formatted( level));
+        log.info("Setting level to %s".formatted(level));
         log.getParent().setLevel(level);
     }
 
@@ -234,10 +237,9 @@ public class AttentionTracker extends JitMaxObject {
     }
 
     private void processAttentionMatrix(Matrix jm) {
-        frameInBm.lap(()-> {
+        frameInBm.lap(() -> {
             algo.accept(jm);
         });
     }
 
 }
-

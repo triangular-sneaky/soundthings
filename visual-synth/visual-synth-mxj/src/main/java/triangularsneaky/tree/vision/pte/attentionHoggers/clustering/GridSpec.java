@@ -1,23 +1,17 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.clustering;
 
-import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.subjects.BehaviorSubject;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Rect;
-import triangularsneaky.tree.vision.pte.attentionHoggers.util.Dim;
-import triangularsneaky.tree.vision.pte.attentionHoggers.util.Pair;
 
-public class GridSpec implements ClusterSpec {
-
-    int columns;
-    int rows;
-    private int width;
-    private int height;
-
-    public GridSpec(int columns, int rows, int width, int height) {
-        this.columns = columns;
-        this.rows = rows;
-        this.width = width;
-        this.height = height;
+public record GridSpec(
+        int columns,
+        int rows,
+        int width,
+        int height
+) implements ClusterSpec {
+   public GridSpec {
+        if (columns <= 0 || rows <= 0 || width <= 0 || height <= 0) {
+            throw new IllegalArgumentException("All gridspec parameters must be positive: ");
+        }
     }
 
     @Override
