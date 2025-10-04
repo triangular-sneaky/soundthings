@@ -11,6 +11,9 @@ public class Hoggers {
         private final int w;
         private final int h;
         private final int area;
+        private int clusterIndex = -1;
+        private int voiceIndexInCluster = -1;
+
 
         public int getLastTimestamp() {
             return lastTimestamp;
@@ -94,6 +97,22 @@ public class Hoggers {
 
         public int getId() {
             return id;
+        }
+
+        public int getClusterIndex() {
+            return clusterIndex;
+        }
+
+        public void setClusterIndex(int clusterIndex) {
+            this.clusterIndex = clusterIndex;
+        }
+
+        public int getVoiceIndexInCluster() {
+            return voiceIndexInCluster;
+        }
+
+        public void setVoiceIndexInCluster(int voiceIndexInCluster) {
+            this.voiceIndexInCluster = voiceIndexInCluster;
         }
     }
 

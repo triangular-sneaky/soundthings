@@ -6,6 +6,7 @@ import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Rect;
 import triangularsneaky.tree.vision.pte.attentionHoggers.SlotsStorage;
 import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
+import triangularsneaky.tree.vision.pte.attentionHoggers.util.Dim;
 
 import java.util.*;
 import java.util.function.DoublePredicate;
@@ -38,11 +39,6 @@ public class BitmapAttentionTrackingAlgo extends AttentionTrackingAlgoBase{
     AttentionElement[][] detectedElementsBitmap = null;
     public SlotsStorage slotsStorage = new SlotsStorage(timestamp);
 
-    public record Dim(int x, int y) {
-        public static Dim create(int[] dims) {
-            return new Dim(dims[0], dims[1]);
-        }
-    }
     final BehaviorSubject<Dim> dims = BehaviorSubject.create();
 
     @Override

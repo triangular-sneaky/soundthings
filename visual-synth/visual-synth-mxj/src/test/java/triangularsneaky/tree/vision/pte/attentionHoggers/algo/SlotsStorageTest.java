@@ -7,6 +7,7 @@ import triangularsneaky.tree.vision.pte.attentionHoggers.AttentionElement;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Rect;
 import triangularsneaky.tree.vision.pte.attentionHoggers.SlotsStorage;
+import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -23,6 +24,7 @@ public class SlotsStorageTest {
 
     @BeforeEach
     void setup() {
+        LogManager.deactivate();
         storage = new SlotsStorage(timestamp);
         maxSlotsCount = 0;
     }

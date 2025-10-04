@@ -1,10 +1,12 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.algo;
 
 import io.reactivex.rxjava3.observers.TestObserver;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Hoggers;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.TestMatrix;
+import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -25,6 +27,7 @@ class AttentionTrackingAlgoTest {
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
+        LogManager.deactivate();
         algo = new BitmapAttentionTrackingAlgo(
                 attentionSpan, 0.9, 2, 0.0,
                 v -> v > 0, new LinearAmpAndADEnvelope(10.0, 1.0, 1, 2));

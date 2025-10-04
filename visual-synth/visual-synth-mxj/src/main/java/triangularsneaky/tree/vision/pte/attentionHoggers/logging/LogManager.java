@@ -18,6 +18,10 @@ public class LogManager {
 
     private static AtomicBoolean isLoggingSetup = new AtomicBoolean(false);
 
+    public static void deactivate() {
+        isLoggingSetup.set(true);
+    }
+
     public static String loadResourceFromJar(String jarPath, String resourceName) {
         try (JarFile jarFile = new JarFile(jarPath)) {
             Enumeration<JarEntry> entries = jarFile.entries();

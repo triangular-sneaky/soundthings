@@ -1,15 +1,19 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.max;
 
+import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
 import triangularsneaky.tree.vision.pte.attentionHoggers.LinearAmpAndADEnvelope;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Matrix;
 import triangularsneaky.tree.vision.pte.attentionHoggers.algo.BitmapAttentionTrackingAlgo;
 import com.cycling74.max.*;
-import com.cycling74.jitter.*;
+import triangularsneaky.tree.vision.pte.attentionHoggers.clustering.ClusterIndexer;
+import triangularsneaky.tree.vision.pte.attentionHoggers.clustering.GridSpec;
 import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
+import triangularsneaky.tree.vision.pte.attentionHoggers.util.Dim;
+import triangularsneaky.tree.vision.pte.attentionHoggers.util.Pair;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +36,10 @@ public class AttentionTracker extends JitMaxObject {
     BitmapAttentionTrackingAlgo algo;
     CompositeDisposable subscription = null;
 
+
+    BehaviorSubject<Dim> gridSize =
+            BehaviorSubject.create();
+
     public AttentionTracker() {
 
         createAlgo();
@@ -42,7 +50,15 @@ public class AttentionTracker extends JitMaxObject {
         setOutletAssist(new String[] {"Attention slots", "Aux"});
         log.info("Started up");
         outletBang(getInfoIdx());
-
+        Observable
+                .combineLatest(algo.dims(), gridSize, Pair::new)
+                .subscribe(p -> {
+                    algo.slotsStorage.setClusterIndexer(
+                            Optional.ofNullable(p.b())
+                            .map(gridSize -> new GridSpec(gridSize.x(), gridSize.y(), p.a().x(), p.a().y()))
+                            .map(ClusterIndexer::new)
+                            .orElse(null));
+                });
     }
 
     private void createAlgo() {
@@ -73,7 +89,7 @@ public class AttentionTracker extends JitMaxObject {
 
                     outlet(0,
                             new Atom[]{
-                                    Atom.newAtom(s.slot() + 1),       // $1 = voice number
+                                    Atom.newAtom(s.slot() + 1),       // $1 = voice number (1-based)
                                     Atom.newAtom(s.age()),                  // $2 = age
 
                                     Atom.newAtom(s.x()),                    // $3 = l
@@ -93,7 +109,8 @@ public class AttentionTracker extends JitMaxObject {
                                     Atom.newAtom((1.0 * s.x()) / dim.x() ),   // zl.nth 12 = x_norm_01
                                     Atom.newAtom((1.0 * s.y()) / dim.y() ),   // zl.nth 13 = y_norm_01
 
-
+                                    Atom.newAtom(s.getClusterIndex()),          // zl.nth 14 = cluster_index
+                                    Atom.newAtom(s.getVoiceIndexInCluster())    // zl.nth 15 = voice_index_in_cluster
                             });
                 });
             });
@@ -166,7 +183,7 @@ public class AttentionTracker extends JitMaxObject {
     }
 
     @SuppressWarnings("unused")
-    public void aplitudePower(double power) {
+    public void amplitudePower(double power) {
         log.info("aplitudePower=" + power);
         algo.setAmplitudePower(power);
     }
@@ -175,6 +192,11 @@ public class AttentionTracker extends JitMaxObject {
     public void lpf(double cutoff) {
         log.info("lpf=" + cutoff);
         algo.setValueLpf(v -> v > cutoff);
+    }
+
+    @SuppressWarnings("unused")
+    public void gridspec(int[] gridDims) {
+        gridSize.onNext(Dim.create(gridDims));
     }
 
     AtomicInteger verboseLoggingCounter = new AtomicInteger(-1);

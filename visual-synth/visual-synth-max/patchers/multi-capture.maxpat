@@ -18,7 +18,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-15",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -178,7 +178,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 240.666673839092255, 370.666677713394165, 207.079321801662445, 24.0 ],
-					"text" : "vdevice 1 format 15"
+					"text" : "0 format 15"
 				}
 
 			}
@@ -256,7 +256,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "{\n\t\"FaceTime HD Camera\" : [ \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" ],\n\t\"C270 HD WEBCAM\" : [ \"YUY2 - 422YpCbCr8_yuvs - 160 x 120\", \"NV12 - 420YpCbCr8BiPlanar - 160 x 120\", \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\", \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\", \"YUY2 - 422YpCbCr8_yuvs - 320 x 176\", \"NV12 - 420YpCbCr8BiPlanar - 320 x 176\", \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\", \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\", \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\", \"YUY2 - 422YpCbCr8_yuvs - 432 x 240\", \"NV12 - 420YpCbCr8BiPlanar - 432 x 240\", \"YUY2 - 422YpCbCr8_yuvs - 544 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 544 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 360\", \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 752 x 416\", \"YUY2 - 422YpCbCr8_yuvs - 752 x 416\", \"NV12 - 420YpCbCr8BiPlanar - 800 x 448\", \"YUY2 - 422YpCbCr8_yuvs - 800 x 448\", \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\", \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\", \"NV12 - 420YpCbCr8BiPlanar - 864 x 480\", \"YUY2 - 422YpCbCr8_yuvs - 864 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 960 x 544\", \"YUY2 - 422YpCbCr8_yuvs - 960 x 544\", \"NV12 - 420YpCbCr8BiPlanar - 960 x 720\", \"YUY2 - 422YpCbCr8_yuvs - 960 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 1024 x 576\", \"YUY2 - 422YpCbCr8_yuvs - 1024 x 576\", \"NV12 - 420YpCbCr8BiPlanar - 1184 x 656\", \"YUY2 - 422YpCbCr8_yuvs - 1184 x 656\", \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 1280 x 960\", \"YUY2 - 422YpCbCr8_yuvs - 1280 x 960\" ],\n\t\"USB Camera\" : [ \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\", \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\", \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\", \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\", \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\", \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\", \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\", \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\" ]\n}\n",
+					"code" : "{\n\t\"FaceTime HD Camera\" : [ \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" ]\n}\n",
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
 					"fontsize" : 12.0,
@@ -342,7 +342,7 @@
 					"presentation_rect" : [ 34.482758045196533, 186.431032180786133, 41.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "live.dial",
+							"parameter_longname" : "live.dial[8]",
 							"parameter_mmax" : 60.0,
 							"parameter_mmin" : 1.0,
 							"parameter_modmode" : 3,
@@ -672,7 +672,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 678.33335354924202, 870.333359271287918, 50.0, 24.0 ],
-					"text" : "2"
+					"text" : "0"
 				}
 
 			}
@@ -818,15 +818,15 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-66",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 464.800006926059723, 375.20000559091568, 207.079321801662445, 56.0 ],
+					"patching_rect" : [ 464.800006926059723, 375.20000559091568, 210.0, 40.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 256.022984266281128, 210.431032180786133, 476.27119779586792, 24.0 ],
-					"text" : "\"C270 HD WEBCAM\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\""
+					"text" : "0 \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\""
 				}
 
 			}
@@ -1177,7 +1177,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "0, \"USB Camera\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r1, \"FaceTime HD Camera\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\";\r//2, \"FaceTime HD Camera\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\";\r2, \"C270 HD WEBCAM\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r",
+					"code" : "//0, \"USB Camera\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r1, \"FaceTime HD Camera\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\";\r//2, \"C270 HD WEBCAM\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r",
 					"editlocked" : 1,
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
@@ -2000,53 +2000,6 @@
 
 			}
  ],
-		"parameters" : 		{
-			"obj-11" : [ "button[1]", "button[1]", 0 ],
-			"obj-110" : [ "live.dial", "target fps", 0 ],
-			"obj-1::obj-1" : [ "live.dial[6]", "fps", 0 ],
-			"parameterbanks" : 			{
-				"0" : 				{
-					"index" : 0,
-					"name" : "",
-					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ],
-					"buttons" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
-				}
-
-			}
-,
-			"inherited_shortname" : 1
-		}
-,
-		"parameter_map" : 		{
-			"key" : 			{
-				"button[1]" : 				{
-					"srcname" : "0.modifiers.-27.code.key",
-					"min" : 0.0,
-					"max" : 1.0,
-					"flags" : 1,
-					"trigger" : 1
-				}
-
-			}
-
-		}
-,
-		"dependency_cache" : [ 			{
-				"name" : "camera.maxpat",
-				"bootpath" : "~/_art/soundthings/visual-synth/visual-synth-max/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "sneaky.resizePreview.maxpat",
-				"bootpath" : "~/_art/soundthings/visual-synth/visual-synth-max/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
- ],
-		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "my default patcher",
 				"default" : 				{

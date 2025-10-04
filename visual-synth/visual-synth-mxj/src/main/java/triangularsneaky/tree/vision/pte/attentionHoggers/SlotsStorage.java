@@ -1,5 +1,6 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers;
 
+import triangularsneaky.tree.vision.pte.attentionHoggers.clustering.ClusterIndexer;
 import triangularsneaky.tree.vision.pte.attentionHoggers.logging.LogManager;
 
 import java.util.*;
@@ -13,6 +14,16 @@ public class SlotsStorage {
     Map<Integer, Hoggers.AttentionSlot> idToSlots = new HashMap<>();
     ArrayList<Hoggers.AttentionSlot> slots = new ArrayList<>();
     ArrayList<Hoggers.AttentionSlot> unpinnedSlots = new ArrayList<>();
+
+    public ClusterIndexer getClusterIndexer() {
+        return clusterIndexer;
+    }
+
+    public void setClusterIndexer(ClusterIndexer clusterIndexer) {
+        this.clusterIndexer = clusterIndexer;
+    }
+
+    ClusterIndexer clusterIndexer;
 
     private static final Logger log = LogManager.getLogger(SlotsStorage.class);
 
@@ -35,9 +46,18 @@ public class SlotsStorage {
         log.fine("mapElementsToSlots: update existing and create new slots");
         for (var e : survivors) {
             var slot = idToSlots.computeIfAbsent(e.getId(), id -> {
-                Hoggers.AttentionSlot s = new Hoggers.AttentionSlot(e.getId(), e.rect().x(), e.rect().y(), e.rect().w(), e.rect().h(), e.rect().area(), e.bornTimestamp());
+                Hoggers.AttentionSlot s = new Hoggers.AttentionSlot(
+                        e.getId(),
+                        e.rect().x(), e.rect().y(), e.rect().w(), e.rect().h(),
+                        e.rect().area(),
+                        e.bornTimestamp());
                 log.finer(() -> "mapElementsToSlots: creating new slot for id %d -> %s".formatted(id, s));
                 unpinnedSlots.add(s);
+                if (clusterIndexer != null) {
+                    clusterIndexer.assignToCluster(s, e.rect());
+                    log.finer(() -> "Assigned id=%d to cluster %d as voiceIdx=%d".formatted(s.getId(),
+                            s.getClusterIndex(), s.getVoiceIndexInCluster()));
+                }
                 return s;
             });
             log.finer(() -> "mapElementsToSlots: touching slot %s".formatted(slot));
@@ -53,6 +73,12 @@ public class SlotsStorage {
                     log.finer("mapElementsToSlots: stale slot found slots[%d] %s".formatted(i, s));
 
                 idToSlots.remove(s.getId());
+                if (clusterIndexer != null) {
+                    if (log.isLoggable(Level.FINER))
+                        log.finer("Unassigning id=%d voiceIdx=%d from cluster %d".formatted(s.getId(),
+                            s.getVoiceIndexInCluster(), s.getClusterIndex()));
+                    clusterIndexer.unassignFromCluster(s);
+                }
                 s = null;
             }
             if (s == null) {
