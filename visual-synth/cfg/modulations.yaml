@@ -34,7 +34,7 @@ cc_sets:
     - param: *y01_in_cluster #7
       max: 1.0
 clusterModulations:
-  1:
+  0:
     pitch: *area
     at: *eff_amp
     ccs: *default_cc_set

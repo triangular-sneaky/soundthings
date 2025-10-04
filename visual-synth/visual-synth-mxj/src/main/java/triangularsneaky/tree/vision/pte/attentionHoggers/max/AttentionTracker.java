@@ -111,7 +111,10 @@ public class AttentionTracker extends JitMaxObject {
                                 Atom.newAtom((1.0 * s.y()) / dim.y()), // zl.nth 13 = y_norm_01
 
                                 Atom.newAtom(s.getClusterIndex()), // zl.nth 14 = cluster_index
-                                Atom.newAtom(s.getVoiceIndexInCluster()) // zl.nth 15 = voice_index_in_cluster
+                                Atom.newAtom(s.getVoiceIndexInCluster()), // zl.nth 15 = voice_index_in_cluster
+
+                                Atom.newAtom(s.getX01InCluster()), // zl.nth 16 = cluster_index
+                                Atom.newAtom(s.getY01InCluster()) // zl.nth 17 = voice_index_in_cluster
                             });
                 });
             });

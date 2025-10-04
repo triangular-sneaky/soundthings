@@ -1,7 +1,7 @@
 package triangularsneaky.tree.vision.pte.attentionHoggers.clustering;
 
 import triangularsneaky.tree.vision.pte.attentionHoggers.Rect;
-import triangularsneaky.tree.vision.pte.attentionHoggers.util.IntBiConsumer;
+import triangularsneaky.tree.vision.pte.attentionHoggers.util.DoubleBiConsumer;
 
 public record GridSpec(
         int columns,
@@ -21,7 +21,7 @@ public record GridSpec(
     }
 
     @Override
-    public int mapToCluster(Rect rect, IntBiConsumer coordinatesInClusterConsumer) {
+    public int mapToCluster(Rect rect, DoubleBiConsumer coordinatesInClusterConsumer) {
         int midX = Math.clamp( rect.x() + rect.w() / 2, 0,width - 1);
 
         int midY = Math.clamp(rect.y() + rect.h() / 2, 0, height-1);
@@ -30,8 +30,8 @@ public record GridSpec(
         int rowIndex = midY * rows / height;
         if (coordinatesInClusterConsumer != null) {
             coordinatesInClusterConsumer.apply(
-                    midX - colIndex * width / columns,
-                    midY - rowIndex * height / rows);
+                    midX / (double)width * columns - colIndex ,
+                    midY / (double)height * rows - rowIndex);
         }
 
         return getClusterIndexFromGridIndex(rowIndex, colIndex);
