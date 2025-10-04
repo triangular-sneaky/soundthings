@@ -4,8 +4,6 @@ import triangularsneaky.tree.vision.pte.attentionHoggers.Hoggers;
 import triangularsneaky.tree.vision.pte.attentionHoggers.Rect;
 import triangularsneaky.tree.vision.pte.attentionHoggers.util.IntAllocator;
 
-import java.util.stream.Stream;
-
 public class ClusterIndexer {
 
     private final ClusterSpec clusterSpec;
@@ -23,15 +21,17 @@ public class ClusterIndexer {
     }
 
     public void assignToCluster(Hoggers.AttentionSlot slot, Rect rect) {
-        var clusterIndex = coalesceIndex(clusterSpec.getClusterIndex(rect));
+        var clusterIndex = coalesceIndex(
+                clusterSpec.mapToCluster(rect, (x, y) -> {
+                            slot.setX01InCluster(x);
+                            slot.setY01InCluster(y);
+                        }));
         slot.setClusterIndex(clusterIndex);
         slot.setVoiceIndexInCluster(indexAllocators[clusterIndex].allocate());
     }
 
     private int coalesceIndex(int clusterIndex) {
-        if (clusterIndex < 0) return 0;
-        if (clusterIndex >= indexAllocators.length) return Math.max(0, indexAllocators.length - 1);
-        return clusterIndex;
+        return Math.clamp(clusterIndex, 0, indexAllocators.length - 1);
     }
 
     public void unassignFromCluster(Hoggers.AttentionSlot slot) {

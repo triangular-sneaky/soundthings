@@ -21,7 +21,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 808.0, 1041.0, 50.0, 35.0 ],
-					"text" : "13.707375"
+					"text" : "11.672958"
 				}
 
 			}
@@ -1408,7 +1408,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
 													"parameter_enable" : 0,
-													"patching_rect" : [ 3186.666761636734009, 1699.333383977413177, 24.0, 24.0 ]
+													"patching_rect" : [ 3201.200047701597214, 1575.200023472309113, 24.0, 24.0 ]
 												}
 
 											}
@@ -1419,7 +1419,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 5,
 													"outlettype" : [ "dictionary", "", "", "", "" ],
-													"patching_rect" : [ 3174.000094592571259, 1732.000051617622375, 187.0, 22.0 ],
+													"patching_rect" : [ 3186.666761636734009, 1623.600024193525314, 186.0, 22.0 ],
 													"saved_object_attributes" : 													{
 														"embed" : 0,
 														"legacy" : 0,
@@ -1427,7 +1427,7 @@
 														"parameter_mappable" : 0
 													}
 ,
-													"text" : "dict mods other/modulations.yaml"
+													"text" : "dict mods ../cfg/modulations.yaml"
 												}
 
 											}
@@ -1437,7 +1437,7 @@
 													"maxclass" : "dict.view",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 3126.666759848594666, 1904.000056743621826, 100.0, 100.0 ]
+													"patching_rect" : [ 2971.615843623876572, 1903.493528634309769, 248.908307254314423, 511.790414214134216 ]
 												}
 
 											}
@@ -1461,7 +1461,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 469.0, 78.0, 50.0, 35.0 ],
-													"text" : "13.707375"
+													"text" : "11.672958"
 												}
 
 											}
@@ -10179,7 +10179,9 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-32", 0 ],
-													"source" : [ "obj-112", 0 ]
+													"source" : [ "obj-112", 0 ],
+													"watchpoint_flags" : 5,
+													"watchpoint_id" : 48
 												}
 
 											}
