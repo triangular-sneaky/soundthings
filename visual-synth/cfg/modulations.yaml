@@ -20,7 +20,7 @@ params:
 cc_sets:
   - &default_cc_set
     - param: *age #1
-      max: 127 
+      max: 300 
     - param: *area #2
       max: 127
     - param: *amp  #3
