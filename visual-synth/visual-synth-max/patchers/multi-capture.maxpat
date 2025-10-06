@@ -16,6 +16,42 @@
 		"style" : "my default patcher",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-17",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 492.0, 903.0, 88.0, 24.0 ],
+					"text" : "close, open"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 639.610000000000014, 1044.880000000000109, 29.5, 24.0 ],
+					"text" : "5"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 492.0, 989.169999999999959, 786.0, 24.0 ],
+					"text" : "1 vdevice 1 format 1, 2 vdevice 2 format 1, 3 vdevice 3 format 1, 4 vdevice 4 format 1, 5 vdevice 5 format 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-23",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -304,7 +340,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "{\n\t\"FaceTime HD Camera\" : [ \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" ],\n\t\"USB Camera\" : [ \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\", \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\", \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\", \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\", \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\", \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\", \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\", \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\" ]\n}\n",
+					"code" : "{\n\t\"FaceTime HD Camera\" : [ \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\" ],\n\t\"USB Camera\" : [ \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\", \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\", \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\", \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\", \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\", \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\", \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\", \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\", \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\", \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\", \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\", \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\", \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\", \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\", \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\", \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\", \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\", \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\", \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\", \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\", \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\", \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\", \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\", \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\", \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\", \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\", \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\", \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\", \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\", \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\", \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\", \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\", \"NV12 - 420YpCbCr8BiPlanar - 176 x 144\", \"YUY2 - 422YpCbCr8_yuvs - 176 x 144\", \"NV12 - 420YpCbCr8BiPlanar - 320 x 240\", \"YUY2 - 422YpCbCr8_yuvs - 320 x 240\", \"NV12 - 420YpCbCr8BiPlanar - 352 x 288\", \"YUY2 - 422YpCbCr8_yuvs - 352 x 288\", \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\", \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\", \"NV12 - 420YpCbCr8BiPlanar - 800 x 600\", \"YUY2 - 422YpCbCr8_yuvs - 800 x 600\", \"NV12 - 420YpCbCr8BiPlanar - 1280 x 720\", \"YUY2 - 422YpCbCr8_yuvs - 1280 x 720\" ]\n}\n",
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
 					"fontsize" : 12.0,
@@ -484,9 +520,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 86.5, 1483.0, 250.0, 93.0 ],
+					"patching_rect" : [ 86.5, 1483.0, 250.0, 136.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ -1.149425268173218, 1.425284862518311, 250.0, 93.0 ],
+					"presentation_rect" : [ -1.149425268173218, 1.425284862518311, 250.0, 136.0 ],
 					"sync" : 1
 				}
 
@@ -720,7 +756,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 678.33335354924202, 870.333359271287918, 50.0, 24.0 ],
-					"text" : "1"
+					"text" : "0"
 				}
 
 			}
@@ -896,7 +932,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 87.0, 1008.0, 700.0 ],
+						"rect" : [ 34.0, 34.0, 1372.0, 832.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"boxes" : [ 							{
 								"box" : 								{
@@ -1225,7 +1261,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "0, \"USB Camera\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r//, \"FaceTime HD Camera\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\";\r1, \"FaceTime HD Camera\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\";\r//2, \"C270 HD WEBCAM\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r",
+					"code" : "//0, \"USB Camera\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r//, \"FaceTime HD Camera\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\";\r0, \"FaceTime HD Camera\" \"NV12 - 420YpCbCr8BiPlanar - 640 x 480\";\r//2, \"C270 HD WEBCAM\" \"YUY2 - 422YpCbCr8_yuvs - 640 x 480\";\r",
 					"editlocked" : 1,
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
@@ -1619,6 +1655,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-102", 0 ],
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-136", 1 ],
 					"source" : [ "obj-131", 0 ]
 				}
@@ -1648,6 +1691,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-102", 0 ],
+					"disabled" : 1,
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -1719,6 +1763,53 @@
 				"patchline" : 				{
 					"destination" : [ "obj-91", 0 ],
 					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-80", 0 ],
+					"order" : 4,
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-81", 0 ],
+					"order" : 3,
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-84", 0 ],
+					"order" : 2,
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-85", 0 ],
+					"order" : 1,
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-86", 0 ],
+					"order" : 0,
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-97", 0 ],
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
@@ -1991,7 +2082,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"order" : 0,
 					"source" : [ "obj-91", 1 ]
 				}
 
@@ -1999,7 +2089,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-97", 0 ],
-					"order" : 1,
+					"disabled" : 1,
 					"source" : [ "obj-91", 1 ]
 				}
 

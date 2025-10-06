@@ -19,23 +19,64 @@ params:
   - &y01_in_cluster 17
 cc_sets:
   - &default_cc_set
-    - param: *age #1
-      max: 300 
-    - param: *area #2
-      max: 127
-    - param: *amp  #3
+    # - param: *age 
+    #   max: 300 
+    # - param: *area 
+    #   max: 32
+    # - param: *amp  
+    #   max: 10.0
+    - param: *eff_amp  
       max: 10.0
-    - param: *eff_amp  #4
-      max: 10.0
-    - param: *angle_norm_01 #5
+    - param: *angle_norm_01 
       max: 1.0
-    - param: *x01_in_cluster #6
+    - param: *x01_in_cluster 
       max: 1.0
-    - param: *y01_in_cluster #7
+    - param: *y01_in_cluster 
       max: 1.0
 clusterModulations:
   0:
-    pitch: *area
+    pitch: 
+      param: *x01_in_cluster
+      min: 21
+      max: 108
     at: *eff_amp
     ccs: *default_cc_set
+    cc_base: 20
+    cc_step: 5
+  1:
+    pitch: 
+      param: *x01_in_cluster
+      min: 15
+      max: 108
+    at: *eff_amp
+    ccs: *default_cc_set
+    cc_base: 20
+    cc_step: 5
+  2:
+    pitch: 
+      param: *x01_in_cluster
+      min: 21
+      max: 108
+    at: *eff_amp
+    ccs: *default_cc_set
+    cc_base: 20
+    cc_step: 5
+  3:
+    pitch: 
+      param: *x01_in_cluster
+      min: 21
+      max: 108
+    at: *eff_amp
+    ccs: *default_cc_set
+    cc_base: 20
+    cc_step: 5
+  4:
+    pitch: 
+      param: *x01_in_cluster
+      min: 21
+      max: 108
+    at: *eff_amp
+    ccs: *default_cc_set
+    cc_base: 20
+    cc_step: 5
     
