@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 77.0, 640.0, 614.0 ],
+		"rect" : [ 134.0, 159.0, 640.0, 614.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"style" : "my default patcher",
 		"boxes" : [ 			{
@@ -1859,6 +1859,10 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 1145.0, 1240.0, 45.0, 40.0 ],
+									"saved_object_attributes" : 									{
+										"attr_comment" : ""
+									}
+,
 									"text" : "out~ 2"
 								}
 
@@ -1870,10 +1874,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 890.0, 1240.0, 45.0, 40.0 ],
-									"saved_object_attributes" : 									{
-										"attr_comment" : ""
-									}
-,
 									"text" : "out~ 1"
 								}
 
@@ -3867,10 +3867,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 208.791218996047974, 45.054947257041931, 108.791214108467102, 47.0 ],
-					"saved_object_attributes" : 					{
-						"attr_comment" : ""
-					}
-,
 					"text" : "in 1"
 				}
 
@@ -4375,7 +4371,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-4", 0 ],
 					"watchpoint_flags" : 5,
-					"watchpoint_id" : 46
+					"watchpoint_id" : 50
 				}
 
 			}

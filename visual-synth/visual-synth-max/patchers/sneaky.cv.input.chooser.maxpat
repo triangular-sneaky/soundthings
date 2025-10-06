@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 888.0, 779.0 ],
+		"rect" : [ 34.0, 87.0, 684.0, 779.0 ],
 		"openinpresentation" : 1,
 		"gridsize" : [ 15.0, 15.0 ],
 		"boxes" : [ 			{
@@ -41,8 +41,8 @@
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
+					"enablehscroll" : 1,
+					"enablevscroll" : 1,
 					"id" : "obj-42",
 					"lockeddragscroll" : 1,
 					"lockedsize" : 0,
@@ -54,7 +54,7 @@
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 1509.0, 18.0, 544.0, 445.186029732227325 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 260.0, 0.0, 781.0, 239.0 ],
+					"presentation_rect" : [ 260.0, 0.0, 1255.0, 251.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1815,7 +1815,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 712.977148532867432, 9.923664808273315, 232.061084747314453, 172.519095897674561 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1047.0, 17.099248886108398, 225.0, 180.0 ],
+					"presentation_rect" : [ 1517.0, 0.0, 225.0, 180.0 ],
 					"saved_attribute_attributes" : 					{
 						"candicane2" : 						{
 							"expression" : ""
