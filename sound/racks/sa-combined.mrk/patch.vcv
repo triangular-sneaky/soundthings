@@ -1,0 +1,1 @@
+{"version": "0.6.4", "modules": [{"plugin": "Core", "version": "0.6.4", "model": "AudioInterfaceIn8", "params": [], "data": {"IAAOnly": 0}, "sumPolyInputs": false, "pos": [0, 0], "id": 1}, {"plugin": "Core", "version": "0.6.4", "model": "AudioInterface8", "params": [], "sumPolyInputs": true, "pos": [3, 0], "id": 2}], "wires": [], "polyChannels": 1}

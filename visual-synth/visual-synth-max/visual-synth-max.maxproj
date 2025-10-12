@@ -2,7 +2,7 @@
 	"name" : "visual-synth-max",
 	"version" : 1,
 	"creationdate" : 3801980044,
-	"modificationdate" : 3841886339,
+	"modificationdate" : 3843025134,
 	"viewrect" : [ 252.0, 106.0, 575.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -22,6 +22,16 @@
 			}
 ,
 			"midi-playground.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"rain-instrument.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"midi-teacher.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
