@@ -20,7 +20,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 808.0, 1041.0, 65.0, 22.0 ],
-					"text" : "9.23"
+					"text" : "41.836916"
 				}
 
 			}
@@ -1406,9 +1406,9 @@
 																"filename" : "IMG_2309.MOV",
 																"filekind" : "moviefile",
 																"id" : "u024001524",
-																"loop" : 0,
+																"loop" : 1,
 																"content_state" : 																{
-
+																	"loop" : 1
 																}
 
 															}
@@ -1428,9 +1428,9 @@
 																"filename" : "IMG_2351.MOV",
 																"filekind" : "moviefile",
 																"id" : "u322026071",
-																"loop" : 0,
+																"loop" : 1,
 																"content_state" : 																{
-
+																	"loop" : 1
 																}
 
 															}
@@ -1450,9 +1450,9 @@
 																"filename" : "20220212_184122.jpg",
 																"filekind" : "moviefile",
 																"id" : "u228027082",
-																"loop" : 0,
+																"loop" : 1,
 																"content_state" : 																{
-
+																	"loop" : 1
 																}
 
 															}
@@ -1549,9 +1549,9 @@
 																"filename" : "20211224_004145~3.mp4",
 																"filekind" : "moviefile",
 																"id" : "u898027091",
-																"loop" : 0,
+																"loop" : 1,
 																"content_state" : 																{
-
+																	"loop" : 1
 																}
 
 															}
@@ -1560,9 +1560,9 @@
 																"filename" : "IMG_2976.MOV",
 																"filekind" : "moviefile",
 																"id" : "u946027092",
-																"loop" : 0,
+																"loop" : 1,
 																"content_state" : 																{
-
+																	"loop" : 1
 																}
 
 															}
@@ -1579,6 +1579,8 @@
 													"output_texture" : 1,
 													"parameter_enable" : 0,
 													"patching_rect" : [ 1552.0, 2320.0, 150.0, 92.0 ],
+													"presentation" : 1,
+													"presentation_rect" : [ 1024.742210626602173, 446.391727566719055, 234.257789373397827, 360.824722051620483 ],
 													"saved_attribute_attributes" : 													{
 														"candicane2" : 														{
 															"expression" : ""
@@ -1658,7 +1660,7 @@
 													"numoutlets" : 0,
 													"patching_rect" : [ 967.0, 2355.0, 150.0, 20.0 ],
 													"presentation" : 1,
-													"presentation_rect" : [ 1022.234233677387238, 549.0, 150.0, 20.0 ],
+													"presentation_rect" : [ 1024.254850327968597, 947.21649444103241, 150.0, 20.0 ],
 													"text" : "press for glitch!"
 												}
 
@@ -1724,7 +1726,7 @@
 													"parameter_enable" : 0,
 													"patching_rect" : [ 932.0, 2347.0, 24.0, 24.0 ],
 													"presentation" : 1,
-													"presentation_rect" : [ 987.234233677387238, 541.0, 24.0, 24.0 ]
+													"presentation_rect" : [ 990.234233677387238, 940.0, 24.0, 24.0 ]
 												}
 
 											}
@@ -2270,7 +2272,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 469.0, 78.0, 65.0, 22.0 ],
-													"text" : "9.23"
+													"text" : "41.836916"
 												}
 
 											}
@@ -2319,7 +2321,7 @@
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 678.0, 1395.0, 289.0, 22.0 ],
 													"presentation" : 1,
-													"presentation_rect" : [ 1192.0, 629.0, 289.0, 22.0 ],
+													"presentation_rect" : [ 848.0, 1010.309221744537354, 289.0, 22.0 ],
 													"text" : "setvalue 1 mod vca amp, setvalue 1 mod osc sinsaw"
 												}
 
@@ -2333,7 +2335,7 @@
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 654.0, 1339.0, 296.0, 22.0 ],
 													"presentation" : 1,
-													"presentation_rect" : [ 1192.0, 601.0, 296.0, 22.0 ],
+													"presentation_rect" : [ 848.0, 982.474171757698059, 296.0, 22.0 ],
 													"text" : "setvalue 1 mod vca fixed 1, setvalue 1 mod osc midi 1"
 												}
 
