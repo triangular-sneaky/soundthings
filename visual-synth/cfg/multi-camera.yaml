@@ -1,15 +1,30 @@
 ---
 camera_sets:
+  # - cam: &default_cam 
+  #     name: "USB Camera"
+  #     # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
+  #     format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+  #   device_idx: 0
+  # - cam: *default_cam 
+  #   device_idx: 1
+  # - cam: *default_cam 
+  #   device_idx: 2
+  # - cam: *default_cam 
+  #   device_idx: 3
+  # - cam: *default_cam 
+  #   device_idx: 4
+
+  ## mac camera only -- for testing
   - cam: &default_cam 
-      name: "USB Camera"
+      name: "FaceTime HD Camera"
       # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
-      format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+      format: "NV12 - 420YpCbCr8BiPlanar - 640 x 480"
     device_idx: 0
   - cam: *default_cam 
-    device_idx: 1
+    device_idx: 0
   - cam: *default_cam 
-    device_idx: 2
+    device_idx: 0
   - cam: *default_cam 
-    device_idx: 3
+    device_idx: 0
   - cam: *default_cam 
-    device_idx: 4
+    device_idx: 0
