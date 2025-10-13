@@ -20,7 +20,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 808.0, 1041.0, 65.0, 22.0 ],
-					"text" : "41.836916"
+					"text" : "20.825375"
 				}
 
 			}
@@ -673,7 +673,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 34.0, 1372.0, 832.0 ],
+						"rect" : [ 34.0, 87.0, 1372.0, 779.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"boxes" : [ 							{
 								"box" : 								{
@@ -1263,11 +1263,39 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ -189.0, -1046.0, 963.0, 1012.0 ],
+										"rect" : [ 346.0, 234.0, 963.0, 779.0 ],
 										"gridsize" : [ 15.0, 15.0 ],
 										"style" : "velvet",
 										"visible" : 1,
 										"boxes" : [ 											{
+												"box" : 												{
+													"id" : "obj-180",
+													"linecount" : 5,
+													"maxclass" : "textedit",
+													"numinlets" : 1,
+													"numoutlets" : 4,
+													"outlettype" : [ "", "int", "", "" ],
+													"parameter_enable" : 0,
+													"patching_rect" : [ 1811.0, 2056.0, 110.0, 83.0 ],
+													"presentation" : 1,
+													"presentation_linecount" : 5,
+													"presentation_rect" : [ 1016.0, 446.0, 110.0, 83.0 ],
+													"text" : "\nrain\n\nwind\nbirds"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-148",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 1800.0, 2404.0, 150.0, 20.0 ],
+													"text" : "video"
+												}
+
+											}
+, 											{
 												"box" : 												{
 													"id" : "obj-178",
 													"maxclass" : "newobj",
@@ -1359,7 +1387,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
 													"patching_rect" : [ 1774.369999999999891, 2441.0, 63.0, 22.0 ],
-													"text" : "qmetro 33"
+													"text" : "qmetro 50"
 												}
 
 											}
@@ -1380,13 +1408,189 @@
 													"clipheight" : 20.0,
 													"data" : 													{
 														"clips" : [ 															{
-																"absolutepath" : "IMG_2158.MOV",
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2158.MOV",
 																"filename" : "IMG_2158.MOV",
 																"filekind" : "moviefile",
-																"id" : "u914027093",
-																"loop" : 0,
+																"id" : "u988026898",
+																"loop" : 1,
 																"content_state" : 																{
+																	"loop" : 1
+																}
 
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2303.MOV",
+																"filename" : "IMG_2303.MOV",
+																"filekind" : "moviefile",
+																"id" : "u900005958",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2309.MOV",
+																"filename" : "IMG_2309.MOV",
+																"filekind" : "moviefile",
+																"id" : "u143026883",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2336.MOV",
+																"filename" : "IMG_2336.MOV",
+																"filekind" : "moviefile",
+																"id" : "u041026884",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2351.MOV",
+																"filename" : "IMG_2351.MOV",
+																"filekind" : "moviefile",
+																"id" : "u020026885",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/20211224_004334.mp4",
+																"filename" : "20211224_004334.mp4",
+																"filekind" : "moviefile",
+																"id" : "u648026886",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/20220212_184122.jpg",
+																"filename" : "20220212_184122.jpg",
+																"filekind" : "moviefile",
+																"id" : "u502026887",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2159.MOV",
+																"filename" : "IMG_2159.MOV",
+																"filekind" : "moviefile",
+																"id" : "u052026888",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2293.MOV",
+																"filename" : "IMG_2293.MOV",
+																"filekind" : "moviefile",
+																"id" : "u643026889",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2319~2.mp4",
+																"filename" : "IMG_2319~2.mp4",
+																"filekind" : "moviefile",
+																"id" : "u373026890",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2327.MOV",
+																"filename" : "IMG_2327.MOV",
+																"filekind" : "moviefile",
+																"id" : "u774026891",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2350.MOV",
+																"filename" : "IMG_2350.MOV",
+																"filekind" : "moviefile",
+																"id" : "u308026892",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2352.MOV",
+																"filename" : "IMG_2352.MOV",
+																"filekind" : "moviefile",
+																"id" : "u159026893",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2361~2.mp4",
+																"filename" : "IMG_2361~2.mp4",
+																"filekind" : "moviefile",
+																"id" : "u727026894",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2430.MOV",
+																"filename" : "IMG_2430.MOV",
+																"filekind" : "moviefile",
+																"id" : "u689026895",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/20211224_004145~3.mp4",
+																"filename" : "20211224_004145~3.mp4",
+																"filekind" : "moviefile",
+																"id" : "u133026896",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
+																}
+
+															}
+, 															{
+																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2976.MOV",
+																"filename" : "IMG_2976.MOV",
+																"filekind" : "moviefile",
+																"id" : "u175026897",
+																"loop" : 1,
+																"content_state" : 																{
+																	"loop" : 1
 																}
 
 															}
@@ -1566,6 +1770,17 @@
 																}
 
 															}
+, 															{
+																"absolutepath" : "black-background.png",
+																"filename" : "black-background.png",
+																"filekind" : "moviefile",
+																"id" : "u713005572",
+																"loop" : 0,
+																"content_state" : 																{
+																	"loop" : 0
+																}
+
+															}
  ]
 													}
 ,
@@ -1580,7 +1795,7 @@
 													"parameter_enable" : 0,
 													"patching_rect" : [ 1552.0, 2320.0, 150.0, 92.0 ],
 													"presentation" : 1,
-													"presentation_rect" : [ 1024.742210626602173, 446.391727566719055, 234.257789373397827, 360.824722051620483 ],
+													"presentation_rect" : [ 219.0, 538.0, 550.0, 376.0 ],
 													"saved_attribute_attributes" : 													{
 														"candicane2" : 														{
 															"expression" : ""
@@ -1635,7 +1850,7 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "bang", "" ],
 													"patching_rect" : [ 1720.0, 2360.0, 230.0, 22.0 ],
-													"text" : "jit.window mywin @size 960 600 @fsaa 1"
+													"text" : "jit.window mywin @size 480 300 @fsaa 1"
 												}
 
 											}
@@ -1646,22 +1861,9 @@
 													"numinlets" : 1,
 													"numoutlets" : 2,
 													"outlettype" : [ "jit_gl_texture", "" ],
-													"patching_rect" : [ 1289.0, 2243.0, 70.0, 22.0 ],
+													"patching_rect" : [ 1288.626042604446411, 2303.0, 70.0, 22.0 ],
 													"text" : "jit.gl.texture",
 													"varname" : "vz.matrix2texture"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"id" : "obj-151",
-													"maxclass" : "comment",
-													"numinlets" : 1,
-													"numoutlets" : 0,
-													"patching_rect" : [ 967.0, 2355.0, 150.0, 20.0 ],
-													"presentation" : 1,
-													"presentation_rect" : [ 1024.254850327968597, 947.21649444103241, 150.0, 20.0 ],
-													"text" : "press for glitch!"
 												}
 
 											}
@@ -1713,44 +1915,6 @@
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 78.089893877506256, 1388.903093129396439, 32.0, 22.0 ],
 													"text" : "gate"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"id" : "obj-148",
-													"maxclass" : "toggle",
-													"numinlets" : 1,
-													"numoutlets" : 1,
-													"outlettype" : [ "int" ],
-													"parameter_enable" : 0,
-													"patching_rect" : [ 932.0, 2347.0, 24.0, 24.0 ],
-													"presentation" : 1,
-													"presentation_rect" : [ 990.234233677387238, 940.0, 24.0, 24.0 ]
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"id" : "obj-173",
-													"maxclass" : "newobj",
-													"numinlets" : 1,
-													"numoutlets" : 2,
-													"outlettype" : [ "jit_matrix", "" ],
-													"patching_rect" : [ 1146.352713000000222, 2277.058918535709381, 374.0, 22.0 ],
-													"text" : "jit.gl.videoplane proj_node @position 0 0 @layer 1 @blend_enable 1"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"id" : "obj-170",
-													"maxclass" : "newobj",
-													"numinlets" : 1,
-													"numoutlets" : 3,
-													"outlettype" : [ "jit_matrix", "bang", "" ],
-													"patching_rect" : [ 917.0, 2403.0, 169.0, 22.0 ],
-													"text" : "jit.world projection @floating 0"
 												}
 
 											}
@@ -1813,7 +1977,7 @@
 													"parameter_enable" : 0,
 													"patching_rect" : [ 1781.967162132263184, 2055.737646102905273, 18.0, 79.508194446563721 ],
 													"presentation" : 1,
-													"presentation_rect" : [ 990.234233677387238, 446.0, 18.0, 79.508194446563721 ],
+													"presentation_rect" : [ 990.0, 446.0, 24.0, 87.0 ],
 													"rows" : 6
 												}
 
@@ -1891,18 +2055,6 @@
 													"outlettype" : [ "", "" ],
 													"patching_rect" : [ 1472.480000000000018, 1891.0, 85.0, 22.0 ],
 													"text" : "route gridspec"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"id" : "obj-124",
-													"maxclass" : "newobj",
-													"numinlets" : 1,
-													"numoutlets" : 2,
-													"outlettype" : [ "bang", "" ],
-													"patching_rect" : [ 2493.139999999999873, 680.289999999999964, 61.0, 22.0 ],
-													"text" : "jit.window"
 												}
 
 											}
@@ -2272,7 +2424,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 469.0, 78.0, 65.0, 22.0 ],
-													"text" : "41.836916"
+													"text" : "20.825375"
 												}
 
 											}
@@ -3343,23 +3495,11 @@
 														}
 ,
 														"classnamespace" : "box",
-														"rect" : [ 34.0, 87.0, 1146.0, 779.0 ],
+														"rect" : [ 260.0, 87.0, 1146.0, 779.0 ],
 														"openinpresentation" : 1,
 														"gridsize" : [ 15.0, 15.0 ],
 														"title" : "hoggersProcessor",
 														"boxes" : [ 															{
-																"box" : 																{
-																	"id" : "obj-29",
-																	"maxclass" : "newobj",
-																	"numinlets" : 1,
-																	"numoutlets" : 2,
-																	"outlettype" : [ "bang", "" ],
-																	"patching_rect" : [ 1352.0, 1250.0, 61.0, 22.0 ],
-																	"text" : "jit.window"
-																}
-
-															}
-, 															{
 																"box" : 																{
 																	"id" : "obj-3",
 																	"maxclass" : "newobj",
@@ -3606,7 +3746,7 @@
 																	"numoutlets" : 1,
 																	"outlettype" : [ "" ],
 																	"patching_rect" : [ 686.0, 208.0, 50.0, 62.0 ],
-																	"text" : "jit_matrix u152008232"
+																	"text" : "jit_matrix u835007563"
 																}
 
 															}
@@ -11343,13 +11483,6 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-170", 0 ],
-													"source" : [ "obj-148", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
 													"destination" : [ "obj-187", 0 ],
 													"source" : [ "obj-150", 0 ]
 												}
@@ -11565,14 +11698,6 @@
 												"patchline" : 												{
 													"destination" : [ "obj-157", 0 ],
 													"source" : [ "obj-172", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-173", 0 ],
-													"disabled" : 1,
-													"source" : [ "obj-174", 0 ]
 												}
 
 											}
@@ -16576,6 +16701,16 @@
 			"obj-6::obj-6::obj-14::obj-27" : [ "live.dial", "live.dial", 0 ],
 			"obj-6::obj-8" : [ "toggle[1]", "toggle[1]", 0 ],
 			"obj-6::obj-93::obj-1" : [ "live.dial[6]", "fps", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ],
+					"buttons" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
 			"parameter_overrides" : 			{
 				"obj-140::obj-194::obj-20" : 				{
 					"parameter_longname" : "mute[1]"
@@ -21500,6 +21635,27 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "20211224_004145~3.mp4",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "mpg4",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "20211224_004334.mp4",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "mpg4",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "20220212_184122.jpg",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "JPEG",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "20240509_102327.mp4",
 				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/assets/videos",
 				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/assets/videos",
@@ -21518,6 +21674,104 @@
 				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/assets/videos",
 				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/assets/videos",
 				"type" : "mpg4",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2158.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2159.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2293.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2303.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2309.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2319~2.mp4",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "mpg4",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2327.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2336.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2350.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2351.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2352.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2361~2.mp4",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "mpg4",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2430.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "IMG_2976.MOV",
+				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
+				"type" : "MooV",
 				"implicit" : 1
 			}
 , 			{
