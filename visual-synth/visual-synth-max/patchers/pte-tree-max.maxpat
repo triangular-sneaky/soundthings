@@ -20,7 +20,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 808.0, 1041.0, 65.0, 22.0 ],
-					"text" : "20.825375"
+					"text" : "8.463834"
 				}
 
 			}
@@ -1280,7 +1280,7 @@
 													"presentation" : 1,
 													"presentation_linecount" : 5,
 													"presentation_rect" : [ 1016.0, 446.0, 110.0, 83.0 ],
-													"text" : "\nrain\n\nwind\nbirds"
+													"text" : "birds\n\n\nwind\nr"
 												}
 
 											}
@@ -2424,7 +2424,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 469.0, 78.0, 65.0, 22.0 ],
-													"text" : "20.825375"
+													"text" : "8.463834"
 												}
 
 											}
