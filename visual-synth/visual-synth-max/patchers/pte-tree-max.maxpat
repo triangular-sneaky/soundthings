@@ -1408,7 +1408,7 @@
 													"clipheight" : 20.0,
 													"data" : 													{
 														"clips" : [ 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2158.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/IMG_2158.MOV",
 																"filename" : "IMG_2158.MOV",
 																"filekind" : "moviefile",
 																"id" : "u988026898",
@@ -1419,7 +1419,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2303.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/IMG_2303.MOV",
 																"filename" : "IMG_2303.MOV",
 																"filekind" : "moviefile",
 																"id" : "u900005958",
@@ -1430,7 +1430,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2309.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/IMG_2309.MOV",
 																"filename" : "IMG_2309.MOV",
 																"filekind" : "moviefile",
 																"id" : "u143026883",
@@ -1441,7 +1441,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2336.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/IMG_2336.MOV",
 																"filename" : "IMG_2336.MOV",
 																"filekind" : "moviefile",
 																"id" : "u041026884",
@@ -1452,7 +1452,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2351.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/IMG_2351.MOV",
 																"filename" : "IMG_2351.MOV",
 																"filekind" : "moviefile",
 																"id" : "u020026885",
@@ -1463,7 +1463,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/20211224_004334.mp4",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/20211224_004334.mp4",
 																"filename" : "20211224_004334.mp4",
 																"filekind" : "moviefile",
 																"id" : "u648026886",
@@ -1474,7 +1474,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/20220212_184122.jpg",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/20220212_184122.jpg",
 																"filename" : "20220212_184122.jpg",
 																"filekind" : "moviefile",
 																"id" : "u502026887",
@@ -1485,7 +1485,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2159.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/IMG_2159.MOV",
 																"filename" : "IMG_2159.MOV",
 																"filekind" : "moviefile",
 																"id" : "u052026888",
@@ -1496,7 +1496,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2293.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/IMG_2293.MOV",
 																"filename" : "IMG_2293.MOV",
 																"filekind" : "moviefile",
 																"id" : "u643026889",
@@ -1507,7 +1507,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2319~2.mp4",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/IMG_2319~2.mp4",
 																"filename" : "IMG_2319~2.mp4",
 																"filekind" : "moviefile",
 																"id" : "u373026890",
@@ -1518,7 +1518,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2327.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/IMG_2327.MOV",
 																"filename" : "IMG_2327.MOV",
 																"filekind" : "moviefile",
 																"id" : "u774026891",
@@ -1529,7 +1529,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2350.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/N/IMG_2350.MOV",
 																"filename" : "IMG_2350.MOV",
 																"filekind" : "moviefile",
 																"id" : "u308026892",
@@ -1540,7 +1540,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2352.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/N/IMG_2352.MOV",
 																"filename" : "IMG_2352.MOV",
 																"filekind" : "moviefile",
 																"id" : "u159026893",
@@ -1551,7 +1551,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2361~2.mp4",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/IMG_2361~2.mp4",
 																"filename" : "IMG_2361~2.mp4",
 																"filekind" : "moviefile",
 																"id" : "u727026894",
@@ -1562,7 +1562,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2430.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/NONEXISTENT/IMG_2430.MOV",
 																"filename" : "IMG_2430.MOV",
 																"filekind" : "moviefile",
 																"id" : "u689026895",
@@ -1573,7 +1573,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/20211224_004145~3.mp4",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/20211224_004145~3.mp4",
 																"filename" : "20211224_004145~3.mp4",
 																"filekind" : "moviefile",
 																"id" : "u133026896",
@@ -1584,7 +1584,7 @@
 
 															}
 , 															{
-																"absolutepath" : "/Users/dpoz/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials/IMG_2976.MOV",
+																"absolutepath" : "~/_art/assets/202510-SonicAnchor/materials/NONEXISTENT/IMG_2976.MOV",
 																"filename" : "IMG_2976.MOV",
 																"filekind" : "moviefile",
 																"id" : "u175026897",
@@ -21635,27 +21635,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "20211224_004145~3.mp4",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "mpg4",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "20211224_004334.mp4",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "mpg4",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "20220212_184122.jpg",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "JPEG",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "20240509_102327.mp4",
 				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/assets/videos",
 				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/assets/videos",
@@ -21674,104 +21653,6 @@
 				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/assets/videos",
 				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/assets/videos",
 				"type" : "mpg4",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2158.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2159.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2293.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2303.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2309.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2319~2.mp4",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "mpg4",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2327.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2336.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2350.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2351.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2352.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2361~2.mp4",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "mpg4",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2430.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "IMG_2976.MOV",
-				"bootpath" : "~/Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"patcherrelativepath" : "../../../../../Library/CloudStorage/OneDrive-Personal/Art/2025-10 Sonic Anchor performance with Cheri/assets/materials",
-				"type" : "MooV",
 				"implicit" : 1
 			}
 , 			{
