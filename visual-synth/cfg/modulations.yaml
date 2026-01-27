@@ -36,9 +36,18 @@ cc_sets:
 clusterModulations:
   0:
     pitch: 
-      param: *x01_in_cluster
-      min: 21
-      max: 108
+      param: *y01_in_cluster
+      min: 0
+      max: 60
+    at: *eff_amp
+    ccs: *default_cc_set
+    cc_base: 20
+    cc_step: 5
+  0:
+    pitch: 
+      param: *y01_in_cluster
+      min: 0
+      max: 60
     at: *eff_amp
     ccs: *default_cc_set
     cc_base: 20
@@ -46,7 +55,7 @@ clusterModulations:
   1:
     pitch: 
       param: *x01_in_cluster
-      min: 15
+      min: 46
       max: 108
     at: *eff_amp
     ccs: *default_cc_set
