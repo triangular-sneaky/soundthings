@@ -2,9 +2,10 @@
 camera_sets:
   - cam: &default_cam 
       name: "USB Camera"
-      format: "YUY2 - 422YpCbCr8_yuvs - 800 x 600"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 160 x 120"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 800 x 600"
       # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
-      # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+      format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
     device_idx: 0
   # - cam: &default_cam 
   #     name: "USB Camera"
