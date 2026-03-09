@@ -7,12 +7,35 @@ camera_sets:
       # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
       format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
     device_idx: 0
-  # - cam: &default_cam 
-  #     name: "USB Camera"
-  #     format: "YUY2 - 422YpCbCr8_yuvs - 800 x 600"
-  #     # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
-  #     # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
-  #   device_idx: 0
+  - cam:  
+      name: "USB Camera"
+      format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+    device_idx: 0
+  - cam:  
+      name: "USB Camera"
+      format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+    device_idx: 0
+  - cam:  
+      name: "USB Camera"
+      format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+    device_idx: 0
+  - cam:  
+      name: "FaceTime HD Camera"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
+      format: "NV12 - 420YpCbCr8BiPlanar - 640 x 480"
+    device_idx: 0
+  - cam:
+      name: "USB Camera"
+      format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+    device_idx: 0
   # - cam: &default_cam 
   #     name: "USB Camera"
   #     format: "YUY2 - 422YpCbCr8_yuvs - 800 x 600"
@@ -28,12 +51,13 @@ camera_sets:
   # - cam: *default_cam 
   #   device_idx: 4
 
-  # ## mac camera only -- for testing
-  # - cam: &default_cam 
+  ## mac camera only -- for testing
+  # - cam:  
   #     name: "FaceTime HD Camera"
   #     # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
   #     format: "NV12 - 420YpCbCr8BiPlanar - 640 x 480"
   #   device_idx: 0
+
   # - cam: *default_cam 
   #   device_idx: 0
   # - cam: *default_cam 
