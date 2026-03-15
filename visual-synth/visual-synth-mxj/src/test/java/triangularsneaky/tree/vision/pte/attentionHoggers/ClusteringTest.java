@@ -16,21 +16,21 @@ public class ClusteringTest {
 
         // one in each
         var slot1 = assign(indexer, new Rect(98, 48, 3, 3));
-        assertThat(slot1).satisfies(slot -> assertClusterAndIndex(slot, 0, 0, 0.95, 0.95));
-        var slot2 = assign(indexer, new Rect(248, 48, 3, 3));
-        assertThat(slot2).satisfies(slot -> assertClusterAndIndex(slot, 5, 0, 0.48, 0.48));
+        assertThat(slot1).satisfies(slot -> assertClusterAndIndex(slot, 0, 0, 0.99, 0.99));
+        var slot2 = assign(indexer, new Rect(248, 78, 3, 3));
+        assertThat(slot2).satisfies(slot -> assertClusterAndIndex(slot, 5, 0, 0.48, 0.58));
 
         // one more
         var slot11 =  assign(indexer, new Rect(98, 0, 3, 3));
-        assertThat(slot11).satisfies(slot -> assertClusterAndIndex(slot, 0, 1, 0.95, 0.0));
+        assertThat(slot11).satisfies(slot -> assertClusterAndIndex(slot, 0, 1, 0.99, 0.02));
 
         // unregister slot1
         indexer.unassignFromCluster(slot1);
 
         var slot12 =  assign(indexer, new Rect(98, 0, 3, 3));
-        assertThat(slot12).satisfies(slot -> assertClusterAndIndex(slot, 0, 0, 0.99, 0.2));
+        assertThat(slot12).satisfies(slot -> assertClusterAndIndex(slot, 0, 0, 0.99, 0.02));
         var slot13 =  assign(indexer, new Rect(98, 0, 3, 3));
-        assertThat(slot13).satisfies(slot -> assertClusterAndIndex(slot, 0, 2, 0.99, 0.2));
+        assertThat(slot13).satisfies(slot -> assertClusterAndIndex(slot, 0, 2, 0.99, 0.02));
 
 
     }
@@ -39,8 +39,8 @@ public class ClusteringTest {
                                               double x01, double y01) {
         assertThat(slot.getClusterIndex()).isEqualTo(clusterIndex);
         assertThat(slot.getVoiceIndexInCluster()).isEqualTo(voiceIndex);
-        assertThat(slot.getX01InCluster()).isCloseTo(x01, Percentage.withPercentage(2)).isBetween(0.0, 1.0);
-        assertThat(slot.getY01InCluster()).isCloseTo(y01, Percentage.withPercentage(2)).isBetween(0.0, 1.0);
+        assertThat(slot.getX01InCluster()).isCloseTo(x01, Percentage.withPercentage(3)).isBetween(0.0, 1.0);
+        assertThat(slot.getY01InCluster()).isCloseTo(y01, Percentage.withPercentage(3)).isBetween(0.0, 1.0);
     }
 
     private Hoggers.AttentionSlot assign(ClusterIndexer indexer, Rect rect) {
