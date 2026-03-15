@@ -4,8 +4,6 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import com.cycling74.max.Atom;
 import com.cycling74.max.MaxObject;
@@ -113,8 +111,10 @@ public class AttentionTracker extends JitMaxObject {
                                 Atom.newAtom(s.getClusterIndex()), // zl.nth 14 = cluster_index
                                 Atom.newAtom(s.getVoiceIndexInCluster()), // zl.nth 15 = voice_index_in_cluster
 
-                                Atom.newAtom(s.getX01InCluster()), // zl.nth 16 = cluster_index
-                                Atom.newAtom(s.getY01InCluster()) // zl.nth 17 = voice_index_in_cluster
+                                Atom.newAtom(s.getX01InCluster()), // zl.nth 16 = x01_in_cluster
+                                Atom.newAtom(s.getY01InCluster()), // zl.nth 17 = y01_in_cluster
+
+                                Atom.newAtom(s.getXyOrder01InCluster()) // zl.nth 18 = xy_order01_in_cluster
                             });
                 });
             });

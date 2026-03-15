@@ -17,6 +17,7 @@ params:
   - &voice_index_in_cluster 15 # 0-based
   - &x01_in_cluster 16
   - &y01_in_cluster 17
+  - &xy_order01_in_cluster 18
 cc_sets:
   - &default_cc_set
     # - param: *age 
@@ -33,59 +34,55 @@ cc_sets:
       max: 1.0
     - param: *y01_in_cluster 
       max: 1.0
+    - param: *xy_order01_in_cluster
+      max: 1.0
+modulation_templates:
+  notes:
+    - &C3 60
+  default_pitch: &default_pitch
+    param: *xy_order01_in_cluster
+    min: 48
+    max: 84
 clusterModulations:
+  # NOTE: register all params (including pitch.param) in corresponding cc set!
   0:
-    pitch: 
-      param: *y01_in_cluster
-      min: 0
-      max: 60
-    at: *eff_amp
-    ccs: *default_cc_set
-    cc_base: 20
-    cc_step: 5
-  0:
-    pitch: 
-      param: *y01_in_cluster
-      min: 0
-      max: 60
+    pitch: *default_pitch
+      # param: *xy_order01_in_cluster
+      # min: 48
+      # max: 84
+      # max: 108
     at: *eff_amp
     ccs: *default_cc_set
     cc_base: 20
     cc_step: 5
   1:
-    pitch: 
-      param: *x01_in_cluster
-      min: 46
-      max: 108
+    pitch: *default_pitch
+      # param: *xy_order01_in_cluster
+      # min: 46
+      # max: 108
     at: *eff_amp
     ccs: *default_cc_set
     cc_base: 20
     cc_step: 5
   2:
-    pitch: 
-      param: *x01_in_cluster
-      min: 21
-      max: 108
+    pitch: *default_pitch
+
     at: *eff_amp
     ccs: *default_cc_set
     cc_base: 20
     cc_step: 5
   3:
     pitch: 
-      param: *x01_in_cluster
-      min: 21
-      max: 108
+      param: *xy_order01_in_cluster
+      min: 36
+      max: 60
     at: *eff_amp
     ccs: *default_cc_set
     cc_base: 20
     cc_step: 5
   4:
-    pitch: 
-      param: *x01_in_cluster
-      min: 21
-      max: 108
+    pitch: *default_pitch
     at: *eff_amp
     ccs: *default_cc_set
     cc_base: 20
     cc_step: 5
-    

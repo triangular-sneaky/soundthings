@@ -21,13 +21,9 @@ public class ClusterIndexer {
     }
 
     public void assignToCluster(Hoggers.AttentionSlot slot, Rect rect) {
-        var clusterIndex = coalesceIndex(
-                clusterSpec.mapToCluster(rect, (x, y) -> {
-                            slot.setX01InCluster(x);
-                            slot.setY01InCluster(y);
-                        }));
-        slot.setClusterIndex(clusterIndex);
-        slot.setVoiceIndexInCluster(indexAllocators[clusterIndex].allocate());
+        clusterSpec.mapToCluster(rect, slot);
+        slot.setClusterIndex(coalesceIndex(slot.getClusterIndex()));
+        slot.setVoiceIndexInCluster(indexAllocators[slot.getClusterIndex()].allocate());
     }
 
     private int coalesceIndex(int clusterIndex) {
