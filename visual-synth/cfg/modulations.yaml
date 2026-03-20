@@ -82,6 +82,10 @@ clusterModulations:
     cc_step: 5
   4:
     pitch: *default_pitch
+    # pitch: 
+    #   param: *xy_order01_in_cluster
+    #   min: 36
+    #   max: 60
     at: *eff_amp
     ccs: *default_cc_set
     cc_base: 20

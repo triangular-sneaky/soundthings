@@ -9,11 +9,11 @@ camera_sets:
   - cam: *default_cam 
     device_idx: 1
   - cam: *default_cam 
-    device_idx: 2
+    device_idx: 4
   - cam: *default_cam 
     device_idx: 3
   - cam: *default_cam 
-    device_idx: 4
+    device_idx: 2
   # - cam: *default_cam 
   #   device_idx: 5
 

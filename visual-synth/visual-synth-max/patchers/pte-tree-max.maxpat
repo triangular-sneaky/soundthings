@@ -9,7 +9,7 @@
             "modernui": 1
         },
         "classnamespace": "box",
-        "rect": [ 34.0, 87.0, 630.0, 779.0 ],
+        "rect": [ 34.0, 61.0, 630.0, 805.0 ],
         "boxes": [
             {
                 "box": {
@@ -19,7 +19,7 @@
                     "numoutlets": 1,
                     "outlettype": [ "" ],
                     "patching_rect": [ 808.0, 1041.0, 65.0, 22.0 ],
-                    "text": "12.353334"
+                    "text": "9.981166"
                 }
             },
             {
@@ -617,8 +617,7 @@
                             "modernui": 1
                         },
                         "classnamespace": "box",
-                        "rect": [ 34.0, 87.0, 1372.0, 779.0 ],
-                        "visible": 1,
+                        "rect": [ 34.0, 87.0, 1146.0, 779.0 ],
                         "boxes": [
                             {
                                 "box": {
@@ -1236,14 +1235,14 @@
                                                     "numinlets": 1,
                                                     "numoutlets": 1,
                                                     "outlettype": [ "" ],
-                                                    "patching_rect": [ 183.8449950814247, 610.5102043151855, 100.0, 22.0 ],
-                                                    "text": "loadmess 4"
+                                                    "patching_rect": [ 183.8449950814247, 610.5102043151855, 77.0, 22.0 ],
+                                                    "text": "loadmess 10"
                                                 }
                                             },
                                             {
                                                 "box": {
                                                     "id": "obj-180",
-                                                    "linecount": 5,
+                                                    "linecount": 3,
                                                     "maxclass": "textedit",
                                                     "numinlets": 1,
                                                     "numoutlets": 4,
@@ -1251,9 +1250,9 @@
                                                     "parameter_enable": 0,
                                                     "patching_rect": [ 1811.0, 2056.0, 110.0, 83.0 ],
                                                     "presentation": 1,
-                                                    "presentation_linecount": 5,
+                                                    "presentation_linecount": 3,
                                                     "presentation_rect": [ 1016.0, 446.0, 110.0, 83.0 ],
-                                                    "text": "birds\n\n\nwind\nr"
+                                                    "text": "\n\nboard"
                                                 }
                                             },
                                             {
@@ -2230,7 +2229,9 @@
                                                     "numoutlets": 1,
                                                     "outlettype": [ "bang" ],
                                                     "parameter_enable": 0,
-                                                    "patching_rect": [ 3201.200047701597, 1575.200023472309, 24.0, 24.0 ]
+                                                    "patching_rect": [ 3201.200047701597, 1575.200023472309, 24.0, 24.0 ],
+                                                    "presentation": 1,
+                                                    "presentation_rect": [ 1250.4762274622917, 576.1904706954956, 24.0, 24.0 ]
                                                 }
                                             },
                                             {
@@ -2255,7 +2256,9 @@
                                                     "maxclass": "dict.view",
                                                     "numinlets": 1,
                                                     "numoutlets": 0,
-                                                    "patching_rect": [ 2971.6158436238766, 1903.4935286343098, 248.90830725431442, 511.7904142141342 ]
+                                                    "patching_rect": [ 2971.6158436238766, 1903.4935286343098, 248.90830725431442, 511.7904142141342 ],
+                                                    "presentation": 1,
+                                                    "presentation_rect": [ 1243.3333703875542, 599.9999942779541, 248.90830725431442, 511.7904142141342 ]
                                                 }
                                             },
                                             {
@@ -2276,7 +2279,7 @@
                                                     "numoutlets": 1,
                                                     "outlettype": [ "" ],
                                                     "patching_rect": [ 469.0, 78.0, 65.0, 22.0 ],
-                                                    "text": "12.353334"
+                                                    "text": "9.981166"
                                                 }
                                             },
                                             {
@@ -3483,7 +3486,7 @@
                                                                     "numoutlets": 1,
                                                                     "outlettype": [ "" ],
                                                                     "patching_rect": [ 686.0, 208.0, 50.0, 62.0 ],
-                                                                    "text": "jit_matrix u344006775"
+                                                                    "text": "jit_matrix u105007033"
                                                                 }
                                                             },
                                                             {
@@ -5707,7 +5710,7 @@
                                                     "numoutlets": 1,
                                                     "outlettype": [ "" ],
                                                     "patching_rect": [ 276.59574270248413, 1201.5957360863686, 29.5, 22.0 ],
-                                                    "text": "4"
+                                                    "text": "10"
                                                 }
                                             },
                                             {
@@ -10182,6 +10185,19 @@
                                                     "parameter_enable": 0,
                                                     "patching_rect": [ 1895.3333898186684, 2909.3334200382233, 234.00000697374344, 22.0 ]
                                                 }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-182",
+                                                    "maxclass": "message",
+                                                    "numinlets": 2,
+                                                    "numoutlets": 1,
+                                                    "outlettype": [ "" ],
+                                                    "patching_rect": [ 3235.8695034980774, 1583.6956219673157, 62.0, 22.0 ],
+                                                    "presentation": 1,
+                                                    "presentation_rect": [ 1282.6086711883545, 577.1904706954956, 62.0, 22.0 ],
+                                                    "text": "readagain"
+                                                }
                                             }
                                         ],
                                         "lines": [
@@ -10280,7 +10296,7 @@
                                                     "order": 1,
                                                     "source": [ "obj-112", 0 ],
                                                     "watchpoint_flags": 5,
-                                                    "watchpoint_id": 63
+                                                    "watchpoint_id": 65
                                                 }
                                             },
                                             {
@@ -10562,7 +10578,7 @@
                                                     "destination": [ "obj-132", 0 ],
                                                     "source": [ "obj-156", 4 ],
                                                     "watchpoint_flags": 5,
-                                                    "watchpoint_id": 64
+                                                    "watchpoint_id": 66
                                                 }
                                             },
                                             {
@@ -10707,6 +10723,12 @@
                                                 "patchline": {
                                                     "destination": [ "obj-4", 0 ],
                                                     "source": [ "obj-18", 0 ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [ "obj-156", 0 ],
+                                                    "source": [ "obj-182", 0 ]
                                                 }
                                             },
                                             {
@@ -13960,6 +13982,27 @@
             "obj-140::obj-90::obj-39::obj-133": [ "multislider[3]", "multislider", 0 ],
             "obj-140::obj-90::obj-39::obj-34": [ "live.dial[3]", "live.dial[2]", 0 ],
             "obj-140::obj-90::obj-39::obj-7": [ "multislider[2]", "multislider", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-12": [ "Bypass[8]", "Bypass", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-15::obj-2": [ "pastebang[8]", "pastebang", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-2": [ "Output[8]", "Output", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-28": [ "Attack[7]", "Attack", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-34": [ "slider[17]", "slider[3]", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-35": [ "slider[16]", "slider[2]", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-44": [ "Input[8]", "Input", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-47": [ "Release[8]", "Release", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-52": [ "Threshold[8]", "Threshold", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-78": [ "Ratio[9]", "Ratio", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-1": [ "Mix[15]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-21": [ "HPF[7]", "HPF", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-25": [ "LPF[7]", "LPF", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-28": [ "Feedback[7]", "Feedback", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-7": [ "bypass[15]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-9": [ "time[8]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-35::obj-1": [ "Time[8]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-35::obj-25": [ "Cutoff[8]", "Cutoff", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-35::obj-26": [ "Reflections[8]", "Reflections", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-35::obj-28": [ "Mix[14]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.10::obj-185::obj-35::obj-47": [ "bypass[14]", "bypass", 0 ],
             "obj-140::obj-90::obj-4.1::obj-185::obj-13::obj-12": [ "Bypass[19]", "Bypass", 0 ],
             "obj-140::obj-90::obj-4.1::obj-185::obj-13::obj-15::obj-2": [ "pastebang[19]", "pastebang", 0 ],
             "obj-140::obj-90::obj-4.1::obj-185::obj-13::obj-2": [ "Output[19]", "Output", 0 ],
@@ -14044,6 +14087,111 @@
             "obj-140::obj-90::obj-4.4::obj-185::obj-35::obj-26": [ "Reflections[2]", "Reflections", 0 ],
             "obj-140::obj-90::obj-4.4::obj-185::obj-35::obj-28": [ "Mix[4]", "Mix", 0 ],
             "obj-140::obj-90::obj-4.4::obj-185::obj-35::obj-47": [ "bypass[4]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-12": [ "Bypass[3]", "Bypass", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-15::obj-2": [ "pastebang[3]", "pastebang", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-2": [ "Output[3]", "Output", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-28": [ "Attack[3]", "Attack", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-34": [ "slider[9]", "slider[3]", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-35": [ "slider[8]", "slider[2]", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-44": [ "Input[3]", "Input", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-47": [ "Release[3]", "Release", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-52": [ "Threshold[3]", "Threshold", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-78": [ "Ratio[4]", "Ratio", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-1": [ "Mix[7]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-21": [ "HPF[3]", "HPF", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-25": [ "LPF[3]", "LPF", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-28": [ "Feedback[3]", "Feedback", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-7": [ "bypass[7]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-9": [ "time[3]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-35::obj-1": [ "Time[3]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-35::obj-25": [ "Cutoff[3]", "Cutoff", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-35::obj-26": [ "Reflections[3]", "Reflections", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-35::obj-28": [ "Mix[6]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.5::obj-185::obj-35::obj-47": [ "bypass[6]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-12": [ "Bypass[4]", "Bypass", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-15::obj-2": [ "pastebang[4]", "pastebang", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-2": [ "Output[4]", "Output", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-28": [ "Attack[20]", "Attack", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-34": [ "slider[11]", "slider[3]", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-35": [ "slider[10]", "slider[2]", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-44": [ "Input[4]", "Input", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-47": [ "Release[4]", "Release", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-52": [ "Threshold[4]", "Threshold", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-78": [ "Ratio[5]", "Ratio", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-1": [ "Mix[40]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-21": [ "HPF[20]", "HPF", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-25": [ "LPF[20]", "LPF", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-28": [ "Feedback[20]", "Feedback", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-7": [ "bypass[40]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-9": [ "time[4]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-35::obj-1": [ "Time[4]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-35::obj-25": [ "Cutoff[4]", "Cutoff", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-35::obj-26": [ "Reflections[4]", "Reflections", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-35::obj-28": [ "Mix[8]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.6::obj-185::obj-35::obj-47": [ "bypass[8]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-12": [ "Bypass[5]", "Bypass", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-15::obj-2": [ "pastebang[5]", "pastebang", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-2": [ "Output[5]", "Output", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-28": [ "Attack[4]", "Attack", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-34": [ "slider[42]", "slider[3]", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-35": [ "slider[43]", "slider[2]", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-44": [ "Input[5]", "Input", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-47": [ "Release[5]", "Release", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-52": [ "Threshold[5]", "Threshold", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-78": [ "Ratio[6]", "Ratio", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-1": [ "Mix[9]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-21": [ "HPF[4]", "HPF", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-25": [ "LPF[4]", "LPF", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-28": [ "Feedback[4]", "Feedback", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-7": [ "bypass[9]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-9": [ "time[5]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-35::obj-1": [ "Time[5]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-35::obj-25": [ "Cutoff[5]", "Cutoff", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-35::obj-26": [ "Reflections[5]", "Reflections", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-35::obj-28": [ "Mix[41]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.7::obj-185::obj-35::obj-47": [ "bypass[41]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-12": [ "Bypass[6]", "Bypass", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-15::obj-2": [ "pastebang[6]", "pastebang", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-2": [ "Output[6]", "Output", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-28": [ "Attack[5]", "Attack", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-34": [ "slider[12]", "slider[3]", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-35": [ "slider[13]", "slider[2]", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-44": [ "Input[6]", "Input", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-47": [ "Release[6]", "Release", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-52": [ "Threshold[6]", "Threshold", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-78": [ "Ratio[7]", "Ratio", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-1": [ "Mix[11]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-21": [ "HPF[5]", "HPF", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-25": [ "LPF[5]", "LPF", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-28": [ "Feedback[5]", "Feedback", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-7": [ "bypass[11]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-9": [ "time[6]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-35::obj-1": [ "Time[6]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-35::obj-25": [ "Cutoff[6]", "Cutoff", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-35::obj-26": [ "Reflections[6]", "Reflections", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-35::obj-28": [ "Mix[10]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.8::obj-185::obj-35::obj-47": [ "bypass[10]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-12": [ "Bypass[7]", "Bypass", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-15::obj-2": [ "pastebang[7]", "pastebang", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-2": [ "Output[7]", "Output", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-28": [ "Attack[6]", "Attack", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-34": [ "slider[14]", "slider[3]", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-35": [ "slider[15]", "slider[2]", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-44": [ "Input[7]", "Input", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-47": [ "Release[7]", "Release", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-52": [ "Threshold[7]", "Threshold", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-78": [ "Ratio[8]", "Ratio", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-1": [ "Mix[13]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-21": [ "HPF[6]", "HPF", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-25": [ "LPF[6]", "LPF", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-28": [ "Feedback[6]", "Feedback", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-7": [ "bypass[13]", "bypass", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-9": [ "time[7]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-35::obj-1": [ "Time[7]", "Time", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-35::obj-25": [ "Cutoff[7]", "Cutoff", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-35::obj-26": [ "Reflections[7]", "Reflections", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-35::obj-28": [ "Mix[12]", "Mix", 0 ],
+            "obj-140::obj-90::obj-4.9::obj-185::obj-35::obj-47": [ "bypass[12]", "bypass", 0 ],
             "obj-140::obj-90::obj-48": [ "gain~", "gain~", 0 ],
             "obj-140::obj-90::obj-8::obj-34": [ "live.dial[5]", "live.dial[2]", 0 ],
             "obj-140::obj-90::obj-90::obj-1": [ "lpf", "lpf", 0 ],
@@ -14080,6 +14228,63 @@
             "parameter_overrides": {
                 "obj-140::obj-194::obj-20": {
                     "parameter_longname": "mute[1]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-12": {
+                    "parameter_longname": "Bypass[8]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-15::obj-2": {
+                    "parameter_longname": "pastebang[8]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-2": {
+                    "parameter_longname": "Output[8]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-28": {
+                    "parameter_longname": "Attack[7]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-44": {
+                    "parameter_longname": "Input[8]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-47": {
+                    "parameter_longname": "Release[8]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-52": {
+                    "parameter_longname": "Threshold[8]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-13::obj-78": {
+                    "parameter_longname": "Ratio[9]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-1": {
+                    "parameter_longname": "Mix[15]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-21": {
+                    "parameter_longname": "HPF[7]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-25": {
+                    "parameter_longname": "LPF[7]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-28": {
+                    "parameter_longname": "Feedback[7]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-7": {
+                    "parameter_longname": "bypass[15]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-28::obj-9": {
+                    "parameter_longname": "time[8]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-35::obj-1": {
+                    "parameter_longname": "Time[8]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-35::obj-25": {
+                    "parameter_longname": "Cutoff[8]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-35::obj-26": {
+                    "parameter_longname": "Reflections[8]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-35::obj-28": {
+                    "parameter_longname": "Mix[14]"
+                },
+                "obj-140::obj-90::obj-4.10::obj-185::obj-35::obj-47": {
+                    "parameter_longname": "bypass[14]"
                 },
                 "obj-140::obj-90::obj-4.1::obj-185::obj-13::obj-12": {
                     "parameter_longname": "Bypass[19]"
@@ -14260,6 +14465,291 @@
                 },
                 "obj-140::obj-90::obj-4.4::obj-185::obj-35::obj-47": {
                     "parameter_longname": "bypass[4]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-12": {
+                    "parameter_longname": "Bypass[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-15::obj-2": {
+                    "parameter_longname": "pastebang[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-2": {
+                    "parameter_longname": "Output[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-28": {
+                    "parameter_longname": "Attack[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-44": {
+                    "parameter_longname": "Input[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-47": {
+                    "parameter_longname": "Release[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-52": {
+                    "parameter_longname": "Threshold[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-13::obj-78": {
+                    "parameter_longname": "Ratio[4]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-1": {
+                    "parameter_longname": "Mix[7]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-21": {
+                    "parameter_longname": "HPF[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-25": {
+                    "parameter_longname": "LPF[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-28": {
+                    "parameter_longname": "Feedback[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-7": {
+                    "parameter_longname": "bypass[7]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-28::obj-9": {
+                    "parameter_longname": "time[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-35::obj-1": {
+                    "parameter_longname": "Time[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-35::obj-25": {
+                    "parameter_longname": "Cutoff[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-35::obj-26": {
+                    "parameter_longname": "Reflections[3]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-35::obj-28": {
+                    "parameter_longname": "Mix[6]"
+                },
+                "obj-140::obj-90::obj-4.5::obj-185::obj-35::obj-47": {
+                    "parameter_longname": "bypass[6]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-12": {
+                    "parameter_longname": "Bypass[4]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-15::obj-2": {
+                    "parameter_longname": "pastebang[4]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-2": {
+                    "parameter_longname": "Output[4]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-28": {
+                    "parameter_longname": "Attack[20]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-44": {
+                    "parameter_longname": "Input[4]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-47": {
+                    "parameter_longname": "Release[4]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-52": {
+                    "parameter_longname": "Threshold[4]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-13::obj-78": {
+                    "parameter_longname": "Ratio[5]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-1": {
+                    "parameter_longname": "Mix[40]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-21": {
+                    "parameter_longname": "HPF[20]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-25": {
+                    "parameter_longname": "LPF[20]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-28": {
+                    "parameter_longname": "Feedback[20]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-7": {
+                    "parameter_longname": "bypass[40]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-28::obj-9": {
+                    "parameter_longname": "time[4]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-35::obj-1": {
+                    "parameter_longname": "Time[4]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-35::obj-25": {
+                    "parameter_longname": "Cutoff[4]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-35::obj-26": {
+                    "parameter_longname": "Reflections[4]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-35::obj-28": {
+                    "parameter_longname": "Mix[8]"
+                },
+                "obj-140::obj-90::obj-4.6::obj-185::obj-35::obj-47": {
+                    "parameter_longname": "bypass[8]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-12": {
+                    "parameter_longname": "Bypass[5]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-15::obj-2": {
+                    "parameter_longname": "pastebang[5]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-2": {
+                    "parameter_longname": "Output[5]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-28": {
+                    "parameter_longname": "Attack[4]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-44": {
+                    "parameter_longname": "Input[5]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-47": {
+                    "parameter_longname": "Release[5]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-52": {
+                    "parameter_longname": "Threshold[5]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-13::obj-78": {
+                    "parameter_longname": "Ratio[6]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-1": {
+                    "parameter_longname": "Mix[9]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-21": {
+                    "parameter_longname": "HPF[4]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-25": {
+                    "parameter_longname": "LPF[4]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-28": {
+                    "parameter_longname": "Feedback[4]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-7": {
+                    "parameter_longname": "bypass[9]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-28::obj-9": {
+                    "parameter_longname": "time[5]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-35::obj-1": {
+                    "parameter_longname": "Time[5]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-35::obj-25": {
+                    "parameter_longname": "Cutoff[5]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-35::obj-26": {
+                    "parameter_longname": "Reflections[5]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-35::obj-28": {
+                    "parameter_longname": "Mix[41]"
+                },
+                "obj-140::obj-90::obj-4.7::obj-185::obj-35::obj-47": {
+                    "parameter_longname": "bypass[41]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-12": {
+                    "parameter_longname": "Bypass[6]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-15::obj-2": {
+                    "parameter_longname": "pastebang[6]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-2": {
+                    "parameter_longname": "Output[6]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-28": {
+                    "parameter_longname": "Attack[5]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-44": {
+                    "parameter_longname": "Input[6]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-47": {
+                    "parameter_longname": "Release[6]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-52": {
+                    "parameter_longname": "Threshold[6]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-13::obj-78": {
+                    "parameter_longname": "Ratio[7]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-1": {
+                    "parameter_longname": "Mix[11]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-21": {
+                    "parameter_longname": "HPF[5]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-25": {
+                    "parameter_longname": "LPF[5]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-28": {
+                    "parameter_longname": "Feedback[5]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-7": {
+                    "parameter_longname": "bypass[11]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-28::obj-9": {
+                    "parameter_longname": "time[6]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-35::obj-1": {
+                    "parameter_longname": "Time[6]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-35::obj-25": {
+                    "parameter_longname": "Cutoff[6]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-35::obj-26": {
+                    "parameter_longname": "Reflections[6]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-35::obj-28": {
+                    "parameter_longname": "Mix[10]"
+                },
+                "obj-140::obj-90::obj-4.8::obj-185::obj-35::obj-47": {
+                    "parameter_longname": "bypass[10]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-12": {
+                    "parameter_longname": "Bypass[7]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-15::obj-2": {
+                    "parameter_longname": "pastebang[7]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-2": {
+                    "parameter_longname": "Output[7]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-28": {
+                    "parameter_longname": "Attack[6]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-44": {
+                    "parameter_longname": "Input[7]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-47": {
+                    "parameter_longname": "Release[7]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-52": {
+                    "parameter_longname": "Threshold[7]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-13::obj-78": {
+                    "parameter_longname": "Ratio[8]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-1": {
+                    "parameter_longname": "Mix[13]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-21": {
+                    "parameter_longname": "HPF[6]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-25": {
+                    "parameter_longname": "LPF[6]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-28": {
+                    "parameter_longname": "Feedback[6]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-7": {
+                    "parameter_longname": "bypass[13]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-28::obj-9": {
+                    "parameter_longname": "time[7]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-35::obj-1": {
+                    "parameter_longname": "Time[7]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-35::obj-25": {
+                    "parameter_longname": "Cutoff[7]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-35::obj-26": {
+                    "parameter_longname": "Reflections[7]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-35::obj-28": {
+                    "parameter_longname": "Mix[12]"
+                },
+                "obj-140::obj-90::obj-4.9::obj-185::obj-35::obj-47": {
+                    "parameter_longname": "bypass[12]"
                 },
                 "obj-6::obj-42::obj-110": {
                     "parameter_longname": "live.dial[8]"
