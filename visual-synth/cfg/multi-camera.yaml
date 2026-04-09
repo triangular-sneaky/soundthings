@@ -8,19 +8,19 @@ camera_sets:
       # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
       ## note: yuvs is limited to 10fps!
     # [1-Scratchy]
-    device_idx: 4
+    device_idx: 1
   - cam: *default_cam 
     # [2-Strings1]
     device_idx: 2
   - cam: *default_cam 
     # [3-Strings2]
-    device_idx: 1
+    device_idx: 3
   - cam: *default_cam 
     # [4-Drums]
-    device_idx: 0
+    device_idx: 4
   - cam: *default_cam 
     # [5-Kungfu]
-    device_idx: 3
+    device_idx: 5
 
  # mac camera only -- for testing
   # - cam: &mac_cam
