@@ -663,7 +663,7 @@
                     "numoutlets": 1,
                     "outlettype": [ "" ],
                     "patching_rect": [ 808.0, 1041.0, 65.0, 22.0 ],
-                    "text": "167.75775"
+                    "text": "21.197959"
                 }
             },
             {
@@ -3489,7 +3489,7 @@
                                                     "numoutlets": 1,
                                                     "outlettype": [ "" ],
                                                     "patching_rect": [ 469.0, 78.0, 65.0, 22.0 ],
-                                                    "text": "167.75775"
+                                                    "text": "21.197959"
                                                 }
                                             },
                                             {
@@ -4762,7 +4762,7 @@
                                                                     "numoutlets": 1,
                                                                     "outlettype": [ "" ],
                                                                     "patching_rect": [ 686.0, 208.0, 50.0, 62.0 ],
-                                                                    "text": "jit_matrix u729006949"
+                                                                    "text": "jit_matrix u942006955"
                                                                 }
                                                             },
                                                             {
