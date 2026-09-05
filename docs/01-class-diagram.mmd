@@ -1,0 +1,222 @@
+classDiagram
+    namespace max {
+        class JitMaxObject {
+            +matrixCache Map~String,Matrix~
+            +getMatrix(name) Matrix
+        }
+        class AttentionTracker {
+            +algo BitmapAttentionTrackingAlgo
+            +gridSize BehaviorSubject~Dim~
+            +jit_matrix(s)
+            +voices(count)
+            +stability(gain,bias,attack,release)
+            +gridspec(dims)
+            +clear()
+            +reset()
+        }
+        class MovementVisualizer {
+            +processingMatrix MemoryBackedMatrix
+            +scale Integer
+            +jit_matrix(s)
+        }
+        class JitMatrix {
+            -matrix JitterMatrix
+            -planecount int
+            +copyCellTo(i,j,dest)
+            +dims() int[]
+        }
+        class Benchmark {
+            -name String
+            -reportingRate int
+            +lap(block)
+            +lapStart()
+            +lapEnd()
+        }
+    }
+
+    namespace matrix {
+        class Matrix {
+            <<interface>>
+            +get(i,j) double[]
+            +copyCellTo(i,j,dest)
+            +planecount() int
+            +dims() int[]
+        }
+        class WriteableMatrix {
+            <<interface>>
+            +set(x,y,values)
+        }
+        class MemoryBackedMatrix {
+            -matrix double[][][]
+            +copyOrRebuild(source,ifRebuilt)
+            +get(i,j) double[]
+            +set(x,y,values)
+        }
+    }
+
+    namespace algo {
+        class AttentionTrackingAlgoBase {
+            <<abstract>>
+            #voicesCount int
+            #sizeImportanceCoefficient double
+            #downsamplingStep int
+            #stabilityAmpAndEnvelope DiscreteAmpAndEnvelope
+            #processingMatrix MemoryBackedMatrix
+            #timestamp AtomicInteger
+            +accept(matrix)*
+            #handleMatrix(matrix)
+            #taste(i,j,si,sj,vals,coeff)*
+            +ticks() BehaviorSubject
+        }
+        class BitmapAttentionTrackingAlgo {
+            -elements Map~Rect,AlgoAttentionElement~
+            -detectedElementsBitmap AlgoAttentionElement[][]
+            +slotsStorage SlotsStorage
+            -dims BehaviorSubject~Dim~
+            +accept(matrix)
+            #taste(i,j,si,sj,vals,coeff)
+            +dims() BehaviorSubject~Dim~
+            +clearSlots()
+        }
+        class AlgoAttentionElement {
+            <<inner of AttentionTrackingAlgoBase>>
+            -id int
+            -amplitude double
+            -angle double
+            -rect Rect
+            -bornTimestamp int
+            -isDead boolean
+            +effectiveValue() double
+            +age() int
+            +setDead(dead)
+        }
+    }
+
+    namespace domain {
+        class AttentionElement {
+            <<interface>>
+            +age() int
+            +effectiveValue() double
+            +amplitude() double
+            +angle() double
+            +rect() Rect
+            +getId() int
+        }
+        class AttentionSlot {
+            <<inner of Hoggers>>
+            -slot int
+            -id int
+            -x int
+            -y int
+            -w int
+            -h int
+            -amplitude double
+            -effectiveAmplitude double
+            -angle double
+            +pin(slot)
+            +update(ts,amp,effAmp,angle)
+            +age() int
+            +slot() int
+        }
+        class SlotsStorage {
+            -idToSlots Map~int,AttentionSlot~
+            -slots List~AttentionSlot~
+            -clusterIndexer ClusterIndexer
+            +mapElementsToSlots(survivors) Stream
+            +setClusterIndexer(ci)
+            +clear()
+        }
+        class InCluster {
+            <<interface>>
+            +getClusterIndex() int
+            +setClusterIndex(n)
+            +getX01InCluster() double
+            +getY01InCluster() double
+            +getXyOrder01InCluster() double
+        }
+    }
+
+    namespace clustering {
+        class ClusterSpec {
+            <<interface>>
+            +getClustersCount() int
+            +mapToCluster(rect,target)
+        }
+        class GridSpec {
+            <<record>>
+            +columns int
+            +rows int
+            +width int
+            +height int
+            +getClustersCount() int
+            +mapToCluster(rect,target)
+        }
+        class ClusterIndexer {
+            -clusterSpec ClusterSpec
+            -indexAllocators IntAllocator[]
+            +assignToCluster(slot,rect)
+            +unassignFromCluster(slot)
+        }
+    }
+
+    namespace envelope {
+        class DiscreteAmpAndEnvelope {
+            <<interface>>
+            +get(t) double
+        }
+        class LinearAmpAndADEnvelope {
+            <<record>>
+            +gain double
+            +bias double
+            +attack int
+            +decay int
+            +get(t) double
+        }
+    }
+
+    namespace util {
+        class Rect {
+            <<record>>
+            +x int
+            +y int
+            +w int
+            +h int
+            +area() int
+        }
+        class Dim {
+            <<record>>
+            +x int
+            +y int
+        }
+        class IntAllocator {
+            -free PriorityQueue~Integer~
+            -next int
+            +allocate() int
+            +release(id)
+        }
+    }
+
+    %% Inheritance
+    JitMaxObject <|-- AttentionTracker
+    JitMaxObject <|-- MovementVisualizer
+    Matrix <|-- WriteableMatrix
+    WriteableMatrix <|.. MemoryBackedMatrix
+    Matrix <|.. JitMatrix
+    AttentionTrackingAlgoBase <|-- BitmapAttentionTrackingAlgo
+    AttentionElement <|.. AlgoAttentionElement
+    InCluster <|.. AttentionSlot
+    DiscreteAmpAndEnvelope <|.. LinearAmpAndADEnvelope
+    ClusterSpec <|.. GridSpec
+
+    %% Composition / association
+    AttentionTracker --> BitmapAttentionTrackingAlgo : algo
+    AttentionTracker ..> Benchmark : frameInBm frameOutBm
+    BitmapAttentionTrackingAlgo --> SlotsStorage : slotsStorage
+    BitmapAttentionTrackingAlgo "1" --> "*" AlgoAttentionElement : elements
+    AttentionTrackingAlgoBase --> MemoryBackedMatrix : processingMatrix
+    AttentionTrackingAlgoBase --> DiscreteAmpAndEnvelope : stabilityAmpAndEnvelope
+    SlotsStorage --> ClusterIndexer : clusterIndexer
+    SlotsStorage "1" --> "*" AttentionSlot : slots
+    ClusterIndexer --> ClusterSpec : clusterSpec
+    ClusterIndexer "1" --> "*" IntAllocator : indexAllocators
+    AlgoAttentionElement --> Rect : rect

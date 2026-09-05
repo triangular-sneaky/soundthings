@@ -1,0 +1,13 @@
+stateDiagram-v2
+    [*] --> Unpinned : new AttentionElement id seen by SlotsStorage
+
+    state "Pinned / Active" as Pinned
+    Unpinned --> Pinned : assigned to a free slot index
+
+    state Pinned {
+        [*] --> Updating
+        Updating --> Updating : element survives, slot.update called
+    }
+
+    Pinned --> Stale : element no longer in survivors
+    Stale --> [*] : removed, cluster unassigned, slot freed

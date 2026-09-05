@@ -1,0 +1,56 @@
+# Component Overview
+
+High-level architecture: layers and data boundaries.
+
+```mermaid
+graph TB
+    subgraph Max["Max/MSP runtime"]
+        Jitter["jit.matrix<br/>(optical flow / movement)"]
+        Outlet["outlet 0<br/>Atom list per active voice"]
+    end
+
+    subgraph mxj["mxj pte.AttentionTracker"]
+        AT["AttentionTracker<br/>Max object entry point"]
+        MV["MovementVisualizer<br/>HSB color debug view"]
+        Cache["JitMatrix cache<br/>name → Matrix wrapper"]
+    end
+
+    subgraph core["Core algorithm"]
+        Algo["BitmapAttentionTrackingAlgo<br/>downsampling + bitmap competition"]
+        MBM["MemoryBackedMatrix<br/>in-memory working copy"]
+        Elements["AttentionElement map<br/>rect → element, this frame"]
+        Bitmap["detectedElementsBitmap<br/>non-overlap enforcement"]
+    end
+
+    subgraph slots["Slot / voice management"]
+        SS["SlotsStorage<br/>id ↔ slot index lifecycle"]
+        CI["ClusterIndexer<br/>rect → cluster + voice-in-cluster"]
+        IA["IntAllocator<br/>per-cluster index pool"]
+    end
+
+    subgraph cfg["Config / envelopes"]
+        Env["LinearAmpAndADEnvelope<br/>stability gain + AD"]
+        GS["GridSpec<br/>columns × rows grid"]
+    end
+
+    Jitter -->|jit_matrix name| AT
+    AT --> Cache
+    Cache -->|Matrix| Algo
+    AT -.->|"voices, stability, gridspec"| Algo
+
+    Algo --> MBM
+    Algo --> Elements
+    Algo --> Bitmap
+    Algo -->|survivors| SS
+    SS --> CI
+    CI --> IA
+    CI -->|uses| GS
+
+    Algo -->|uses| Env
+
+    Algo -->|RxJava ticks| AT
+    AT -->|Atom list| Outlet
+
+    Jitter -->|jit_matrix name| MV
+    MV -->|jit_matrix name| Outlet
+```

@@ -1,0 +1,69 @@
+# Frame Processing Sequence
+
+Each Jitter frame arriving from Max/MSP triggers this pipeline.
+
+```mermaid
+sequenceDiagram
+    participant Max as Max/MSP
+    participant AT as AttentionTracker
+    participant Algo as BitmapAttentionTrackingAlgo
+    participant MBM as MemoryBackedMatrix
+    participant SS as SlotsStorage
+    participant CI as ClusterIndexer
+
+    Max->>AT: jit_matrix("name")
+    AT->>AT: getMatrix("name") — JitMatrix cached by name
+    Note over AT: frameInBm.lap start
+
+    AT->>Algo: accept(matrix)
+    Algo->>Algo: timestamp++
+    Algo->>MBM: copyOrRebuild(source)
+    Note over MBM: reallocates if dims or planes changed
+
+    Note over Algo: zero all element amplitudes
+
+    Algo->>Algo: handleMatrix(processingMatrix)
+
+    loop multi-level downsampling factor 1 then 2 then 4 …
+        loop every cell at current stride
+            Algo->>Algo: sum sub-cell values
+            Algo->>Algo: taste(i, j, sizeI, sizeJ, values, coeff)
+            Note over Algo: amplitude = norm(vx,vy)<br/>create or update AttentionElement<br/>bitmap competition — higher effectiveValue wins<br/>loser.setDead(true)
+        end
+    end
+
+    Note over Algo: filter isDead=false<br/>sort desc by effectiveValue<br/>limit to voicesCount
+
+    Algo->>SS: mapElementsToSlots(survivors)
+
+    loop each survivor
+        SS->>SS: computeIfAbsent(id) — new AttentionSlot
+        opt new slot and clusterIndexer present
+            SS->>CI: assignToCluster(slot, rect)
+            CI->>CI: clusterSpec.mapToCluster — sets clusterIndex x01 y01
+            CI->>CI: indexAllocators[cluster].allocate() — voiceIndexInCluster
+        end
+        SS->>SS: slot.update(timestamp, amp, effAmp, angle)
+    end
+
+    loop scan slot list for stale entries
+        SS->>SS: slot.lastTimestamp != timestamp — remove
+        opt stale slot had cluster
+            SS->>CI: unassignFromCluster(slot)
+            CI->>CI: indexAllocators[cluster].release(voiceIdx)
+        end
+    end
+
+    SS->>SS: pin remaining unpinned slots into freed positions
+    SS-->>Algo: Stream of AttentionSlot
+
+    Note over AT: frameInBm.lap end
+    Algo->>Algo: ticks().onNext(slotStream)
+    Note over AT: RxJava subscription fires — frameOutBm.lap start
+
+    loop each AttentionSlot
+        AT->>Max: outlet(0, [voice age l t r b area amp angle01 id effAmp x01 y01 clusterIdx voiceInCluster x01c y01c xyOrder01c])
+    end
+
+    Note over AT: frameOutBm.lap end
+```

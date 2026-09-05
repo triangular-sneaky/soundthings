@@ -1,0 +1,40 @@
+# Taste Algorithm — Downsampling + Bitmap Competition
+
+`handleMatrix` walks the frame at exponentially increasing strides, calling `taste()` at each level. `taste()` competes new detections against the bitmap to ensure non-overlapping winners.
+
+```mermaid
+flowchart TD
+    A([accept: new frame]) --> B[timestamp++]
+    B --> C[copyOrRebuild into MemoryBackedMatrix]
+    C --> D[zero all element amplitudes]
+    D --> E[handleMatrix]
+
+    E --> F{"downsamplingFactor<br/>≤ maxFactor?"}
+    F -- yes --> G[iterate cells at prev stride]
+    G --> H[sum sub-cell values into cell]
+    H --> I[taste i,j,sizeI,sizeJ,values,coeff]
+    I --> J{"amplitude<br/>> lpf threshold?"}
+    J -- no --> K[skip]
+    K --> L[next cell]
+    J -- yes --> M[compute angle = atan2 vy,vx]
+    M --> N{"rect already<br/>in elements map?"}
+    N -- yes, alive --> O[update amplitude + angle]
+    N -- no or dead --> P[new AttentionElement id++]
+    O --> Q[thisEffectiveValue]
+    P --> Q
+    Q --> R{"all bitmap cells in rect<br/>empty or lower effectiveValue?"}
+    R -- yes --> S["write thisElement into bitmap cells<br/>mark displaced elements dead"]
+    R -- no --> T[thisElement.setDead true]
+    S --> L
+    T --> L
+    L --> F2{more cells?}
+    F2 -- yes --> G
+    F2 -- no --> U[sizeCoefficient × sizeImportanceCoefficient]
+    U --> V[downsamplingFactor × downsamplingStep]
+    V --> F
+    F -- no --> W[filter: isDead=false]
+    W --> X[sort desc by effectiveValue]
+    X --> Y[limit to voicesCount]
+    Y --> Z[slotsStorage.mapElementsToSlots]
+    Z --> AA[ticks.onNext ▶ outlet]
+```

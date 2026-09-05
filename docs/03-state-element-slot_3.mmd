@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Allocated : assignToCluster — allocate lowest free index
+
+    Allocated --> Released : unassignFromCluster — release voiceIdx
+
+    Released --> Allocated : next new slot reuses freed index
+    Released --> [*]

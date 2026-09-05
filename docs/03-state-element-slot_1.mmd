@@ -1,0 +1,12 @@
+stateDiagram-v2
+    [*] --> Alive : taste() — new or surviving rect
+
+    Alive --> Dead : lower-priority, overlaps same bitmap cells
+    Alive --> Alive : higher-priority, stays in bitmap
+
+    Dead --> [*] : filtered out before mapElementsToSlots
+
+    Alive --> Survivor : effectiveValue in top-N voices
+    Alive --> [*] : outside top-N, discarded
+
+    Survivor --> [*] : passed to SlotsStorage
