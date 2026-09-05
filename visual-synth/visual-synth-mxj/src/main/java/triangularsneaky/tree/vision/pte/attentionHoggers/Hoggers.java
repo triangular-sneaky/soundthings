@@ -2,7 +2,7 @@ package triangularsneaky.tree.vision.pte.attentionHoggers;
 
 
 public class Hoggers {
-    public static final class AttentionSlot {
+    public static final class AttentionSlot implements InCluster {
         private int slot;
         private final int id;
         private final int bornTimestamp;
@@ -15,6 +15,7 @@ public class Hoggers {
         private int voiceIndexInCluster = -1;
         private double x01InCluster;
         private double y01InCluster;
+        private double xyOrderInCluster;
 
 
 
@@ -102,10 +103,12 @@ public class Hoggers {
             return id;
         }
 
+        @Override
         public int getClusterIndex() {
             return clusterIndex;
         }
 
+        @Override
         public void setClusterIndex(int clusterIndex) {
             this.clusterIndex = clusterIndex;
         }
@@ -119,20 +122,34 @@ public class Hoggers {
         }
 
 
+        @Override
         public double getX01InCluster() {
             return x01InCluster;
         }
 
+        @Override
         public void setX01InCluster(double x01InCluster) {
             this.x01InCluster = x01InCluster;
         }
 
+        @Override
         public double getY01InCluster() {
             return y01InCluster;
         }
 
+        @Override
         public void setY01InCluster(double y01InCluster) {
             this.y01InCluster = y01InCluster;
+        }
+
+        @Override
+        public double getXyOrder01InCluster() {
+            return xyOrderInCluster;
+        }
+
+        @Override
+        public void setXyOrderInCluster(double xyOrderInCluster) {
+            this.xyOrderInCluster = xyOrderInCluster;
         }
     }
 
