@@ -2,43 +2,36 @@
 camera_sets:
   - cam: &default_cam 
       name: "USB Camera"
-      # format: "YUY2 - 422YpCbCr8_yuvs - 160 x 120"
       # format: "YUY2 - 422YpCbCr8_yuvs - 800 x 600"
       # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
-      format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+      format: "NV12 - 420YpCbCr8BiPlanar - 320 x 240"
+      # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
+      ## note: yuvs is limited to 10fps!
+    # [1-Scratchy]
+    device_idx: 3
+  - cam: *default_cam 
+    # [2-StringsX]
+    device_idx: 2
+  - cam: *default_cam 
+    # [3-StringsW]
+    device_idx: 1
+  - cam: *default_cam 
+    # [4-Drums]
     device_idx: 0
-  # - cam: &default_cam 
-  #     name: "USB Camera"
-  #     format: "YUY2 - 422YpCbCr8_yuvs - 800 x 600"
-  #     # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
-  #     # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
-  #   device_idx: 0
-  # - cam: &default_cam 
-  #     name: "USB Camera"
-  #     format: "YUY2 - 422YpCbCr8_yuvs - 800 x 600"
-  #     # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
-  #     # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
-  #   device_idx: 1
-  # - cam: *default_cam 
-  #   device_idx: 1
-  # - cam: *default_cam 
-  #   device_idx: 2
-  # - cam: *default_cam 
-  #   device_idx: 0
-  # - cam: *default_cam 
-  #   device_idx: 4
+  - cam: *default_cam 
+    # [5-Kungfu]
+    device_idx: 4
 
-  # ## mac camera only -- for testing
-  # - cam: &default_cam 
+ # mac camera only -- for testing
+  # - cam: &mac_cam
   #     name: "FaceTime HD Camera"
   #     # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
-  #     format: "NV12 - 420YpCbCr8BiPlanar - 640 x 480"
   #   device_idx: 0
-  # - cam: *default_cam 
+  # - cam: *mac_cam 
   #   device_idx: 0
-  # - cam: *default_cam 
+  # - cam: *mac_cam 
   #   device_idx: 0
-  # - cam: *default_cam 
+  # - cam: *mac_cam 
   #   device_idx: 0
-  # - cam: *default_cam 
+  # - cam: *mac_cam 
   #   device_idx: 0
