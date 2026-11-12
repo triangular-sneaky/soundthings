@@ -41,6 +41,7 @@ modulation_templates:
     - &C3 60
   default_pitch: &default_pitch
     param: *xy_order01_in_cluster
+    # param: *y01_in_cluster
     min: 48
     max: 84
 clusterModulations:

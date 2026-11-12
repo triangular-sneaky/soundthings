@@ -3,24 +3,29 @@ camera_sets:
   - cam: &default_cam 
       name: "USB Camera"
       # format: "YUY2 - 422YpCbCr8_yuvs - 800 x 600"
-      # format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
-      format: "NV12 - 420YpCbCr8BiPlanar - 320 x 240"
+      format: "YUY2 - 422YpCbCr8_yuvs - 640 x 480"
+      # format: "NV12 - 420YpCbCr8BiPlanar - 320 x 240"
       # format: "YUY2 - 422YpCbCr8_yuvs - 320 x 240"
       ## note: yuvs is limited to 10fps!
     # [1-Scratchy]
-    device_idx: 3
-  - cam: *default_cam 
-    # [2-StringsX]
-    device_idx: 2
+    device_idx: 0
+
   - cam: *default_cam 
     # [3-StringsW]
     device_idx: 1
   - cam: *default_cam 
     # [4-Drums]
-    device_idx: 0
+    device_idx: 2
   - cam: *default_cam 
     # [5-Kungfu]
-    device_idx: 4
+    device_idx: 3
+
+  # - cam: &obs_cam
+  #     name: "OBS Virtual Camera"
+  #     format: "BGRA - 32BGRA - 1920 x 1080"
+  #   device_idx: 0
+
+
 
  # mac camera only -- for testing
   # - cam: &mac_cam
